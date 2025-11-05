@@ -30,7 +30,7 @@
 <div class="card">
     <a href="{{ route('peserta.tolist')}}" class="btn btn-lg btn-danger">Logout</a>
     <div class="pull-right" style="font-size:20px; font-weight:bold;">
-    <span id="timer">12:00</span>
+    Jangan Close browser ini
 </div>
 
     <hr>
@@ -40,7 +40,7 @@
                                             <thead>
                                                 <tr>
                                                     <th width="10">No</th>
-                                                    <th width="200"> </th>
+                                                    <th width="100"> </th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -53,15 +53,17 @@
                                                 <tr>
                                                     <td class="text-center">2 .</td>
                                                     <td>Skenario Klinik</td>
-                                                    <td>
+                                                    <td><font size= "6">
                                                          {!!$template->soal !!}
+                                                         </font>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">3 .</td>
                                                     <td>Tugas</td>
-                                                    <td>
+                                                    <td><font size= "6">
                                                          {!! $template->tugas_mhs !!}
+                                                         </font>
                                                     </td>
                                                 </tr>
 
@@ -81,32 +83,10 @@
 
 
 @section('script')
-<script type="text/javascript">
-// durasi 12 menit dalam detik
-    let timeLeft = 10 * 60;
-
-    function updateTimer() {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-
-        // format supaya 2 digit (misalnya 09:05)
-        if (seconds < 10) seconds = "0" + seconds;
-        if (minutes < 10) minutes = "0" + minutes;
-
-        document.getElementById("timer").innerText = minutes + ":" + seconds;
-
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            window.location.href = "/peserta/tolist"; // URL redirect
-        }
-
-        timeLeft -= 1;
-    }
-
-    // jalankan pertama kali langsung update
-    updateTimer();
-
-    // lalu update setiap detik
-    let timerInterval = setInterval(updateTimer, 1000);
+<script>
+  window.OSOCA = {
+    outUrl: "{{ route('peserta.out') }}"
+  };
 </script>
+<script src="{{ asset('js/osoca_outsoal.js') }}"></script>
 @endsection

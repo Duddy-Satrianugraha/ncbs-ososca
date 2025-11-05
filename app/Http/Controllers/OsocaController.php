@@ -36,12 +36,14 @@ class OsocaController extends Controller
     }
 
     public function tolist(){
+        Ostation::where("oujian_id",session('Osoca'))->where("urutan",session('Station'))->update(['open' => 0]);
         session()->forget('Sesi');
         session()->forget('Peserta');
         return redirect(route('osoca.mhs.login'));
     }
 
     public function tostation(){
+        Ostation::where("oujian_id",session('Osoca'))->where("urutan",session('Station'))->update(['open' => 0]);
         session()->forget('Penguji');
         session()->forget('Sesi');
         session()->forget('Peserta');
@@ -109,10 +111,14 @@ class OsocaController extends Controller
         }
 
         $sesi = Osesi::where('oujian_id', $peserta->oujian_id)->where('urutan', session('current'))->first();
+
          session([
                 'Sesi' => $sesi->id,
                 'Peserta' => $peserta->id,
             ]);
+
+            Ostation::where("oujian_id",session('Osoca'))->where("urutan",session('Station'))->update(['open' => 1]);
+
       Return redirect(route('osoca.ujian'));
     }
 
@@ -367,7 +373,7 @@ class OsocaController extends Controller
                     'current' => $validated['next'],
                     'next'    => $validated['next'] + 1,
                 ]);
-
+                Ostation::where("oujian_id",session('Osoca'))->where("urutan",session('Station'))->update(['open' => 0]);
                 return redirect()->route('osoca.mhs.login')
                     ->with('msg', 'success-Data berhasil disimpan');
 

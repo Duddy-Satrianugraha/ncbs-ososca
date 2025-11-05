@@ -84,6 +84,8 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
 Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( function (){
     Route::get('/', [PesertaController::class, 'check'])->name('index');
     Route::get('/soal', [PesertaController::class, 'soal'])->name('soal');
+    Route::get('/in', [PesertaController::class, 'in'])->name('in');
+    Route::get('/out', [PesertaController::class, 'out'])->name('out');
     Route::get('/tolist', [PesertaController::class, 'tolist'])->name('tolist');
     Route::get('/logout', [PesertaController::class, 'logout'])->name('logout');
     Route::post('/scan_soal', [PesertaController::class, 'scan'])->name('sscan');
