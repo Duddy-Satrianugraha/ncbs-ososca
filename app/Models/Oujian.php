@@ -13,6 +13,7 @@ class Oujian extends Model
         'jml_station',
         'jml_sesi',
         'user_id',
+        'remedial',
     ];
     public function stations()
     {
