@@ -28,9 +28,9 @@
 
 @section('detail-soal')
 <div class="card">
-    <a href="{{ route('peserta.tolist')}}" class="btn btn-lg btn-danger">Logout</a>
+    <a href="{{ route('peserta.tolist')}}" class="btn btn-lg btn-danger">Refresh</a>
     <div class="pull-right" style="font-size:20px; font-weight:bold;">
-    Jangan Close browser ini
+    Jika soal belum berubah, klik REFRESH. Jangan Close browser ini
 </div>
 
     <hr>

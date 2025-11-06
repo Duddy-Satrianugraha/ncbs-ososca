@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const inUrl = window.OSOCA.inUrl;
-  const POLL_MS = 10000;
+  const POLL_MS = 5000;
   let ticking = false;
   let redirected = false;
 
