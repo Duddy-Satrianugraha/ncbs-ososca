@@ -12,14 +12,46 @@ use Illuminate\Http\Request;
 class PesertaController extends Controller
 {
 
-    public function check(){
+    public function check(Request $request)
+{
+    $ujian   = Oujian::find(session('oujian'));
+    $station = Ostation::select('id', 'name', 'open', 'current')->find(session('Station'));
 
-       // dd(session()->all());
-        $station = Ostation::find(session('Station'));
+    $template = null;
 
-        return view('peserta.loginp', compact('station'));
+    if ($station && (int) $station->open === 1) {
+        $sesi = Osesi::where('oujian_id', session('oujian'))
+            ->where('urutan', $station->current)
+            ->first();
+
+        if ($sesi) {
+            $template = Otemplate::find($sesi->otemplate_id);
+            session(['osesi' => $sesi->id]); // opsional kalau masih dipakai
+        } else {
+            $sesi = null;
+        }
+    } else {
+        // station belum open → kosongkan osesi (opsional)
+        session()->forget('osesi');
+        $sesi = null;
     }
 
+    // Request via AJAX → balas partial saja
+    if ($request->ajax()) {
+        $html = view('peserta._detail_soal', [
+            'template' => $template,
+        ])->render();
+
+        return response()->json(['html' => $html]);
+    }
+
+    // Request biasa → render halaman penuh
+    return view('peserta.template', [
+        'ujian'    => $ujian,
+        'sesi'     => $sesi,
+        'template' => $template,
+    ]);
+}
     public function in(Request $request)
         {
             // cari station yang sedang dibuka

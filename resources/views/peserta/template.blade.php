@@ -19,7 +19,7 @@
             <a class="dropdown-toggle" href="#"  data-toggle="dropdown" >
               <span><img src="{{ asset('img/mduser.jpg')  }}" alt="avatar" class="logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;"></span>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ route('peserta.tolist')}}">Logout</a></li>
+                    <li><a href="{{ route('peserta.logout')}}">Logout</a></li>
                 </ul>
             </a>
 @endsection
@@ -27,56 +27,8 @@
 
 
 @section('detail-soal')
-<div class="card">
-    <a href="{{ route('peserta.tolist')}}" class="btn btn-lg btn-danger">Refresh</a>
-    <div class="pull-right" style="font-size:20px; font-weight:bold;">
-    Jika soal belum berubah, klik REFRESH. Jangan Close browser ini
-</div>
-
-    <hr>
-    <div class="panel-body">
-                        <div class="table-responsive">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10">No</th>
-                                                    <th width="100"> </th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">1 .</td>
-                                                    <td>Nomor kasus</td>
-                                                    <td>{{$template->nomor_station}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2 .</td>
-                                                    <td>Skenario Klinik</td>
-                                                    <td><font size= "6">
-                                                         {!!$template->soal !!}
-                                                         </font>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3 .</td>
-                                                    <td>Tugas</td>
-                                                    <td><font size= "6">
-                                                         {!! $template->tugas_mhs !!}
-                                                         </font>
-                                                    </td>
-                                                </tr>
-
-
-
-                                            </tbody>
-                                        </table>
-                                        <hr/>
-
-
-                                    </div>
-
-    </div>
+<div id="soal-container">
+    @include('peserta._detail_soal', ['template' => $template ?? null])
 </div>
 @endsection
 
@@ -84,9 +36,9 @@
 
 @section('script')
 <script>
-  window.OSOCA = {
-    outUrl: "{{ route('peserta.out') }}"
-  };
+    window.OSOCA = {
+        soalUrl: "{{ route('peserta.index') }}"
+    };
 </script>
-<script src="{{ asset('js/osoca_outsoal.js') }}"></script>
+<script src="{{ asset('js/osoca_soal.js') }}"></script>
 @endsection

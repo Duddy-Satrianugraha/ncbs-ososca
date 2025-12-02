@@ -111,7 +111,7 @@ class OsocaController extends Controller
         }
 
         $sesi = Osesi::where('oujian_id', $peserta->oujian_id)->where('urutan', session('current'))->first();
-
+       // dd($sesi);
          session([
                 'Sesi' => $sesi->id,
                 'Peserta' => $peserta->id,
