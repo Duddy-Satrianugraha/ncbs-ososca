@@ -44,6 +44,7 @@ class OpesertaController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string|max:255',
             'npm' => 'required|string|max:255',
@@ -56,6 +57,7 @@ class OpesertaController extends Controller
             'npm' => $request->npm,
             'station' => $request->kelompok,
             'sesi' => $request->urutan,
+            'qrpeserta'  => md5($request->npm),
         ]);
         return redirect()->back()->with('msg', 'success-Data berhasil disimpan');
     }
@@ -104,22 +106,26 @@ class OpesertaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Opeserta $opeserta)
+    public function update(Request $request, $opeserta)
     {
+       //dd($opeserta);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'npm' => 'required|string|max:255',
-            'station' => 'required|integer',
-            'sesi' => 'required|integer',
+            'kelompok' => 'required|integer',
+            'urutan' => 'required|integer',
         ]);
-        $peserta = Opeserta::findOrFail($opeserta->id);
+        $peserta = Opeserta::findOrFail($opeserta);
+        //dd($peserta->oujian_id);
         $peserta->update([
             'name' => $request->name,
             'npm' => $request->npm,
-            'station' => $request->station,
-            'sesi' => $request->sesi,
+            'station' => $request->kelompok,
+            'sesi' => $request->urutan,
         ]);
-        return redirect()->back()->with('msg', 'success-Data berhasil disimpan');
+        //dd($peserta->oujian_id);
+        return redirect(route('admin.peserta.show', $peserta->oujian_id))->with('msg', 'success-Data berhasil disimpan');
     }
 
     /**
