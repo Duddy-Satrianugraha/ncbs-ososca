@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('nama_penguji')->nullable();
             $table->integer('current')->default(1);
             $table->integer('next')->default(2);
+            $table->boolean('open')->default(false);
             $table->timestamps();
         });
     }
