@@ -452,7 +452,7 @@ class OpengujisTableSeeder extends Seeder
             43 => 
             array (
                 'id' => 45,
-                'nama' => 'dr. Gara Samara Brajadenta, SE., MM., M.Res., M.Si.Med., Ph.D.',
+                'nama' => 'dr. Gara Samara Brajadenta,SE.,MM.,M.Res.,M.Si.,Med.,Ph.D.',
                 'qr_penguji' => '934013034823833',
                 'nik' => '91850690',
                 'avatar' => NULL,
@@ -1172,7 +1172,7 @@ class OpengujisTableSeeder extends Seeder
             115 => 
             array (
                 'id' => 117,
-                'nama' => 'Prof. dr.Muhammad Hussein Gasem, Sp.PD KPTI, PhD',
+                'nama' => 'Prof. dr.Muhammad Hussein Gasem, Sp.PD KPTI,PhD',
                 'qr_penguji' => '350058249608494',
                 'nik' => '91521065',
                 'avatar' => NULL,

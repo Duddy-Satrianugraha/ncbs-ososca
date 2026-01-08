@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class UjiansTableSeeder extends Seeder
+class DataDirisTableSeeder extends Seeder
 {
 
     /**
@@ -16,7 +16,7 @@ class UjiansTableSeeder extends Seeder
     {
         
 
-        \DB::table('ujians')->delete();
+        \DB::table('data_diris')->delete();
         
         
         

@@ -1,0 +1,247 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class UsersTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('users')->delete();
+        
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'name' => 'Super admin',
+                'email' => 'ultra@fk.ugj',
+                'username' => 'ultraman',
+                'email_verified_at' => '2025-10-28 02:26:31',
+                'password' => '$2y$12$1Y9n2L2wF2xTcO7kGMZEGOJv/hU5NrcH69vghTYtYZLHxKpazkZyC',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => 'xxx_999_1',
+                'avatar' => NULL,
+                'remember_token' => 'FvVNZu6Dik',
+                'created_at' => '2025-10-28 02:26:31',
+                'updated_at' => '2025-10-28 02:26:31',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'Mas IT',
+                'email' => 'it@fk.ugj',
+                'username' => 'it',
+                'email_verified_at' => '2025-10-28 02:26:31',
+                'password' => '$2y$12$d/DZzfmhiooENEvytCIXQ.hKkvkwIIeqGr3YglAw.ptlLDanpSUn6',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => 'xxx_999_2',
+                'avatar' => NULL,
+                'remember_token' => 'JhmEBbtYuBFt3y4YOyKOtF9NMGqpxBPpFut4KgABZb0MNe7R0cxXmAP19xzv',
+                'created_at' => '2025-10-28 02:26:31',
+                'updated_at' => '2025-10-28 02:26:31',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Ibu Ka Ososca',
+                'email' => 'koc@fk.ugj',
+                'username' => 'koc',
+                'email_verified_at' => '2025-10-28 02:26:31',
+                'password' => '$2y$12$.Iph/tISuNsyUE2w9XjT1e1fs9AoHHuJ18GCeF.8K3IzESeAbAsyO',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => 'xxx_999_3',
+                'avatar' => NULL,
+                'remember_token' => '8YHuZ0CacXaH6ozv2cQAeT8hSl0YOGT1ClthfivQWMpP5OVYSfhJtarBGeac',
+                'created_at' => '2025-10-28 02:26:32',
+                'updated_at' => '2025-10-28 02:26:32',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Mas admin',
+                'email' => 'admin@fk.ugj',
+                'username' => 'admin',
+                'email_verified_at' => '2025-10-28 02:26:32',
+                'password' => '$2y$12$nKUQCJTQXDFbPNLD7Oy.7ORknWi3vofjPOy.IoNa1pkquvHab1/W2',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => 'xxx_999_4',
+                'avatar' => NULL,
+                'remember_token' => 'ZXUZJVouH6L7J1ynzEtRVhyTn9bpHcbzpgW8Mr7JNkGBVTfdLzHBnEBiZaLJ',
+                'created_at' => '2025-10-28 02:26:32',
+                'updated_at' => '2025-10-28 02:26:32',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'name' => 'Mas Materi',
+                'email' => 'materi@fk.ugj',
+                'username' => 'materi',
+                'email_verified_at' => '2025-10-28 02:26:32',
+                'password' => '$2y$12$wmAHI0DVIlRPcEQlHRmnFOaryA1jkU//bQ.RYlJmrN2CmXXL44V7G',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => 'xxx_999_5',
+                'avatar' => NULL,
+                'remember_token' => 'FlEj9MH7AK559dNcn6RrXaWzx3IwbqCDKHBN5hX5ukcbDPOVJuoyXR9FI7IR',
+                'created_at' => '2025-10-28 02:26:32',
+                'updated_at' => '2025-10-28 02:26:32',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'name' => 'dr. Novi Robbayanti Fiqih',
+                'email' => 'drnovi@fk.ugj',
+                'username' => 'drnovi',
+                'email_verified_at' => '2025-10-28 02:26:32',
+                'password' => '$2y$12$uHUeVZJaI/enMIvRqRKZSOcr9aaWZsPPs1HamZkzp7GCg3g3K2SLu',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90921130',
+                'avatar' => NULL,
+                'remember_token' => 'QR3F2zRh2o4Ft2d2gV10MNH2wUHzT6W66ldIKKpHosIQbQQmd8k4yYCEwFET',
+                'created_at' => '2025-10-28 02:26:32',
+                'updated_at' => '2025-10-28 02:26:32',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'name' => 'dr. Rizkia Alifa Fitriani',
+                'email' => 'drkia@fk.ugj',
+                'username' => 'drkia',
+                'email_verified_at' => '2025-10-28 02:26:32',
+                'password' => '$2y$12$0D9QIlrlDwLg4bdQRXQJ0ez4..kI69QM5fceIvQe0uCvU2nlV.htO',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90931237',
+                'avatar' => NULL,
+                'remember_token' => 'Dyr6i8T5Un1nSZFSu7YOdx1NzD3Z4yVTuhiOBDwEGCBJGpwIO5awYV6izun1',
+                'created_at' => '2025-10-28 02:26:33',
+                'updated_at' => '2025-11-03 00:59:20',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'name' => 'dr. Lita Harlianti',
+                'email' => 'drlita@fk.ugj',
+                'username' => 'drlita',
+                'email_verified_at' => '2025-10-28 02:26:33',
+                'password' => '$2y$12$hTzP6trItWQIyjy3BjXMWeIFyIpStAPUD6F2Q3z/R2eYyixhZM0Hi',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90941207',
+                'avatar' => NULL,
+                'remember_token' => 'scAF1D1JYW',
+                'created_at' => '2025-10-28 02:26:33',
+                'updated_at' => '2025-10-28 02:26:33',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'name' => 'dr. Permata Ayuning Tyas',
+                'email' => 'drtyas@fk.ugj',
+                'username' => 'drtyas',
+                'email_verified_at' => '2025-10-28 02:26:33',
+                'password' => '$2y$12$pm/1REbUBbpNyJFG20sOhOWZGfkaEo1FTCog.qSB9TvkbXBWZJiZW',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90931224',
+                'avatar' => NULL,
+                'remember_token' => 'HERrn6rFrs',
+                'created_at' => '2025-10-28 02:26:33',
+                'updated_at' => '2025-10-28 02:26:33',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'name' => 'dr. Ghina Sofiana Lestari',
+                'email' => 'drghina@fk.ugj',
+                'username' => 'drghina',
+                'email_verified_at' => '2025-10-28 02:26:33',
+                'password' => '$2y$12$RIMDUmn4TE4kaDYqFOFAy.1Cg5cGWrJplxnA/2mMTli4AqXMkyyGi',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90950938',
+                'avatar' => NULL,
+                'remember_token' => 'WTR679HAMM',
+                'created_at' => '2025-10-28 02:26:33',
+                'updated_at' => '2025-10-28 02:26:33',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'name' => 'dr. Coryna Frisqila',
+                'email' => 'droi@fk.ugj',
+                'username' => 'droi',
+                'email_verified_at' => '2025-10-28 02:26:33',
+                'password' => '$2y$12$c9DPzo9F6jdyf7SzTQV8zOm8YT3lUnLeF8A5LkYBy693C88kuVlse',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90930422',
+                'avatar' => NULL,
+                'remember_token' => 'd7JtlsEXZA',
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'name' => 'dr. Mellyna Irianti Sujana',
+                'email' => 'drmelly@fk.ugj',
+                'username' => 'drmelly',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => '$2y$12$/0/1Fgpff6suLqQgNO/CkuoJkwlJWymdLiqu03yAmyGL/HmTvGm1a',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90960501',
+                'avatar' => NULL,
+                'remember_token' => 'Qj3vxppOIk',
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'name' => 'dr. Erma Permata Sari',
+                'email' => 'drerma@fk.ugj',
+                'username' => 'drerma',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => '$2y$12$ilpdnqZuPbJZe6eI.pPtmeTTl.uctSHz9dBh6zGuOAJ8X.CwxsGIO',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90930625',
+                'avatar' => NULL,
+                'remember_token' => 'O5y0ry1Hwv',
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+        ));
+        
+        
+    }
+}
