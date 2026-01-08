@@ -54,7 +54,19 @@
         @can('admin')
 
         <li class="xn-title">Administrator</li>
-        <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta</span> </a></li>
+        <li class="xn-openable ">
+            <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">PBL</span></a>
+            <ul>
+                <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta PBL</span> </a></li>
+            </ul>
+        </li>
+        <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">
+            <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">OSOCA</span></a>
+            <ul>
+                <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta OSOSCA</span> </a></li>
+            </ul>
+        </li>
+
 
         @endcan
 
