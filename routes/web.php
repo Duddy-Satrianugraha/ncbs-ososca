@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\pbl\KegController;
 
 use App\Http\Controllers\OsocaController;
 use App\Http\Controllers\RoleController;
@@ -101,5 +102,14 @@ Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group( funct
     Route::get('/ujian', [OsocaController::class, 'ujian'])->name('ujian');
     Route::get('/template', [OsocaController::class, 'template'])->name('template');
     Route::post('/penilaian', [OsocaController::class, 'penilaian'])->name('penilaian.store');
+});
+
+Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group( function (){
+    Route::get('harian/', [KegController::class, 'index'])->name('harian.index');
+    Route::get('harian/create', [KegController::class, 'create'])->name('harian.create');
+    Route::post('harian/store', [KegController::class, 'store'])->name('harian.store');
+    Route::get('harian/edit/{id}', [KegController::class, 'edit'])->name('harian.edit');
+    Route::post('harian/update/{id}', [KegController::class, 'update'])->name('harian.update');
+    Route::get('harian/destroy/{id}', [KegController::class, 'destroy'])->name('harian.destroy');
 });
 

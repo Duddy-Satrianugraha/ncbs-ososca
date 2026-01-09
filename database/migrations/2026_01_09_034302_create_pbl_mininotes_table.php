@@ -20,9 +20,6 @@ return new class extends Migration
             $table->longText('skenario')->nullable();
             $table->longText('mininotes')->nullable();
             $table->text('dafpus')->nullable();
-            
-
-
             $table->timestamps();
         });
     }
