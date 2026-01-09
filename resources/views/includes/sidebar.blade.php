@@ -70,6 +70,12 @@
 
         @endcan
 
+         @can('meu')
+        <li class="xn-title">Medical Education Unit</li>
+        <li class="{{ \Request::is('admin/templates/*') || \Request::is('admin/templates') ? 'active' : ''  }}"><a href="{{ route('admin.templates.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> Mininotes PBL</span></a></li>
+
+        @endcan
+
         @can('ultraman')
         <li class="xn-title">Nav Level</li>
         <li class="xn-openable ">

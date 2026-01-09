@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,19 +16,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('users')->delete();
-        
+
         \DB::table('users')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Super admin',
                 'email' => 'ultra@fk.ugj',
                 'username' => 'ultraman',
                 'email_verified_at' => '2025-10-28 02:26:31',
-                'password' => '$2y$12$1Y9n2L2wF2xTcO7kGMZEGOJv/hU5NrcH69vghTYtYZLHxKpazkZyC',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -36,14 +38,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:31',
                 'updated_at' => '2025-10-28 02:26:31',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Mas IT',
                 'email' => 'it@fk.ugj',
                 'username' => 'it',
                 'email_verified_at' => '2025-10-28 02:26:31',
-                'password' => '$2y$12$d/DZzfmhiooENEvytCIXQ.hKkvkwIIeqGr3YglAw.ptlLDanpSUn6',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -53,14 +55,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:31',
                 'updated_at' => '2025-10-28 02:26:31',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Ibu Ka Ososca',
                 'email' => 'koc@fk.ugj',
                 'username' => 'koc',
                 'email_verified_at' => '2025-10-28 02:26:31',
-                'password' => '$2y$12$.Iph/tISuNsyUE2w9XjT1e1fs9AoHHuJ18GCeF.8K3IzESeAbAsyO',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -70,14 +72,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:32',
                 'updated_at' => '2025-10-28 02:26:32',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'Mas admin',
                 'email' => 'admin@fk.ugj',
                 'username' => 'admin',
                 'email_verified_at' => '2025-10-28 02:26:32',
-                'password' => '$2y$12$nKUQCJTQXDFbPNLD7Oy.7ORknWi3vofjPOy.IoNa1pkquvHab1/W2',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -87,14 +89,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:32',
                 'updated_at' => '2025-10-28 02:26:32',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name' => 'Mas Materi',
                 'email' => 'materi@fk.ugj',
                 'username' => 'materi',
                 'email_verified_at' => '2025-10-28 02:26:32',
-                'password' => '$2y$12$wmAHI0DVIlRPcEQlHRmnFOaryA1jkU//bQ.RYlJmrN2CmXXL44V7G',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -104,14 +106,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:32',
                 'updated_at' => '2025-10-28 02:26:32',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name' => 'dr. Novi Robbayanti Fiqih',
                 'email' => 'drnovi@fk.ugj',
                 'username' => 'drnovi',
                 'email_verified_at' => '2025-10-28 02:26:32',
-                'password' => '$2y$12$uHUeVZJaI/enMIvRqRKZSOcr9aaWZsPPs1HamZkzp7GCg3g3K2SLu',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -121,14 +123,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:32',
                 'updated_at' => '2025-10-28 02:26:32',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name' => 'dr. Rizkia Alifa Fitriani',
                 'email' => 'drkia@fk.ugj',
                 'username' => 'drkia',
                 'email_verified_at' => '2025-10-28 02:26:32',
-                'password' => '$2y$12$0D9QIlrlDwLg4bdQRXQJ0ez4..kI69QM5fceIvQe0uCvU2nlV.htO',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -138,14 +140,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:33',
                 'updated_at' => '2025-11-03 00:59:20',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'dr. Lita Harlianti',
                 'email' => 'drlita@fk.ugj',
                 'username' => 'drlita',
                 'email_verified_at' => '2025-10-28 02:26:33',
-                'password' => '$2y$12$hTzP6trItWQIyjy3BjXMWeIFyIpStAPUD6F2Q3z/R2eYyixhZM0Hi',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -155,14 +157,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:33',
                 'updated_at' => '2025-10-28 02:26:33',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'name' => 'dr. Permata Ayuning Tyas',
                 'email' => 'drtyas@fk.ugj',
                 'username' => 'drtyas',
                 'email_verified_at' => '2025-10-28 02:26:33',
-                'password' => '$2y$12$pm/1REbUBbpNyJFG20sOhOWZGfkaEo1FTCog.qSB9TvkbXBWZJiZW',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -172,14 +174,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:33',
                 'updated_at' => '2025-10-28 02:26:33',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'name' => 'dr. Ghina Sofiana Lestari',
                 'email' => 'drghina@fk.ugj',
                 'username' => 'drghina',
                 'email_verified_at' => '2025-10-28 02:26:33',
-                'password' => '$2y$12$RIMDUmn4TE4kaDYqFOFAy.1Cg5cGWrJplxnA/2mMTli4AqXMkyyGi',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -189,14 +191,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:33',
                 'updated_at' => '2025-10-28 02:26:33',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'name' => 'dr. Coryna Frisqila',
                 'email' => 'droi@fk.ugj',
                 'username' => 'droi',
                 'email_verified_at' => '2025-10-28 02:26:33',
-                'password' => '$2y$12$c9DPzo9F6jdyf7SzTQV8zOm8YT3lUnLeF8A5LkYBy693C88kuVlse',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -206,14 +208,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name' => 'dr. Mellyna Irianti Sujana',
                 'email' => 'drmelly@fk.ugj',
                 'username' => 'drmelly',
                 'email_verified_at' => '2025-10-28 02:26:34',
-                'password' => '$2y$12$/0/1Fgpff6suLqQgNO/CkuoJkwlJWymdLiqu03yAmyGL/HmTvGm1a',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -223,14 +225,14 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'name' => 'dr. Erma Permata Sari',
                 'email' => 'drerma@fk.ugj',
                 'username' => 'drerma',
                 'email_verified_at' => '2025-10-28 02:26:34',
-                'password' => '$2y$12$ilpdnqZuPbJZe6eI.pPtmeTTl.uctSHz9dBh6zGuOAJ8X.CwxsGIO',
+                'password' => Hash::make('buka'),
                 'two_factor_secret' => NULL,
                 'two_factor_recovery_codes' => NULL,
                 'two_factor_confirmed_at' => NULL,
@@ -240,8 +242,93 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
+            13 =>
+            array (
+                'id' => 14,
+                'name' => 'dr. Emallia Fitriani, M.Biomed',
+                'email' => 'dremallia@fk.ugj',
+                'username' => 'dremallia',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => Hash::make('buka'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '91891176',
+                'avatar' => NULL,
+                'remember_token' => Str::random(10),
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+            14 =>
+            array (
+                'id' => 15,
+                'name' => 'dr. Ully Tangziyah Fatmala',
+                'email' => 'drully@fk.ugj',
+                'username' => 'drully',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => Hash::make('buka'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90961039',
+                'avatar' => NULL,
+                'remember_token' => Str::random(10),
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+             15 =>
+            array (
+                'id' => 16,
+                'name' => 'dr. Qurotul Aqyun',
+                'email' => 'drq@fk.ugj',
+                'username' => 'drq',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => Hash::make('buka'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90960517',
+                'avatar' => NULL,
+                'remember_token' => Str::random(10),
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+            16 =>
+            array (
+                'id' => 17,
+                'name' => 'dr. Aprilyan Laras Chantika,MHPE, FFRI',
+                'email' => 'drlala@fk.ugj',
+                'username' => 'drlala',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => Hash::make('buka'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '91921227',
+                'avatar' => NULL,
+                'remember_token' => Str::random(10),
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
+            17 =>
+            array (
+                'id' => 18,
+                'name' => 'dr. Vania Avissa Salsabila',
+                'email' => 'drvania@fk.ugj',
+                'username' => 'drvania',
+                'email_verified_at' => '2025-10-28 02:26:34',
+                'password' => Hash::make('buka'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'slug' => '90981041',
+                'avatar' => NULL,
+                'remember_token' => Str::random(10),
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
         ));
-        
-        
+
+
     }
 }

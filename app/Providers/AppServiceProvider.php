@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('Panitia', function ($user){
-            return $user->hasAnyRoles(['98','99', '1', '2', '3','7']);
+            return $user->hasAnyRoles(['98','99', '1', '2', '3','4']);
         });
 
         Gate::define('koc', function ($user){
@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasAnyRoles(['99', '3']);
         });
 
-        Gate::define('mhs', function ($user){
+        Gate::define('meu', function ($user){
             return $user->hasAnyRoles(['99', '4']);
         });
 

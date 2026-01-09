@@ -99,33 +99,7 @@
     </div>
 </div>
 <!-- END WIDGETS -->
-@can('mhs')
-<div class="row">
 
-    @if(is_null(Auth::user()->avatar))
-    <div class="col-md-12">
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Jangan Lupa</strong> Ubah Foto profil anda Untuk dapat mencetak Nametag Ujian
-        </div>
-    </div>
-    @else
-    <div class="col-md-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Name Tag Peserta</h3>
-            </div>
-            <div class="panel-body">
-                <a href="{{route("mahasiswa.nametag.cetak")}}" class="btn btn-primary btn-sm">Catak Name Tag</a> <br><br>
-                <p>Name tag ini digunakan untuk ujian OSCE, pastikan anda membawa nametag ini selama Osce. <br>
-                silahkan print dan masukan kedalam name tag.</p>
-                 </div>
-        </div>
-
-    </div>
-    @endif
-</div>
-@endcan
 @can('penguji')
 <div class="row">
     @if(is_null(Auth::user()->avatar))

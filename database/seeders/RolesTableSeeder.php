@@ -14,12 +14,12 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('roles')->delete();
-        
+
         \DB::table('roles')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'u_id' => '99',
@@ -28,7 +28,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'u_id' => '98',
@@ -37,7 +37,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'u_id' => '1',
@@ -46,7 +46,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'u_id' => '2',
@@ -55,7 +55,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'u_id' => '3',
@@ -64,8 +64,17 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2025-10-28 02:26:34',
                 'updated_at' => '2025-10-28 02:26:34',
             ),
+             5 =>
+            array (
+                'id' => 6,
+                'u_id' => '4',
+                'name' => 'Meu',
+                'nama' => 'Medical Education Unit',
+                'created_at' => '2025-10-28 02:26:34',
+                'updated_at' => '2025-10-28 02:26:34',
+            ),
         ));
-        
-        
+
+
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
 
-class Penguji
+class Meu
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class Penguji
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Gate::allows('penguji')) {
-             return redirect()->route('dashbord')->with('msg', 'danger-Unauthorized access');
+        if (!Gate::allows('Meu')) {
+            return response('Unauthorized access', 403);
         }
-        return $next($request);
+         return $next($request);
     }
 }
