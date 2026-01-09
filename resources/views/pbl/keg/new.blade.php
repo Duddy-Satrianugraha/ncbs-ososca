@@ -26,6 +26,7 @@
 
             <form class="form-horizontal" action="{{ route('pbl.harian.store') }}" method="POST">
                 @csrf
+             
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Buat PBL </strong>Baru</h3>
@@ -39,10 +40,10 @@
                 <div class="panel-body form-group-separated">
 
                     <div class="form-group">
-                        <label class="col-md-2 col-xs-12 control-label">Nama Ujian</label>
+                        <label class="col-md-2 col-xs-12 control-label">Nama Blok</label>
                         <div class="col-md-8 col-xs-12">
                             <input type="text" class="form-control" name="name" value="{{ old('Name') }}"/>
-                            <small class="text">contoh OSOCA sementer 4.1</small>
+                            <small class="text">contoh Blok 4.1</small>
                         </div>
 
                     </div>
@@ -57,7 +58,7 @@
                         <label class="col-md-2 col-xs-12 control-label">Jumlah Skenario</label>
                         <div class="col-md-8 col-xs-12">
                             <input type="number" class="form-control" name="jml_sk" value="{{ old('jml_sk') }}"/>
-                            <small class="text">Jumlah skenario yang dibuat</small>
+                            <small class="text">Jumlah skenario yang akan dibuat</small>
                         </div>
                     </div>
 

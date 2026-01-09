@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\pbl\KegController;
+use App\Http\Controllers\pbl\MininoteController;
 
 use App\Http\Controllers\OsocaController;
 use App\Http\Controllers\RoleController;
@@ -108,8 +109,16 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('harian/', [KegController::class, 'index'])->name('harian.index');
     Route::get('harian/create', [KegController::class, 'create'])->name('harian.create');
     Route::post('harian/store', [KegController::class, 'store'])->name('harian.store');
+    Route::get('harian/show/{id}', [KegController::class, 'show'])->name('harian.show');
     Route::get('harian/edit/{id}', [KegController::class, 'edit'])->name('harian.edit');
     Route::post('harian/update/{id}', [KegController::class, 'update'])->name('harian.update');
     Route::get('harian/destroy/{id}', [KegController::class, 'destroy'])->name('harian.destroy');
+    Route::get('harian/mininotes/{id}', [MininoteController::class, 'mini_edit'])->name('harian.mininotes');
+    Route::put('harian/mininotes/{id}', [MininoteController::class, 'mini_update'])->name('harian.mininotes.update');
+    Route::get('harian/skenario/{id}', [MininoteController::class, 'sk_edit'])->name('harian.skenario');
+    Route::put('harian/skenario/{id}', [MininoteController::class, 'sk_update'])->name('harian.skenario.update');
+    Route::get('mininotes/{id}', [MininoteController::class, 'edit'])->name('mininotes.edit');
+    Route::put('mininotes/{id}', [MininoteController::class, 'update'])->name('mininotes.update');
+    
 });
 

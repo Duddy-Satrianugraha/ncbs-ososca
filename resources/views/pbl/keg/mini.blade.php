@@ -8,13 +8,14 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-        <li class="active">PBL</li>
+    <li ><a href="{{ route('pbl.harian.index')}}">Daftar PBL Harian</a></li>
+        <li class="active"> {{ $keg->name }} </li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar PBL Harian</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Mininotes {{ $keg->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -27,23 +28,7 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List PBL</h3>
-
-                                    <form action="{{ route('pbl.harian.index') }}" method="GET">
-                                        <div class="col-md-4">
-                                    <div class="input-group">
-
-                                        <div class="input-group-addon">
-                                            <span class="fa fa-search"></span>
-                                        </div>
-                                        <input type="text" class="form-control" name="search" placeholder="Cari PBL" value="{{ request('search') }}">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-primary">Search</button>
-                                            <a href="{{route('pbl.harian.index')}}" class="btn btn-default">Clear</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                </form>
+                                    <h3 class="panel-title">List Mininotes PBL</h3>
                                     <ul class="panel-controls">
 
                                         <li><a href="{{ route('pbl.harian.create')}}" class="panel-add"><span class="fa fa-plus"></span></a></li>
@@ -56,25 +41,26 @@
                                             <thead>
                                                 <tr>
                                                     <th width="50">Nomor</th>
-                                                    <th>Nama PBL</th>
+                                                    <th>Skenario</th>
+                                                    <th>Judul Skenario</th>
                                                     <th>Parameter</th>
-                                                    <th width="200"></th>
-                                                    <th width="300">actions</th>
+                                                    <th width="200">actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php $i =  1;@endphp
-                                                @foreach ($keg as $data)
+                                                @foreach ($keg->mininotes as $data)
                                                 <tr id="trow_{{$i}}">
                                                     <td class="text-center">{{$i}}</td>
-                                                    <td>{{$data->name}} ({{$data->tahun_akademik}})</td>
+                                                    <td>Skenario {{$data->nomor_sk}}</td>
+                                                    <td>{{ $data->judul_sk }}</td>
                                                     <td>
-                                                        <a class="badge badge-primary"> {{ $data->jml_sk }} skenario</a>
+                                                        <a href="{{ route("pbl.harian.skenario", $data->id)}}" class="badge badge-success"> Skenario</a>
+                                                        <a href="{{ route("pbl.harian.mininotes", $data->id)}}" class="badge badge-info"> Mininote</a>
+
                                                     </td>
-                                                    <td>{{$data->created_at}}</td>
                                                     <td>
-                                                        <a href="{{ route("pbl.harian.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
-                                                        <a href="{{ route("pbl.harian.edit", $data->id)}}" class="btn btn-warning btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
+                                                         <a href="{{ route("pbl.mininotes.edit", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('pbl.harian.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
@@ -87,7 +73,7 @@
 
                                             </tbody>
                                         </table>
-                                        {{ $keg->appends(['search' => request('search')])->links() }}
+
 
                                     </div>
 

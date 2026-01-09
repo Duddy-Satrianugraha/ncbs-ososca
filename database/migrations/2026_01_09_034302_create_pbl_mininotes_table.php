@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('nomor_sk');
             $table->string('judul_sk')->nullable();
             $table->longText('skenario')->nullable();
+            $table->longText('step_1')->nullable();
+            $table->longText('step_2')->nullable();
+            $table->longText('sasbel')->nullable();
+            $table->longText('mindmap')->nullable();
             $table->longText('mininotes')->nullable();
             $table->text('dafpus')->nullable();
             $table->timestamps();

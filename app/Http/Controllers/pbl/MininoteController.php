@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pbl;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PblMininote;
 
 class MininoteController extends Controller
 {
@@ -61,5 +62,39 @@ class MininoteController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function sk_edit(string $id)
+    {
+        $mininotes = PblMininote::find($id);
+        return view('pbl.keg.skenario', compact('mininotes'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function sk_update(Request $request, string $id)
+    {
+        dd($request->all());
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function mini_edit(string $id)
+    {
+        $mininotes = PblMininote::find($id);
+        return view('pbl.keg.mininote', compact('mininotes'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function mini_update(Request $request, string $id)
+    {
+        dd($request->all());
     }
 }
