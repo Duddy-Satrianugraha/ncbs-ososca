@@ -117,8 +117,8 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::put('harian/mininotes/{id}', [MininoteController::class, 'mini_update'])->name('harian.mininotes.update');
     Route::get('harian/skenario/{id}', [MininoteController::class, 'sk_edit'])->name('harian.skenario');
     Route::put('harian/skenario/{id}', [MininoteController::class, 'sk_update'])->name('harian.skenario.update');
-    Route::get('mininotes/{id}', [MininoteController::class, 'edit'])->name('mininotes.edit');
+    Route::get('mininotes/{id}', [MininoteController::class, 'show'])->name('mininotes.show');
     Route::put('mininotes/{id}', [MininoteController::class, 'update'])->name('mininotes.update');
-    
+
 });
 

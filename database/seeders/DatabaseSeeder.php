@@ -63,5 +63,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UjiansTableSeeder::class);
         $this->call(UmpanbaliksTableSeeder::class);
 
+        $this->call(PblKegsTableSeeder::class);
+        $this->call(PblMininotesTableSeeder::class);
     }
 }

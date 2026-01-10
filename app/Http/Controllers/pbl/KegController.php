@@ -90,7 +90,7 @@ class KegController extends Controller
     public function show(string $id)
     {
         $keg = PblKeg::find($id);
-        return view('pbl.keg.mini', compact('keg'));
+        return view('pbl.keg.minilist', compact('keg'));
     }
 
     /**
