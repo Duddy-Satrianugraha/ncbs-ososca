@@ -74,12 +74,14 @@
                                                     <td>{{$data->created_at}}</td>
                                                     <td>
                                                         <a href="{{ route("pbl.harian.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
+                                                        @can('meu')
                                                         <a href="{{ route("pbl.harian.edit", $data->id)}}" class="btn btn-warning btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('pbl.harian.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus ujian ini?');"><span class="fa fa-times"></span></button>
                                                         </form>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                                 @php $i++;@endphp

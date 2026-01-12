@@ -15,7 +15,7 @@
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Mininotes PBL {{ $keg->name }}</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar @can('meu')Mininotes @endcan @can('materi') Skenario @endcan PBL {{ $keg->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -28,10 +28,10 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List Mininotes PBL</h3>
+                                    <h3 class="panel-title">List @can('meu')Mininotes @endcan @can('materi') Skenario @endcan PBL</h3>
                                     <ul class="panel-controls">
 
-                                        <li><a href="{{ route('pbl.harian.create')}}" class="panel-add"><span class="fa fa-plus"></span></a></li>
+
                                     </ul>
                                 </div>
                                 <div class="panel-body">
@@ -43,7 +43,9 @@
                                                     <th width="50">Nomor</th>
                                                     <th>Skenario</th>
                                                     <th>Judul Skenario</th>
+                                                    @can('meu')
                                                     <th>Parameter</th>
+                                                     @endcan
                                                     <th width="200">actions</th>
                                                 </tr>
                                             </thead>
@@ -54,18 +56,26 @@
                                                     <td class="text-center">{{$i}}</td>
                                                     <td>Skenario {{$data->nomor_sk}}</td>
                                                     <td>{{ $data->judul_sk }}</td>
+                                                    @can('meu')
                                                     <td>
+
                                                         <a href="{{ route("pbl.harian.skenario", $data->id)}}" class="badge badge-success"> Skenario</a>
                                                         <a href="{{ route("pbl.harian.mininotes", $data->id)}}" class="badge badge-info"> Mininote</a>
 
                                                     </td>
+                                                     @endcan
                                                     <td>
-                                                         <a href="{{ route("pbl.mininotes.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                        @can('materi')
+                                                         <a href="{{ route("pbl.skenario.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                         @endcan
+                                                         @can('meu')
+                                                          <a href="{{ route("pbl.mininotes.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('pbl.harian.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus ujian ini?');"><span class="fa fa-times"></span></button>
                                                         </form>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                                 @php $i++;@endphp

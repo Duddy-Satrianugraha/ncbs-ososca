@@ -16,14 +16,14 @@ use App\Http\Controllers\OpesertaController;
 use App\Http\Controllers\OpengujiController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\MediaController;
 
 use App\Http\Controllers\OtemplateController;
 use App\Http\Controllers\OujianController;
-use App\Http\Middleware\Peserta;
-use App\Http\Middleware\Panitia;
-
 use App\Http\Controllers\OfeedbackController;
 
+use App\Http\Middleware\Peserta;
+use App\Http\Middleware\Panitia;
 use App\Http\Middleware\Osoca;
 
 
@@ -50,6 +50,8 @@ Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth
 Route::get('/admin/power/destroy',[PowerController::class, 'destroy'])->name('admin.powerdown');
 Route::post('/profile/photo', [ProfileContoller::class, "updatePhoto"])->middleware('auth')->name('profile.photo.update');
 Route::resource('/profile', ProfileContoller::class)->middleware(['auth', ]);
+Route::get('/f/{token}/{filename}', [MediaController::class, 'showPrivate'])
+    ->name('mfile');
 
 Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->group( function (){
     Route::resource('/users', AdminController::class);
@@ -81,6 +83,10 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/penguji', OpengujiController::class);
     Route::post('/print/penguji', [OpengujiController::class, 'print'])->name('penguji.print');
     Route::post('/massdelete/penguji', [OpengujiController::class, 'massDelete'])->name('penguji.massdelete');
+
+    Route::get('/media', [MediaController::class, 'index'])->name('media.index');
+    Route::post('/media/upload', [MediaController::class, 'store'])->name('media.upload');
+    Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
 });
 
 Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( function (){
@@ -119,6 +125,7 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::put('harian/skenario/{id}', [MininoteController::class, 'sk_update'])->name('harian.skenario.update');
     Route::get('mininotes/{id}', [MininoteController::class, 'show'])->name('mininotes.show');
     Route::put('mininotes/{id}', [MininoteController::class, 'update'])->name('mininotes.update');
+    Route::get('skenario/{id}', [MininoteController::class, 'skshow'])->name('skenario.show');
 
 });
 

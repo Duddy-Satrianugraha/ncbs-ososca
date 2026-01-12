@@ -125,4 +125,11 @@ class MininoteController extends Controller
         $mininotes->save();
         return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Mininotes berhasil diupdate');
     }
+
+     public function skshow(string $id)
+    {
+       // dd($id);
+        $mininotes = PblMininote::find($id);
+        return view('pbl.keg.skshow', compact('mininotes'));
+    }
 }
