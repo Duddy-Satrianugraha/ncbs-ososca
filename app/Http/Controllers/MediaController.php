@@ -55,10 +55,16 @@ class MediaController extends Controller
         ]);
 
         // penting: balikkan URL agar bisa di-insert ke text/editor
-       return redirect()
-        ->route('admin.media.index')
-        ->with('success', 'Upload berhasil.')
-        ->with('last_media_id', $media->id);
+        $url = route('mfile', [
+        'token' => $media->token,
+        'filename' => basename($media->path),
+        ]);
+
+        return response()->json([
+            'id'  => $media->id,
+            'url' => $url,
+        ]);
+
     }
 
     /**
@@ -90,7 +96,13 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        //
+          if (Storage::disk($media->disk)->exists($media->path)) {
+            Storage::disk($media->disk)->delete($media->path);
+        }
+
+        $media->delete();
+
+        return back()->with('success', 'Gambar dihapus.');
     }
 
     public function showPrivate(string $token, string $filename): BinaryFileResponse
