@@ -176,4 +176,13 @@ if (!function_exists('feedparser')){
             return $result;
         }
         }
+
+
+    if (!function_exists('normKel')) {
+        function normKel($s) {
+            $s = trim((string)$s);
+            $s = preg_replace('/\s+/', ' ', $s); // rapikan spasi
+            return strtoupper($s);              // samakan kapital
+        };
+    }
 }

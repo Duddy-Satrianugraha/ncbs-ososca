@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PblKelompok extends Model
 {
-    //
+    protected $guarded = [];
 }

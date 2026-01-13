@@ -45,7 +45,7 @@
 
                             <span class="fa fa-exclamation-triangle"> Nama Kelompok case sensitif </span></br>
                             <span class="fa fa-exclamation-triangle"> Format Excel harus sesuai dengan template </span></br>
-                            <a href="{{ asset('doc/template-peserta-osoca.xlsx') }}" class="btn btn-primary btn-sm">Download Template</a></br>
+                            <a href="{{ asset('doc/template-peserta-pbl.xlsx') }}" class="btn btn-primary btn-sm">Download Template</a></br>
                         </P>
                     </label>
 

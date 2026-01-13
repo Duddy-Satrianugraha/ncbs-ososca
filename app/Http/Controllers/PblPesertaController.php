@@ -102,104 +102,172 @@ class PblPesertaController extends Controller
     }
 
 
-    public function store_uploadxx(Request $request)
-        {
-            $validated = $request->validate([
-                'file' => ['required','file','mimes:xlsx,xls,csv','max:51200'],
-                'kid'  => ['required','integer','exists:pbl_kegs,id'], // pastikan exists sesuai tabel kamu
-            ]);
 
-            $dataPeserta = Excel::toCollection(new ImportPeserta, $validated['file']);
-            $sheet = $dataPeserta[0] ?? collect();
 
-            $npms = collect($sheet)->skip(1)->map(function ($row) {
-                $row = collect($row);
-                return trim((string) $row->get(2, ''));
-            })->filter()->all();
+public function store_uploadzxz(Request $request)
+    {
+        $validated = $request->validate([
+            'file' => ['required','file','mimes:xlsx,xls,csv','max:51200'],
+            'kid'  => ['required','integer','exists:pbl_kegs,id'],
+        ]);
 
-            $existing = PblPeserta::where('keg_id', $validated['kid'])
-                ->whereIn('npm', $npms)
-                ->pluck('npm')
-                ->all();
+        $dataPeserta = Excel::toCollection(new ImportPeserta, $validated['file']);
+        $sheet = $dataPeserta[0] ?? collect();
 
-            $pesertaarray = [];
-            $seenInThisImport = [];
-            $skippedDuplicateInFile = 0;
+        // ambil npm untuk cek duplikat DB
+        $npms = collect($sheet)->skip(1)->map(function ($row) {
+            $row = collect($row);
+            return trim((string) $row->get(2, ''));
+        })->filter()->all();
 
-            // auto kelompok (berdasarkan urutan nama kelompok muncul)
-            $kelompokMap = [];
-            $nextKelompokId = 1;
+        $existing = PblPeserta::where('keg_id', $validated['kid'])
+            ->whereIn('npm', $npms)
+            ->pluck('npm')
+            ->all();
 
-            // untuk hitung kelompok unik yang benar-benar terinsert
-            $kelompokNamaSet = [];
+        $pesertaarray = [];
+        $seenInThisImport = [];
+        $skippedDuplicateInFile = 0;
 
-            foreach ($sheet as $key => $row) {
-                if ($key < 1) continue;
+        /**
+         * ================================
+         * LOAD MAPPING KELOMPOK DARI DB
+         * ================================
+         * Supaya idkel tidak mulai dari 1 lagi setiap import,
+         * dan kelompok baru tidak menimpa kelompok lama.
+         */
+        $existingGroups = PblKelompok::where('keg_id', $validated['kid'])
+            ->get(['idkel','nama_kelompok']);
 
-                $row = collect($row);
-                if ($row->filter(fn($v) => !is_null($v) && $v !== '')->isEmpty()) continue;
+        // map: nama_kelompok => idkel (yang sudah ada)
+        $kelompokMap = $existingGroups->pluck('idkel', 'nama_kelompok')->toArray();
 
-                $nama     = trim((string) $row->get(1, ''));
-                $npm      = trim((string) $row->get(2, ''));
-                $nama_kel = trim((string) $row->get(3, ''));
+        $existingIdkelSet = $existingGroups
+            ->pluck('idkel')
+            ->flip() // jadi set
+            ->toArray();
 
-                if ($npm === '') {
-                    return back()->withErrors(['file' => "Baris ke-".($key+1).": NPM wajib diisi."]);
-                }
-                if ($nama_kel === '') {
-                    return back()->withErrors(['file' => "Baris ke-".($key+1).": Nama Kelompok wajib diisi."]);
-                }
+        // next idkel = max(idkel) + 1
+        $nextKelompokId = ((int)($existingGroups->max('idkel') ?? 0)) + 1;
 
-                if (in_array($npm, $existing, true)) continue;
+        // rekap untuk pbl_kelompoks (yang BARU diimport)
+        // key: idkel(int) => ['nama_kelompok'=>string, 'jumlah_peserta'=>int]
+        $kelompokStats = [];
 
-                if (isset($seenInThisImport[$npm])) {
-                    $skippedDuplicateInFile++;
-                    continue;
-                }
-                $seenInThisImport[$npm] = true;
+        foreach ($sheet as $key => $row) {
+            if ($key < 1) continue; // skip header
 
-                if (!isset($kelompokMap[$nama_kel])) {
-                    $kelompokMap[$nama_kel] = $nextKelompokId++;
-                }
-                $kelompok = $kelompokMap[$nama_kel];
+            $row = collect($row);
 
-                $pesertaarray[] = [
-                    'keg_id'        => $validated['kid'],
-                    'name'          => $nama,
-                    'npm'           => $npm,
-                    'kelompok'      => $kelompok,
-                    'nama_kelompok' => $nama_kel,
-                    'qrpeserta'     => md5($npm),
-                ];
-
-                // hitung unik berdasarkan nama kelompok (hanya yang terinsert)
-                $kelompokNamaSet[$nama_kel] = true;
+            // skip baris kosong
+            if ($row->filter(fn($v) => !is_null($v) && $v !== '')->isEmpty()) {
+                continue;
             }
 
-            $inserted = count($pesertaarray);
-            $skippedExisting = count($existing);
-            $jumlahKelompokImport = count($kelompokNamaSet);
+            $nama     = trim((string) $row->get(1, ''));
+            $npm      = trim((string) $row->get(2, ''));
+            $nama_kel = trim((string) $row->get(3, ''));
 
-            DB::transaction(function () use ($pesertaarray, $validated, $jumlahKelompokImport) {
-                if (count($pesertaarray)) {
-                    PblPeserta::insert($pesertaarray);
-                }
+            if ($npm === '') {
+                return back()->withErrors(['file' => "Baris ke-".($key+1).": NPM wajib diisi."]);
+            }
+            if ($nama_kel === '') {
+                return back()->withErrors(['file' => "Baris ke-".($key+1).": Nama Kelompok wajib diisi."]);
+            }
 
-                // UPDATE ke tabel pbl_kegs
-                PblKeg::where('id', $validated['kid'])
-                    ->update(['jml_kelompok' => $jumlahKelompokImport]);
-            });
+            // skip jika sudah ada di DB
+            if (in_array($npm, $existing, true)) {
+                continue;
+            }
 
-            return redirect(route('pbl.peserta.index', $validated['kid']))->with(
-                'msg',
-                'success-Import selesai. '
-                .$inserted.' baris baru dimasukkan, '
-                .$skippedExisting.' baris dilewati (duplikat di DB), '
-                .$skippedDuplicateInFile.' baris dilewati (duplikat di file). '
-                .'Kelompok diimport: '.$jumlahKelompokImport
-            );
+            // skip duplikat di file
+            if (isset($seenInThisImport[$npm])) {
+                $skippedDuplicateInFile++;
+                continue;
+            }
+            $seenInThisImport[$npm] = true;
+
+            // mapping nama_kelompok -> idkel otomatis (PAKAI YANG SUDAH ADA DI DB)
+            if (!isset($kelompokMap[$nama_kel])) {
+                $kelompokMap[$nama_kel] = $nextKelompokId++;
+            }
+            $idkel = (int) $kelompokMap[$nama_kel];
+
+            // data peserta yang akan diinsert
+            $pesertaarray[] = [
+                'keg_id'        => $validated['kid'],
+                'name'          => $nama,
+                'npm'           => $npm,
+                'kelompok'      => $idkel,         // simpan idkel ke kolom kelompok peserta
+                'nama_kelompok' => $nama_kel,
+                'qrpeserta'     => md5($npm),
+            ];
+
+            // rekap per kelompok (hanya yang akan diinsert)
+            if (!isset($kelompokStats[$idkel])) {
+                $kelompokStats[$idkel] = [
+                    'nama_kelompok'  => $nama_kel,
+                    'jumlah_peserta' => 0,
+                ];
+            }
+            $kelompokStats[$idkel]['jumlah_peserta']++;
         }
 
+        $inserted = count($pesertaarray);
+        $skippedExisting = count($existing);
+
+        $newKelompokCount = 0;
+
+        foreach (array_keys($kelompokStats) as $idkel) {
+            if (!isset($existingIdkelSet[$idkel])) {
+                $newKelompokCount++;
+            }
+        }
+
+        DB::transaction(function () use ($validated, $pesertaarray, $kelompokStats, $newKelompokCount) {
+
+            // 1) insert peserta
+            if (count($pesertaarray)) {
+                PblPeserta::insert($pesertaarray);
+            }
+
+            // 2) insert / update pbl_kelompoks (rekap import ini)
+            if (count($kelompokStats)) {
+                $rowsKelompok = [];
+                foreach ($kelompokStats as $idkel => $info) {
+                    $rowsKelompok[] = [
+                        'keg_id'        => $validated['kid'],
+                        'idkel'         => $idkel,
+                        'nama_kelompok' => $info['nama_kelompok'],
+                        'jml_peserta'   => $info['jumlah_peserta'],
+                        'qr_kelompok'   => md5($validated['kid']."unique".$info['nama_kelompok']),
+                        'created_at'    => now(),
+                        'updated_at'    => now(),
+                    ];
+                }
+
+                PblKelompok::upsert(
+                    $rowsKelompok,
+                    ['keg_id', 'idkel'],
+                    ['nama_kelompok', 'jml_peserta', 'updated_at']
+                );
+            }
+
+            // 3) UPDATE jumlah kelompok di pbl_kegs (jumlah kelompok yang KEIMPORT kali ini)
+            if ($newKelompokCount > 0) {
+                    PblKeg::where('id', $validated['kid'])
+                        ->increment('jml_kelompok', $newKelompokCount);
+                }
+        });
+
+        return redirect(route('pbl.peserta.index', $validated['kid']))->with(
+            'msg',
+            'success-Import selesai. '
+            .$inserted.' baris baru dimasukkan, '
+            .$skippedExisting.' baris dilewati (duplikat di DB), '
+            .$skippedDuplicateInFile.' baris dilewati (duplikat di file).'
+        );
+    }
 
 
 public function store_upload(Request $request)
@@ -208,6 +276,18 @@ public function store_upload(Request $request)
         'file' => ['required','file','mimes:xlsx,xls,csv','max:51200'],
         'kid'  => ['required','integer','exists:pbl_kegs,id'],
     ]);
+
+    /**
+     * Helper normalisasi nama kelompok
+     * - trim spasi
+     * - rapikan spasi ganda
+     * - samakan huruf besar
+     */
+    $normKel = function ($s) {
+        $s = trim((string) $s);
+        $s = preg_replace('/\s+/', ' ', $s);
+        return strtoupper($s);
+    };
 
     $dataPeserta = Excel::toCollection(new ImportPeserta, $validated['file']);
     $sheet = $dataPeserta[0] ?? collect();
@@ -223,43 +303,59 @@ public function store_upload(Request $request)
         ->pluck('npm')
         ->all();
 
+    /**
+     * ================================
+     * LOAD KELOMPOK DARI DB
+     * ================================
+     */
+    $existingGroups = PblKelompok::where('keg_id', $validated['kid'])
+        ->get(['idkel','nama_kelompok']);
+
+    // map: nama_kelompok(normalized) => idkel
+    $kelompokMap = [];
+    $existingIdkelSet = [];
+
+    foreach ($existingGroups as $g) {
+        $key = $normKel($g->nama_kelompok);
+        $kelompokMap[$key] = (int) $g->idkel;
+        $existingIdkelSet[(int) $g->idkel] = true;
+    }
+
+    // idkel berikutnya
+    $nextKelompokId = ((int) ($existingGroups->max('idkel') ?? 0)) + 1;
+
     $pesertaarray = [];
     $seenInThisImport = [];
     $skippedDuplicateInFile = 0;
 
-    // auto kelompok (urut kemunculan nama kelompok)
-    $kelompokMap = [];
-    $nextKelompokId = 1;
-
-    // rekap untuk pbl_kelompoks (yang BARU diimport)
-    // key: kelompok(int) => ['nama_kelompok'=>string, 'jumlah_peserta'=>int]
+    // rekap kelompok (khusus peserta BARU)
+    // idkel => ['nama_kelompok','jumlah_peserta']
     $kelompokStats = [];
 
     foreach ($sheet as $key => $row) {
-        if ($key < 1) continue; // skip header
+        if ($key < 1) continue;
 
         $row = collect($row);
+        if ($row->filter(fn($v) => !is_null($v) && $v !== '')->isEmpty()) continue;
 
-        // skip baris kosong
-        if ($row->filter(fn($v) => !is_null($v) && $v !== '')->isEmpty()) {
-            continue;
-        }
-
-        $nama     = trim((string) $row->get(1, ''));
-        $npm      = trim((string) $row->get(2, ''));
-        $nama_kel = trim((string) $row->get(3, ''));
+        $nama = trim((string) $row->get(1, ''));
+        $npm  = trim((string) $row->get(2, ''));
+        $nama_kel = normKel($row->get(3, ''));
 
         if ($npm === '') {
-            return back()->withErrors(['file' => "Baris ke-".($key+1).": NPM wajib diisi."]);
-        }
-        if ($nama_kel === '') {
-            return back()->withErrors(['file' => "Baris ke-".($key+1).": Nama Kelompok wajib diisi."]);
+            return back()->withErrors([
+                'file' => "Baris ke-".($key+1).": NPM wajib diisi."
+            ]);
         }
 
-        // skip jika sudah ada di DB
-        if (in_array($npm, $existing, true)) {
-            continue;
+        if ($nama_kel === '') {
+            return back()->withErrors([
+                'file' => "Baris ke-".($key+1).": Nama Kelompok wajib diisi."
+            ]);
         }
+
+        // skip peserta lama
+        if (in_array($npm, $existing, true)) continue;
 
         // skip duplikat di file
         if (isset($seenInThisImport[$npm])) {
@@ -268,73 +364,99 @@ public function store_upload(Request $request)
         }
         $seenInThisImport[$npm] = true;
 
-        // mapping nama_kelompok -> id kelompok otomatis
+        // tentukan idkel
         if (!isset($kelompokMap[$nama_kel])) {
             $kelompokMap[$nama_kel] = $nextKelompokId++;
         }
-        $kelompok = $kelompokMap[$nama_kel];
+        $idkel = (int) $kelompokMap[$nama_kel];
 
-        // data peserta yang akan diinsert
         $pesertaarray[] = [
             'keg_id'        => $validated['kid'],
             'name'          => $nama,
             'npm'           => $npm,
-            'kelompok'      => $kelompok,
+            'kelompok'      => $idkel,
             'nama_kelompok' => $nama_kel,
             'qrpeserta'     => md5($npm),
         ];
 
-        // rekap per kelompok (hanya yang akan diinsert)
-        if (!isset($kelompokStats[$kelompok])) {
-            $kelompokStats[$kelompok] = [
+        // rekap kelompok
+        if (!isset($kelompokStats[$idkel])) {
+            $kelompokStats[$idkel] = [
                 'nama_kelompok'  => $nama_kel,
                 'jumlah_peserta' => 0,
             ];
         }
-        $kelompokStats[$kelompok]['jumlah_peserta']++;
+        $kelompokStats[$idkel]['jumlah_peserta']++;
     }
 
-    $inserted = count($pesertaarray);
-    $skippedExisting = count($existing);
+    // hitung kelompok BARU
+    $newKelompokCount = collect(array_keys($kelompokStats))
+        ->reject(fn($idkel) => isset($existingIdkelSet[$idkel]))
+        ->count();
 
-
-DB::transaction(function () use (
-    $validated,
-    $pesertaarray,
-    $kelompokStats
-) {
+    /**
+     * ================================
+     * TRANSACTION
+     * ================================
+     */
+   DB::transaction(function () use ($validated, $pesertaarray, $kelompokStats) {
 
     // 1) insert peserta
-    if (count($pesertaarray)) {
+    if (!empty($pesertaarray)) {
         PblPeserta::insert($pesertaarray);
     }
 
-    // 2) insert / update pbl_kelompoks
-    if (count($kelompokStats)) {
+    // 2) upsert kelompok (buat kelompok baru jika ada, update nama/qr jika perlu)
+    if (!empty($kelompokStats)) {
         $rowsKelompok = [];
-        foreach ($kelompokStats as $kelompok => $info) {
+
+        foreach ($kelompokStats as $idkel => $info) {
             $rowsKelompok[] = [
-                'keg_id'         => $validated['kid'],
-                'idkel'       => $kelompok,
-                'nama_kelompok'  => $info['nama_kelompok'],
-                'jml_peserta' => $info['jumlah_peserta'],
-                'qr_kelompok'     => md5($validated['kid']."unique".$info['nama_kelompok']),
-                'created_at'     => now(),
-                'updated_at'     => now(),
+                'keg_id'        => $validated['kid'],
+                'idkel'         => (int) $idkel,
+                'nama_kelompok' => $info['nama_kelompok'],
+                'qr_kelompok'   => md5($validated['kid'].'|'.$idkel),
+                'jml_peserta'   => 0,// jml_peserta akan disinkron setelah ini (jadi tidak di-set di sini)
+                'created_at'    => now(),
+                'updated_at'    => now(),
             ];
         }
 
+        // upsert tanpa menyentuh jml_peserta (biar tidak ketimpa)
         PblKelompok::upsert(
             $rowsKelompok,
             ['keg_id', 'idkel'],
-            ['nama_kelompok', 'jml_peserta', 'updated_at']
+            ['nama_kelompok', 'qr_kelompok', 'updated_at']
         );
     }
 
-    // 3) UPDATE jumlah kelompok ke pbl_kegs
+    // 3) sinkron jml_peserta (TOTAL peserta per kelompok di DB)
+    $rekap = PblPeserta::select('kelompok', DB::raw('COUNT(*) as jumlah'))
+        ->where('keg_id', $validated['kid'])
+        ->groupBy('kelompok')
+        ->get();
+
+    foreach ($rekap as $r) {
+        PblKelompok::where('keg_id', $validated['kid'])
+            ->where('idkel', (int) $r->kelompok)
+            ->update([
+                'jml_peserta' => (int) $r->jumlah,
+                'updated_at'  => now(),
+            ]);
+    }
+
+    // (opsional) kalau ada kelompok yang kini tidak punya peserta sama sekali, set ke 0
+    // PblKelompok::where('keg_id', $validated['kid'])
+    //     ->whereNotIn('idkel', $rekap->pluck('kelompok')->map(fn($v)=>(int)$v))
+    //     ->update(['jml_peserta' => 0, 'updated_at' => now()]);
+
+    // 4) sinkron jml_kelompok di pbl_kegs (TOTAL kelompok di DB)
+    $totalKelompok = PblKelompok::where('keg_id', $validated['kid'])->count();
+
     PblKeg::where('id', $validated['kid'])
         ->update([
-            'jml_kelompok' => count($kelompokStats),
+            'jml_kelompok' => $totalKelompok,
+            'updated_at'   => now(),
         ]);
 });
 
@@ -342,11 +464,13 @@ DB::transaction(function () use (
     return redirect(route('pbl.peserta.index', $validated['kid']))->with(
         'msg',
         'success-Import selesai. '
-        .$inserted.' baris baru dimasukkan, '
-        .$skippedExisting.' baris dilewati (duplikat di DB), '
-        .$skippedDuplicateInFile.' baris dilewati (duplikat di file).'
+        .count($pesertaarray).' peserta baru, '
+        .$newKelompokCount.' kelompok baru, '
+        .$skippedDuplicateInFile.' duplikat di file.'
     );
 }
+
+
 
 
 
