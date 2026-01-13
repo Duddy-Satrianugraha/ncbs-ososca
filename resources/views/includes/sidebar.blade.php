@@ -65,10 +65,10 @@
         @can('admin')
 
         <li class="xn-title">Administrator</li>
-        <li class="xn-openable ">
+        <li class="xn-openable {{ \Request::is('pbl/*') || \Request::is('pbl/*') ? 'active' : ''  }}">
             <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">PBL</span></a>
             <ul>
-                <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta PBL</span> </a></li>
+                <li class="{{ \Request::is('pbl/harian/*') || \Request::is('pbl/harian') ? 'active' : ''  }}"><a href="{{ route('pbl.harian.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> PBL Harian</span></a></li>
             </ul>
         </li>
         <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">

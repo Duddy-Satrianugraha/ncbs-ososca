@@ -5,6 +5,7 @@ use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\pbl\KegController;
 use App\Http\Controllers\pbl\MininoteController;
+use App\Http\Controllers\PblPesertaController;
 
 use App\Http\Controllers\OsocaController;
 use App\Http\Controllers\RoleController;
@@ -126,6 +127,9 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('mininotes/{id}', [MininoteController::class, 'show'])->name('mininotes.show');
     Route::put('mininotes/{id}', [MininoteController::class, 'update'])->name('mininotes.update');
     Route::get('skenario/{id}', [MininoteController::class, 'skshow'])->name('skenario.show');
+    Route::get('peserta/{kid}', [PblPesertaController::class, 'index'])->name('peserta.index');
+    Route::get('peserta/{kid}/upload',[PblPesertaController::class, 'upload'])->name('peserta.upload');
+    Route::post('peserta/upload',[PblPesertaController::class, 'store_upload'])->name('peserta.store_upload');
 
 });
 
