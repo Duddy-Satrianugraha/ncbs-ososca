@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use App\Imports\ImportPeserta;
 use Illuminate\Support\Facades\DB;
 use App\Models\PblKelompok;
+use Illuminate\Validation\Rule;
 
 
 
@@ -49,18 +50,68 @@ class PblPesertaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($kid)
     {
-        //
+        $harian = PblKeg::findOrFail($kid);
+        return view('pbl.peserta.new', compact('harian'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+
+
+
+public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'kid'      => ['required','integer', Rule::exists('pbl_kegs','id')],
+            'name'     => ['required','string','max:255'],
+            'npm'      => [
+                'required','numeric','digits:9',
+                Rule::unique('pbl_pesertas', 'npm')->where(fn($q) => $q->where('keg_id', $request->kid)),
+            ],
+            'kelompok' => ['required','integer', Rule::exists('pbl_kelompoks','id')],
+        ]);
+
+        try {
+            DB::transaction(function () use ($validated) {
+
+                // lock row kelompok supaya aman kalau insert barengan
+                $kelompok = PblKelompok::where('id', $validated['kelompok'])
+                    ->lockForUpdate()
+                    ->firstOrFail();
+
+                // insert peserta
+                PblPeserta::create([
+                    'keg_id'        => $validated['kid'],
+                    'name'          => $validated['name'],
+                    'npm'           => $validated['npm'],
+                    'kelompok'      => $kelompok->idkel,
+                    'nama_kelompok' => $kelompok->nama_kelompok,
+                    'qrpeserta'     => md5($validated['npm']),
+                ]);
+
+                // hitung ulang peserta DI KEGIATAN INI + kelompok ini
+                $jml = PblPeserta::where('keg_id', $validated['kid'])
+                    ->where('kelompok', $kelompok->idkel)
+                    ->count();
+
+                // update jml_peserta
+                $kelompok->update(['jml_peserta' => $jml]);
+            });
+
+            return redirect()
+                ->route('pbl.peserta.index', $validated['kid'])
+                ->with('msg', 'success-Peserta baru berhasil ditambahkan');
+
+        } catch (\Throwable $e) {
+            return redirect()
+                ->route('pbl.peserta.index', $validated['kid'])
+                ->with('msg', 'error-Peserta gagal ditambahkan: '.$e->getMessage());
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -89,10 +140,43 @@ class PblPesertaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PblPeserta $pblPeserta)
-    {
-        //
-    }
+
+public function destroy(PblPeserta $pblPeserta)
+{
+    //dd($pblPeserta);
+    DB::transaction(function () use ($pblPeserta) {
+
+        $kegId   = $pblPeserta->keg_id;
+        $kelKey  = $pblPeserta->kelompok;
+
+        $keg = PblKeg::lockForUpdate()->findOrFail($kegId);
+        $pblPeserta->delete();
+        $pesertaCount = PblPeserta::where('keg_id', $kegId)
+            ->where('kelompok', $kelKey)
+            ->count();
+        $kelompok = PblKelompok::where('keg_id', $kegId)
+            ->where('idkel', $kelKey)
+            ->lockForUpdate()
+            ->first();
+
+        if ($pesertaCount <= 0) {
+            if ($kelompok) {
+                $kelompok->delete();
+            }
+        } else {
+            if ($kelompok) {
+                $kelompok->update(['jml_peserta' => $pesertaCount]);
+            }
+        }
+        $kelompokCount = PblKelompok::where('keg_id', $kegId)->count();
+        $keg->update(['jml_kelompok' => $kelompokCount]);
+    });
+
+    return redirect()
+        ->route('pbl.peserta.index', $pblPeserta->keg_id)
+        ->with('msg', 'success-Peserta berhasil dihapus');
+}
+
 
 
     public function upload($kid)

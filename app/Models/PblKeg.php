@@ -15,4 +15,8 @@ class PblKeg extends Model
     {
         return $this->hasMany(PblMininote::class, 'keg_id');
     }
+    public function kelompok()
+    {
+        return $this->hasMany(PblKelompok::class, 'keg_id');
+    }
 }

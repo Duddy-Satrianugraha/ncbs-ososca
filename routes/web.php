@@ -130,6 +130,9 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('peserta/{kid}', [PblPesertaController::class, 'index'])->name('peserta.index');
     Route::get('peserta/{kid}/upload',[PblPesertaController::class, 'upload'])->name('peserta.upload');
     Route::post('peserta/upload',[PblPesertaController::class, 'store_upload'])->name('peserta.store_upload');
+    Route::get('peserta/{kid}/add',[PblPesertaController::class, 'create'])->name('peserta.add');
+    Route::post('peserta/store',[PblPesertaController::class, 'store'])->name('peserta.store');
+    Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
 
 });
 

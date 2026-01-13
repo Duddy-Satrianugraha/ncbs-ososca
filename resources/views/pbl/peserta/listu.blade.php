@@ -50,6 +50,7 @@
 
                                     <ul class="panel-controls">
                                      <li><a href="{{ route('pbl.peserta.upload', $harian->id)}}" class="panel-add"><span class="fa fa-upload"></span></a></li>
+                                     <li><a href="{{ route('pbl.peserta.add', $harian->id)}}" class="panel-add"><span class="fa fa-plus"></span></a></li>
                                     </ul>
                                 </div>
                                 <div class="panel-body">
@@ -85,6 +86,13 @@
 
 
                                                     <td>
+
+                                                        <form id="del-temp-{{$data->id}}" action="{{ route('pbl.peserta.destroy', $data)}}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus peserta ini?');"><span class="fa fa-times"></span></button>
+                                                        </form>
+
 
                                                     </td>
                                                 </tr>
