@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('tahun_akademik');
             $table->string('jml_kelompok')->nullable();
             $table->foreignId('user_id');
+            $table->string('sk_aktif')->nullable();
+            $table->string('pertemuan')->nullable();
             $table->timestamps();
         });
     }

@@ -59,7 +59,7 @@
                                                     <th width="50">Nomor</th>
                                                     <th>Nama PBL</th>
                                                     <th>Parameter</th>
-                                                    <th width="200"></th>
+                                                    <th width="200"> @can('materi') Skenario Aktif @endcan </th>
                                                     <th width="300">actions</th>
                                                 </tr>
                                             </thead>
@@ -74,8 +74,26 @@
                                                         @can('admin')
                                                         <a class="badge badge-info"> {{ $data->jml_kelompok ?? 0}} kelompok</a>
                                                         @endcan
+                                                        @can('materi')
+                                                        <a class="badge badge-danger"> {{ $data->jml_kelompok ?? 0}} kelompok</a>
+                                                        @if($data->jml_kelompok > 0)
+                                                        <a href="{{ route("admin.pdf.kelompok", $data->id)}}" class="badge badge-info" target="_blank"> cetak QR Kelompok PBL</a>
+                                                        @endif
+                                                        @endcan
                                                     </td>
+                                                    @can('materi')
+                                                    <td>
+                                                        @if($data->jml_sk > 0 && $data->jml_kelompok > 0)
+                                                        <a href="{{ route("pbl.harian.aktif", $data->id) }}" class="badge badge-danger"> Skenario : {{ $data->sk_aktif ?? 0 }} pertemuan : {{ $data->pertemuan ?? 0 }} </a>
+                                                        @endif
+                                                    </td>
+                                                    @endcan
+                                                    @can('meu')
                                                     <td>{{$data->created_at}}</td>
+                                                    @endcan
+                                                    @can('admin')
+                                                    <td>{{$data->created_at}}</td>
+                                                    @endcan
                                                     <td>
                                                         @can('materi')
                                                         <a href="{{ route("pbl.harian.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>

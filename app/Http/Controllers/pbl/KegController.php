@@ -116,4 +116,20 @@ class KegController extends Controller
     {
         //
     }
+
+    Public function aktif($id){
+
+        $keg = PblKeg::find($id);
+        return view('pbl.keg.aktif', compact('keg'));
+    }
+
+    public function aktivate(Request $request){
+        //dd($request->all());
+        $keg = PblKeg::find($request->id);
+        $keg->sk_aktif = $request->sk_aktif;
+        $keg->pertemuan = $request->pertemuan;
+        $keg->save();
+        return redirect()->route('pbl.harian.index')->with('msg', 'success-Skenario berhasil diaktifkan');
+
+    }
 }

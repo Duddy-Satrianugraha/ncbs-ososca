@@ -499,7 +499,7 @@ public function store_upload(Request $request)
                 'keg_id'        => $validated['kid'],
                 'idkel'         => (int) $idkel,
                 'nama_kelompok' => $info['nama_kelompok'],
-                'qr_kelompok'   => md5($validated['kid'].'|'.$idkel),
+                'qr_kelompok'   => md5($validated['kid'].'|'.$idkel.'|'.$info['nama_kelompok']),
                 'jml_peserta'   => 0,// jml_peserta akan disinkron setelah ini (jadi tidak di-set di sini)
                 'created_at'    => now(),
                 'updated_at'    => now(),

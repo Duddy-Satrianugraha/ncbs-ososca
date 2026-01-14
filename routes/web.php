@@ -47,6 +47,9 @@ Route::post('/scan/osoca', [DashbordController::class, 'oscan'])->name('osoca.sc
 Route::get('/login/peserta', [DashbordController::class, 'peserta'])->name('peserta.login');
 Route::post('/scan/peserta', [DashbordController::class, 'pscan'])->name('peserta.scan');
 
+Route::get('/login/pbl', [DashbordController::class, 'pbllogin'])->name('pbl.login');
+Route::post('/scan/pbl', [DashbordController::class, 'pblscan'])->name('pbl.scan');
+
 Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth', ])->name('dashbord');
 Route::get('/admin/power/destroy',[PowerController::class, 'destroy'])->name('admin.powerdown');
 Route::post('/profile/photo', [ProfileContoller::class, "updatePhoto"])->middleware('auth')->name('profile.photo.update');
@@ -78,6 +81,7 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::post('/peserta/upload',[OpesertaController::class, 'store_upload'])->name('peserta.store_upload');
     Route::get('/kartu/peserta/{uid}', [PdfController::class, 'listpeserta'])->name('pdf.peserta');
     Route::get('/kartu/station/{uid}', [PdfController::class, 'station'])->name('pdf.station');
+    Route::get('/kartu/kelompok/{kid}', [PdfController::class, 'kelompok'])->name('pdf.kelompok');
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
     Route::get('/export/feedback/{uid}', [OfeedbackController::class, 'kirim_feedback'])->name('kirim.feedback');
@@ -133,6 +137,8 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('peserta/{kid}/add',[PblPesertaController::class, 'create'])->name('peserta.add');
     Route::post('peserta/store',[PblPesertaController::class, 'store'])->name('peserta.store');
     Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
+    Route::get('aktif/{id}', [KegController::class, 'aktif'])->name('harian.aktif');
+    Route::post('aktivate', [KegController::class, 'aktivate'])->name('harian.aktivate');
 
 });
 

@@ -162,4 +162,17 @@ class DashbordController extends Controller
             return redirect(route('osoca.login'))->with('msg', 'danger-Unable to find code');
         }
     }
+
+
+
+    Public function pbllogin(){
+        return view('pbl.harian.login');
+    }
+    public function pblscan(Request $request){
+        dd($request);
+    }
+
+
+
+
 }
