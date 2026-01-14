@@ -16,7 +16,7 @@ class PblController extends Controller
         $kegiatan_pbl = PblKeg::find(session('kegiatan_pbl'));
         $kelompok = PblKelompok::find(session('pblKelompok'));
         $skenario = PblMininote::find(session('skenario'));
-        $pertemuan = session('Pertemuan');
+        $pertemuan = session('pertemuan');
         return compact('kegiatan_pbl', 'kelompok', 'skenario', 'pertemuan');
     }
 
@@ -52,8 +52,9 @@ class PblController extends Controller
     public function mininotes(){
         $data = $this->data_pbl();
         $tutor = Openguji::find(session('Tutor'));
-        //dd($tutor);
-        $peserta = PblPeserta::where('kelompok', session('pblKelompok'))->get();
+       // dd($data);
+        $peserta = PblPeserta::where('kelompok_id', session('pblKelompok'))->get();
+
         return view('pbl.harian.mininotes', compact('data', 'tutor', 'peserta'));
     }
 

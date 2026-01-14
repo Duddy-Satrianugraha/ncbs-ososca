@@ -184,12 +184,13 @@ class DashbordController extends Controller
         ]);
         $soal_slug = $request->soal_slug;
         $kelompok = PblKelompok::where('qr_kelompok', $soal_slug)->first();
+
         if($kelompok){
             if($kelompok->kegpbl->sk_aktif == null){
                 return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
             } else {
                 session([
-                    'pblKelompok' => $kelompok->idkel,
+                    'pblKelompok' => $kelompok->id,
                     'kegiatan_pbl' => $kelompok->kegpbl->id,
                     'skenario' => $kelompok->kegpbl->sk_aktif,
                     'pertemuan' => $kelompok->kegpbl->pertemuan,

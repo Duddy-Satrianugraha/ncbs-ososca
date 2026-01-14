@@ -64,10 +64,10 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-users"></span></span>
-                            <select name="kelompok" class="form-control">
-                                @foreach ($harian->kelompok as $data)
-                                <option value="{{ $data->id }}">{{ $data->nama_kelompok }}</option>
-                                @endforeach
+                            <select name="kelompok_id" class="form-control">
+                            @foreach($kelompoks as $kel)
+                                <option value="{{ $kel->id }}">{{ $kel->nama_kelompok }}</option>
+                            @endforeach
                             </select>
                         </div>
                     </div>

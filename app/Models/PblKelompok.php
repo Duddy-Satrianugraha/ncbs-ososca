@@ -12,7 +12,8 @@ class PblKelompok extends Model
         return $this->belongsTo(PblKeg::class, 'keg_id');
     }
 
-    public function pesertas(){
-        return $this->hasMany(PblPeserta::class, 'kelompok', 'idkel');
-    }
+    public function pesertas()
+        {
+            return $this->hasMany(PblPeserta::class, 'kelompok_id');
+        }
 }
