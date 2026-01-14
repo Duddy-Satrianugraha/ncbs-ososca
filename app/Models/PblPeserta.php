@@ -17,4 +17,7 @@ class PblPeserta extends Model
     ];
     protected $casts = ['status' => 'boolean'];
 
+    public function dataKelompok(){
+        return $this->belongsTo(PblKelompok::class, 'kelompok', 'idkel');
+    }
 }

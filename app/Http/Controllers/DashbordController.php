@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Oujian;
 use App\Models\Ostation;
 use App\Models\Openguji;
+use App\Models\PblKelompok;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
 
@@ -169,10 +170,37 @@ class DashbordController extends Controller
         return view('pbl.harian.login');
     }
     public function pblscan(Request $request){
-        dd($request);
+        //dd($request->all());
+        $request->validate([
+            'soal_slug' => ['required'],
+            'captcha' => [
+            'required','numeric',
+            function ($attribute, $value, $fail) {
+                if (!verify_captcha($value)) {
+                    $fail('Jawaban CAPTCHA salah dok');
+                }
+            },
+        ],
+        ]);
+        $soal_slug = $request->soal_slug;
+        $kelompok = PblKelompok::where('qr_kelompok', $soal_slug)->first();
+        if($kelompok){
+            if($kelompok->kegpbl->sk_aktif == null){
+                return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
+            } else {
+                session([
+                    'pblKelompok' => $kelompok->idkel,
+                    'kegiatan_pbl' => $kelompok->kegpbl->id,
+                    'skenario' => $kelompok->kegpbl->sk_aktif,
+                    'pertemuan' => $kelompok->kegpbl->pertemuan,
+                ]);
+                return redirect(route('kegiatan_pbl.tutor'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu tutor');
+        }
     }
 
 
 
 
+
+        }
 }

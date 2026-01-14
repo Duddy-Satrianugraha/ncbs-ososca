@@ -5,6 +5,7 @@ use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\pbl\KegController;
 use App\Http\Controllers\pbl\MininoteController;
+use App\Http\Controllers\pbl\PblController;
 use App\Http\Controllers\PblPesertaController;
 
 use App\Http\Controllers\OsocaController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\OfeedbackController;
 use App\Http\Middleware\Peserta;
 use App\Http\Middleware\Panitia;
 use App\Http\Middleware\Osoca;
+use App\Http\Middleware\Pbls;
 
 
 
@@ -141,4 +143,12 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::post('aktivate', [KegController::class, 'aktivate'])->name('harian.aktivate');
 
 });
+
+Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')->group( function (){
+    Route::get('tutor', [PblController::class, 'tutor'])->name('tutor');
+    Route::post('chek/tutor', [PblController::class, 'chek_tutor'])->name('chek.tutor');
+    Route::get('mininotes', [PblController::class, 'mininotes'])->name('mininotes');
+    Route::get('logout', [PblController::class, 'logout'])->name('logout');
+});
+
 
