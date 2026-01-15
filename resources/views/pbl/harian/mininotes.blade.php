@@ -214,7 +214,10 @@
   background-color: #c9302c;
   border-color: #ac2925;
 }
-
+ #btn-simpan:disabled{
+    opacity: .6;
+    cursor: not-allowed;
+  }
 /* Mobile: beri jarak sentuh lebih besar */
 @media (max-width: 480px){
   .btn{
@@ -222,7 +225,30 @@
     font-size: 13px;
   }
 }
+  .nilai-field:disabled{
+    background:#eee;
+    cursor:not-allowed;
+  }
+  .total-score{
+    font-weight:700;
+    text-align:center;
+    background:#f9f9f9;
+  }
+  .invalid-value{
+    border:2px solid #e74c3c !important;
+    background:#fdecea !important;
+  }
+  .hint-invalid{
+    display:block;
+    font-size:11px;
+    margin-top:4px;
+    color:#e74c3c;
+  }
 
+    .nilai-pending{
+    background:#fff8d9 !important;
+    border:2px dashed #f1c40f !important;
+  }
   </style>
 
 </head>
@@ -245,73 +271,124 @@
         <div class="meta-row"><div class="meta-label">Nama Tutor</div><div>:</div>{{ $tutor->nama }}</div>
       </div>
     </div>
-
+<form action="{{ route('kegiatan_pbl.nilai.input') }}" method="post">
+  @csrf
     <div class="table-scroll">
         <table class="rubrik">
-          <thead>
-            <tr>
-              <th class="w-no" rowspan="2">No.</th>
-              <th class="w-nama" rowspan="2">Nama Mahasiswa</th>
-              <th class="th-group" ></th>
-              <th class="th-group" colspan="5">Keterlibatan dalam<br/>diskusi</th>
-              <th class="th-group" colspan="3">Perilaku</th>
-              <th class="w-total" rowspan="2">
-                Total<br/><span style="font-weight:700;">(Maks:<br/>50)</span>
-              </th>
-            </tr>
-            <tr>
-              <th class="w-mini rotate"><span>Hadir</span></th>
-              <th class="w-mini rotate"><span>Sharing</span></th>
-              <th class="w-mini rotate"><span>Argumentasi</span></th>
-              <th class="w-mini rotate"><span>Keaktifan</span></th>
-              <th class="w-mini rotate"><span>Dominasi</span></th>
-              <th class="w-mini rotate"><span>Kolaborasi</span></th>
+            <thead>
+                <tr>
+                <th class="w-no" rowspan="2">No.</th>
+                <th class="w-nama" rowspan="2">Nama Mahasiswa</th>
+                <th class="th-group"></th>
+                <th class="th-group" colspan="5">Keterlibatan dalam<br/>diskusi</th>
+                <th class="th-group" colspan="3">Perilaku</th>
+                <th class="w-total" rowspan="2">
+                    Total<br/><span style="font-weight:700;">(Maks:<br/>50)</span>
+                </th>
+                </tr>
+                <tr>
+                <th class="w-mini rotate"><span>Hadir</span></th>
+                <th class="w-mini rotate"><span>Sharing</span></th>
+                <th class="w-mini rotate"><span>Argumentasi</span></th>
+                <th class="w-mini rotate"><span>Keaktifan</span></th>
+                <th class="w-mini rotate"><span>Dominasi</span></th>
+                <th class="w-mini rotate"><span>Kolaborasi</span></th>
 
-              <th class="w-mini rotate"><span>Disiplin/Kehadiran</span></th>
-              <th class="w-mini rotate"><span>Komunikasi</span></th>
-              <th class="w-mini rotate"><span>Sopan santun</span></th>
-            </tr>
-          </thead>
-          <tbody>
-           @foreach($peserta as $datas)
+                <th class="w-mini rotate"><span>Disiplin/Kehadiran</span></th>
+                <th class="w-mini rotate"><span>Komunikasi</span></th>
+                <th class="w-mini rotate"><span>Sopan santun</span></th>
+                </tr>
+            </thead>
 
-            <!-- 10 baris -->
-            <tr>
-                <td class="no">{{ $loop->iteration }}</td>
-                <td class="nama">{{ $datas->name }} ({{ $datas->npm }})</td>
+            <tbody>
+                @foreach($peserta as $datas)
+                <tr data-peserta-id="{{ $datas->id }}">
+                    <td class="no">{{ $loop->iteration }}</td>
+                    <td class="nama">{{ $datas->name }} ({{ $datas->npm }})</td>
+                    <input type="hidden" name="nilai[{{ $datas->id }}][blok]" value="{{ $data['kegiatan_pbl']->id }}">
+                    <input type="hidden" name="nilai[{{ $datas->id }}][kelompok]" value="{{ $data['kelompok']->id }}">
+                    <input type="hidden" name="nilai[{{ $datas->id }}][skenario]" value="{{ $data['skenario']->id }}">
+                    <input type="hidden" name="nilai[{{ $datas->id }}][pertemuan]" value="{{ $data['pertemuan'] }}">
+                    <input type="hidden" name="nilai[{{ $datas->id }}][tutor]" value="{{ $tutor->id }}">
 
-                <td><input type="checkbox" class="score-input" value="1"></td>
-                <!-- Sharing -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    {{-- HADIR --}}
+                    <td>
+                    {{-- supaya kalau tidak dicentang tetap terkirim 0 --}}
+                    <input type="hidden" name="nilai[{{ $datas->id }}][hadir]" value="0">
 
-                <!-- Argumentasi -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    <input type="checkbox"
+                            class="score-input hadir-check"
+                            name="nilai[{{ $datas->id }}][hadir]"
+                            value="1">
+                    </td>
 
-                <!-- Keaktifan -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    {{-- Sharing --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field"
+                            name="nilai[{{ $datas->id }}][sharing]"
+                            min="0" max="10">
+                    </td>
 
-                <!-- Dominasi -->
-                <td><input type="number" class="score-input" min="-5" max="0"></td>
+                    {{-- Argumentasi --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field"
+                            name="nilai[{{ $datas->id }}][argumentasi]"
+                            min="0" max="10">
+                    </td>
 
-                <!-- Kolaborasi -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    {{-- Keaktifan --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field"
+                            name="nilai[{{ $datas->id }}][keaktifan]"
+                            min="0" max="10">
+                    </td>
 
-                <!-- Disiplin -->
-                <td><input type="number" class="score-input" min="-5" max="0"></td>
+                    {{-- Dominasi --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field nilai-restrict"
+                            name="nilai[{{ $datas->id }}][dominasi]"
+                            min="-5" max="0">
+                    </td>
 
-                <!-- Komunikasi -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    {{-- Kolaborasi --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field"
+                            name="nilai[{{ $datas->id }}][kolaborasi]"
+                            min="0" max="10">
+                    </td>
 
-                <!-- Sopan santun -->
-                <td><input type="number" class="score-input" min="0" max="10"></td>
+                    {{-- Disiplin --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field nilai-restrict"
+                            name="nilai[{{ $datas->id }}][disiplin]"
+                            min="-5" max="0">
+                    </td>
 
-                <!-- Total -->
-                <td></td>
-              </tr>
-            @endforeach
+                    {{-- Komunikasi --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field"
+                            name="nilai[{{ $datas->id }}][komunikasi]"
+                            min="0" max="10">
+                    </td>
 
-          </tbody>
-        </table>
+                    {{-- Sopan santun --}}
+                    <td>
+                    <input type="number" class="score-input nilai-field nilai-restrict"
+                            name="nilai[{{ $datas->id }}][sopan]"
+                            min="-5" max="0">
+                    </td>
+
+                    {{-- TOTAL (tampil + hidden untuk dikirim ke server) --}}
+                    <td class="total-score">0</td>
+                    <input type="hidden"
+                        name="nilai[{{ $datas->id }}][total]"
+                        class="total-input"
+                        value="0">
+                </tr>
+                @endforeach
+            </tbody>
+            </table>
+
         <div class="score-wrap">
       <!-- Kiri -->
       <table class="score">
@@ -364,9 +441,10 @@
     Logout
   </a>
 
-  <a href="#" class="btn btn-info">
+  <button type="submit" id="btn-simpan" class="btn btn-info" disabled>
     Simpan Nilai
-  </a>
+</button>
+</form>
 </div>
         <hr>
         <table class="scorex">
@@ -435,5 +513,181 @@
 
     </div>
   </div>
+
+<script>
+(function () {
+  const allowedRestrictedValues = [0, -3, -5];
+
+  function toInt(val) {
+    const n = parseInt(val, 10);
+    return Number.isNaN(n) ? null : n;
+  }
+
+  function ensureHint(input) {
+    // buat 1 hint kecil di bawah input (sekali saja)
+    let hint = input.parentElement.querySelector('.hint-invalid');
+    if (!hint) {
+      hint = document.createElement('small');
+      hint.className = 'hint-invalid';
+      hint.textContent = '';
+      hint.style.display = 'none';
+      input.parentElement.appendChild(hint);
+    }
+    return hint;
+  }
+
+  function markPending(input, isPending){
+    if (isPending) {
+        input.classList.add('nilai-pending');
+    } else {
+        input.classList.remove('nilai-pending');
+    }
+    }
+  function markInvalid(input, isInvalid) {
+    const hint = ensureHint(input);
+    if (isInvalid) {
+      input.classList.add('invalid-value');
+      hint.style.display = 'block';
+    } else {
+      input.classList.remove('invalid-value');
+      hint.style.display = 'none';
+    }
+  }
+
+
+
+  function validateRestricted(input) {
+    // hanya untuk field yg punya class nilai-restrict
+    if (!input.classList.contains('nilai-restrict')) {
+      markInvalid(input, false);
+      return true;
+    }
+
+    // kosong = dianggap belum isi (tidak invalid)
+    if (input.value === '') {
+      markInvalid(input, false);
+      return true;
+    }
+
+    const v = toInt(input.value);
+    const ok = (v !== null && allowedRestrictedValues.includes(v));
+
+    markInvalid(input, !ok);
+    return ok;
+  }
+
+  function clampMinMax(input) {
+    // clamp min/max untuk semua number
+    if (input.type !== 'number') return;
+    if (input.value === '') return;
+
+    const v = toInt(input.value);
+    if (v === null) return;
+
+    const min = (input.min !== '' ? toInt(input.min) : null);
+    const max = (input.max !== '' ? toInt(input.max) : null);
+
+    if (min !== null && v < min) input.value = min;
+    if (max !== null && v > max) input.value = max;
+  }
+
+    function updateSubmitButton() {
+        const pendingCount = document.querySelectorAll('.nilai-pending').length;
+        const invalidCount = document.querySelectorAll('.invalid-value').length;
+
+        const btn = document.getElementById('btn-simpan');
+        if (!btn) return;
+
+        // disable jika masih ada pending atau invalid
+        btn.disabled = (pendingCount > 0 || invalidCount > 0);
+        }
+
+  function updateRow(row) {
+  const hadirCheck = row.querySelector('.hadir-check');
+  const hadir = hadirCheck ? hadirCheck.checked : false;
+
+  const fields = row.querySelectorAll('.nilai-field');
+  const totalCell = row.querySelector('.total-score');
+  const totalInput = row.querySelector('.total-input');
+
+  if (!hadir) {
+    fields.forEach(input => {
+      input.value = '';
+      input.disabled = true;
+      markInvalid(input, false);
+      markPending(input, false);
+    });
+
+    if (totalCell) totalCell.innerText = 0;
+    if (totalInput) totalInput.value = 0;
+
+     updateSubmitButton();
+    return;
+  }
+
+  let total = 0;
+
+  fields.forEach(input => {
+    input.disabled = false;
+
+    // clamp min max
+    clampMinMax(input);
+
+    // VALIDASI MERAH (dominasi/disiplin/sopan)
+    const isValidRestricted = validateRestricted(input);
+
+    // TANDAI KUNING JIKA KOSONG
+    const isEmpty = (input.value === '');
+    markPending(input, isEmpty && isValidRestricted);
+
+    // jika invalid, jangan ikut hitung
+    if (!isValidRestricted) return;
+
+    const v = toInt(input.value);
+    if (v !== null) total += v;
+        });
+
+        if (totalCell) totalCell.innerText = total;
+        if (totalInput) totalInput.value = total;
+
+        // update status tombol simpan
+        updateSubmitButton();
+        }
+
+
+  // --- Events ---
+  document.addEventListener('change', function (e) {
+    // toggle hadir
+    if (e.target.classList.contains('hadir-check')) {
+      const row = e.target.closest('tr');
+      if (row) updateRow(row);
+      return;
+    }
+
+    // saat number selesai diubah (mis. pakai spinner)
+    if (e.target.classList.contains('nilai-field')) {
+      const row = e.target.closest('tr');
+      if (row) updateRow(row);
+      return;
+    }
+  });
+
+  document.addEventListener('input', function (e) {
+    if (!e.target.classList.contains('nilai-field')) return;
+    const row = e.target.closest('tr');
+    if (row) updateRow(row);
+  });
+
+  // init semua baris saat load
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('tbody tr').forEach(row => updateRow(row));
+    updateSubmitButton();
+  });
+
+})();
+</script>
+
+
+
 </body>
 </html>

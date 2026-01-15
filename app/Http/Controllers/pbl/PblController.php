@@ -58,6 +58,10 @@ class PblController extends Controller
         return view('pbl.harian.mininotes', compact('data', 'tutor', 'peserta'));
     }
 
+    public function nilaiinput(Request $request){
+        dd($request->all());
+    }
+
     public function logout(){
         session()->flush();
         return redirect(route('pbl.login'));

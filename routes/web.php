@@ -148,6 +148,7 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
     Route::get('tutor', [PblController::class, 'tutor'])->name('tutor');
     Route::post('chek/tutor', [PblController::class, 'chek_tutor'])->name('chek.tutor');
     Route::get('mininotes', [PblController::class, 'mininotes'])->name('mininotes');
+    Route::post('nilai', [PblController::class, 'nilaiinput'])->name('nilai.input');
     Route::get('logout', [PblController::class, 'logout'])->name('logout');
 });
 
