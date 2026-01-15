@@ -441,7 +441,7 @@
     Logout
   </a>
 
-  <button type="submit" id="btn-simpan" class="btn btn-info" disabled>
+  <button type="submit" id="btn-simpan" class="btn btn-info" disabled  onclick="return confirm('Penilaian hanya dapat dilakukan satu kali, apakah Anda yakin?')">
     Simpan Nilai
 </button>
 </form>

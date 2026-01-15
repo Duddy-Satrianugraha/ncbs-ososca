@@ -9,6 +9,9 @@ use App\Models\PblMininote;
 use App\Models\PblPeserta;
 use App\Models\Openguji;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Models\PblNilai;
+use Illuminate\Support\Facades\DB;
 
 class PblController extends Controller
 {
@@ -60,7 +63,103 @@ class PblController extends Controller
 
     public function nilaiinput(Request $request){
         dd($request->all());
-    }
+            $request->validate([
+                'nilai' => ['required', 'array'],
+
+                // scope / identitas
+                'nilai.*.blok'       => ['required', 'integer', 'exists:pbl_kegs,id'],
+                'nilai.*.kelompok'   => ['required', 'integer', 'exists:pbl_kelompoks,id'],
+                'nilai.*.skenario'   => ['required', 'integer', 'exists:pbl_mininotes,id'],
+                'nilai.*.pertemuan'  => ['required', 'integer', 'min:1'],
+                'nilai.*.tutor'      => ['nullable', 'integer', 'exists:opengujis,id'],
+
+                // status
+                'nilai.*.hadir'      => ['required', 'boolean'],
+
+                // nilai umum
+                'nilai.*.sharing'      => ['nullable', 'integer', 'between:0,10'],
+                'nilai.*.argumentasi'  => ['nullable', 'integer', 'between:0,10'],
+                'nilai.*.keaktifan'    => ['nullable', 'integer', 'between:0,10'],
+                'nilai.*.kolaborasi'   => ['nullable', 'integer', 'between:0,10'],
+                'nilai.*.komunikasi'   => ['nullable', 'integer', 'between:0,10'],
+
+                // nilai khusus
+                'nilai.*.dominasi'   => ['nullable', Rule::in([0, -3, -5])],
+                'nilai.*.disiplin'   => ['nullable', Rule::in([0, -3, -5])],
+                'nilai.*.sopan'      => ['nullable', Rule::in([0, -3, -5])],
+            ]);
+
+            DB::transaction(function () use ($request) {
+
+                foreach ($request->nilai as $pesertaId => $n) {
+
+                    // jika tidak hadir → semua nilai 0
+                    if ((int)$n['hadir'] === 0) {
+                        $payloadNilai = [
+                            'hadir'        => false,
+                            'sharing'      => 0,
+                            'argumentasi'  => 0,
+                            'keaktifan'    => 0,
+                            'dominasi'     => 0,
+                            'kolaborasi'   => 0,
+                            'disiplin'     => 0,
+                            'komunikasi'   => 0,
+                            'sopan'        => 0,
+                            'total'        => 0,
+                        ];
+                    } else {
+                        // casting + default
+                        $sharing      = (int)($n['sharing'] ?? 0);
+                        $argumentasi  = (int)($n['argumentasi'] ?? 0);
+                        $keaktifan    = (int)($n['keaktifan'] ?? 0);
+                        $dominasi     = (int)($n['dominasi'] ?? 0);
+                        $kolaborasi   = (int)($n['kolaborasi'] ?? 0);
+                        $disiplin     = (int)($n['disiplin'] ?? 0);
+                        $komunikasi   = (int)($n['komunikasi'] ?? 0);
+                        $sopan        = (int)($n['sopan'] ?? 0);
+
+                        // HITUNG TOTAL DI SERVER
+                        $total = $sharing
+                            + $argumentasi
+                            + $keaktifan
+                            + $dominasi
+                            + $kolaborasi
+                            + $disiplin
+                            + $komunikasi
+                            + $sopan;
+
+                        $payloadNilai = [
+                            'hadir'        => true,
+                            'sharing'      => $sharing,
+                            'argumentasi'  => $argumentasi,
+                            'keaktifan'    => $keaktifan,
+                            'dominasi'     => $dominasi,
+                            'kolaborasi'   => $kolaborasi,
+                            'disiplin'     => $disiplin,
+                            'komunikasi'   => $komunikasi,
+                            'sopan'        => $sopan,
+                            'total'        => $total,
+                        ];
+                    }
+
+                    // SIMPAN / UPDATE
+                    PblNilai::updateOrCreate(
+                        [
+                            'keg_id'       => $n['blok'],
+                            'kelompok_id'  => $n['kelompok'],
+                            'skenario_id'  => $n['skenario'],
+                            'pertemuan'   => $n['pertemuan'],
+                            'tutor_id'    => $n['tutor'] ?? null,
+                            'peserta_id'  => $pesertaId,
+                        ],
+                        $payloadNilai
+                    );
+                }
+            });
+            session()->flush();
+            return redirect(route('pbl.login'));
+        }
+
 
     public function logout(){
         session()->flush();
