@@ -62,7 +62,7 @@ class PblController extends Controller
     }
 
     public function nilaiinput(Request $request){
-        dd($request->all());
+       // dd($request->all());
             $request->validate([
                 'nilai' => ['required', 'array'],
 
