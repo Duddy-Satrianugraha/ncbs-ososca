@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\pbl\KegController;
 use App\Http\Controllers\pbl\MininoteController;
 use App\Http\Controllers\pbl\PblController;
+use App\Http\Controllers\pbl\PblNilaiController;
 use App\Http\Controllers\PblPesertaController;
 
 use App\Http\Controllers\OsocaController;
@@ -141,6 +142,7 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
     Route::get('aktif/{id}', [KegController::class, 'aktif'])->name('harian.aktif');
     Route::post('aktivate', [KegController::class, 'aktivate'])->name('harian.aktivate');
+    Route::get('/nilai-harian/{keg}', [PblNilaiController::class, 'rekapKegiatan'])->name('nilai.harian');
 
 });
 
