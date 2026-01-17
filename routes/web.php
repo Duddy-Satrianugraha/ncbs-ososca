@@ -85,6 +85,7 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::get('/kartu/peserta/{uid}', [PdfController::class, 'listpeserta'])->name('pdf.peserta');
     Route::get('/kartu/station/{uid}', [PdfController::class, 'station'])->name('pdf.station');
     Route::get('/kartu/kelompok/{kid}', [PdfController::class, 'kelompok'])->name('pdf.kelompok');
+    Route::get('/kartu/skenario/{id}', [PdfController::class, 'skenario'])->name('pdf.skenario');
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
     Route::get('/export/feedback/{uid}', [OfeedbackController::class, 'kirim_feedback'])->name('kirim.feedback');
@@ -125,10 +126,11 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::post('harian/store', [KegController::class, 'store'])->name('harian.store');
     Route::get('harian/show/{id}', [KegController::class, 'show'])->name('harian.show');
     Route::get('harian/edit/{id}', [KegController::class, 'edit'])->name('harian.edit');
-    Route::post('harian/update/{id}', [KegController::class, 'update'])->name('harian.update');
+    Route::put('harian/update/{id}', [KegController::class, 'update'])->name('harian.update');
     Route::get('harian/destroy/{id}', [KegController::class, 'destroy'])->name('harian.destroy');
     Route::get('harian/mininotes/{id}', [MininoteController::class, 'mini_edit'])->name('harian.mininotes');
     Route::put('harian/mininotes/{id}', [MininoteController::class, 'mini_update'])->name('harian.mininotes.update');
+    Route::get('harian/act/mininotes/{id}', [MininoteController::class, 'miniact'])->name('harian.mininotes.act');
     Route::get('harian/skenario/{id}', [MininoteController::class, 'sk_edit'])->name('harian.skenario');
     Route::put('harian/skenario/{id}', [MininoteController::class, 'sk_update'])->name('harian.skenario.update');
     Route::get('mininotes/{id}', [MininoteController::class, 'show'])->name('mininotes.show');
@@ -142,7 +144,8 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
     Route::get('aktif/{id}', [KegController::class, 'aktif'])->name('harian.aktif');
     Route::post('aktivate', [KegController::class, 'aktivate'])->name('harian.aktivate');
-    Route::get('/nilai-harian/{keg}', [PblNilaiController::class, 'rekapKegiatan'])->name('nilai.harian');
+    Route::get('nilai', [PblNilaiController::class, 'index'])->name('list.nilai');
+    Route::get('nilai/harian/{keg}', [PblNilaiController::class, 'rekapKegiatan'])->name('nilai.harian');
 
 });
 

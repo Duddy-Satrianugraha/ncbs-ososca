@@ -58,15 +58,24 @@
                                                     <td>{{ $data->judul_sk }}</td>
                                                     @can('meu')
                                                     <td>
-
+                                                        @if($data->status == 0)
                                                         <a href="{{ route("pbl.harian.skenario", $data->id)}}" class="badge badge-success"> Skenario</a>
                                                         <a href="{{ route("pbl.harian.mininotes", $data->id)}}" class="badge badge-info"> Mininote</a>
-
+                                                        <a href="{{route('pbl.harian.mininotes.act', $data->id) }}" class="badge badge-secondary" onclick="return confirm('Apakah Anda yakin ingin memfinalisasi mininotes ini?');"> Draft </a>
+                                                        @else
+                                                        <a class="badge badge-info"> Final </a>
+                                                        @endif
                                                     </td>
                                                      @endcan
                                                     <td>
                                                         @can('materi')
-                                                         <a href="{{ route("pbl.skenario.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                         <a href="{{ route("pbl.mininotes.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                         @if($data->status == 0)
+
+                                                        <a class="badge badge-secondary"> Draft </a>
+                                                        @else
+                                                        <a href="{{ route('admin.pdf.skenario', $data->id) }}" class="badge badge-info" target="_blank"> Cetak Skenario </a>
+                                                        @endif
                                                          @endcan
                                                          @can('meu')
                                                           <a href="{{ route("pbl.mininotes.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>

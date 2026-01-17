@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('keg_id');
             $table->foreignId('user_id');
             $table->string('nomor_sk');
+            $table->tinyInteger('status')->default(0);
             $table->string('judul_sk')->nullable();
             $table->longText('skenario')->nullable();
             $table->longText('step_1')->nullable();

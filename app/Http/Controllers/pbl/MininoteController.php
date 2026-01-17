@@ -132,4 +132,16 @@ class MininoteController extends Controller
         $mininotes = PblMininote::find($id);
         return view('pbl.keg.skshow', compact('mininotes'));
     }
+
+    public function miniact(string $id)
+    {
+        $mininotes = PblMininote::find($id);
+        if($mininotes->status == 0){
+            $mininotes->status = 1;
+        }else{
+            $mininotes->status = 0;
+        }
+        $mininotes->save();
+        return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Status berhasil diubah');
+    }
 }

@@ -8,14 +8,14 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-    <li ><a href="{{ route('pbl.harian.index')}}">Daftar PBL Harian</a></li>
-        <li class="active"> nilai PBL </li>
+    <li ><a href="{{ route('pbl.list.nilai')}}">Daftar PBL Harian</a></li>
+        <li class="active">Nilai PBL {{ $pbl->name }}</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar nilai</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Nilai Harian PBL Blok {{ $pbl->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -32,7 +32,7 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List nilai</h3>
+                                    <h3 class="panel-title">List Nilai Harian </h3>
                                     <ul class="panel-controls">
 
 
@@ -70,7 +70,7 @@
           <tr>
             @foreach($skenarios as $s)
               @foreach($pertemuans as $pt)
-                <th class="text-center">Pertemuan {{ $pt }}</th>
+                <th class="text-center">Prt {{ $pt }}</th>
               @endforeach
             @endforeach
           </tr>
@@ -114,7 +114,7 @@
           @empty
             <tr>
               <td colspan="{{ 4 + ($skenarios->count() * count($pertemuans)) + 1 }}" class="text-center text-muted">
-                Tidak ada data peserta/nilai untuk kegiatan ini.
+                Belum ada data peserta/nilai untuk kegiatan ini.
               </td>
             </tr>
           @endforelse

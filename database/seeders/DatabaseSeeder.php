@@ -65,7 +65,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PblKegsTableSeeder::class);
         $this->call(PblMininotesTableSeeder::class);
-        $this->call(PblPesertasTableSeeder::class);
         $this->call(PblKelompoksTableSeeder::class);
+        $this->call(PblPesertasTableSeeder::class);
+
     }
 }

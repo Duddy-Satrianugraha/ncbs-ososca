@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Oujian;
 use App\Models\PblKeg;
 use App\Models\PblKelompok;
+use App\Models\PblMininote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -166,6 +167,15 @@ class PdfController extends Controller
         ->setPaper('A4', 'portrait');
         return $pdf->stream('kartu_peserta_'.$ujian->name.'.pdf');
         //return view('admin.pdf.station', compact('stations'));
+    }
+
+    public function skenario(string $id)
+    {
+        $skenario = PblMininote::find($id);
+        $keg = PblKeg::find($skenario->keg_id);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.skenario', compact('skenario', 'keg'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('skenario_'.$skenario->nomor_sk.'_Blok'.$keg->name.'.pdf');
     }
 
 }

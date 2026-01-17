@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PblKeg;
 use App\Models\PblMininote;
+use App\Models\PblNilai;
+use App\Models\PblPeserta;
+use App\Models\PblKelompok;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -98,7 +101,8 @@ class KegController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $keg = PblKeg::find($id);
+        return view('pbl.keg.edut', compact('keg'));
     }
 
     /**
@@ -106,7 +110,12 @@ class KegController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       // dd($request->all());
+        $keg = PblKeg::find($id);
+        $keg->name = $request->name;
+        $keg->tahun_akademik = $request->tahun_akademik;
+        $keg->save();
+        return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil diupdate');
     }
 
     /**
@@ -114,13 +123,34 @@ class KegController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $keg = PblKeg::find($id);
+        $nilai = PblNilai::where('keg_id', $keg->id)->get();
+        foreach ($nilai as $nilai) {
+            $nilai->delete();
+        }
+        $peserta = PblPeserta::where('keg_id', $keg->id)->get();
+        foreach ($peserta as $peserta) {
+            $peserta->delete();
+        }
+        $kelompok = PblKelompok::where('keg_id', $keg->id)->get();
+        foreach ($kelompok as $kelompok) {
+            $kelompok->delete();
+
+        }
+        $mininote = PblMininote::where('keg_id', $keg->id)->get();
+        foreach ($mininote as $mininote) {
+            $mininote->delete();
+        }
+        $keg->delete();
+        return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil dihapus');
+
     }
 
     Public function aktif($id){
 
         $keg = PblKeg::find($id);
-        return view('pbl.keg.aktif', compact('keg'));
+        $sk = PblMininote::where('keg_id', $keg->id)->where('status', 1)->get();
+        return view('pbl.keg.aktif', compact('keg', 'sk'));
     }
 
     public function aktivate(Request $request){

@@ -7,9 +7,34 @@ use Illuminate\Http\Request;
 use App\Models\PblNilai;
 use App\Models\PblPeserta;
 use App\Models\PblMininote;
+use App\Models\PblKeg;
+use Illuminate\Support\Facades\Auth;
 
 class PblNilaiController extends Controller
 {
+    public function index(Request $request)
+    {
+        $search = $request->query('search');
+
+        // Ambil 1 team pertama milik user (atau null)
+        $team = Auth::user()?->teams()->first();
+
+        // Ambil daftar user id dalam team tsb (Collection kosong jika null)
+        $userIds = $team?->users()->pluck('users.id') ?? collect();
+
+        $keg = PblKeg::query()
+            ->when($search, function ($q, $s) {
+                return $q->where('name', 'like', "%{$s}%");
+            })
+            ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
+                return $q->whereIn('user_id', $userIds);
+            })
+            ->paginate(5);
+
+        return view('pbl.keg.nilai', compact('keg', 'search'));
+
+    }
+
     public function rekapKegiatan(int $keg)
         {
             $kegId = $keg;
@@ -80,8 +105,9 @@ class PblNilaiController extends Controller
 
                 $rerata[$p->id] = $count > 0 ? round($sum / $count, 2) : null;
             }
-
+            $pbl = PblKeg::find($kegId);
             return view('pbl.keg.nilailist', compact(
+                'pbl',
                 'kegId',
                 'skenarios',
                 'pertemuans',

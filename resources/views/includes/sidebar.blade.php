@@ -43,7 +43,20 @@
         @endcan
          @can('koc')
         <li class="xn-title">KA OSOCA</li>
-        <li class="{{ \Request::is('admin/nilai/*') || \Request::is('admin/nilai') ? 'active' : ''  }}"><a href="{{ route('admin.nilai.index')}}"><span class="fa fa-check-square-o"></span><span class="xn-text"> Nilai</span> </a></li>
+        <li class="xn-openable {{ \Request::is('pbl/*') || \Request::is('pbl/*') ? 'active' : ''  }}">
+            <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">PBL</span></a>
+            <ul>
+
+                 <li class="{{ \Request::is('pbl/nilai/*') || \Request::is('pbl/nilai') ? 'active' : ''  }}"><a href="{{ route('pbl.list.nilai')}}"><span class="fa fa-folder"></span><span class="xn-text"> NIlai PBL</span></a></li>
+            </ul>
+        </li>
+        <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">
+            <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">OSOCA</span></a>
+            <ul>
+                <li class="{{ \Request::is('admin/nilai/*') || \Request::is('admin/nilai') ? 'active' : ''  }}"><a href="{{ route('admin.nilai.index')}}"><span class="fa fa-check-square-o"></span><span class="xn-text"> Nilai Osoca</span> </a></li>
+            </ul>
+        </li>
+
         @endcan
         @can('materi')
         <li class="xn-title">Tim Materi</li>
@@ -69,6 +82,7 @@
             <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">PBL</span></a>
             <ul>
                 <li class="{{ \Request::is('pbl/harian/*') || \Request::is('pbl/harian') ? 'active' : ''  }}"><a href="{{ route('pbl.harian.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> PBL Harian</span></a></li>
+                 <li class="{{ \Request::is('pbl/nilai/*') || \Request::is('pbl/nilai') ? 'active' : ''  }}"><a href="{{ route('pbl.list.nilai')}}"><span class="fa fa-folder"></span><span class="xn-text"> NIlai PBL</span></a></li>
             </ul>
         </li>
         <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">
