@@ -99,6 +99,7 @@
                                                         <a href="{{ route("pbl.harian.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
                                                         @endcan
                                                         @can('meu')
+                                                         <a href="{{ route("pbl.harian.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
                                                         <a href="{{ route("pbl.harian.edit", $data->id)}}" class="btn btn-warning btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('pbl.harian.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
