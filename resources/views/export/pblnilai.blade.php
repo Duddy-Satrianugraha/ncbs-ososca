@@ -1,52 +1,13 @@
-@extends('layouts.app')
-
-@section('css')
-
-@endsection
-
-@section('breadcrumb')
-   <!-- START BREADCRUMB -->
-   <ul class="breadcrumb">
-    <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-    <li ><a href="{{ route('pbl.list.nilai')}}">Daftar PBL Harian</a></li>
-        <li class="active">Nilai PBL {{ $pbl->name }}</li>
-</ul>
-<!-- END BREADCRUMB -->
-@endsection
-@section('page-title')
-<div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Nilai Harian PBL Blok {{ $pbl->name }}</h2>
-</div>
-@endsection
-@section('content')
-
-  @php
+@php
     $pertemuans = [1, 2]; // FIXED: setiap skenario pasti 2 pertemuan
     $colSpanNilai = ($skenarios->count() * 2) + 1; // 2 pertemuan per skenario + kolom rerata
   @endphp
-<!-- START WIDGETS -->
-<div class="row">
-                    <!-- START RESPONSIVE TABLES -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">List Nilai Harian </h3>
-                                    <ul class="panel-controls">
-
-                                        <a href="{{ route('pbl.nilai.export', $pbl->id) }}" class="btn btn-primary btn-rounded btn-sm"><span class="fa fa-download"></span></a>
-                                    </ul>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-condensed ">
+ <table>
         <thead>
-          {{-- Judul besar --}}
           <tr>
             <th colspan="4"></th>
             <th colspan="{{ ($skenarios->count() * count($pertemuans)) + 1 }}" class="text-center">
-              Nilai Harian PBL
+              Nilai Harian PBL {{ $pbl->name }}
             </th>
           </tr>
 
@@ -63,7 +24,7 @@
               </th>
             @endforeach
 
-            <th rowspan="2" class="text-center" style="width:110px;">Rerata Nilai</th>
+            <th rowspan="2" class="text-center" style="width:110px;">Rerata Nilai </th>
           </tr>
 
           {{-- Header pertemuan --}}
@@ -120,25 +81,3 @@
           @endforelse
         </tbody>
       </table>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- END RESPONSIVE TABLES -->
-
-</div>
-<!-- END WIDGETS -->
-
-
-
-
-@endsection
-
-@section('javascript')
-
-@endsection

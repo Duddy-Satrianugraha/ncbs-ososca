@@ -141,11 +141,14 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::post('peserta/upload',[PblPesertaController::class, 'store_upload'])->name('peserta.store_upload');
     Route::get('peserta/{kid}/add',[PblPesertaController::class, 'create'])->name('peserta.add');
     Route::post('peserta/store',[PblPesertaController::class, 'store'])->name('peserta.store');
+    Route::get('edit/peserta/{pblPeserta}', [PblPesertaController::class, 'edit'])->name('peserta.edit');
+    Route::put('update/peserta/{pblPeserta}', [PblPesertaController::class, 'update'])->name('peserta.update');
     Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
     Route::get('aktif/{id}', [KegController::class, 'aktif'])->name('harian.aktif');
     Route::post('aktivate', [KegController::class, 'aktivate'])->name('harian.aktivate');
     Route::get('nilai', [PblNilaiController::class, 'index'])->name('list.nilai');
     Route::get('nilai/harian/{keg}', [PblNilaiController::class, 'rekapKegiatan'])->name('nilai.harian');
+    Route::get('nilai/export/{keg}', [PblNilaiController::class, 'nilai_export'])->name('nilai.export');
 
 });
 

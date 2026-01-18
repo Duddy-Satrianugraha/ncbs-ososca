@@ -75,17 +75,12 @@
                                                     <td class="text-center">{{$i}}</td>
                                                     <td>{{$data->nama_kelompok}}</td>
                                                     <td>{{$data->name}} </td>
-                                                    <td>{{$data->npm}} <br>
-                                                        @if(is_null($data->avatar))
-                                                                    <img src="{{ asset('img/nouserr.jpg')}}" alt="avatar" class="logo" style="height: 80px; border-radius: 10%; object-fit: cover;">
-                                                        @else
-                                                                    <img src="https://cbs-feed.flarology.my.id/f/{{ $data->qrpeserta }}/{{ $data->avatar }}" alt="avatar" class="logo" style="height: 80px; border-radius: 10%; object-fit: cover;">
-                                                         @endif
-
+                                                    <td>{{$data->npm}} 
                                                     </td>
 
 
                                                     <td>
+                                                        <a href="{{ route('pbl.peserta.edit', $data->id)}}" class="btn btn-primary btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
 
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('pbl.peserta.destroy', $data)}}" method="POST" style="display: inline;">
                                                             @csrf

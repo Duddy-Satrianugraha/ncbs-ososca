@@ -38,7 +38,7 @@ class PblPesertaController extends Controller
                 }
             });
         })
-        ->orderBy('id')
+        ->orderBy('kelompok_id', 'asc')
         ->paginate(40)
         ->appends(['search' => $search]); // agar nilai search ikut di pagination links
 
@@ -53,66 +53,13 @@ class PblPesertaController extends Controller
     public function create($kid)
     {
         $harian = PblKeg::findOrFail($kid);
-        return view('pbl.peserta.new', compact('harian'));
+        $kelompoks = PblKelompok::where('keg_id', $kid)->get();
+        return view('pbl.peserta.new', compact('harian', 'kelompoks'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-
-
-
-public function storexx(Request $request)
-    {
-        $validated = $request->validate([
-            'kid'      => ['required','integer', Rule::exists('pbl_kegs','id')],
-            'name'     => ['required','string','max:255'],
-            'npm'      => [
-                'required','numeric','digits:9',
-                Rule::unique('pbl_pesertas', 'npm')->where(fn($q) => $q->where('keg_id', $request->kid)),
-            ],
-            'kelompok' => ['required','integer', Rule::exists('pbl_kelompoks','id')],
-        ]);
-
-        try {
-            DB::transaction(function () use ($validated) {
-
-                // lock row kelompok supaya aman kalau insert barengan
-                $kelompok = PblKelompok::where('id', $validated['kelompok'])
-                    ->lockForUpdate()
-                    ->firstOrFail();
-
-                // insert peserta
-                PblPeserta::create([
-                    'keg_id'        => $validated['kid'],
-                    'name'          => $validated['name'],
-                    'npm'           => $validated['npm'],
-                    'kelompok'      => $kelompok->idkel,
-                    'nama_kelompok' => $kelompok->nama_kelompok,
-                    'qrpeserta'     => md5($validated['npm']),
-                ]);
-
-                // hitung ulang peserta DI KEGIATAN INI + kelompok ini
-                $jml = PblPeserta::where('keg_id', $validated['kid'])
-                    ->where('kelompok', $kelompok->idkel)
-                    ->count();
-
-                // update jml_peserta
-                $kelompok->update(['jml_peserta' => $jml]);
-            });
-
-            return redirect()
-                ->route('pbl.peserta.index', $validated['kid'])
-                ->with('msg', 'success-Peserta baru berhasil ditambahkan');
-
-        } catch (\Throwable $e) {
-            return redirect()
-                ->route('pbl.peserta.index', $validated['kid'])
-                ->with('msg', 'error-Peserta gagal ditambahkan: '.$e->getMessage());
-        }
-    }
-
-
 
     public function store(Request $request)
         {
@@ -179,7 +126,9 @@ public function storexx(Request $request)
      */
     public function edit(PblPeserta $pblPeserta)
     {
-        //
+        $harian = PblKeg::findOrFail($pblPeserta->keg_id);
+        $kelompoks = PblKelompok::where('keg_id', $pblPeserta->keg_id)->get();
+        return view('pbl.peserta.edit', compact('pblPeserta', 'harian', 'kelompoks'));
     }
 
     /**
@@ -187,7 +136,84 @@ public function storexx(Request $request)
      */
     public function update(Request $request, PblPeserta $pblPeserta)
     {
-        //
+    $validated = $request->validate([
+    'kid'         => ['required','integer', Rule::exists('pbl_kegs','id')],
+    'name'        => ['required','string','max:255'],
+    'npm'         => [
+        'required','numeric','digits:9',
+        Rule::unique('pbl_pesertas','npm')
+            ->ignore($pblPeserta->id)
+            ->where(fn($q) => $q->where('keg_id', $pblPeserta->keg_id)),
+    ],
+    'kelompok_id' => ['required','integer', Rule::exists('pbl_kelompoks','id')],
+    ]);
+
+    DB::transaction(function () use ($validated, $pblPeserta) {
+
+        $kegId = (int) $validated['kid'];
+
+        // lock keg
+        $keg = PblKeg::lockForUpdate()->findOrFail($kegId);
+
+        // lock kelompok baru
+        $newKelompok = PblKelompok::where('id', $validated['kelompok_id'])
+            ->where('keg_id', $kegId)
+            ->lockForUpdate()
+            ->firstOrFail();
+
+        // lock kelompok lama (kalau ada & beda)
+        $oldKelompokId = $pblPeserta->kelompok_id ? (int) $pblPeserta->kelompok_id : null;
+
+        $oldKelompok = null;
+        if ($oldKelompokId && $oldKelompokId !== (int)$newKelompok->id) {
+            $oldKelompok = PblKelompok::where('id', $oldKelompokId)
+                ->where('keg_id', $kegId)
+                ->lockForUpdate()
+                ->first();
+        }
+
+        // update data peserta
+        $pblPeserta->update([
+            'keg_id'        => $kegId,
+            'kelompok_id'   => (int) $newKelompok->id,
+            'name'          => $validated['name'],
+            'npm'           => $validated['npm'],
+            'qrpeserta'     => md5($validated['npm']),
+            // kolom transisi (boleh kamu hapus nanti kalau sudah bersih)
+            'kelompok'      => (int) $newKelompok->idkel,
+            'nama_kelompok' => $newKelompok->nama_kelompok,
+        ]);
+
+        // ===== sinkron jml_peserta kelompok baru =====
+        $newCount = PblPeserta::where('keg_id', $kegId)
+            ->where('kelompok_id', (int)$newKelompok->id)
+            ->count();
+
+        $newKelompok->update(['jml_peserta' => $newCount]);
+
+        // ===== sinkron kelompok lama (kalau pindah) =====
+        if ($oldKelompok) {
+            $oldCount = PblPeserta::where('keg_id', $kegId)
+                ->where('kelompok_id', (int)$oldKelompok->id)
+                ->count();
+
+            if ($oldCount <= 0) {
+                $oldKelompok->delete(); // hapus kelompok bila kosong
+            } else {
+                $oldKelompok->update(['jml_peserta' => $oldCount]);
+            }
+        }
+
+        // ===== sinkron jml_kelompok keg =====
+        $totalKelompok = PblKelompok::where('keg_id', $kegId)->count();
+        $keg->update(['jml_kelompok' => $totalKelompok]);
+    });
+
+    return redirect()
+        ->route('pbl.peserta.index', $validated['kid'])
+        ->with('msg', 'success-Data peserta berhasil diupdate');
+
+
     }
 
     /**
