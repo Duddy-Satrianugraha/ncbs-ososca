@@ -83,6 +83,7 @@
             <ul>
                 <li class="{{ \Request::is('pbl/harian/*') || \Request::is('pbl/harian') ? 'active' : ''  }}"><a href="{{ route('pbl.harian.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> PBL Harian</span></a></li>
                  <li class="{{ \Request::is('pbl/nilai/*') || \Request::is('pbl/nilai') ? 'active' : ''  }}"><a href="{{ route('pbl.list.nilai')}}"><span class="fa fa-folder"></span><span class="xn-text"> NIlai PBL</span></a></li>
+                 <li class="{{ \Request::is('pbl/ba/*') || \Request::is('pbl/ba') ? 'active' : ''  }}"><a href="{{ route('pbl.ba.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> Berita Acara PBL</span></a></li>
             </ul>
         </li>
         <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">

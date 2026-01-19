@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pbl_kegs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('blok_name');
             $table->string('jml_sk');
             $table->string('tahun_akademik');
             $table->string('jml_kelompok')->nullable();

@@ -7,6 +7,7 @@ use App\Http\Controllers\pbl\KegController;
 use App\Http\Controllers\pbl\MininoteController;
 use App\Http\Controllers\pbl\PblController;
 use App\Http\Controllers\pbl\PblNilaiController;
+use App\Http\Controllers\pbl\BaController;
 use App\Http\Controllers\PblPesertaController;
 
 use App\Http\Controllers\OsocaController;
@@ -149,6 +150,8 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('nilai', [PblNilaiController::class, 'index'])->name('list.nilai');
     Route::get('nilai/harian/{keg}', [PblNilaiController::class, 'rekapKegiatan'])->name('nilai.harian');
     Route::get('nilai/export/{keg}', [PblNilaiController::class, 'nilai_export'])->name('nilai.export');
+    Route::get('ba', [BaController::class, 'index'])->name('ba.index');
+    Route::get('ba/detail/{id}', [BaController::class, 'detail'])->name('ba.detail');
 
 });
 

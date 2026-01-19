@@ -14,15 +14,16 @@ class PblKegsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('pbl_kegs')->delete();
-        
+
         \DB::table('pbl_kegs')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Blok 1.2',
+                'blok_name' => 'Human Body and Locomotor System',
                 'jml_sk' => '5',
                 'tahun_akademik' => '2025/2026',
                 'jml_kelompok' => '18',
@@ -33,7 +34,7 @@ class PblKegsTableSeeder extends Seeder
                 'updated_at' => '2026-01-17 06:57:57',
             ),
         ));
-        
-        
+
+
     }
 }

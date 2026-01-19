@@ -63,9 +63,11 @@ class KegController extends Controller
         ]);
         try{
             DB::beginTransaction();
+        $blok = explode('|', $request->name);
 
         $keg = new PblKeg();
-        $keg->name = $request->name;
+        $keg->name = $blok[0];
+        $keg->blok_name = $blok[1];
         $keg->tahun_akademik = $request->tahun_akademik;
         $keg->jml_sk = $request->jml_sk;
         $keg->user_id = Auth::user()->id;
@@ -111,8 +113,11 @@ class KegController extends Controller
     public function update(Request $request, string $id)
     {
        // dd($request->all());
+        $blok = explode('|', $request->name);
+
         $keg = PblKeg::find($id);
-        $keg->name = $request->name;
+        $keg->name = $blok[0];
+        $keg->blok_name = $blok[1];
         $keg->tahun_akademik = $request->tahun_akademik;
         $keg->save();
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil diupdate');
