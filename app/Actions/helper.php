@@ -78,6 +78,67 @@ if (!function_exists('tgl_indo')) {
         $hasil = "$tgl " . $namaBulan[$bln] . " $thn";
         return $denganHari ? "$hari, $hasil" : $hasil;
     }
+    }
+
+    if (!function_exists('tgl_indox')) {
+    /**
+     * Helper format tanggal Indonesia + opsi potongan.
+     *
+     * Contoh:
+     * tgl_indo('2025-01-20')                  => "20 Januari 2025"
+     * tgl_indo('2025-01-20', true)            => "Senin, 20 Januari 2025"
+     * tgl_indo('2025-01-20', false, 'ho')     => "Senin"
+     * tgl_indo('2025-01-20', false, 'bo')     => "Januari"
+     * tgl_indo('2025-01-20', false, 'to')     => "2025"
+     * tgl_indo('2025-01-20 14:35', false,'jo')=> "14:35"
+     * tgl_indo('2025-01-20', false, 'tto')    => "20 Januari 2025"
+     */
+    function tgl_indox($tanggal, $denganHari = false, $opsi = null, $formatJam = 'H:i')
+    {
+        if (!$tanggal) return '';
+
+        $namaHari = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu',
+        ];
+
+        $namaBulan = [
+            1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        $timestamp = strtotime($tanggal);
+        if (!$timestamp) return '';
+
+        $hariEng = date('l', $timestamp);
+        $hari = $namaHari[$hariEng] ?? '';
+        $tgl  = date('j', $timestamp);
+        $bln  = (int) date('n', $timestamp);
+        $thn  = date('Y', $timestamp);
+        $jam  = date($formatJam, $timestamp);
+
+        $tanggalIndo = $tgl . ' ' . ($namaBulan[$bln] ?? '') . ' ' . $thn;
+
+        // Normalisasi opsi
+        $opsi = $opsi ? strtolower(trim($opsi)) : null;
+
+        // Mode opsi khusus
+        if ($opsi === 'ho') return $hari;                 // hari saja
+        if ($opsi === 'bo') return $namaBulan[$bln] ?? ''; // bulan saja
+        if ($opsi === 'to') return $thn;                  // tahun saja
+        if ($opsi === 'jo') return $jam;                  // jam saja
+        if ($opsi === 'tto') return $tanggalIndo;         // tanggal indo saja
+
+        // Default behavior (seperti sebelumnya)
+        return $denganHari ? "{$hari}, {$tanggalIndo}" : $tanggalIndo;
+    }
+}
+
 
     if (!function_exists('wrap_range')) {
         function wrap_range($start, $max) {
@@ -96,6 +157,50 @@ if (!function_exists('tgl_indo')) {
             return $result;
         }
     }
+
+    if (!function_exists('jam_sesi')) {
+    /**
+     * Jika timestamp masuk ke rentang A (acuan), maka return rentang B (custom).
+     *
+     * Contoh mapping:
+     * 08:00-10:00 (acuan) -> 08:00-09:40 (output)
+     */
+    function jam_sesi($datetime)
+    {
+        if (!$datetime) return '';
+
+        $timestamp = strtotime($datetime);
+        if (!$timestamp) return '';
+
+        $menit = (int) date('H', $timestamp) * 60 + (int) date('i', $timestamp);
+
+        // [acuan_mulai, acuan_selesai, output_mulai, output_selesai]
+        $maps = [
+            ['08:00', '10:00', '08:00', '09:40'],
+            ['10:00', '12:00', '10:00', '11:40'], // <- contoh, silakan ubah
+            ['13:00', '15:00', '13:00', '14:40'], // <- contoh, silakan ubah
+            ['15:00', '17:00', '15:00', '16:40'], // <- contoh, silakan ubah
+        ];
+
+        foreach ($maps as [$aMulai, $aSelesai, $oMulai, $oSelesai]) {
+            [$mh, $mm] = array_map('intval', explode(':', $aMulai));
+            [$sh, $sm] = array_map('intval', explode(':', $aSelesai));
+
+            $start = $mh * 60 + $mm;
+            $end   = $sh * 60 + $sm;
+
+            // interval kiri tertutup, kanan terbuka
+            if ($menit >= $start && $menit < $end) {
+                return str_replace(':', '.', $oMulai)
+                    . ' - '
+                    . str_replace(':', '.', $oSelesai);
+            }
+        }
+
+        return 'Di luar sesi';
+    }
+}
+
 
     if (!function_exists('wrap_range_reverse')) {
         function wrap_range_reverse($start, $max) {
@@ -185,4 +290,4 @@ if (!function_exists('feedparser')){
             return strtoupper($s);              // samakan kapital
         };
     }
-}
+

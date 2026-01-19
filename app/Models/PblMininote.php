@@ -17,4 +17,9 @@ class PblMininote extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function beritaa()
+    {
+        return $this->hasMany(PblBa::class, 'sk_id');
+    }
 }

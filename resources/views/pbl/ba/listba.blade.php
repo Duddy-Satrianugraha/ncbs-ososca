@@ -52,8 +52,8 @@
                                                 @foreach ($ba as $data)
                                                 <tr id="trow_{{$i}}">
                                                     <td class="text-center">{{$i}}</td>
-                                                    <td>{{$data->kelompok_id}}</td>
-                                                    <td>{{ $data->sk_id}} ({{ $data->pertemuan }})</td>
+                                                    <td>{{$data->kelompok->nama_kelompok}}</td>
+                                                    <td>Skenario {{ $data->sks->nomor_sk}} ( Pertemuan {{ $data->pertemuan }})</td>
 
 
                                                     @can('admin')
@@ -62,7 +62,8 @@
                                                     <td>
 
                                                         @can('admin')
-                                                        <a href="{{ route("pbl.peserta.index", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
+                                                        <a href="{{ route("pbl.ba.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                        <a href="{{ route("pbl.ba.pdf", $data->id)}}" class="btn btn-danger btn-rounded btn-sm" target="_blank"><span class="fa fa-download"></span></a>
                                                         @endcan
                                                     </td>
                                                 </tr>

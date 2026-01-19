@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\pbl;
 
 use App\Http\Controllers\Controller;
+use App\Models\Openguji;
 use App\Models\PblKeg;
 use App\Models\PblBa;
+use App\Models\PblNilai;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -37,6 +39,16 @@ class BaController extends Controller
         $ba = PblBa::where('keg_id', $id)->paginate(10);
         $keg = PblKeg::find($id);
         return view('pbl.ba.listba', compact('ba', 'keg'));
+    }
+
+    public function beritaacara(int $id){
+        $ba = PblBa::find($id);
+        $keg = PblKeg::find($ba->keg_id);
+        $tutor = Openguji::find($ba->tutor_id);
+        $nilai = PblNilai::where('keg_id', $ba->keg_id)->where('kelompok_id', $ba->kelompok_id)->where('skenario_id', $ba->sk_id)->where('pertemuan', $ba->pertemuan)->get();
+
+
+        return view('pbl.ba.beritaacara', compact('ba', 'keg', 'nilai','tutor'));
     }
 
 }

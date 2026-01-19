@@ -12,6 +12,10 @@ use App\Models\Oujian;
 use App\Models\PblKeg;
 use App\Models\PblKelompok;
 use App\Models\PblMininote;
+use App\Models\PblBa;
+use App\Models\PblNilai;
+use App\Models\Openguji;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -176,6 +180,16 @@ class PdfController extends Controller
         $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.skenario', compact('skenario', 'keg'))
         ->setPaper('A4', 'portrait');
         return $pdf->stream('skenario_'.$skenario->nomor_sk.'_Blok'.$keg->name.'.pdf');
+    }
+
+    public function pdfba(string $id){
+        $ba = PblBa::find($id);
+        $keg = PblKeg::find($ba->keg_id);
+        $tutor = Openguji::find($ba->tutor_id);
+        $nilai = PblNilai::where('keg_id', $ba->keg_id)->where('kelompok_id', $ba->kelompok_id)->where('skenario_id', $ba->sk_id)->where('pertemuan', $ba->pertemuan)->get();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.ba', compact('ba', 'keg', 'nilai','tutor'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('ba_'.$keg->name.'_sk'.$ba->sks->nomor_sk.'_'.$ba->pertemuan.'.pdf');
     }
 
 }

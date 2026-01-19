@@ -16,4 +16,7 @@ class PblKelompok extends Model
         {
             return $this->hasMany(PblPeserta::class, 'kelompok_id');
         }
+    public function beritaa(){
+        return $this->hasMany(PblBa::class, 'kelompok_id');
+        }
 }

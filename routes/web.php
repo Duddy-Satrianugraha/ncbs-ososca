@@ -152,6 +152,8 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('nilai/export/{keg}', [PblNilaiController::class, 'nilai_export'])->name('nilai.export');
     Route::get('ba', [BaController::class, 'index'])->name('ba.index');
     Route::get('ba/detail/{id}', [BaController::class, 'detail'])->name('ba.detail');
+    Route::get('ba/show/{id}', [BaController::class, 'beritaacara'])->name('ba.show');
+    Route::get('ba/pdf/{id}', [PdfController::class, 'pdfba'])->name('ba.pdf');
 
 });
 
