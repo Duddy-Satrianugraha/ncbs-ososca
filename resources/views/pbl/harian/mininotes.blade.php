@@ -435,6 +435,9 @@
         <tr><td class="term">Sopan santun</td><td class="colon">:</td><td>menunjukkan perilaku saling menghormati satu sama lain</td></tr>
       </table>
     </div>
+     <hr>
+     <h5>Hal yang perlu dilaporkan selama tutorial berlangsung</h5>
+     <textarea name="BA" id="BA" style="width:100%; height:200px;" placeholder="Mohon tulis disini"></textarea>
         <hr>
         <div class="nav-action">
   <a href="{{ route('kegiatan_pbl.logout') }}" class="btn btn-danger">

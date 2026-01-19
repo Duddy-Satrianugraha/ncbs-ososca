@@ -8,6 +8,7 @@ use App\Models\PblKelompok;
 use App\Models\PblMininote;
 use App\Models\PblPeserta;
 use App\Models\Openguji;
+use App\Models\PblBa;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\PblNilai;
@@ -62,7 +63,7 @@ class PblController extends Controller
     }
 
     public function nilaiinput(Request $request){
-       // dd($request->all());
+        //dd($request->all());
             $request->validate([
                 'nilai' => ['required', 'array'],
 
@@ -87,10 +88,11 @@ class PblController extends Controller
                 'nilai.*.dominasi'   => ['nullable', Rule::in([0, -3, -5])],
                 'nilai.*.disiplin'   => ['nullable', Rule::in([0, -3, -5])],
                 'nilai.*.sopan'      => ['nullable', Rule::in([0, -3, -5])],
+                'BA'                 => ['nullable', 'string'],
             ]);
 
             DB::transaction(function () use ($request) {
-
+                $counthadir = 0;
                 foreach ($request->nilai as $pesertaId => $n) {
 
                     // jika tidak hadir → semua nilai 0
@@ -140,6 +142,7 @@ class PblController extends Controller
                             'sopan'        => $sopan,
                             'total'        => $total,
                         ];
+                        $counthadir++;
                     }
 
                     // SIMPAN / UPDATE
@@ -155,9 +158,25 @@ class PblController extends Controller
                         $payloadNilai
                     );
                 }
+                $datanil = $request->input('nilai');
+                $firstNilai = reset($datanil);
+               // dd($firstNilai);
+                PblBa::create(
+                    [
+                        'keg_id'       => $firstNilai['blok'],
+                        'kelompok_id'  => $firstNilai['kelompok'],
+                        'sk_id'        => $firstNilai['skenario'],
+                        'pertemuan'   => $firstNilai['pertemuan'],
+                        'tutor_id'    => $firstNilai['tutor'] ?? null,
+                        'jml_peserta' => $counthadir,
+                        'ba'          => $request->BA,
+
+                    ]
+                );
+
             });
             session()->flush();
-            return redirect(route('pbl.login'));
+            return redirect(route('pbl.login'))->with('msg', 'success-Nilai Harian berhasil disimpan');
         }
 
 
