@@ -43,8 +43,9 @@
                         <label class="col-md-2 col-xs-12 control-label">Skenario</label>
                         <div class="col-md-8 col-xs-12">
                             <select class="form-control" name="sk_aktif">
+                                <option value =0 >Non Aktif</option>
                                 @foreach($sk as $data)
-                                <option value="{{$data->id}}">skenario {{$data->nomor_sk}}  :  {{$data->judul_sk}}</option>
+                                <option value="{{$data->id}}" @if($data->id == $keg->sk_aktif) selected @endif > SK {{ $data->nomor_sk }} {{ $data->judul_sk }}</option>
                                 @endforeach
                             </select>
                             <small class="text">pilih skenario yang akan diaktifkan</small>
@@ -55,8 +56,9 @@
                         <label class="col-md-2 col-xs-12 control-label">Pertemuan </label>
                         <div class="col-md-8 col-xs-12">
                             <select class="form-control" name="pertemuan">
-                                <option value="1">Pertemuan 1</option>
-                                <option value="2">Pertemuan 2</option>
+                                <option value =0 >Non Aktif</option>
+                                <option value="1" @if($keg->pertemuan == 1) selected @endif>Pertemuan 1</option>
+                                <option value="2" @if($keg->pertemuan == 2) selected @endif>Pertemuan 2</option>
                             </select>
                             <small class="text">pilih pertemuan yang akan diaktifkan</small>
                         </div>

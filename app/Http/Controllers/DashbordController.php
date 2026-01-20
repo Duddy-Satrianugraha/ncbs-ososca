@@ -186,7 +186,7 @@ class DashbordController extends Controller
         $kelompok = PblKelompok::where('qr_kelompok', $soal_slug)->first();
 
         if($kelompok){
-            if($kelompok->kegpbl->sk_aktif == null){
+            if($kelompok->kegpbl->sk_aktif == 0){
                 return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
             } else {
                 session([
