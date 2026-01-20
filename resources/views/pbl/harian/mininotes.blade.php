@@ -249,6 +249,15 @@
     background:#fff8d9 !important;
     border:2px dashed #f1c40f !important;
   }
+  .table-scroll{
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth di mobile */
+    }
+
+    .rubrik{
+    min-width: 1000px; /* paksa tabel lebih lebar dari layar */
+    }
   </style>
 
 </head>
