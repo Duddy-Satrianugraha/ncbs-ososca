@@ -63,6 +63,27 @@ class PdfController extends Controller
         //return view('admin.pdf.station', compact('stations'));
     }
 
+    public function linlkel($kid)
+    {
+        $keg = PblKeg::find($kid);
+        $kelompok = PblKelompok::where('keg_id', $kid)->get()->sortBy('nama_kelompok');
+        $stations = collect();
+
+        foreach ($kelompok as $data) {
+            $station = new \stdClass; // Atau bisa pakai array jika lebih nyaman
+            $station->pbl = $keg->name ?? null;
+            $station->kels = $data->nama_kelompok ?? null;
+            $station->slug = $data->qr_kelompok;
+            $stations->push($station);
+        }
+        //dd($stations);
+       $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.pbl_linkkel', compact('stations'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
+        //return view('admin.pdf.station', compact('stations'));
+    }
+
+
     public function stationX(Sesi $sesi)
     {
         $soal = Soal::where('sesi_id', $sesi->id)->get();

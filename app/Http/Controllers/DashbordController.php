@@ -186,22 +186,51 @@ class DashbordController extends Controller
         $kelompok = PblKelompok::where('qr_kelompok', $soal_slug)->first();
 
         if($kelompok){
-            if($kelompok->kegpbl->sk_aktif == 0){
-                return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
-            } else {
-                session([
-                    'pblKelompok' => $kelompok->id,
-                    'kegiatan_pbl' => $kelompok->kegpbl->id,
-                    'skenario' => $kelompok->kegpbl->sk_aktif,
-                    'pertemuan' => $kelompok->kegpbl->pertemuan,
-                ]);
-                return redirect(route('kegiatan_pbl.tutor'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu tutor');
+                    if($kelompok->kegpbl->sk_aktif == 0){
+                        return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
+                    } else {
+                        session([
+                            'pblKelompok' => $kelompok->id,
+                            'kegiatan_pbl' => $kelompok->kegpbl->id,
+                            'skenario' => $kelompok->kegpbl->sk_aktif,
+                            'pertemuan' => $kelompok->kegpbl->pertemuan,
+                        ]);
+                        return redirect(route('kegiatan_pbl.tutor'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu tutor');
+                }
+            }
         }
-    }
+    public function pblkelcari($slug)
+        {
+            $kelompok = PblKelompok::with('kegpbl')
+                ->where('qr_kelompok', $slug)
+                ->first();
 
+            // jika QR tidak ditemukan
+            if (!$kelompok) {
+                abort(404);
+            }
 
+            // jika relasi kegiatan tidak ada
+            if (!$kelompok->kegpbl) {
+                abort(404);
+            }
 
+            // jika skenario belum aktif
+            if ($kelompok->kegpbl->sk_aktif == 0) {
+              abort(404);
+            }
 
+            // simpan session
+            session([
+                'pblKelompok'  => $kelompok->id,
+                'kegiatan_pbl' => $kelompok->kegpbl->id,
+                'skenario'     => $kelompok->kegpbl->sk_aktif,
+                'pertemuan'    => $kelompok->kegpbl->pertemuan, 
+            ]);
 
+            return redirect()
+                ->route('kegiatan_pbl.tutor')
+                ->with('msg', 'success-Selamat datang dok, silakan scan kartu tutor');
         }
+
 }

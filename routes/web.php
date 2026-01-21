@@ -53,6 +53,7 @@ Route::post('/scan/peserta', [DashbordController::class, 'pscan'])->name('pesert
 
 Route::get('/login/pbl', [DashbordController::class, 'pbllogin'])->name('pbl.login');
 Route::post('/scan/pbl', [DashbordController::class, 'pblscan'])->name('pbl.scan');
+Route::get('/p/{slug}', [DashbordController::class, 'pblkelcari'])->name('pbl.link');
 
 Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth', ])->name('dashbord');
 Route::get('/admin/power/destroy',[PowerController::class, 'destroy'])->name('admin.powerdown');
@@ -86,6 +87,7 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::get('/kartu/peserta/{uid}', [PdfController::class, 'listpeserta'])->name('pdf.peserta');
     Route::get('/kartu/station/{uid}', [PdfController::class, 'station'])->name('pdf.station');
     Route::get('/kartu/kelompok/{kid}', [PdfController::class, 'kelompok'])->name('pdf.kelompok');
+    Route::get('/kartu/linkkel/{kid}', [PdfController::class, 'linlkel'])->name('pdf.linkkel');
     Route::get('/kartu/skenario/{id}', [PdfController::class, 'skenario'])->name('pdf.skenario');
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
