@@ -37,7 +37,7 @@ Route::get('/feedback', function () {
     return view('oumpan.login');
 });
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('dashbord');
 });
 
 Route::post('/feedback', [OfeedbackController::class, 'chek_feed'])->name('feedback.chek');
@@ -67,6 +67,7 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/roles', RoleController::class);
     Route::get('/power/{id}', [PowerController::class, 'index'])->name('powerup');
     Route::resource('/options', OptionController::class);
+    Route::get('repas/{user}', [AdminController::class, 'repas'])->name('repas');
 
     Route::resource('/templates', OtemplateController::class);
     Route::get('/templates/soal/{id}', [OtemplateController::class, 'soal'])->name('templates.soal');
@@ -92,13 +93,20 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
     Route::get('/export/feedback/{uid}', [OfeedbackController::class, 'kirim_feedback'])->name('kirim.feedback');
-    Route::resource('/penguji', OpengujiController::class);
-    Route::post('/print/penguji', [OpengujiController::class, 'print'])->name('penguji.print');
-    Route::post('/massdelete/penguji', [OpengujiController::class, 'massDelete'])->name('penguji.massdelete');
+
+
+
 
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
     Route::post('/media/upload', [MediaController::class, 'store'])->name('media.upload');
     Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+});
+
+Route::prefix('tutor')->middleware(['auth', Panitia::class ])->name('tutor.')->group( function (){
+    Route::resource('/penguji', OpengujiController::class);
+    Route::post('/print/penguji', [OpengujiController::class, 'print'])->name('penguji.print');
+    Route::post('/massdelete/penguji', [OpengujiController::class, 'massDelete'])->name('penguji.massdelete');
+    Route::get('/qr/{openguji}', [OpengujiController::class, 'qrshow'])->name('penguji.qr');
 });
 
 Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( function (){

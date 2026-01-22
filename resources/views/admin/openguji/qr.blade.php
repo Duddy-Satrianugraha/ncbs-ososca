@@ -9,13 +9,13 @@
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
     <li ><a href="{{ route('tutor.penguji.index')}}">Daftar Tutor/Penguji</a></li>
-        <li class="active">Tutor/Penguji Baru</li>
+        <li class="active">QR Tutor/Penguji</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Tutor /Penguji Baru</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> QR Tutor/Penguji</h2>
 </div>
 @endsection
 @section('content')
@@ -24,7 +24,6 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('tutor.penguji.create') }}" method="POST" >
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>Tutor/Penguji</strong>Baru</h3>
@@ -35,21 +34,15 @@
             <div class="panel-body">
             </div>
             <div class="panel-body form-group-separated">
-                    @csrf
 
-                <div class="form-group">
-                    <label class="col-md-3 col-xs-12 control-label">Untuk Tutor/ Penguji yang belum memiliki NIK</label>
-                    <div class="col-md-6 col-xs-12">
-                       Gunakan format: 99, (2 digit tahun lahir) (urutan 4 digit) contoh 99830001
-                    </div>
-                </div>
+            <div class="form-horizontal" >
 
                 <div class="form-group">
                     <label class="col-md-3 col-xs-12 control-label">Nama</label>
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}"/>
+                            <input type="text" name="nama" class="form-control" value="{{ $openguji->nama }}"/>
                         </div>
                     </div>
                 </div>
@@ -59,18 +52,26 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                            <input type="text" name="nik" class="form-control" value="{{ old('nik') }}"/>
+                            <input type="text" name="nik" class="form-control" value="{{ $openguji->nik }}"/>
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-md-3 col-xs-12 control-label">Qr Code</label>
+                    <div class="col-md-6 col-xs-12">
+                      <img src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->size(300)->generate($openguji->qr_penguji)) }}" alt="QR Code">
+                    </div>
+                </div>
+
+
+             </div>
             </div>
             <div class="panel-footer">
                 <a href="{{ route('tutor.penguji.index')}}" class="btn btn-default">Return</a>
-                <button type="submit"  class="btn btn-primary pull-right">Submit</button>
+
             </div>
         </div>
 
-        </form>
     </div>
 </div>
 <!-- END WIDGETS -->

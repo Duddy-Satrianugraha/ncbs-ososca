@@ -142,4 +142,11 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->back()->with('msg', 'success-User deleted');
     }
+
+    public function repas(User $user)
+    {
+        $user->password = Hash::make("buka");
+        $user->save();
+        return redirect()->back()->with('msg', 'success-Password reset '.$user->name);
+    }
 }

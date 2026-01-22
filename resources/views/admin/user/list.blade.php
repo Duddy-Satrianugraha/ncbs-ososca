@@ -58,6 +58,7 @@
                                                     <td>{{$data->created_at}}</td>
                                                     <td>@can('ultraman')
                                                         <a href="{{ route("admin.powerup", $data->id)}}" class="btn btn-default btn-rounded btn-sm"><span class="fa fa-eye"></span></a>
+                                                        <a href="{{ route("admin.repas", $data->id)}}" class="btn btn-default btn-rounded btn-sm"><span class="fa fa-refresh"></span></a>
                                                         @endcan
                                                         <a href="{{ route("admin.users.edit", $data->id)}}" class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
                                                         <form id="del-user-{{$data->id}}" action="{{ route('admin.users.destroy', $data->id)}}" method="POST" style="display: inline;">
