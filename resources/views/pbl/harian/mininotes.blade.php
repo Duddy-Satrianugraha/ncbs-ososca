@@ -606,12 +606,15 @@
     function updateSubmitButton() {
         const pendingCount = document.querySelectorAll('.nilai-pending').length;
         const invalidCount = document.querySelectorAll('.invalid-value').length;
+        const ba = document.getElementById('BA');
+        const baEmpty = !ba || ba.value.trim() === '';
+
 
         const btn = document.getElementById('btn-simpan');
         if (!btn) return;
 
         // disable jika masih ada pending atau invalid
-        btn.disabled = (pendingCount > 0 || invalidCount > 0);
+        btn.disabled = (pendingCount > 0 || invalidCount > 0 || baEmpty);
         }
 
   function updateRow(row) {
@@ -685,11 +688,19 @@
   });
 
   document.addEventListener('input', function (e) {
-    if (!e.target.classList.contains('nilai-field')) return;
-    const row = e.target.closest('tr');
-    if (row) updateRow(row);
-  });
+  // input nilai
+    if (e.target.classList.contains('nilai-field')) {
+        const row = e.target.closest('tr');
+        if (row) updateRow(row);
+        return;
+    }
 
+    // input BA
+    if (e.target.id === 'BA') {
+        updateSubmitButton();
+        return;
+    }
+    })
   // init semua baris saat load
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('tbody tr').forEach(row => updateRow(row));
