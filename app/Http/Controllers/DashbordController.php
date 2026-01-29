@@ -182,8 +182,10 @@ class DashbordController extends Controller
             },
         ],
         ]);
-        $soal_slug = $request->soal_slug;
-        $kelompok = PblKelompok::where('qr_kelompok', $soal_slug)->first();
+          $parts = explode('/', rtrim($request->soal_slug, '/'));
+            $token = end($parts);
+
+        $kelompok = PblKelompok::where('qr_kelompok', $token)->first();
 
         if($kelompok){
                     if($kelompok->kegpbl->sk_aktif == 0){
@@ -201,6 +203,7 @@ class DashbordController extends Controller
         }
     public function pblkelcari($slug)
         {
+
             $kelompok = PblKelompok::with('kegpbl')
                 ->where('qr_kelompok', $slug)
                 ->first();
@@ -225,7 +228,7 @@ class DashbordController extends Controller
                 'pblKelompok'  => $kelompok->id,
                 'kegiatan_pbl' => $kelompok->kegpbl->id,
                 'skenario'     => $kelompok->kegpbl->sk_aktif,
-                'pertemuan'    => $kelompok->kegpbl->pertemuan, 
+                'pertemuan'    => $kelompok->kegpbl->pertemuan,
             ]);
 
             return redirect()
