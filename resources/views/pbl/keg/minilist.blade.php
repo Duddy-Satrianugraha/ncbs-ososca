@@ -63,7 +63,7 @@
                                                         <a href="{{ route("pbl.harian.mininotes", $data->id)}}" class="badge badge-info"> Mininote</a>
                                                         <a href="{{route('pbl.harian.mininotes.act', $data->id) }}" class="badge badge-secondary" onclick="return confirm('Apakah Anda yakin ingin memfinalisasi mininotes ini?');"> Draft </a>
                                                         @else
-                                                        <a class="badge badge-info"> Final </a>
+                                                        <a href="{{route('pbl.harian.mininotes.act', $data->id) }}" class="badge badge-info"> Final </a>
                                                         @endif
                                                     </td>
                                                      @endcan

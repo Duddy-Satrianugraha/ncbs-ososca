@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Media extends Model
 {
    protected $fillable = [
-        'user_id','disk','path','token','original_name','mime','size'
+       'user_id','disk','path','token','original_name','mime','size', 'paket_id', 'order', 'tipe',
     ];
 
     protected $appends = ['display_url','filename'];

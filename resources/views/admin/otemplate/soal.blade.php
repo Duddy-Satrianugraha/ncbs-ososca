@@ -29,6 +29,9 @@
             <form class="form-horizontal" action="{{ route('admin.templates.soal.update', $otemplate->id) }}" method="POST">
                 @csrf
                 @method('put')
+                 <input type="hidden" name="paket_id" id="paket_id" value="{{ $otemplate->id }}">
+                <input type="hidden" name="order" id="order" value="{{ $otemplate->nomor_station }}">
+                <input type="hidden" name="tipe" id="tipe" value="osoca">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Soal Peserta </strong> Peserta</h3>
@@ -214,7 +217,14 @@ $(".summernote_osin_pic").summernote({
 function uploadSummernoteImage(file, $editor) {
   var formData = new FormData();
   formData.append('image', file);
-
+    const paketInput = document.getElementById('paket_id');
+    const orderInput = document.getElementById('order');
+    const tipeInput = document.getElementById('tipe');
+     if (paketInput) {
+      formData.append('paket_id', paketInput.value);
+      formData.append('order', orderInput.value);
+      formData.append('tipe', tipeInput.value);
+    }
   $.ajax({
     url: "{{ route('admin.media.upload') }}",
     method: "POST",
@@ -229,9 +239,7 @@ function uploadSummernoteImage(file, $editor) {
       $editor.summernote('restoreRange');
       $editor.summernote('focus');
 
-      $editor.summernote('insertImage', res.url, function ($image) {
-        $image.attr('alt', file.name);
-      });
+     $editor.summernote('insertImage', res.url);
 
       $editor.summernote('saveRange');
     },

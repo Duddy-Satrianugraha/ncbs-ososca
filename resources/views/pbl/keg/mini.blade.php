@@ -233,6 +233,14 @@ $(".summernote_osin_pic").summernote({
 function uploadSummernoteImage(file, $editor) {
   var formData = new FormData();
   formData.append('image', file);
+    const paketInput = document.getElementById('paket_id');
+    const orderInput = document.getElementById('order');
+    const tipeInput = document.getElementById('tipe');
+     if (paketInput) {
+      formData.append('paket_id', paketInput.value);
+      formData.append('order', orderInput.value);
+      formData.append('tipe', tipeInput.value);
+    }
 
   $.ajax({
     url: "{{ route('admin.media.upload') }}",
@@ -248,9 +256,7 @@ function uploadSummernoteImage(file, $editor) {
       $editor.summernote('restoreRange');
       $editor.summernote('focus');
 
-      $editor.summernote('insertImage', res.url, function ($image) {
-        $image.attr('alt', file.name);
-      });
+      $editor.summernote('insertImage', res.url);
 
       $editor.summernote('saveRange');
     },

@@ -59,7 +59,7 @@ Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth
 Route::get('/admin/power/destroy',[PowerController::class, 'destroy'])->name('admin.powerdown');
 Route::post('/profile/photo', [ProfileContoller::class, "updatePhoto"])->middleware('auth')->name('profile.photo.update');
 Route::resource('/profile', ProfileContoller::class)->middleware(['auth', ]);
-Route::get('/f/{token}/{filename}', [MediaController::class, 'showPrivate'])
+Route::get('/f/{token}', [MediaController::class, 'showPrivate'])
     ->name('mfile');
 
 Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->group( function (){

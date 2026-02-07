@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\PblKeg;
+use App\Models\Otemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 class MediaController extends Controller
 {
@@ -39,30 +41,46 @@ class MediaController extends Controller
     {
          $request->validate([
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:4096'],
+            'paket_id' => 'required|integer',
+            'order' => 'required|integer',
+            'tipe' => 'required|string',
+
+        ]);
+         if ($request->tipe == 'pbl') {
+            $paketSoal = PblKeg::findOrFail($request->paket_id);
+            $title = $paketSoal->name;
+        } else {
+            $paketSoal = Otemplate::findOrFail($request->paket_id);
+            $title = $paketSoal->nama_template;
+        }
+         // sanitasi nama folder
+        $folderName = Str::slug($title) . '-' . $paketSoal->id;
+
+        $path = $request->file('image')
+            ->store("media/{$folderName}", 'private');
+
+        $token = Str::random(40);
+        $file = $request->file('image');
+
+        $media = Media::create([
+            'paket_id'       => $paketSoal->id,
+            'order'          => $request->order,
+            'tipe'           => $request->tipe,
+            'token'          => $token,
+            'disk'           => 'private',
+            'path'           => $path,
+            'original_name'  => $file->getClientOriginalName(),
+            'mime'           => $file->getMimeType(),
+            'size'           => $file->getSize(),
         ]);
 
-        $file = $request->file('image');
-        $path = $file->store('media', 'private'); // storage/app/public/media/...
-        $token = Str::random(40);
-        $media = Media::create([
-            'user_id' => Auth::id(), // nullable kalau public
-            'token' => $token,
-            'disk' => 'private',
-            'path' => $path,
-            'original_name' => $file->getClientOriginalName(),
-            'mime' => $file->getMimeType(),
-            'size' => $file->getSize(),
-        ]);
 
         // penting: balikkan URL agar bisa di-insert ke text/editor
-        $url = route('mfile', [
-        'token' => $media->token,
-        'filename' => basename($media->path),
-        ]);
+
 
         return response()->json([
             'id'  => $media->id,
-            'url' => $url,
+          'url' => '/f/'.$media->token,
         ]);
 
     }
@@ -105,7 +123,7 @@ class MediaController extends Controller
         return back()->with('success', 'Gambar dihapus.');
     }
 
-    public function showPrivate(string $token, string $filename): BinaryFileResponse
+    public function showPrivate(string $token)
 {
     // 1) validasi token (40 hex, mis: sha1)
    if (!ctype_alnum($token) || strlen($token) !== 40) {
@@ -123,25 +141,21 @@ class MediaController extends Controller
         abort(403);
     }
 
-    // 4) pastikan filename yang di URL "sesuai" (optional tapi bagus)
-    // ambil nama file asli dari path DB
-    $realName = basename($media->path); // contoh: a1b2c3.webp
-
-    // optional: izinkan URL pakai nama asli, atau nama yang sudah dislug
-    if ($filename !== $realName) {
-        // kalau mau "toleran", kamu bisa redirect ke URL yang benar:
-        // return redirect()->route('media.private.show', ['token'=>$token, 'filename'=>$realName]);
-        abort(403);
-    }
-
     // 5) cek file ada (path diambil dari DB, bukan dari URL)
     if (!Storage::disk('private')->exists($media->path)) {
         abort(403);
     }
 
-    // 6) serve file
-    return response()->file(
-        storage_path('app/private/' . $media->path)
-    );
+        abort_unless(Storage::disk($media->disk)->exists($media->path), 404);
+
+        $stream = Storage::disk($media->disk)->readStream($media->path);
+
+        return response()->stream(function () use ($stream) {
+            fpassthru($stream);
+        }, 200, [
+            'Content-Type'        => $media->mime,
+            'Content-Disposition' => 'inline; filename="'.$media->original_name.'"',
+            'Cache-Control'       => 'private, max-age=86400',
+        ]);
 }
 }

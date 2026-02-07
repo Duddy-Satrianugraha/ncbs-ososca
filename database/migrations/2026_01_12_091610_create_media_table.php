@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->unsignedBigInteger('paket_id')->nullable();
+            $table->string('tipe', 100);
+            $table->unsignedBigInteger('order')->nullable();
             $table->string('token')->unique();
             $table->string('disk')->default('private');
             $table->string('path');          // contoh: media/abc.webp
