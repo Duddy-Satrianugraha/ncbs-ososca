@@ -30,6 +30,9 @@
             <form class="form-horizontal" action="{{ route('pbl.harian.mininotes.update', $mininotes->id) }}" method="POST">
                 @csrf
                 @method('put')
+                 <input type="hidden" name="paket_id" id="paket_id" value="{{ $mininotes->keg_id }}">
+                <input type="hidden" name="order" id="order" value="{{ $mininotes->nomor_sk }}">
+                <input type="hidden" name="tipe" id="tipe" value="pbl">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong> Mininotes Skenario  </strong>{{ $mininotes->nomor_sk}}</h3>
