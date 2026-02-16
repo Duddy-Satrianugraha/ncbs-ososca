@@ -9,8 +9,10 @@ use App\Models\PblMininote;
 use App\Models\PblNilai;
 use App\Models\PblPeserta;
 use App\Models\PblKelompok;
+use App\Models\Media;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Exception;
 
 class KegController extends Controller
@@ -146,6 +148,13 @@ class KegController extends Controller
         foreach ($mininote as $mininote) {
             $mininote->delete();
         }
+        $media = Media::where('paket_id', $keg->id)->get();
+        foreach ($media as $media) {
+            if (Storage::disk($media->disk)->exists($media->path)) {
+                Storage::disk($media->disk)->delete($media->path);
+            }
+            $media->delete();
+        }
         $keg->delete();
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil dihapus');
 
@@ -167,4 +176,7 @@ class KegController extends Controller
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Skenario berhasil diaktifkan');
 
     }
+
+
+
 }

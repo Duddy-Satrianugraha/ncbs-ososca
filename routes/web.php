@@ -9,7 +9,8 @@ use App\Http\Controllers\pbl\PblController;
 use App\Http\Controllers\pbl\PblNilaiController;
 use App\Http\Controllers\pbl\BaController;
 use App\Http\Controllers\PblPesertaController;
-
+use App\Http\Controllers\Pbl\PblImportController;
+use App\Http\Controllers\OsocaImportController;
 use App\Http\Controllers\OsocaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileContoller;
@@ -25,6 +26,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtemplateController;
 use App\Http\Controllers\OujianController;
 use App\Http\Controllers\OfeedbackController;
+
 
 use App\Http\Middleware\Peserta;
 use App\Http\Middleware\Panitia;
@@ -93,7 +95,10 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
     Route::get('/export/feedback/{uid}', [OfeedbackController::class, 'kirim_feedback'])->name('kirim.feedback');
-
+    Route::get('/template/import', [OsocaImportController::class, 'importTemplate'])
+    ->name('osoca.import.form');
+    Route::post('/template/import', [OsocaImportController::class, 'import'])
+    ->name('osoca.import');
 
 
 
@@ -129,6 +134,7 @@ Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group( funct
     Route::get('/ujian', [OsocaController::class, 'ujian'])->name('ujian');
     Route::get('/template', [OsocaController::class, 'template'])->name('template');
     Route::post('/penilaian', [OsocaController::class, 'penilaian'])->name('penilaian.store');
+
 });
 
 Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group( function (){
@@ -138,7 +144,7 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('harian/show/{id}', [KegController::class, 'show'])->name('harian.show');
     Route::get('harian/edit/{id}', [KegController::class, 'edit'])->name('harian.edit');
     Route::put('harian/update/{id}', [KegController::class, 'update'])->name('harian.update');
-    Route::get('harian/destroy/{id}', [KegController::class, 'destroy'])->name('harian.destroy');
+    Route::delete('harian/destroy/{id}', [KegController::class, 'destroy'])->name('harian.destroy');
     Route::get('harian/mininotes/{id}', [MininoteController::class, 'mini_edit'])->name('harian.mininotes');
     Route::put('harian/mininotes/{id}', [MininoteController::class, 'mini_update'])->name('harian.mininotes.update');
     Route::get('harian/act/mininotes/{id}', [MininoteController::class, 'miniact'])->name('harian.mininotes.act');
@@ -146,6 +152,7 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::put('harian/skenario/{id}', [MininoteController::class, 'sk_update'])->name('harian.skenario.update');
     Route::get('mininotes/{id}', [MininoteController::class, 'show'])->name('mininotes.show');
     Route::put('mininotes/{id}', [MininoteController::class, 'update'])->name('mininotes.update');
+    Route::delete('mininotes/{id}', [MininoteController::class, 'destroy'])->name('mininotes.destroy');
     Route::get('skenario/{id}', [MininoteController::class, 'skshow'])->name('skenario.show');
     Route::get('peserta/{kid}', [PblPesertaController::class, 'index'])->name('peserta.index');
     Route::get('peserta/{kid}/upload',[PblPesertaController::class, 'upload'])->name('peserta.upload');
@@ -164,6 +171,11 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('ba/detail/{id}', [BaController::class, 'detail'])->name('ba.detail');
     Route::get('ba/show/{id}', [BaController::class, 'beritaacara'])->name('ba.show');
     Route::get('ba/pdf/{id}', [PdfController::class, 'pdfba'])->name('ba.pdf');
+
+    Route::get('keg/{keg}/import', [PblImportController::class, 'import'])
+    ->name('keg.import');
+    Route::post('keg/{keg}/import-mininotes', [PblImportController::class, 'importMininotes'])
+    ->name('keg.importMininotes');
 
 });
 

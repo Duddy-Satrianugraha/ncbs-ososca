@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Storage;
 
 class Media extends Model
 {
-   protected $fillable = [
-       'user_id','disk','path','token','original_name','mime','size', 'paket_id', 'order', 'tipe',
-    ];
-
+//    protected $fillable = [
+//        'user_id','disk','path','token','original_name','mime','size', 'paket_id', 'order', 'tipe',
+//     ];
+    protected $guarded = [];
     protected $appends = ['display_url','filename'];
 
     public function getFilenameAttribute(): string

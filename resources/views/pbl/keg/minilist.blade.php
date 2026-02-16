@@ -79,10 +79,10 @@
                                                          @endcan
                                                          @can('meu')
                                                           <a href="{{ route("pbl.mininotes.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
-                                                        <form id="del-temp-{{$data->id}}" action="{{ route('pbl.harian.destroy', $data->id)}}" method="POST" style="display: inline;">
+                                                        <form id="del-temp-{{$data->id}}" action="{{ route('pbl.mininotes.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus ujian ini?');"><span class="fa fa-times"></span></button>
+                                                            <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus mininotes ini?');"><span class="fa fa-times"></span></button>
                                                         </form>
                                                         @endcan
                                                     </td>

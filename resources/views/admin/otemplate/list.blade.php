@@ -45,6 +45,7 @@
                                 </div>
                                 </form>
                                     <ul class="panel-controls">
+                                        <li><a href="{{ route('admin.osoca.import.form')}}" class="panel-add"><span class="fa fa-download"></span></a></li>
                                         <li><a href="{{ route('admin.templates.copy')}}" class="panel-add"><span class="fa fa-copy"></span></a></li>
                                         <li><a href="{{ route('admin.templates.create')}}" class="panel-add"><span class="fa fa-plus"></span></a></li>
                                     </ul>

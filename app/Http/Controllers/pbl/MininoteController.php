@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pbl;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PblMininote;
+use App\Models\Media;
 
 class MininoteController extends Controller
 {
@@ -63,7 +64,21 @@ class MininoteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       // dd($id);
+        $mininotes = PblMininote::find($id);
+        $media = Media::where('paket_id', $mininotes->keg_id)->where('order', $mininotes->nomor_sk)->where('tipe', 'pbl')->get();
+        foreach ($media as $m) {
+            $m->delete();
+        }
+        $mininotes->judul_sk = null;
+        $mininotes->skenario = null;
+        $mininotes->step_1 = null;
+        $mininotes->step_2 = null;
+        $mininotes->sasbel = null;
+        $mininotes->mindmap = null;
+        $mininotes->dafpus = null;
+        $mininotes->save();
+        return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Mininotes berhasil dihapus');
     }
 
     /**
