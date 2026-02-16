@@ -9,7 +9,7 @@ use App\Http\Controllers\pbl\PblController;
 use App\Http\Controllers\pbl\PblNilaiController;
 use App\Http\Controllers\pbl\BaController;
 use App\Http\Controllers\PblPesertaController;
-use App\Http\Controllers\Pbl\PblImportController;
+use App\Http\Controllers\pbl\PblImportController;
 use App\Http\Controllers\OsocaImportController;
 use App\Http\Controllers\OsocaController;
 use App\Http\Controllers\RoleController;
