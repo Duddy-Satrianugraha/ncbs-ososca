@@ -85,7 +85,7 @@
                                                     @can('materi')
                                                     <td>
                                                         @if($data->jml_sk > 0 && $data->jml_kelompok > 0)
-                                                        <a href="{{ route("pbl.harian.aktif", $data->id) }}" class="badge @if($data->sk_aktif == 0)badge-danger @else badge-info @endif"> Skenario : {{ $data->sk_aktif ?? 0 }} pertemuan : {{ $data->pertemuan ?? 0 }} </a>
+                                                        <a href="{{ route("pbl.harian.aktif", $data->id) }}" class="badge @if($data->sk_aktif == 0)badge-danger @else badge-info @endif"> Skenario id : {{ $data->sk_aktif ?? 0 }} pertemuan : {{ $data->pertemuan ?? 0 }} </a>
                                                         @endif
                                                     </td>
                                                     @endcan
