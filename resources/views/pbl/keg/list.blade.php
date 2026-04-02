@@ -85,7 +85,10 @@
                                                     @can('materi')
                                                     <td>
                                                         @if($data->jml_sk > 0 && $data->jml_kelompok > 0)
-                                                        <a href="{{ route("pbl.harian.aktif", $data->id) }}" class="badge @if($data->sk_aktif == 0)badge-danger @else badge-info @endif"> Skenario id : {{ $data->sk_aktif ?? 0 }} pertemuan : {{ $data->pertemuan ?? 0 }} </a>
+                                                        @php
+                                                            $sk_aktif = $data->mininotes->where('id', $data->sk_aktif)->first()->nomor_sk ?? 0;
+                                                        @endphp
+                                                        <a href="{{ route("pbl.harian.aktif", $data->id) }}" class="badge @if($data->sk_aktif == 0)badge-danger @else badge-info @endif"> Skenario : {{ $sk_aktif ?? 0 }} pertemuan : {{ $data->pertemuan ?? 0 }} </a>
                                                         @endif
                                                     </td>
                                                     @endcan
@@ -93,7 +96,7 @@
                                                     <td>{{$data->created_at}}</td>
                                                     @endcan
                                                     @can('admin')
-                                                    <td>{{$data->created_at}}</td>
+                                                    <td>{{$data->created_at}}</td> 
                                                     @endcan
                                                     <td>
                                                         @can('materi')

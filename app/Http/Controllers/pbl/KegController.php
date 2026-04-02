@@ -39,7 +39,7 @@ class KegController extends Controller
                 return $q->whereIn('user_id', $userIds);
             })
             ->paginate(5);
-
+        
         return view('pbl.keg.list', compact('keg', 'search'));
 
     }
