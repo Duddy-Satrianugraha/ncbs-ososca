@@ -28,7 +28,7 @@ class PblController extends Controller
 
     Public function tutor(){
         if(session()->has('Tutor')){
-            return redirect(route('osoca.mhs.login'))->with('msg', 'success-Selamat datang kembali dok,Silahkan scan kartu peserta');
+            return redirect(route('kegiatan_pbl.mininotes'))->with('msg', 'success-Selamat datang kembali dok');
         }
         $data = $this->data_pbl();
             //dd($data);

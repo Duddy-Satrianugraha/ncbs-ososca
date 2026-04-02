@@ -167,6 +167,9 @@ class DashbordController extends Controller
 
 
     Public function pbllogin(){
+         if(session()->has('Tutor')){
+            return redirect(route('kegiatan_pbl.mininotes'))->with('msg', 'success-Selamat datang kembali dok');
+        }
         return view('pbl.harian.login');
     }
     public function pblscan(Request $request){
@@ -203,6 +206,9 @@ class DashbordController extends Controller
         }
     public function pblkelcari($slug)
         {
+             if(session()->has('Tutor')){
+            return redirect(route('kegiatan_pbl.mininotes'))->with('msg', 'success-Selamat datang kembali dok');
+        }
 
             $kelompok = PblKelompok::with('kegpbl')
                 ->where('qr_kelompok', $slug)
