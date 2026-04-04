@@ -27,23 +27,9 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List PBL</h3>
+                                    <h3 class="panel-title">List Berita Acara PBL</h3>
 
-                                    <form action="{{ route('pbl.ba.index') }}" method="GET">
-                                        <div class="col-md-4">
-                                    <div class="input-group">
 
-                                        <div class="input-group-addon">
-                                            <span class="fa fa-search"></span>
-                                        </div>
-                                        <input type="text" class="form-control" name="search" placeholder="Cari PBL" value="{{ request('search') }}">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-primary">Search</button>
-                                            <a href="{{route('pbl.ba.index')}}" class="btn btn-default">Clear</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                </form>
                                     <ul class="panel-controls">
 
                                     </ul>
@@ -55,30 +41,30 @@
                                             <thead>
                                                 <tr>
                                                     <th width="50">Nomor</th>
-                                                    <th>Nama PBL</th>
+                                                    <th>Kelompok</th>
                                                     <th>Parameter</th>
-                                                    <th width="200"> @can('materi') Skenario Aktif @endcan </th>
+                                                    <th width="200"></th>
                                                     <th width="300">actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php $i =  1;@endphp
-                                                @foreach ($keg as $data)
+                                                @foreach ($ba as $data)
                                                 <tr id="trow_{{$i}}">
                                                     <td class="text-center">{{$i}}</td>
-                                                    <td>{{$data->name}} ({{$data->tahun_akademik}})</td>
-                                                    <td>
-
-                                                    </td>
+                                                    <td>{{$data->kelompok->nama_kelompok}}</td>
+                                                    <td>Skenario {{ $data->sks->nomor_sk}} ( Pertemuan {{ $data->pertemuan }})</td>
 
 
+                                                    @can('admin')
                                                     <td>{{$data->created_at}}</td>
-                                                   
+                                                    @endcan
                                                     <td>
 
-
-                                                        <a href="{{ route("pbl.ba.detail", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
-
+                                                        @can('admin')
+                                                        <a href="{{ route("pbl.ba.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
+                                                        <a href="{{ route("pbl.ba.pdf", $data->id)}}" class="btn btn-danger btn-rounded btn-sm" target="_blank"><span class="fa fa-download"></span></a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                                 @php $i++;@endphp
@@ -86,7 +72,7 @@
 
                                             </tbody>
                                         </table>
-                                        {{ $keg->appends(['search' => request('search')])->links() }}
+                                        {{ $ba->links() }}
 
                                     </div>
 

@@ -34,12 +34,43 @@ class BaController extends Controller
         return view('pbl.ba.list', compact('keg', 'search'));
     }
 
-    public function detail(int $id)
+    public function detailx(int $id)
     {
         $ba = PblBa::where('keg_id', $id)->paginate(10);
         $keg = PblKeg::find($id);
-        return view('pbl.ba.listba', compact('ba', 'keg'));
+        return view('pbl.ba.listbax', compact('ba', 'keg'));
     }
+
+    public function detail(int $id)
+        {
+            $ba = PblBa::with(['kelompok', 'sks'])
+            ->where('keg_id', $id)
+            ->get()
+            ->sortBy(fn($item) => $item->kelompok->nama_kelompok);
+
+            $keg = PblKeg::findOrFail($id);
+
+            $grouped = [];
+
+            foreach ($ba as $item) {
+                $kelompokId   = $item->kelompok->id;
+                $namaKelompok = $item->kelompok->nama_kelompok;
+                $nomorSk      = $item->sks->nomor_sk;
+                $pertemuan    = $item->pertemuan;
+
+                if (!isset($grouped[$kelompokId])) {
+                    $grouped[$kelompokId] = [
+                        'nama_kelompok' => $namaKelompok,
+                        'data' => []
+                    ];
+                }
+
+                $grouped[$kelompokId]['data'][$nomorSk][$pertemuan] = $item;
+            }
+
+            return view('pbl.ba.listba', compact('grouped', 'keg'));
+        }
+
 
     public function beritaacara(int $id){
         $ba = PblBa::find($id);

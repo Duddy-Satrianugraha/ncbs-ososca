@@ -64,6 +64,7 @@
             <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">PBL</span></a>
             <ul>
                 <li class="{{ \Request::is('pbl/harian/*') || \Request::is('pbl/harian') ? 'active' : ''  }}"><a href="{{ route('pbl.harian.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> PBL Harian</span></a></li>
+                <li class="{{ \Request::is('pbl/ba/*') || \Request::is('pbl/ba') ? 'active' : ''  }}"><a href="{{ route('pbl.ba.index')}}"><span class="fa fa-folder"></span><span class="xn-text"> Berita Acara PBL</span></a></li>
             </ul>
         </li>
           <li class="xn-openable {{ \Request::is('admin/*') || \Request::is('admin/*') ? 'active' : ''  }} ">

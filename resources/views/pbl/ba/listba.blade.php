@@ -14,7 +14,7 @@
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span>  Berita Acara  PBL Harian</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span>  Berita Acara  PBL Harian {{ $keg->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -37,43 +37,71 @@
                                 <div class="panel-body">
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-striped table-actions">
+                                        <table class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th width="50">Nomor</th>
-                                                    <th>Kelompok</th>
-                                                    <th>Parameter</th>
-                                                    <th width="200"></th>
-                                                    <th width="300">actions</th>
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle;">No</th>
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle;">Nama Kelompok</th>
+
+                                                    @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
+                                                        <th colspan="2" class="text-center">Skenario {{ $sk }}</th>
+                                                    @endfor
+                                                </tr>
+                                                <tr>
+                                                    @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
+                                                        <th class="text-center">Pertemuan 1</th>
+                                                        <th class="text-center">Pertemuan 2</th>
+                                                    @endfor
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @php $i =  1;@endphp
-                                                @foreach ($ba as $data)
-                                                <tr id="trow_{{$i}}">
-                                                    <td class="text-center">{{$i}}</td>
-                                                    <td>{{$data->kelompok->nama_kelompok}}</td>
-                                                    <td>Skenario {{ $data->sks->nomor_sk}} ( Pertemuan {{ $data->pertemuan }})</td>
+                                                @forelse ($grouped as $item)
+                                                    <tr>
+                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td> kelompok {{ $item['nama_kelompok'] }}</td>
 
+                                                        @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
+                                                            @for ($p = 1; $p <= 2; $p++)
+                                                                <td class="text-center">
+                                                                    @if(isset($item['data'][$sk][$p]))
+                                                                        @php $baItem = $item['data'][$sk][$p]; @endphp
+                                                                        @can('materi')
 
-                                                    @can('admin')
-                                                    <td>{{$data->created_at}}</td>
-                                                    @endcan
-                                                    <td>
+                                                                        <a href="{{ route('pbl.ba.show', $baItem->id) }}"
+                                                                        class="btn btn-xs btn-info">
+                                                                            <i class="fa fa-check"></i>
+                                                                        </a>
+                                                                        @endcan
+                                                                        @can('admin')
+                                                                        <a href="{{ route('pbl.ba.show', $baItem->id) }}"
+                                                                        class="btn btn-info btn-rounded btn-sm"
+                                                                        title="Lihat">
+                                                                            <span class="fa fa-search"></span>
+                                                                        </a>
 
-                                                        @can('admin')
-                                                        <a href="{{ route("pbl.ba.show", $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-search"></span></a>
-                                                        <a href="{{ route("pbl.ba.pdf", $data->id)}}" class="btn btn-danger btn-rounded btn-sm" target="_blank"><span class="fa fa-download"></span></a>
-                                                        @endcan
-                                                    </td>
-                                                </tr>
-                                                @php $i++;@endphp
-                                                @endforeach
-
+                                                                        <a href="{{ route('pbl.ba.pdf', $baItem->id) }}"
+                                                                        class="btn btn-danger btn-rounded btn-sm"
+                                                                        target="_blank"
+                                                                        title="Download PDF">
+                                                                            <span class="fa fa-download"></span>
+                                                                        </a>
+                                                                        @endcan
+                                                                    @else
+                                                                        <span class="text-muted">-</span>
+                                                                    @endif
+                                                                </td>
+                                                            @endfor
+                                                        @endfor
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="{{ 2 + ($keg->jml_sk * 2) }}" class="text-center">
+                                                            Belum ada data berita acara.
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
-                                        {{ $ba->links() }}
-
                                     </div>
 
                                 </div>
