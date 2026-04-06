@@ -57,7 +57,7 @@
 </head>
 <body>
 
-@foreach($stations->chunk(8) as $chunk)
+@foreach($stations->chunk(6) as $chunk)
     <table>
         @foreach($chunk->chunk(2) as $row)
             <tr>
