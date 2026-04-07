@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
-
+<style>
+    td.cell-th {
+        background-color: #d9534f !important;
+        color: #fff !important;
+        font-weight: bold;
+    }
+</style>
 @endsection
 
 @section('breadcrumb')
@@ -91,9 +97,9 @@
                     $val = $matrix[$p->id][$s->id][$pt] ?? null;
                   @endphp
 
-                  <td class="text-center">
+                  <td class="text-center {{ $val === 'Tidak hadir' ? 'cell-th' : '' }}">
                     @if($val === 'Tidak hadir')
-                      <span class="text-danger">TH</span>
+                      <span>TH</span>
                     @elseif(is_int($val))
                       {{ $val }}
                     @else

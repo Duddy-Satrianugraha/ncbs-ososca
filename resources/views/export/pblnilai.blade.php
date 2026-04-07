@@ -51,16 +51,15 @@
                     // nilai bisa: int, 'Tidak hadir', atau null
                     $val = $matrix[$p->id][$s->id][$pt] ?? null;
                   @endphp
-
-                  <td class="text-center">
+                <td>
                     @if($val === 'Tidak hadir')
-                      <span class="text-danger">TH</span>
+                    TH
                     @elseif(is_int($val))
-                      {{ $val }}
+                    {{ $val }}
                     @else
-                      -
+                    -
                     @endif
-                  </td>
+                </td>
                 @endforeach
               @endforeach
 
