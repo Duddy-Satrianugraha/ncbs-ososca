@@ -196,7 +196,7 @@
         <div class="field-label">Nama Blok</div><div class="field-colon">:</div>{{ $keg->blok_name}}
       </div>
       <div class="field-row">
-        <div class="field-label">Waktu</div><div class="field-colon">:</div>{{ jam_sesi($ba->created_at) }}
+        <div class="field-label">Waktu</div><div class="field-colon">:</div>{{ jam_sesi(utc_to_wib($ba->created_at)) }}
       </div>
       <div class="field-row">
         <div class="field-label">Jumlah Peserta</div><div class="field-colon">:</div>{{ $ba->jml_peserta }}

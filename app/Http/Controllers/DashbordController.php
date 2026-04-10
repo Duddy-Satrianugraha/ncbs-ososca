@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Oujian;
 use App\Models\Ostation;
 use App\Models\Openguji;
+use App\Models\PblBa;
 use App\Models\PblKelompok;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
@@ -190,9 +191,13 @@ class DashbordController extends Controller
 
         $kelompok = PblKelompok::where('qr_kelompok', $token)->first();
 
+        $bas = PblBa::where('keg_id', $kelompok->kegpbl->id)->where('kelompok_id', $kelompok->id)->where('pertemuan', $kelompok->kegpbl->pertemuan)->where('sk_id', $kelompok->kegpbl->sk_aktif)->get();
+
         if($kelompok){
-                    if($kelompok->kegpbl->sk_aktif == 0){
+                    if($kelompok->kegpbl->sk_aktif == 0 || $kelompok->kegpbl->pertemuan == 0){
                         return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
+                    } else if(! $bas->isEmpty()){
+                        return redirect(route('pbl.login'))->with('msg', 'danger-Kelompok telah dinilai, Hubungi Koordinator BLok');
                     } else {
                         session([
                             'pblKelompok' => $kelompok->id,

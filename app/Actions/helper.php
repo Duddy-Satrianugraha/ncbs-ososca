@@ -158,6 +158,28 @@ if (!function_exists('tgl_indo')) {
         }
     }
 
+    if (!function_exists('utc_to_wib')) {
+    function utc_to_wib($datetime, $format = 'Y-m-d H:i:s')
+    {
+        if (!$datetime) return null;
+
+        try {
+            // kalau dari Eloquent (Carbon)
+            if ($datetime instanceof \Carbon\CarbonInterface) {
+                // ambil string mentah TANPA timezone Laravel
+                $datetime = $datetime->format('Y-m-d H:i:s');
+            }
+
+            // paksa dianggap UTC → convert ke WIB
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $datetime, 'UTC')
+                ->setTimezone('Asia/Jakarta')
+                ->format($format);
+
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+}
     if (!function_exists('jam_sesi')) {
     /**
      * Jika timestamp masuk ke rentang A (acuan), maka return rentang B (custom).
