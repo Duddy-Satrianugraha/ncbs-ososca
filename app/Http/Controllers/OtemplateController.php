@@ -17,7 +17,7 @@ class OtemplateController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {   
+    {
             $search = $request->query('search');
 
         // Ambil 1 team pertama milik user (atau null)
@@ -38,7 +38,7 @@ class OtemplateController extends Controller
           return view('admin.otemplate.list', compact('templates', 'search'));
     }
 
-   
+
     /**
      * Show the form for creating a new resource.
      */
@@ -50,13 +50,13 @@ class OtemplateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   
+
     public function store(Request $request)
     {
         // VALIDASI
         $validated = $request->validate([
             'nama_template' => 'required|string|max:255',
-            'nomor_soal'    => 'required|string|max:255',
+            'nomor_soal'    => 'required|numeric|max:255',
             'judul_soal'    => 'required|string|max:255',
 
             // rubrik: array minimal 1 elemen, tiap elemen punya field name
@@ -111,7 +111,7 @@ class OtemplateController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    { 
+    {
         $otemplate = Otemplate::find($id);
         $temp = $otemplate->rubrix()->get();
       // dd($temp);
@@ -152,7 +152,7 @@ class OtemplateController extends Controller
     {
          $validated =  $request->validate([
             'nama_template' => 'required|string|max:255',
-            'nomor_soal' => 'required|string|max:255',
+            'nomor_soal' => 'required|numeric|max:255',
             'judul_soal' => 'required|string|max:255',
 
         ]);
@@ -302,11 +302,11 @@ class OtemplateController extends Controller
                 return $q->whereIn('user_id', $userIds);
             })
             ->get();
-        
+
         return view('admin.otemplate.copy', compact('templates'));
     }
     public function copy(Request $request){
-            $request->validate([                
+            $request->validate([
                 'old_id_template' => 'required|integer',
                 'nama_template' => 'required|string',
             ]);

@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label class="col-md-2 col-xs-12 control-label">Nomor Kasus</label>
                         <div class="col-md-8 col-xs-12">
-                            <input type="text"
+                            <input type="number"
                                    class="form-control @error('nomor_soal') is-invalid @enderror"
                                    name="nomor_soal"
                                    value="{{ old('nomor_soal') }}">
