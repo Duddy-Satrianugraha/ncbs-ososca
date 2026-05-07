@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('ta');
-             $table->string('jml_station');
+             $table->string('jml_station')->nullable();
              $table->string('jml_sesi');
              $table->string('tgl_ujian');
              $table->foreignId('user_id');

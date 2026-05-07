@@ -69,7 +69,7 @@
                                                     <td class="text-center">{{$i}}</td>
                                                     <td>{{$data->name}} ({{$data->ta}})</td>
                                                     <td>
-                                                         <a class="badge badge-deafult"> {{ $data->jml_station }} station</a>
+                                                         <a class="badge badge-deafult"> {{ $data->jml_station ?? 0 }} station</a>
                                                         <a class="badge badge-primary"> {{ $data->jml_sesi }} sesi</a>
                                                         <a href="{{ route("admin.ujian.show", $data->id)}}" class="btn btn-sm btn-success"> {{ $data->sesis()->whereNotNull('otemplate_id')->count() }} template</a>
 

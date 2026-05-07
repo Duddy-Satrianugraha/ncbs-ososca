@@ -56,7 +56,7 @@ class OujianController extends Controller
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian' => 'required|date',
-            'jml_station' => 'required|integer',
+
             'jml_sesi' => 'required|integer',
         ]);
         try{
@@ -65,21 +65,11 @@ class OujianController extends Controller
             'name' => $validated['name'],
             'ta' => $validated['tahun_akademik'],
             'tgl_ujian' => $validated['tgl_ujian'],
-            'jml_station' => $validated['jml_station'],
             'jml_sesi' => $validated['jml_sesi'],
             'user_id' => Auth::user()->id,
             'remedial' => $request->rmd ?? false,
         ]);
-         for ($x = 1; $x <= $validated['jml_station']; $x++) {
-                $oustation = Ostation::create([
-                    'oujian_id' => $oujian->id,
-                    'urutan' => $x,
-                    'name' => 'station '.$x,
-                    'qrstation' => numran(10).$oujian->id.$x,
-                    'nama_penguji' => null,
-                ]);
-                }
-        for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
+          for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
             $osesi = Osesi::create([
                 'oujian_id' => $oujian->id,
                 'urutan' => $x,
