@@ -181,7 +181,7 @@ class PdfController extends Controller
             $peserta = new \stdClass; // Atau bisa pakai array jika lebih nyaman
             $peserta->ujian = $ujian->name ?? null;
             $peserta->sesi = $data->sesi ?? null;
-            $peserta->station = $data->station ?? null;
+            $peserta->station = $data->ostation->name ?? null;
             $peserta->name = $data->name;
             $peserta->npm = $data->npm;
             $peserta->qrpeserta = $data->qrpeserta;

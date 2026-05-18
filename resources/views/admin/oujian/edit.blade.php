@@ -55,13 +55,7 @@
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 col-xs-12 control-label">Jumlah Station</label>
-                        <div class="col-md-8 col-xs-12">
-                            <input type="number" class="form-control" name="jml_station" value="{{ $ujian->jml_station }}"/>
-                            <small class="text">biasanya sesuai dengan jumlah kelompok pbl</small>
-                        </div>
-                    </div>
+                  
                      <div class="form-group">
                         <label class="col-md-2 col-xs-12 control-label">Jumlah Sesi</label>
                         <div class="col-md-8 col-xs-12">
@@ -77,7 +71,7 @@
                                 <input type="text" name='tgl_ujian' class="form-control datepicker" value="{{ $ujian->tgl_ujian }}">
                             </div>
                             <span class="help-block">Pilih Tanggal pelaksanaan OSOCA</span>
-                        </div>  
+                        </div>
                     </div>
                    <div class="form-group">
                         <label class="col-md-2 col-xs-12 control-label">Remediasi?</label>

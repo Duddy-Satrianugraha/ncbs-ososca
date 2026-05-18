@@ -26,4 +26,8 @@ class Opeserta extends Model
     public function feedback(){
         return $this->hasOne(Ofeedback::class, 'peserta_id');
     }
+
+    public function ostation(){
+        return $this->belongsTo(Ostation::class, 'station', 'urutan');
+    }
 }

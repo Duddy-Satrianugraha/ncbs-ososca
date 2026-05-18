@@ -71,7 +71,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <a class="badge badge-deafult"> {{ $data->jml_station }} station</a>
+                                                        <a class="badge badge-deafult"> {{ $data->jml_station ?? 0 }} station</a>
                                                         <a class="badge badge-primary"> {{ $data->jml_sesi }} sesi</a>
                                                         <a class="badge badge-success"> {{ $data->peserta->count() }} peserta</a>
                                                         @can("it")

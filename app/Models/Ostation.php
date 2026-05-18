@@ -11,6 +11,7 @@ class Ostation extends Model
         'urutan',
         'name',
         'qrstation',
+        'berita_acara',
         'nama_penguji',
     ];
 }

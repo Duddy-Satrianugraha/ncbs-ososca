@@ -67,7 +67,7 @@
                         <h2 class="title">Kartu Station {{ $station->ujian }}</h2>
                         <div class="card">
                             <div class="left">
-                                <h2><strong> Station : {{ $station->urutan }} </strong></h2>
+                                <h2><strong> Station : {{ $station->station }} </strong></h2>
                             </div>
                             <div class="right">
                                 <div class="qrcode">
