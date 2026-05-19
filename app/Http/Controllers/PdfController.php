@@ -213,4 +213,13 @@ class PdfController extends Controller
         return $pdf->stream('ba_'.$keg->name.'_sk'.$ba->sks->nomor_sk.'_'.$ba->pertemuan.'.pdf');
     }
 
+    public function pdfOba(string $id){
+        $ba = Ostation::find($id);
+        $keg = Oujian::find($ba->oujian_id);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.oba', compact('ba', 'keg'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('ba_'.$keg->name.'_station'.$ba->name.'.pdf');
+    }
+
+
 }

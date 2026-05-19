@@ -58,13 +58,17 @@
                                                 @forelse ($grouped as $item)
                                                     <tr>
                                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                                        <td> kelompok {{ $item['nama_kelompok'] }}</td>
+                                                        <td> kel {{ $item['nama_kelompok'] }}</td>
 
                                                         @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
                                                             @for ($p = 1; $p <= 2; $p++)
                                                                 <td class="text-center">
                                                                     @if(isset($item['data'][$sk][$p]))
-                                                                        @php $baItem = $item['data'][$sk][$p]; @endphp
+                                                                       @php
+                                                                            $cell = $item['data'][$sk][$p];
+                                                                            $baItem = $cell['ba'];
+                                                                            $tutor = $cell['tutor'];
+                                                                        @endphp
                                                                         @can('materi')
 
                                                                         <a href="{{ route('pbl.ba.show', $baItem->id) }}"
@@ -73,6 +77,7 @@
                                                                         </a>
                                                                         @endcan
                                                                         @can('admin')
+                                                                        <small>{{ $tutor }}</small><br>
                                                                         <a href="{{ route('pbl.ba.show', $baItem->id) }}"
                                                                         class="btn btn-info btn-rounded btn-sm"
                                                                         title="Lihat">

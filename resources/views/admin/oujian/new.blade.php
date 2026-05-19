@@ -42,7 +42,42 @@
                         <label class="col-md-2 col-xs-12 control-label">Nama Ujian</label>
                         <div class="col-md-8 col-xs-12">
                             <input type="text" class="form-control" name="name" value="{{ old('Name') }}"/>
-                            <small class="text">contoh OSOCA sementer 4</small>
+                            <small class="text">contoh OSOCA 4.1 </small>
+                        </div>
+
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-2 col-xs-12 control-label">Blok</label>
+                        <div class="col-md-8 col-xs-12">
+                            <select class="form-control" name="blok">
+                                <option value="Blok 1.1|Introduction Being a Physician">Blok 1.1 (Introduction Being a Physician)</option>
+                                <option value="Blok 1.2|Human Body and Locomotor System">Blok 1.2 (Human Body and Locomotor System)</option>
+                                <option value="Blok 1.3|Neurology System and Endocrine">Blok 1.3 (Neurology System and Endocrine)</option>
+                                <option value="Blok 2.1|Cardiorespiratory System">Blok 2.1 (Cardiorespiratory System)</option>
+                                <option value="Blok 2.2|Digestive System">Blok 2.2 (Digestive System)</option>
+                                <option value="Blok 2.3|Genitourinary System">Blok 2.3 (Genitourinary System)</option>
+                                <option value="Blok 3.1|Basic Medical Principles">Blok 3.1 (Basic Medical Principles)</option>
+                                <option value="Blok 3.2|Tropical Diseases">Blok 3.2 (Tropical Diseases)</option>
+                                <option value="Blok 3.3|Neurosensory Disorders">Blok 3.3 (Neurosensory Disorders)</option>
+                                <option value="Blok 4.1|Cardiorespiratory Disorders">Blok 4.1 (Cardiorespiratory Disorders)</option>
+                                <option value="Blok 4.2|Digestive Disorders">Blok 4.2 (Digestive Disorders)</option>
+                                <option value="Blok 4.3|Dermatology - Genitourinary Disorders">Blok 4.3 (Genitourinary Disorders)</option>
+                                <option value="Blok 5.1|Metabolic Disorders and HematoOncology">Blok 5.1 (Metabolic Disorders and HematoOncology)</option>
+                                <option value="Blok 5.2|Ethic Medicolegal and Patient Safety">Blok 5.2 (Ethic Medicolegal and Patient Safety)</option>
+                                <option value="Blok 5.3|Research,Statistic, and Epidemiology">Blok 5.3 (Research,Statistic, and Epidemiology)</option>
+                                <option value="Blok 6.1|Safe Motherhood and Infancy">Blok 6.1 (Safe Motherhood and Infancy)</option>
+                                <option value="Blok 6.2|Childhood and Adolescent">Blok 6.2 (Childhood and Adolescent)</option>
+                                <option value="Blok 6.3|Adulthood and Elderly">Blok 6.3 (Adulthood and Elderly)</option>
+                                <option value="Blok 7.1|Implementation of Emergency Medicine">Blok 7.1 (Implementation of Emergency Medicine)</option>
+                                <option value="Blok 7.2|Implementation of Family Medicine and Community Health">Blok 7.2 (Implementation of Family Medicine and Community Health)</option>
+                                <option value="Blok 7.3|Elektif Medical Education">Blok 7.3 (Elektif Medical Education)</option>
+                                <option value="Blok 7.3|Elektif Medical Nutrition">Blok 7.3 (Elektif Medical Nutrition)</option>
+                                <option value="Blok 7.3|Elektif Genetics">Blok 7.3 (Elektif Medical Genetics)</option>
+                                <option value="Blok 7.3|Elektif Cultural Competence">Blok 7.3 (Elektif Cultural Competence)</option>
+                                <option value="Blok 7.3|Elektif Techopreneur">Blok 7.3 (Elektif Medical Education)</option>
+                                <option value="Blok 8.2|Entrepreneurship">Blok 8.2 (Entrepreneurship)</option>
+                                <option value="Blok 8.4|Preclearkship">Blok 8.4 (Preclearkship)</option>
+                            </select>
                         </div>
 
                     </div>

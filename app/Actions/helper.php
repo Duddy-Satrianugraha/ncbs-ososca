@@ -133,7 +133,7 @@ if (!function_exists('tgl_indo')) {
         if ($opsi === 'to') return $thn;                  // tahun saja
         if ($opsi === 'jo') return $jam;                  // jam saja
         if ($opsi === 'tto') return $tanggalIndo;         // tanggal indo saja
-
+        if ($opsi === 'txo') return $tgl;         // tanggal  saja
         // Default behavior (seperti sebelumnya)
         return $denganHari ? "{$hari}, {$tanggalIndo}" : $tanggalIndo;
     }

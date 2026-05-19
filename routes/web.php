@@ -83,6 +83,9 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/ujian', OujianController::class);
     Route::post('/sesi/store', [OujianController::class, 'sesi_store'])->name('sesi.store');
     Route::resource('/peserta', OpesertaController::class)->except(['create']);
+    Route::get('/peserta/{uid}/beritaacara',[OpesertaController::class, 'beritaacara'])->name('peserta.beritaacara');
+    Route::get('/peserta/{uid}/beritaacara/{sid}',[OpesertaController::class, 'beritaacara_show'])->name('peserta.beritaacara.show');
+    Route::get('ba/pdf/{id}', [PdfController::class, 'pdfOba'])->name('ba.pdf');
     Route::get('/peserta/{uid}/avatar',[OpesertaController::class, 'avatar_update'])->name('peserta.avatar.update');
     Route::get('/peserta/{uid}/baru',[OpesertaController::class, 'create'])->name('peserta.create');
     Route::get('/peserta/{uid}/upload',[OpesertaController::class, 'upload'])->name('peserta.upload');
@@ -125,6 +128,8 @@ Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( f
 });
 
 Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group( function (){
+    Route::get('/beritaacara', [OsocaController::class, 'beritaacara'])->name('ba');
+    Route::post('/ba/chek', [OsocaController::class, 'ba_check'])->name('bachek');
     Route::get('/logout', [OsocaController::class, 'logout'])->name('logout');
     Route::get('/tolist', [OsocaController::class, 'tolist'])->name('tolist');
     Route::get('/penguji', [OsocaController::class, 'penguji'])->name('penguji.login');

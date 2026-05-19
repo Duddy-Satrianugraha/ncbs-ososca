@@ -16,6 +16,10 @@ class PblBa extends Model
         return $this->belongsTo(PblMininote::class, 'sk_id');
     }
 
+    public function tutor(){
+        return $this->belongsTo(Openguji::class, 'tutor_id');
+    }
+
 
 
 }

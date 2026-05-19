@@ -85,6 +85,7 @@
                                                         @can("admin")
                                                         <a href="{{ route("admin.peserta.show", $data->id)}}" class="btn btn-info btn-sm"><span class="fa fa-search"></span>Daftar Peserta</a>
                                                         <a href="{{ route('admin.pdf.station', $data->id)}}" class="btn btn-warning btn-sm"><span class="fa fa-print"></span> Cetak Kartu station</a>
+                                                        <a href="{{ route('admin.peserta.beritaacara', $data->id)}}" class="btn btn-danger btn-sm"><span class="fa fa-print"></span> lihat Berita Acara</a>
                                                       @endcan
                                                         @can("it")
                                                         <a href="{{ route('admin.pdf.peserta', $data->id)}}" class="btn btn-warning btn-sm"><span class="fa fa-print"></span> Cetak Kartu Peserta</a>

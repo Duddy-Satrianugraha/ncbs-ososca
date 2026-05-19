@@ -41,13 +41,13 @@ class BaController extends Controller
         return view('pbl.ba.listbax', compact('ba', 'keg'));
     }
 
-    public function detail(int $id)
+    public function detailw(int $id)
         {
-            $ba = PblBa::with(['kelompok', 'sks'])
+            $ba = PblBa::with(['kelompok', 'sks', 'tutor'])
             ->where('keg_id', $id)
             ->get()
             ->sortBy(fn($item) => $item->kelompok->nama_kelompok);
-
+            dd($ba);
             $keg = PblKeg::findOrFail($id);
 
             $grouped = [];
@@ -55,6 +55,7 @@ class BaController extends Controller
             foreach ($ba as $item) {
                 $kelompokId   = $item->kelompok->id;
                 $namaKelompok = $item->kelompok->nama_kelompok;
+                $namaTutor    = $item->tutor_id ?? '-';
                 $nomorSk      = $item->sks->nomor_sk;
                 $pertemuan    = $item->pertemuan;
 
@@ -67,9 +68,45 @@ class BaController extends Controller
 
                 $grouped[$kelompokId]['data'][$nomorSk][$pertemuan] = $item;
             }
-
+                dd($grouped);
             return view('pbl.ba.listba', compact('grouped', 'keg'));
         }
+
+public function detail(int $id)
+{
+    $ba = PblBa::with(['kelompok', 'sks', 'tutor'])
+        ->where('keg_id', $id)
+        ->get()
+        ->sortBy(fn($item) => $item->kelompok->nama_kelompok);
+
+    $keg = PblKeg::findOrFail($id);
+
+    $grouped = [];
+
+    foreach ($ba as $item) {
+
+        $kelompokId   = $item->kelompok->id;
+        $namaKelompok = $item->kelompok->nama_kelompok;
+        $nomorSk      = $item->sks->nomor_sk;
+        $pertemuan    = $item->pertemuan;
+
+        if (!isset($grouped[$kelompokId])) {
+            $grouped[$kelompokId] = [
+                'nama_kelompok' => $namaKelompok,
+                'data' => []
+            ];
+        }
+
+        $grouped[$kelompokId]['data'][$nomorSk][$pertemuan] = [
+            'ba' => $item,
+            'tutor' => $item->tutor->nama ?? '-',
+        ];
+    }
+    //dd($grouped);
+    return view('pbl.ba.listba', compact('grouped', 'keg'));
+}
+
+
 
 
     public function beritaacara(int $id){

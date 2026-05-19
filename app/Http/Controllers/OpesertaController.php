@@ -34,6 +34,18 @@ class OpesertaController extends Controller
 
     }
 
+    public function beritaacara($uid){
+        $keg = Oujian::find($uid);
+        $bas = Ostation::where('oujian_id', $uid)->get();
+        return view('admin.opeserta.listba', compact('keg', 'bas'));
+    }
+
+    public function beritaacara_show($uid, $sid){
+         $keg = Oujian::find($uid);
+        $ba = Ostation::find($sid);
+        return view('admin.opeserta.beritaacara', compact('keg', 'ba'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

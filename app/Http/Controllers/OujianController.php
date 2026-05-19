@@ -56,13 +56,14 @@ class OujianController extends Controller
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian' => 'required|date',
-
+            'blok' => 'required|string|max:255',
             'jml_sesi' => 'required|integer',
         ]);
         try{
             DB::beginTransaction();
         $oujian = Oujian:: create([
             'name' => $validated['name'],
+            'blok' => $validated['blok'],
             'ta' => $validated['tahun_akademik'],
             'tgl_ujian' => $validated['tgl_ujian'],
             'jml_sesi' => $validated['jml_sesi'],

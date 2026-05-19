@@ -137,7 +137,7 @@
 
     <div class="para">
       Pada hari ini {{ tgl_indox($ba->created_at,false,'ho') }}
-      tanggal {{ tgl_indox($ba->created_at) }}
+      tanggal {{ tgl_indox($ba->created_at,false,'txo') }}
       bulan {{ tgl_indox($ba->created_at,false,'bo') }}
       tahun {{ tgl_indox($ba->created_at,false,'to') }}
       telah dilaksanakan Tutorial/PBL semester
