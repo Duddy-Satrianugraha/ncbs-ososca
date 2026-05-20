@@ -76,7 +76,7 @@
                                                 @foreach ($peserta as $data)
                                                 <tr id="trow_{{$i}}">
                                                     <td class="text-center">{{$i}}</td>
-                                                    <td>Station  {{$data->ostation->name}}</td>
+                                                    <td>Station {{ $data->station_name }} </td>
                                                     <td>Sesi {{$data->sesi}}</td>
                                                     <td>{{$data->name}} </td>
                                                     <td>{{$data->npm}} <br>
