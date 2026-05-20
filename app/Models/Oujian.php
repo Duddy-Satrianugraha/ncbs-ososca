@@ -11,6 +11,7 @@ class Oujian extends Model
         'ta',
         'tgl_ujian',
         'jml_station',
+        'blok',
         'jml_sesi',
         'user_id',
         'remedial',

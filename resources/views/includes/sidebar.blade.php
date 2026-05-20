@@ -91,7 +91,7 @@
         <li class="xn-openable {{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}">
             <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">OSOCA</span></a>
             <ul>
-                <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta OSOSCA</span> </a></li>
+                <li class="{{ \Request::is('admin/peserta/*') || \Request::is('admin/peserta') ? 'active' : ''  }}"><a href="{{ route('admin.peserta.index')}}"><span class="fa fa-users"></span><span class="xn-text"> Peserta OSOCA</span> </a></li>
             </ul>
         </li>
 
