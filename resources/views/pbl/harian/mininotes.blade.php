@@ -449,7 +449,7 @@
      <textarea name="BA" id="BA" style="width:100%; height:200px;" placeholder="Mohon tulis disini"></textarea>
         <hr>
         <div class="nav-action">
-  <a href="{{ route('kegiatan_pbl.logout') }}" class="btn btn-danger">
+  <a href="#" class="btn btn-danger">
     Logout
   </a>
 
@@ -603,19 +603,26 @@
     if (max !== null && v > max) input.value = max;
   }
 
-    function updateSubmitButton() {
-        const pendingCount = document.querySelectorAll('.nilai-pending').length;
-        const invalidCount = document.querySelectorAll('.invalid-value').length;
-        const ba = document.getElementById('BA');
-        const baEmpty = !ba || ba.value.trim() === '';
+   function updateSubmitButton() {
+            const pendingCount = document.querySelectorAll('.nilai-pending').length;
+            const invalidCount = document.querySelectorAll('.invalid-value').length;
 
+            const ba = document.getElementById('BA');
+            const baEmpty = !ba || ba.value.trim() === '';
 
-        const btn = document.getElementById('btn-simpan');
-        if (!btn) return;
+            const hadirCount = document.querySelectorAll('.hadir-check:checked').length;
+            const noHadir = hadirCount === 0;
 
-        // disable jika masih ada pending atau invalid
-        btn.disabled = (pendingCount > 0 || invalidCount > 0 || baEmpty);
-        }
+            const btn = document.getElementById('btn-simpan');
+            if (!btn) return;
+
+            btn.disabled = (
+                pendingCount > 0 ||
+                invalidCount > 0 ||
+                baEmpty ||
+                noHadir
+            );
+            }
 
   function updateRow(row) {
   const hadirCheck = row.querySelector('.hadir-check');
