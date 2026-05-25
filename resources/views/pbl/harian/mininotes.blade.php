@@ -447,6 +447,7 @@
      <hr>
      <h5>Hal yang perlu dilaporkan selama tutorial berlangsung</h5>
      <textarea name="BA" id="BA" style="width:100%; height:200px;" placeholder="Mohon tulis disini"></textarea>
+      <h3 style="color: red;">Penilaian hanya dapat dilakukan Jika Anda Terhubung ke Wifi Hotspot FK</h3>
         <hr>
         <div class="nav-action">
   <a href="#" class="btn btn-danger">
