@@ -17,7 +17,7 @@
           <form action="{{ route('kegiatan_pbl.chek.tutor')}}" method="post" class="form-horizontal" id="form-scan">
             @csrf
 
-            <h2> kelompok {{ $data['kelompok']->nama_kelompok }} </h2>
+            <h1> kelompok {{ $data['kelompok']->nama_kelompok }} </h1>
             <h3><strong> Skenario {{ $data['skenario']->nomor_sk }} </strong> </h3>
             <h3><strong> Pertemuan {{ $data['pertemuan'] }} </strong> </h3>
             <!-- hidden station_slug -->
@@ -25,6 +25,9 @@
 
 
             </form>
+            <a href="{{ route('kegiatan_pbl.logout') }}" class="btn btn-bahaya">
+                Logout
+            </a>
            </div>
         </div>
 

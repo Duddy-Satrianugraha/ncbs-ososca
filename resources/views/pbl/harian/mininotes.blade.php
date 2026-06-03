@@ -205,6 +205,8 @@
   border-color: #269abc;
 }
 
+
+
 /* Danger button (Logout) */
 .btn-danger{
   background-color: #d9534f;
@@ -262,6 +264,153 @@
 
 </head>
 <body>
+   <noscript>
+    <style>
+        .js-required {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 99999;
+            overflow-y: auto;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .js-required .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .js-required h1 {
+            color: #c62828;
+            margin-bottom: 20px;
+        }
+
+        .js-required h2 {
+            margin-top: 25px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .js-required .alert {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <div class="js-required">
+        <div class="container">
+
+            <h1>⚠ JavaScript Diperlukan</h1>
+
+            <div class="alert">
+                Aplikasi ini memerlukan JavaScript agar dapat berfungsi dengan baik.<br>
+                Silakan aktifkan JavaScript pada browser Anda atau hubungi Administrator Sistem.
+            </div>
+
+            <h2>Android</h2>
+
+            <h3>Google Chrome</h3>
+            <ol>
+                <li>Buka Chrome.</li>
+                <li>Ketuk ikon tiga titik (⋮).</li>
+                <li>Pilih Settings.</li>
+                <li>Pilih Site Settings.</li>
+                <li>Pilih JavaScript.</li>
+                <li>Aktifkan JavaScript.</li>
+            </ol>
+
+            <h3>Firefox for Android</h3>
+            <ol>
+                <li>Buka menu (⋮)</li>
+                <li>Pilih <b>Add-ons</b>.</li>
+                <li>Nonaktifkan add-on yang memblokir script seperti:
+                    <ul>
+                        <li>NoScript</li>
+                        <li>uBlock Origin (jika memblokir JavaScript)</li>
+                        <li>AdBlock</li>
+                        <li>Privacy Badger</li>
+                    </ul>
+                </li>
+                <li>Tutup dan buka kembali Firefox.</li>
+                <li>Muat ulang halaman.</li>
+            </ol>
+
+            <h3>Samsung Internet</h3>
+            <ol>
+                <li>Buka Samsung Internet.</li>
+                <li>Pilih Menu (☰).</li>
+                <li>Pilih Settings.</li>
+                <li>Pilih Sites and Downloads.</li>
+                <li>Pilih JavaScript.</li>
+                <li>Aktifkan JavaScript.</li>
+            </ol>
+
+            <h2>iPhone / iPad (iOS)</h2>
+
+            <h3>Safari</h3>
+            <ol>
+                <li>Buka Pengaturan (Settings).</li>
+                <li>Pilih Apps → Safari.</li>
+                <li>Pilih Advanced.</li>
+                <li>Aktifkan JavaScript.</li>
+            </ol>
+
+            <h3>Google Chrome iOS</h3>
+            <p>
+                Chrome pada iPhone mengikuti pengaturan Safari.
+                Aktifkan JavaScript melalui pengaturan Safari.
+            </p>
+
+            <h2>Windows</h2>
+
+            <h3>Google Chrome</h3>
+            <ol>
+                <li>Buka Chrome.</li>
+                <li>Klik ikon tiga titik (⋮).</li>
+                <li>Pilih Settings.</li>
+                <li>Pilih Privacy and Security.</li>
+                <li>Pilih Site Settings.</li>
+                <li>Pilih JavaScript.</li>
+                <li>Pilih "Sites can use JavaScript".</li>
+            </ol>
+
+            <h3>Microsoft Edge</h3>
+            <ol>
+                <li>Buka Microsoft Edge.</li>
+                <li>Klik ikon tiga titik (...).</li>
+                <li>Pilih Settings.</li>
+                <li>Pilih Cookies and Site Permissions.</li>
+                <li>Pilih JavaScript.</li>
+                <li>Aktifkan Allowed.</li>
+            </ol>
+
+            <h3>Mozilla Firefox</h3>
+            <ol>
+                <li>Ketik <code>about:config</code> pada address bar.</li>
+                <li>Cari <code>javascript.enabled</code>.</li>
+                <li>Pastikan nilainya <b>true</b>.</li>
+            </ol>
+
+            <h2>Jika Masih Tidak Berfungsi</h2>
+            <ul>
+                <li>Refresh halaman.</li>
+                <li>Tutup dan buka kembali browser.</li>
+                <li>Nonaktifkan AdBlock atau NoScript.</li>
+                <li>Perbarui browser ke versi terbaru.</li>
+            </ul>
+
+        </div>
+    </div>
+</noscript>
   <div class="page">
     <div class="title-wrap">
       <div class="title-line"></div>
@@ -450,9 +599,11 @@
       <h3 style="color: red;">Penilaian hanya dapat dilakukan Jika Anda Terhubung ke Wifi Hotspot FK</h3>
         <hr>
         <div class="nav-action">
-  <a href="#" class="btn btn-danger">
-    Logout
-  </a>
+        <a href="{{ route('kegiatan_pbl.logout') }}"
+            id="btn-logout"
+            class="btn btn-danger">
+            Logout
+            </a>
 
   <button type="submit" id="btn-simpan" class="btn btn-info" disabled  onclick="return confirm('Penilaian hanya dapat dilakukan satu kali, apakah Anda yakin?')">
     Simpan Nilai
@@ -625,6 +776,34 @@
             );
             }
 
+    function updateLogoutButton() {
+    const btnLogout = document.getElementById('btn-logout');
+    if (!btnLogout) return;
+
+    // cek checkbox hadir
+    const adaHadir = document.querySelectorAll('.hadir-check:checked').length > 0;
+
+    // cek ada nilai terisi
+    const adaNilai = [...document.querySelectorAll('.nilai-field')]
+        .some(input => input.value.trim() !== '');
+
+    // cek BA
+    const ba = document.getElementById('BA');
+    const adaBA = ba && ba.value.trim() !== '';
+
+    const formSudahDiisi = adaHadir || adaNilai || adaBA;
+
+    if (formSudahDiisi) {
+        btnLogout.classList.add('disabled');
+        btnLogout.style.pointerEvents = 'none';
+        btnLogout.style.opacity = '0.5';
+    } else {
+        btnLogout.classList.remove('disabled');
+        btnLogout.style.pointerEvents = '';
+        btnLogout.style.opacity = '';
+    }
+}
+
   function updateRow(row) {
   const hadirCheck = row.querySelector('.hadir-check');
   const hadir = hadirCheck ? hadirCheck.checked : false;
@@ -645,6 +824,7 @@
     if (totalInput) totalInput.value = 0;
 
      updateSubmitButton();
+     updateLogoutButton();
     return;
   }
 
@@ -675,6 +855,7 @@
 
         // update status tombol simpan
         updateSubmitButton();
+        updateLogoutButton();
         }
 
 
@@ -706,6 +887,7 @@
     // input BA
     if (e.target.id === 'BA') {
         updateSubmitButton();
+        updateLogoutButton();
         return;
     }
     })
@@ -713,9 +895,18 @@
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('tbody tr').forEach(row => updateRow(row));
     updateSubmitButton();
+    updateLogoutButton();
   });
 
 })();
+
+window.onbeforeunload = function() {
+    if (document.querySelectorAll('.hadir-check:checked').length > 0 ||
+        [...document.querySelectorAll('.nilai-field')].some(i => i.value !== '') ||
+        document.getElementById('BA').value.trim() !== '') {
+        return 'Ups, masih ada data yang sudah diisi tapi belum disimpan.';
+    }
+};
 </script>
 
 
