@@ -804,6 +804,23 @@
     }
 }
 
+function validatePositiveInput(input) {
+  if (input.classList.contains('nilai-restrict')) {
+    return true;
+  }
+
+  if (input.value === '') {
+    markInvalid(input, false);
+    return true;
+  }
+
+  const v = toInt(input.value);
+  const ok = v !== null && v >= 1 && v <= 10;
+
+  markInvalid(input, !ok);
+  return ok;
+}
+
   function updateRow(row) {
   const hadirCheck = row.querySelector('.hadir-check');
   const hadir = hadirCheck ? hadirCheck.checked : false;
@@ -838,13 +855,14 @@
 
     // VALIDASI MERAH (dominasi/disiplin/sopan)
     const isValidRestricted = validateRestricted(input);
+    const isValidPositive = validatePositiveInput(input);
 
-    // TANDAI KUNING JIKA KOSONG
+    const isValid = isValidRestricted && isValidPositive;
+
     const isEmpty = (input.value === '');
-    markPending(input, isEmpty && isValidRestricted);
+    markPending(input, isEmpty && isValid);
 
-    // jika invalid, jangan ikut hitung
-    if (!isValidRestricted) return;
+    if (!isValid) return;
 
     const v = toInt(input.value);
     if (v !== null) total += v;

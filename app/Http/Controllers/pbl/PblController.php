@@ -64,32 +64,79 @@ class PblController extends Controller
 
     public function nilaiinput(Request $request){
         //dd($request->all());
-            $request->validate([
+            $validated = $request->validate([
                 'nilai' => ['required', 'array'],
 
-                // scope / identitas
                 'nilai.*.blok'       => ['required', 'integer', 'exists:pbl_kegs,id'],
                 'nilai.*.kelompok'   => ['required', 'integer', 'exists:pbl_kelompoks,id'],
                 'nilai.*.skenario'   => ['required', 'integer', 'exists:pbl_mininotes,id'],
                 'nilai.*.pertemuan'  => ['required', 'integer', 'min:1'],
                 'nilai.*.tutor'      => ['nullable', 'integer', 'exists:opengujis,id'],
 
-                // status
                 'nilai.*.hadir'      => ['required', 'boolean'],
 
-                // nilai umum
                 'nilai.*.sharing'      => ['nullable', 'integer', 'between:0,10'],
                 'nilai.*.argumentasi'  => ['nullable', 'integer', 'between:0,10'],
                 'nilai.*.keaktifan'    => ['nullable', 'integer', 'between:0,10'],
                 'nilai.*.kolaborasi'   => ['nullable', 'integer', 'between:0,10'],
                 'nilai.*.komunikasi'   => ['nullable', 'integer', 'between:0,10'],
 
-                // nilai khusus
                 'nilai.*.dominasi'   => ['nullable', Rule::in([0, -3, -5])],
                 'nilai.*.disiplin'   => ['nullable', Rule::in([0, -3, -5])],
                 'nilai.*.sopan'      => ['nullable', Rule::in([0, -3, -5])],
-                'BA'                 => ['nullable', 'string'],
+
+                'BA' => ['required', 'string'],
             ]);
+            $adaPesertaHadir = false;
+
+            foreach ($request->nilai as $pesertaId => $n) {
+                if ((int) $n['hadir'] === 1) {
+                    $adaPesertaHadir = true;
+
+                    $nilaiWajib = [
+                        'sharing',
+                        'argumentasi',
+                        'keaktifan',
+                        'kolaborasi',
+                        'komunikasi',
+                    ];
+
+                    foreach ($nilaiWajib as $field) {
+                        if (!isset($n[$field]) || (int) $n[$field] < 1 || (int) $n[$field] > 10) {
+                            return back()
+                                ->withInput()
+                                ->withErrors([
+                                    'nilai' => 'Peserta yang hadir wajib memiliki nilai Sharing, Argumentasi, Keaktifan, Kolaborasi, dan Komunikasi minimal 1 dan maksimal 10.',
+                                ]);
+                        }
+                    }
+
+                    $nilaiKhusus = [
+                        'dominasi',
+                        'disiplin',
+                        'sopan',
+                    ];
+
+                    foreach ($nilaiKhusus as $field) {
+                        if (!isset($n[$field]) || !in_array((int) $n[$field], [0, -3, -5], true)) {
+                            return back()
+                                ->withInput()
+                                ->withErrors([
+                                    'nilai' => 'Nilai Dominasi, Disiplin, dan Sopan santun hanya boleh 0, -3, atau -5.',
+                                ]);
+                        }
+                    }
+                }
+            }
+
+            if (!$adaPesertaHadir) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'nilai' => 'Minimal harus ada satu peserta yang hadir.',
+                    ]);
+            }
+
 
             DB::transaction(function () use ($request) {
                 $counthadir = 0;
@@ -111,14 +158,14 @@ class PblController extends Controller
                         ];
                     } else {
                         // casting + default
-                        $sharing      = (int)($n['sharing'] ?? 0);
-                        $argumentasi  = (int)($n['argumentasi'] ?? 0);
-                        $keaktifan    = (int)($n['keaktifan'] ?? 0);
-                        $dominasi     = (int)($n['dominasi'] ?? 0);
-                        $kolaborasi   = (int)($n['kolaborasi'] ?? 0);
-                        $disiplin     = (int)($n['disiplin'] ?? 0);
-                        $komunikasi   = (int)($n['komunikasi'] ?? 0);
-                        $sopan        = (int)($n['sopan'] ?? 0);
+                            $sharing      = (int) $n['sharing'];
+                            $argumentasi  = (int) $n['argumentasi'];
+                            $keaktifan    = (int) $n['keaktifan'];
+                            $dominasi     = (int) $n['dominasi'];
+                            $kolaborasi   = (int) $n['kolaborasi'];
+                            $disiplin     = (int) $n['disiplin'];
+                            $komunikasi   = (int) $n['komunikasi'];
+                            $sopan        = (int) $n['sopan'];
 
                         // HITUNG TOTAL DI SERVER
                         $total = $sharing
@@ -161,18 +208,19 @@ class PblController extends Controller
                 $datanil = $request->input('nilai');
                 $firstNilai = reset($datanil);
                // dd($firstNilai);
-                PblBa::create(
-                    [
-                        'keg_id'       => $firstNilai['blok'],
-                        'kelompok_id'  => $firstNilai['kelompok'],
-                        'sk_id'        => $firstNilai['skenario'],
-                        'pertemuan'   => $firstNilai['pertemuan'],
-                        'tutor_id'    => $firstNilai['tutor'] ?? null,
-                        'jml_peserta' => $counthadir,
-                        'ba'          => $request->BA,
-
-                    ]
-                );
+                    PblBa::updateOrCreate(
+                        [
+                            'keg_id'      => $firstNilai['blok'],
+                            'kelompok_id' => $firstNilai['kelompok'],
+                            'sk_id'       => $firstNilai['skenario'],
+                            'pertemuan'   => $firstNilai['pertemuan'],
+                            'tutor_id'    => $firstNilai['tutor'] ?? null,
+                        ],
+                        [
+                            'jml_peserta' => $counthadir,
+                            'ba'          => $request->BA,
+                        ]
+                    );
 
             });
             session()->flush();
