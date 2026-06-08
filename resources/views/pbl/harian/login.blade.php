@@ -57,5 +57,18 @@
 @section('script')
 <script type="text/javascript" src="{{ asset('js/instascan.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/osoca_login.js') }}"></script>
+<script>
+    $(document).ready(function () {
+
+        // Cegah Enter di input captcha agar form tidak tersubmit
+        $('#captcha').on('keydown', function (e) {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+    });
+</script>
 
 @endsection
