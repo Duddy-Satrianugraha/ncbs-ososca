@@ -27,7 +27,7 @@
 
 @section('mhs')
 <div class="col-md-8">
-    @if(!session()->has('mhs_id'))
+    @if(!session()->has('mhs_id'))xcvxvxv
     <h5><strong>Mahasiswa Selanjutnya :</strong> {{is_null($next_peserta) ?  "tidak ada peserta" : $next_peserta->name }} - <strong>{{ is_null($next_peserta) ? " Silakahan klik tombol TIDAK HADIR" : $next_peserta->username  }}</strong></h5>
     <div style="max-height: 300px; overflow-y: auto;">
         <table class="table table-bordered">
