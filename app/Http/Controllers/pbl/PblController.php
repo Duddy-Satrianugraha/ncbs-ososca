@@ -138,7 +138,7 @@ class PblController extends Controller
             }
 
 
-            DB::transaction(function () use ($request) {
+            $ba = DB::transaction(function () use ($request) {
                 $counthadir = 0;
                 foreach ($request->nilai as $pesertaId => $n) {
 
@@ -208,7 +208,7 @@ class PblController extends Controller
                 $datanil = $request->input('nilai');
                 $firstNilai = reset($datanil);
                // dd($firstNilai);
-                    PblBa::updateOrCreate(
+                  $xx =  PblBa::updateOrCreate(
                         [
                             'keg_id'      => $firstNilai['blok'],
                             'kelompok_id' => $firstNilai['kelompok'],
@@ -221,11 +221,19 @@ class PblController extends Controller
                             'ba'          => $request->BA,
                         ]
                     );
-
+                return $xx;
             });
-            session()->flush();
-            return redirect(route('pbl.login'))->with('msg', 'success-Nilai Harian berhasil disimpan');
+            //dd($ba);    
+            return redirect(route('kegiatan_pbl.confirm', $ba->id))->with('msg', 'success-Nilai Harian berhasil disimpan');
         }
+
+    public function confirm(int $id){
+      $ba = PblBa::find($id);
+        $keg = PblKeg::find($ba->keg_id);
+        $tutor = Openguji::find($ba->tutor_id);
+        $nilai = PblNilai::where('keg_id', $ba->keg_id)->where('kelompok_id', $ba->kelompok_id)->where('skenario_id', $ba->sk_id)->where('pertemuan', $ba->pertemuan)->get();
+        return view('pbl.ba.finish', compact('ba', 'keg', 'nilai', 'tutor'));
+    }
 
 
     public function logout(){

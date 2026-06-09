@@ -918,13 +918,7 @@ function validatePositiveInput(input) {
 
 })();
 
-window.onbeforeunload = function() {
-    if (document.querySelectorAll('.hadir-check:checked').length > 0 ||
-        [...document.querySelectorAll('.nilai-field')].some(i => i.value !== '') ||
-        document.getElementById('BA').value.trim() !== '') {
-        return 'Ups, masih ada data yang sudah diisi tapi belum disimpan.';
-    }
-};
+
 </script>
 
 

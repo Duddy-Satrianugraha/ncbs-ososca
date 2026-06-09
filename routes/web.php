@@ -190,6 +190,7 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
     Route::get('mininotes', [PblController::class, 'mininotes'])->name('mininotes');
     Route::post('nilai', [PblController::class, 'nilaiinput'])->name('nilai.input');
     Route::get('logout', [PblController::class, 'logout'])->name('logout');
+    Route::get('confirm/{id}', [PblController::class, 'confirm'])->name('confirm');
 });
 
 
