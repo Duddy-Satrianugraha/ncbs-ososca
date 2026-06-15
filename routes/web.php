@@ -22,6 +22,7 @@ use App\Http\Controllers\OpengujiController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\nilai\AllnilaiController;
 
 use App\Http\Controllers\OtemplateController;
 use App\Http\Controllers\OujianController;
@@ -191,6 +192,15 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
     Route::post('nilai', [PblController::class, 'nilaiinput'])->name('nilai.input');
     Route::get('logout', [PblController::class, 'logout'])->name('logout');
     Route::get('confirm/{id}', [PblController::class, 'confirm'])->name('confirm');
+});
+
+Route::prefix('nilai')->middleware(['auth', Panitia::class ])->name('nilai.')->group( function (){
+    Route::get('/', [AllnilaiController::class, 'index'])->name('index');
+    Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
+    Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
+    Route::get('/show/{id}', [AllnilaiController::class, 'show'])->name('show');
+    Route::delete('/destroy/{id}', [AllnilaiController::class, 'destroy'])->name('destroy');
+
 });
 
 

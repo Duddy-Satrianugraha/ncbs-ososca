@@ -102,4 +102,12 @@ input bisa di taruh di db peserta,
 - di penguji
  perlu tampil hasil interpretasim diagnosis dan resep => nunggu bentuk html dari dr dr kati (perlu klik atau tidak)
 
+ jenis nilai
+ 1. Ujian Akhir Blok kode (UAB)
+ 2. Ujian Tengah Blok kode (UTB)
+ 3. Praktikum kode Praktikum (nilai praktikum)
+ 3. Biomedis kode biomedis (nilai akhir)
+ 4. PBL kode PBL (nilai Harian pbl)
+ 5. Osoca kode OSOCA (nilai Osoca)
+ 6. OSCE kode OSCE(nilai osce)
 
