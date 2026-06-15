@@ -136,10 +136,10 @@
     <<div class="title">BERITA ACARA KEGIATAN OSOCA</div>
 
       <div class="para">
-        Pada hari ini {{ tgl_indox($ba->created_at,false,'ho') }}
-        tanggal {{ tgl_indox($ba->created_at,false,'txo') }}
-        bulan {{ tgl_indox($ba->created_at,false,'bo') }}
-        tahun {{ tgl_indox($ba->created_at,false,'to') }} telah dilaksanakan Osoca
+        Pada hari ini {{ tgl_indox($ba->updated_at,false,'ho') }}
+        tanggal {{ tgl_indox($ba->updated_at,false,'txo') }}
+        bulan {{ tgl_indox($ba->updated_at,false,'bo') }}
+        tahun {{ tgl_indox($ba->updated_at,false,'to') }} telah dilaksanakan Osoca
         Tahun Akademik {{ $keg->ta }}
       </div>
       @php
@@ -161,7 +161,7 @@
       </tr>
       <tr>
         <td class="field-label">Waktu</td><td class="field-colon">:</td>
-        <td>{{ utc_to_wib($ba->created_at) }}</td>
+        <td>{{ utc_to_wib($ba->updated_at) }}</td>
       </tr>
       <tr>
         <td class="field-label">Jumlah Peserta</td><td class="field-colon">:</td>
@@ -185,7 +185,7 @@
 
     <div class="sign-wrap">
       <div class="sign-box">
-        Cirebon, {{ tgl_indox($ba->created_at) }}<br><br>
+        Cirebon, {{ tgl_indox($ba->updated_at) }}<br><br>
         Mengetahui,<br>
         Tutor<br><br>
 

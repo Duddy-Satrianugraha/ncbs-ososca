@@ -136,10 +136,10 @@
     <div class="title">BERITA ACARA KEGIATAN TUTORIAL/PBL</div>
 
     <div class="para">
-      Pada hari ini {{ tgl_indox($ba->created_at,false,'ho') }}
-      tanggal {{ tgl_indox($ba->created_at,false,'txo') }}
-      bulan {{ tgl_indox($ba->created_at,false,'bo') }}
-      tahun {{ tgl_indox($ba->created_at,false,'to') }}
+      Pada hari ini {{ tgl_indox($ba->updated_at,false,'ho') }}
+      tanggal {{ tgl_indox($ba->updated_at,false,'txo') }}
+      bulan {{ tgl_indox($ba->updated_at,false,'bo') }}
+      tahun {{ tgl_indox($ba->updated_at,false,'to') }}
       telah dilaksanakan Tutorial/PBL semester
       Tahun Akademik {{ $keg->tahun_akademik }}
     </div>
@@ -163,7 +163,7 @@
       </tr>
       <tr>
         <td class="field-label">Waktu</td><td class="field-colon">:</td>
-        <td>{{ jam_sesi($ba->created_at) }}</td>
+        <td>{{ jam_sesi($ba->updated_at) }}</td>
       </tr>
       <tr>
         <td class="field-label">Jumlah Peserta</td><td class="field-colon">:</td>
@@ -187,12 +187,12 @@
 
     <div class="sign-wrap">
       <div class="sign-box">
-        Cirebon, {{ tgl_indox($ba->created_at) }}<br><br>
+        Cirebon, {{ tgl_indox($ba->updated_at) }}<br><br>
         Mengetahui,<br>
         Tutor<br><br>
 
         <img
-          src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->size(80)->generate('ditandatangani digital pada ' . tgl_indox($ba->created_at) . ' oleh ' . $tutor->nama)) }}"
+          src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->size(80)->generate('ditandatangani digital pada ' . tgl_indox($ba->updated_at) . ' oleh ' . $tutor->nama)) }}"
           alt="QR Code"
         >
 
@@ -332,7 +332,7 @@
 
     <div class="rubrik-footer">
       <div class="box">
-        Cirebon, {{ tgl_indox($ba->created_at) }}<br><br>
+        Cirebon, {{ tgl_indox($ba->updated_at) }}<br><br>
         <img
           src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->size(80)->generate('ditandatangani digital pada ' . tgl_indox($ba->created_at) . ' oleh ' . $tutor->nama)) }}"
           alt="QR Code"

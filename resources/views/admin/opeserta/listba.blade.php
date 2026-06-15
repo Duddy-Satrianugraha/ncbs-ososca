@@ -55,7 +55,7 @@
                                                     <td class="text-center">{{$i}}</td>
                                                     <td> station {{$data->name}}</td>
                                                     <td>{{$data->nama_penguji}}</td>
-                                                    <td>{{  tgl_indox($data->created_at)}}</td>
+                                                    <td>{{  tgl_indox($data->updated_at)}}</td>
                                                     <td>
                                                         <a href="{{ route('admin.peserta.beritaacara.show', [$keg->id, $data->id])}}" class="btn btn-info btn-sm"><span class="fa fa-search"></span> lihat Berita Acara</a>
                                                         <a href="{{ route('admin.ba.pdf', [$data->id])}}" class="btn btn-warning btn-sm"><span class="fa fa-print"></span> Cetak Berita acara</a>

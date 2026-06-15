@@ -33,6 +33,7 @@ class OujianController extends Controller
             ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
                 return $q->whereIn('user_id', $userIds);
             })
+            ->orderBy('id', 'desc')
             ->paginate(10);
 
         return view('admin.oujian.list', compact('ujian', 'search'));
