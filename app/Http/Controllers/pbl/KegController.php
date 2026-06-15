@@ -37,9 +37,9 @@ class KegController extends Controller
             })
             ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
                 return $q->whereIn('user_id', $userIds);
-            })
-            ->paginate(5);
-        
+            })->orderBy('id', 'desc')
+            ->paginate(10);
+
         return view('pbl.keg.list', compact('keg', 'search'));
 
     }

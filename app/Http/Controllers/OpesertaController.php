@@ -27,7 +27,7 @@ class OpesertaController extends Controller
         $ujian = Oujian::query()
             ->when($search, function ($q, $s) {
                 return $q->where('name', 'like', "%{$s}%");
-            })
+            })->orderBy('id', 'desc')
             ->paginate(10);
 
         return view('admin.opeserta.listadm', compact('ujian', 'search'));
