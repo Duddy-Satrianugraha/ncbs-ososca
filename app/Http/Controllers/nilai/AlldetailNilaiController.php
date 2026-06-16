@@ -36,16 +36,22 @@ class AlldetailNilaiController extends Controller
 
     $nilai = Allnilai::where('id', $kid)->first();
 
-
-    return view('allnilai.detailPraktikum', compact('detail', 'nilai', 'search'));
+    if($nilai->jenis_nilai === 'Praktikum') {
+        return view('allnilai.detailPraktikum', compact('detail', 'nilai', 'search'));
+        } else {
+            return view('allnilai.detailCbt', compact('detail', 'nilai', 'search'));
+        }
     }
 
     Public function edit(string $id)
     {
         $detail = AlldetailNilai::find($id);
         $nilai = Allnilai::where('id', $detail->allnilai_id)->first();
-        
+        if($nilai->jenis_nilai === 'Praktikum') {
         return view('allnilai.editPraktikum', compact('nilai', 'detail'));
+        } else {
+            return view('allnilai.editcbt', compact('nilai', 'detail'));
+        }
     }
 
     Public function update(Request $request, string $id)

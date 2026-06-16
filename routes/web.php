@@ -205,6 +205,11 @@ Route::prefix('nilai')->middleware(['auth', Panitia::class ])->name('nilai.')->g
     Route::put('/harian/{id}', [AlldetailNilaiController::class, 'update'])->name('harian.update');
     Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
 
+    Route::get('/cbt', [AllnilaiController::class, 'create_cbt'])->name('cbt.create');
+    Route::post('/cbt', [AllnilaiController::class, 'storeUploadCbt'])->name('cbt.store');
+    Route::get('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'addcbtsesi'])->name('cbt.cbtSesi');
+    Route::post('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'updateUploadCbtSesiNew'])->name('cbt.cbtSesiNew');
+
     Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
     Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
     

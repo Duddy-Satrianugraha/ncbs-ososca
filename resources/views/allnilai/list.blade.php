@@ -45,7 +45,7 @@
                                 </div>
                                 </form>
                                 <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> Biomedis </span> </a>
-                                <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> Ujian CBT</span> </a>
+                                <a href="{{ route('nilai.cbt.create')}}" class="btn btn-info"><span class="fa fa-plus"> Ujian CBT</span> </a>
                                 <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> PBl</span> </a>
                                 <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> Skills Lab</span> </a>
                                     
@@ -73,8 +73,13 @@
                                                     </td>
                                                     <td>{{$data->nama}} {{ $data->blok}} ({{$data->tahun_akademik}})</td>
 
-                                                   
+                                                   @if($data->jenis_nilai === 'UTB' || $data->jenis_nilai === 'UAB')
+                                                    <td>
+                                                        <a href="{{ route('nilai.cbt.cbtSesiNew', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-Plus"> Tambah Sesi nilai</span></a>
+                                                    </td>
+                                                    @else
                                                     <td>{{$data->created_at}}</td>
+                                                    @endif
                                                     
                                                     <td>
                                                       
