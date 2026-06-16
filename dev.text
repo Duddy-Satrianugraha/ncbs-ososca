@@ -111,3 +111,12 @@ input bisa di taruh di db peserta,
  5. Osoca kode OSOCA (nilai Osoca)
  6. OSCE kode OSCE(nilai osce)
 
+di All nilai 
+status 0 => baru diinput
+status 1 => sudah di chek
+status 2 => sudah di validasi kpspd
+status 3 => sudah di publish
+
+di detail nilai
+status 0 => baru diinput
+status 1 => sudah di publish

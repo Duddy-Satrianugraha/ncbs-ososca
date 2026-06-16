@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('laporan')->nullable();
             $table->string('ujian_prax')->nullable();
             $table->string('nilai_akhir');
+            $table->string('status')->default(0);
+            $table->string('input_by')->nullable();
+            $table->string('published_by')->nullable();
+            $table->string('lastupdated_by')->nullable();
             $table->timestamps();
         });
     }

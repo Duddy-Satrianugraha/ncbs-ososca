@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('jenis_nilai');
             $table->string('blok');
             $table->string('tahun_akademik');
+            $table->string('status')->default(0);
+            $table->string('input_by')->nullable();
+            $table->string('checked_by')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->string('published_by')->nullable();
+            $table->string('lastupdated_by')->nullable();
             $table->timestamps();
         });
     }

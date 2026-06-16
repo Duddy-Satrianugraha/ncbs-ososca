@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlldetailNilai extends Model
 {
-    //
+    protected $guarded = [];
 }

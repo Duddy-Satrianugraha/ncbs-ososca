@@ -71,14 +71,14 @@
                                                      <td>
                                                         {{ $data->jenis_nilai }}
                                                     </td>
-                                                    <td>{{$data->name}} {{ $data->blok}} ({{$data->tahun_akademik}})</td>
+                                                    <td>{{$data->nama}} {{ $data->blok}} ({{$data->tahun_akademik}})</td>
 
                                                    
                                                     <td>{{$data->created_at}}</td>
                                                     
                                                     <td>
                                                       
-                                                        <a href="{{ route('nilai.show', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
+                                                        <a href="{{ route('nilai.harian.index', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
                                                         
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('nilai.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf

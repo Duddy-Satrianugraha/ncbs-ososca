@@ -23,6 +23,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\nilai\AllnilaiController;
+use App\Http\Controllers\nilai\AlldetailNilaiController;
 
 use App\Http\Controllers\OtemplateController;
 use App\Http\Controllers\OujianController;
@@ -195,11 +196,19 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
 });
 
 Route::prefix('nilai')->middleware(['auth', Panitia::class ])->name('nilai.')->group( function (){
-    Route::get('/', [AllnilaiController::class, 'index'])->name('index');
-    Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
-    Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
+    Route::get('/', [AllnilaiController::class, 'index'])->name('index'); 
     Route::get('/show/{id}', [AllnilaiController::class, 'show'])->name('show');
     Route::delete('/destroy/{id}', [AllnilaiController::class, 'destroy'])->name('destroy');
+
+    Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');
+    Route::get('/harian/{id}/edit', [AlldetailNilaiController::class, 'edit'])->name('harian.edit');
+    Route::put('/harian/{id}', [AlldetailNilaiController::class, 'update'])->name('harian.update');
+    Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
+
+    Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
+    Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
+    
+   
 
 });
 

@@ -57,7 +57,6 @@
                             <input type="text" name="nama" class="form-control" />
                         </div>
                     </div>
-                    
                  </div>
 
                  <div class="form-group">

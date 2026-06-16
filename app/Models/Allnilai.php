@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Allnilai extends Model
 {
-    //
-}
+    protected $fillable = [
+        'nama',
+        'jenis_nilai',
+        'blok',
+        'tahun_akademik',
+    ];
+}   
