@@ -98,10 +98,14 @@ class PblNilaiController extends Controller
                 foreach ($skenarios as $s) {
                     foreach ($pertemuans as $pt) {
                         $val = $matrix[$p->id][$s->id][$pt] ?? null;
-                        if (is_int($val)) {
-                            $sum += $val;
-                            $count++;
-                        }
+                       if (is_int($val)) {
+                                $sum += $val;
+                            }
+
+                            // hitung semua pertemuan yang memiliki record
+                            if ($val !== null) {
+                                $count++;
+                            }
                     }
                 }
 
@@ -180,10 +184,14 @@ class PblNilaiController extends Controller
                 foreach ($skenarios as $s) {
                     foreach ($pertemuans as $pt) {
                         $val = $matrix[$p->id][$s->id][$pt] ?? null;
-                        if (is_int($val)) {
-                            $sum += $val;
-                            $count++;
-                        }
+                         if (is_int($val)) {
+                                $sum += $val;
+                            }
+
+                            // hitung semua pertemuan yang memiliki record
+                            if ($val !== null) {
+                                $count++;
+                            }
                     }
                 }
 
