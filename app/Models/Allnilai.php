@@ -11,5 +11,10 @@ class Allnilai extends Model
         'jenis_nilai',
         'blok',
         'tahun_akademik',
+        'input_by',
+        'checked_by',
+        'approved_by',
+        'published_by',
+        'lastupdated_by',
     ];
-}   
+}

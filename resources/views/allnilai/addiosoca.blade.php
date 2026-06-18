@@ -9,13 +9,13 @@
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
     <li ><a href="{{ route('nilai.index')}}">Daftar Ujian</a></li>
-        <li class="active">Import Sesi Baru Nilai CBT Baru</li>
+        <li class="active">Import Sesi Baru Nilai OSOCA Baru</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Import Nilai CBT {{ $allnilai->nama }} {{$allnilai->jenis_nilai}} {{ $allnilai->blok }} ({{$allnilai->tahun_akademik}})</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Import Nilai {{$allnilai->jenis_nilai}} {{ $allnilai->blok }} ({{$allnilai->tahun_akademik}})</h2>
 </div>
 @endsection
 @section('content')
@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('nilai.cbt.upload', $allnilai->id) }}" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{{ route('nilai.osoca.upload', $allnilai->id) }}" method="POST" enctype="multipart/form-data">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>Import</strong> Nilai CBT</h3>

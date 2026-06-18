@@ -44,11 +44,9 @@
                                     </div>
                                 </div>
                                 </form>
-                                <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> Biomedis </span> </a>
-                                <a href="{{ route('nilai.cbt.create')}}" class="btn btn-info"><span class="fa fa-plus"> Ujian CBT</span> </a>
-                                <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> PBl</span> </a>
-                                <a href="{{ route('nilai.praktikum.create')}}" class="btn btn-info"><span class="fa fa-plus"> Skills Lab</span> </a>
-                                    
+                                <a href="{{ route('nilai.create')}}" class="btn btn-info"><span class="fa fa-plus"> NIlai </span> </a>
+
+
                                 </div>
                                 <div class="panel-body">
 
@@ -73,24 +71,18 @@
                                                     </td>
                                                     <td>{{$data->nama}} {{ $data->blok}} ({{$data->tahun_akademik}})</td>
 
-                                                   @if($data->jenis_nilai === 'UTB' || $data->jenis_nilai === 'UAB')
                                                     <td>
-                                                        <a href="{{ route('nilai.cbt.cbtSesiNew', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-Plus"> Tambah Sesi nilai</span></a>
+                                                        <a href="{{ route('nilai.add', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-Plus"> Tambah Sesi nilai</span></a>
                                                     </td>
-                                                    @else
-                                                    <td>{{$data->created_at}}</td>
-                                                    @endif
-                                                    
                                                     <td>
-                                                      
                                                         <a href="{{ route('nilai.harian.index', $data->id)}}" class="btn btn-info btn-rounded btn-sm"><span class="fa fa-list"></span></a>
-                                                        
+
                                                         <form id="del-temp-{{$data->id}}" action="{{ route('nilai.destroy', $data->id)}}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger btn-rounded btn-sm" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus ujian ini?');"><span class="fa fa-times"></span></button>
                                                         </form>
-                                                        
+
                                                     </td>
                                                 </tr>
                                                 @php $i++;@endphp

@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('nilai.praktikum.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{{ route('nilai.praktikum.upload', $allnilai->id) }}" method="POST" enctype="multipart/form-data">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>Import</strong> Nilai Praktikum</h3>
@@ -41,7 +41,7 @@
                     <label class="col-md-3 col-xs-12 control-label">
                         <P> <strong>Penduan Import Nilai Praktikum</strong> </br>
                             <span class="fa fa-exclamation-triangle"> Pastikan Nama dan NPM mahasiswa sudah sesuai</span> </br>
-                            <span class="fa fa-exclamation-triangle"> Nilai Biomedis adalah nilai praktikum perblok </span></br>
+                            <span class="fa fa-exclamation-triangle"> Nilai Praktikum adalah nilai praktikum perjenis praktikum </span></br>
                             <span class="fa fa-exclamation-triangle"> Format Excel harus sesuai dengan template </span></br>
 
                             <a href="{{ asset('doc/template-peserta-osoca.xlsx') }}" class="btn btn-primary btn-sm">Download Template</a></br>
@@ -50,59 +50,33 @@
 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-2 col-xs-12 control-label">Nama praktikum</label>
+                    <label class="col-md-2 col-xs-12 control-label">Nama Ujian</label>
                     <div class="col-md-8 col-xs-12">
                         <div class="input-group">
-                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                            <input type="text" name="nama" class="form-control" />
+                           {{ $allnilai->nama }}
                         </div>
                     </div>
                  </div>
 
                  <div class="form-group">
-                      <label class="col-md-2 col-xs-12 control-label">Jenis Nilai</label> 
+                      <label class="col-md-2 col-xs-12 control-label">Jenis Nilai</label>
                      <div class="col-md-8 col-xs-12">
-                         <div class="input-group">
-                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                             <select name="jenis_nilai" class="form-control">
-                                 <option value="Praktikum">Nilai Praktikum</option>
-                                 <option value="Biomedis">Nilai Biomedis</option>
-                             </select>
-                         </div>
+                         {{ $allnilai->jenis_nilai }}
                      </div>
                  </div>
                  <div class="form-group">
-                      <label class="col-md-2 col-xs-12 control-label">Blok</label> 
+                      <label class="col-md-2 col-xs-12 control-label">Blok</label>
                      <div class="col-md-8 col-xs-12">
-                         <div class="input-group">
-                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                             <select name="blok" class="form-control">
-                                 <option value="HPK 1.1">HPK 1.1</option>
-                                 <option value="HPK 1.2">HPK 1.2</option>
-                                 <option value="HPK 1.3">HPK 1.3</option>
-                                 <option value="HPK 2.1">HPK 2.1</option>
-                                 <option value="HPK 2.2">HPK 2.2</option>
-                                 <option value="HPK 2.3">HPK 2.3</option>
-                                 <option value="HPK 3.1">HPK 3.1</option>
-                                 <option value="HPK 3.2">HPK 3.2</option>
-                                 <option value="HPK 3.3">HPK 3.3</option>
-                                 <option value="HPK 4.1">HPK 4.1</option>
-                                 <option value="HPK 4.2">HPK 4.2</option>
-                                 <option value="HPK 4.3">HPK 4.3</option>
-                             </select>
-                         </div> 
+                         {{ $allnilai->blok }}
                      </div>
                  </div>
                  <div class="form-group">
-                      <label class="col-md-2 col-xs-12 control-label">Tahun akademik</label> 
+                      <label class="col-md-2 col-xs-12 control-label">Tahun akademik</label>
                      <div class="col-md-8 col-xs-12">
-                         <div class="input-group">
-                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                             <input type="text" name="tahun_akademik" class="form-control" />
-                         </div>
+                         {{ $allnilai->tahun_akademik }}
                      </div>
                  </div>
-                    
+
 
                 <div class="form-group">
                     <label class="col-md-2 col-xs-12 control-label">File Excel</label>

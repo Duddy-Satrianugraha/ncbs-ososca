@@ -34,6 +34,7 @@ use App\Http\Middleware\Peserta;
 use App\Http\Middleware\Panitia;
 use App\Http\Middleware\Osoca;
 use App\Http\Middleware\Pbls;
+use App\Http\Middleware\Kpspd;
 
 
 
@@ -195,26 +196,32 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
     Route::get('confirm/{id}', [PblController::class, 'confirm'])->name('confirm');
 });
 
-Route::prefix('nilai')->middleware(['auth', Panitia::class ])->name('nilai.')->group( function (){
-    Route::get('/', [AllnilaiController::class, 'index'])->name('index'); 
+Route::prefix('nilai')->middleware(['auth', Kpspd::class ])->name('nilai.')->group( function (){
+    Route::get('/', [AllnilaiController::class, 'index'])->name('index');
     Route::get('/show/{id}', [AllnilaiController::class, 'show'])->name('show');
     Route::delete('/destroy/{id}', [AllnilaiController::class, 'destroy'])->name('destroy');
+    Route::get('/create', [AllnilaiController::class, 'create_penilaian'])->name('create');
+    Route::post('/store', [AllnilaiController::class, 'store_penilaian'])->name('store');
+    Route::get('/{allnilai}', [AllnilaiController::class, 'addsesi'])->name('add');
+    Route::post('/cbt/{allnilai}', [AllnilaiController::class, 'uploadCbt'])->name('cbt.upload');
+    Route::post('/praktikum/{allnilai}', [AllnilaiController::class, 'uploadPraktikum'])->name('praktikum.upload');
+    Route::post('/osoca/{allnilai}', [AllnilaiController::class, 'uploadOsoca'])->name('osoca.upload');
 
-    Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');
-    Route::get('/harian/{id}/edit', [AlldetailNilaiController::class, 'edit'])->name('harian.edit');
-    Route::put('/harian/{id}', [AlldetailNilaiController::class, 'update'])->name('harian.update');
-    Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
+    // Route::post('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'updateUploadCbtSesiNew'])->name('cbt.cbtSesiNew');
+     Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');
+     Route::get('/harian/{id}/edit', [AlldetailNilaiController::class, 'edit'])->name('harian.edit');
 
-    Route::get('/cbt', [AllnilaiController::class, 'create_cbt'])->name('cbt.create');
-    Route::post('/cbt', [AllnilaiController::class, 'storeUploadCbt'])->name('cbt.store');
-    Route::get('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'addcbtsesi'])->name('cbt.cbtSesi');
-    Route::post('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'updateUploadCbtSesiNew'])->name('cbt.cbtSesiNew');
 
-    Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
-    Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
-    
-   
+    // Route::put('/harian/{id}', [AlldetailNilaiController::class, 'update'])->name('harian.update');
+     Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
 
+    // Route::get('/cbt', [AllnilaiController::class, 'create_cbt'])->name('cbt.create');
+    // Route::post('/cbt', [AllnilaiController::class, 'storeUploadCbt'])->name('cbt.store');
+    // Route::get('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'addcbtsesi'])->name('cbt.cbtSesi');
+
+
+    // Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
+    // Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
 });
 
 

@@ -36,9 +36,13 @@ class AlldetailNilaiController extends Controller
 
     $nilai = Allnilai::where('id', $kid)->first();
 
-    if($nilai->jenis_nilai === 'Praktikum') {
-        return view('allnilai.detailPraktikum', compact('detail', 'nilai', 'search'));
-        } else {
+        if($nilai->jenis_nilai === 'Praktikum') {
+            return view('allnilai.detailPraktikum', compact('detail', 'nilai', 'search'));
+        } else if($nilai->jenis_nilai === 'OSOCA')
+        {
+            return view('allnilai.detailOsoca', compact('detail', 'nilai', 'search'));
+        } else
+        {
             return view('allnilai.detailCbt', compact('detail', 'nilai', 'search'));
         }
     }
@@ -63,7 +67,7 @@ class AlldetailNilaiController extends Controller
             'ujian_prax'  => ['nullable', 'string', 'max:255'],
             'nilai_akhir' => ['required', 'string', 'max:255'],
         ]);
-        
+
         try {
             DB::beginTransaction();
         $detail = AlldetailNilai::find($id);
@@ -90,7 +94,7 @@ class AlldetailNilaiController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => $e->getMessage()]);
         }
-        
+
     }
 
 
