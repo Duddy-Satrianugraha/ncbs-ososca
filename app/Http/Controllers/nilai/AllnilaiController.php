@@ -40,8 +40,8 @@ class AllnilaiController extends Controller
             return view('allnilai.addipraktikum', compact('allnilai'));
         } elseif ($allnilai->jenis_nilai === 'OSOCA') {
             return view('allnilai.addiosoca', compact('allnilai'));
-        } elseif ($allnilai->jenis_nilai === 'UTB'|| $allnilai->jenis_nilai === 'UAB') {
-            return view('allnilai.addicbt', compact('allnilai'));
+        } elseif ($allnilai->jenis_nilai === 'PBL') {
+            return view('allnilai.addipbl', compact('allnilai'));
         } else {
             return view('allnilai.addicbt', compact('allnilai'));
         }
@@ -429,6 +429,123 @@ class AllnilaiController extends Controller
         }
     }
 
+    public function uploadPbl(Request $request, Allnilai $allnilai)
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:xlsx,xls,csv', 'max:51200'],
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $spreadsheet = IOFactory::load($request->file('file')->getRealPath());
+
+            $sheet = $spreadsheet->getSheet(0);
+            $rows = $sheet->toArray(null, true, true, true);
+
+            $headerRowIndex = null;
+            $columns = [];
+
+            foreach ($rows as $rowIndex => $row) {
+                foreach ($row as $col => $value) {
+                    $header = strtolower(trim((string) $value));
+                    $header = preg_replace('/\s+/', ' ', $header);
+
+                    if ($header === 'nama') {
+                        $columns['nama_mhs'] = $col;
+                    }
+
+                    if ($header === 'npm') {
+                        $columns['npm'] = $col;
+                    }
+
+                    if ($header === 'rerata nilai') {
+                        $columns['nilai_akhir'] = $col;
+                    }
+                }
+
+                if (
+                    isset($columns['nama_mhs']) &&
+                    isset($columns['npm']) &&
+                    isset($columns['nilai_akhir'])
+                ) {
+                    $headerRowIndex = $rowIndex;
+                    break;
+                }
+            }
+
+            if ($headerRowIndex === null) {
+                DB::rollBack();
+
+                return back()->with([
+                    'msg' => 'danger-Format Excel PBL tidak sesuai. Header wajib: Nama, NPM, Rerata Nilai.'
+                ])->withInput();
+            }
+
+            $created = 0;
+            $updated = 0;
+            $skipped = 0;
+
+            foreach ($rows as $rowIndex => $row) {
+                if ($rowIndex <= $headerRowIndex) {
+                    continue;
+                }
+
+                $namaMhs = trim((string) ($row[$columns['nama_mhs']] ?? ''));
+                $npm = trim((string) ($row[$columns['npm']] ?? ''));
+
+                if ($npm === '') {
+                    $skipped++;
+                    continue;
+                }
+
+                $nilaiAkhir = $this->normalizeNilai($row[$columns['nilai_akhir']] ?? null);
+
+                $detail = AlldetailNilai::where('allnilai_id', $allnilai->id)
+                    ->where('npm', $npm)
+                    ->first();
+
+                if ($detail) {
+                    $detail->update([
+                        'nama_mhs'       => $namaMhs,
+                        'nilai_akhir'    => $nilaiAkhir,
+                        'lastupdated_by' => Auth::id(),
+                    ]);
+
+                    $updated++;
+                } else {
+                    AlldetailNilai::create([
+                        'allnilai_id'    => $allnilai->id,
+                        'nama_mhs'       => $namaMhs,
+                        'npm'            => $npm,
+                        'pretest'        => null,
+                        'posttest'       => null,
+                        'laporan'        => null,
+                        'ujian_prax'     => null,
+                        'nilai_akhir'    => $nilaiAkhir,
+                        'input_by'       => Auth::id(),
+                        'lastupdated_by' => Auth::id(),
+                    ]);
+
+                    $created++;
+                }
+            }
+
+            DB::commit();
+
+            return back()->with([
+                'msg' => "success-Upload nilai PBL berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}."
+            ]);
+
+        } catch (\Throwable $e) {
+            DB::rollBack();
+
+            return back()->with([
+                'msg' => 'danger-Gagal upload nilai PBL: ' . $e->getMessage()
+            ])->withInput();
+        }
+    }
+
 
     private function nullIfEmpty($value)
     {
@@ -437,6 +554,15 @@ class AllnilaiController extends Controller
         }
 
         return $value;
+    }
+
+    private function normalizeNilai($value)
+    {
+        if ($value === null || trim((string) $value) === '') {
+            return null;
+        }
+
+        return str_replace(',', '.', trim((string) $value));
     }
 
 

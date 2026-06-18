@@ -206,6 +206,7 @@ Route::prefix('nilai')->middleware(['auth', Kpspd::class ])->name('nilai.')->gro
     Route::post('/cbt/{allnilai}', [AllnilaiController::class, 'uploadCbt'])->name('cbt.upload');
     Route::post('/praktikum/{allnilai}', [AllnilaiController::class, 'uploadPraktikum'])->name('praktikum.upload');
     Route::post('/osoca/{allnilai}', [AllnilaiController::class, 'uploadOsoca'])->name('osoca.upload');
+    Route::post('/pbl/{allnilai}', [AllnilaiController::class, 'uploadPbl'])->name('pbl.upload');
 
     // Route::post('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'updateUploadCbtSesiNew'])->name('cbt.cbtSesiNew');
      Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');

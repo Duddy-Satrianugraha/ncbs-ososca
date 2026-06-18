@@ -41,7 +41,12 @@ class AlldetailNilaiController extends Controller
         } else if($nilai->jenis_nilai === 'OSOCA')
         {
             return view('allnilai.detailOsoca', compact('detail', 'nilai', 'search'));
-        } else
+        } else if($nilai->jenis_nilai === 'PBL')
+        {
+            return view('allnilai.detailPbl', compact('detail', 'nilai', 'search'));
+        }
+        
+        else
         {
             return view('allnilai.detailCbt', compact('detail', 'nilai', 'search'));
         }
