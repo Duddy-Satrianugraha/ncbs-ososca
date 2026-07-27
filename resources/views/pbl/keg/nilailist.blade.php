@@ -40,8 +40,9 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">List Nilai Harian </h3>
                                     <ul class="panel-controls">
-
+                                      @can('koc')
                                         <a href="{{ route('pbl.nilai.export', $pbl->id) }}" class="btn btn-primary btn-rounded btn-sm"><span class="fa fa-download"></span></a>
+                                        @endcan
                                     </ul>
                                 </div>
                                 <div class="panel-body">
@@ -68,8 +69,9 @@
                 Skenario {{ $loop->iteration }}
               </th>
             @endforeach
-
-            <th rowspan="2" class="text-center" style="width:110px;">Rerata Nilai</th>
+            
+            <th rowspan="2" class="text-center" style="width:110px;">@can('koc') Rerata Nilai @endcan</th>
+            
           </tr>
 
           {{-- Header pertemuan --}}
@@ -101,21 +103,29 @@
                     @if($val === 'Tidak hadir')
                       <span>TH</span>
                     @elseif(is_int($val))
+                    @can('admin')
+                      <span>Hadir</span>
+                    @endcan
+                    @can('koc')
                       {{ $val }}
+                    @endcan
                     @else
                       -
                     @endif
                   </td>
                 @endforeach
               @endforeach
-
+              
               <td class="text-center">
+               
                 @if(isset($rerata[$p->id]) && $rerata[$p->id] !== null)
-                  {{ number_format($rerata[$p->id], 2, ',', '.') }}
+                  @can("koc") {{ number_format($rerata[$p->id], 2, ',', '.') }} @endcan
                 @else
                   -
                 @endif
+
               </td>
+             
             </tr>
           @empty
             <tr>

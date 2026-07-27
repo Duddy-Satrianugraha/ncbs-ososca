@@ -59,7 +59,7 @@ class AdminController extends Controller
                 Rule::unique(User::class),
             ],
             'roles' => ['required', 'array'],
-            'teams' => ['required', 'string'],
+            'teams' => ['nullable', 'string'],
 
             'password' => ['required', 'string', Password::default(), 'confirmed'],
         ]);
@@ -113,7 +113,7 @@ class AdminController extends Controller
             ],
 
             'roles' => ['required', 'array'],
-            'teams' => ['required', 'string'],
+            'teams' => ['nullable', 'string'],
         ]);
     try{
             DB::beginTransaction();
