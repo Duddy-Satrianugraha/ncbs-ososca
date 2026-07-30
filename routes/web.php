@@ -118,6 +118,7 @@ Route::prefix('tutor')->middleware(['auth', Panitia::class ])->name('tutor.')->g
     Route::post('/print/penguji', [OpengujiController::class, 'print'])->name('penguji.print');
     Route::post('/massdelete/penguji', [OpengujiController::class, 'massDelete'])->name('penguji.massdelete');
     Route::get('/qr/{openguji}', [OpengujiController::class, 'qrshow'])->name('penguji.qr');
+    
 });
 
 Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( function (){
