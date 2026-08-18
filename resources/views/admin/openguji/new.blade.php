@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('tutor.penguji.create') }}" method="POST" >
+        <form class="form-horizontal" action="{{ route('tutor.penguji.store') }}" method="POST" >
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>Tutor/Penguji</strong>Baru</h3>
