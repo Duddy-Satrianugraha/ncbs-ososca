@@ -1,6 +1,6 @@
 <?php
 
-Namespace App\Exports;
+namespace App\Exports;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -16,8 +16,8 @@ class NilaiExport implements FromView, ShouldAutoSize
     public function view(): View
     {
         return view('export.nilai', [
-            'ujian'    => $this->ujian,
-            'peserta'  => $this->peserta,
+            'ujian' => $this->ujian,
+            'peserta' => $this->peserta,
         ]);
     }
 }

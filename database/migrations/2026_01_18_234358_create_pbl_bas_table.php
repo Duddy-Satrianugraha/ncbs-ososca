@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pbl_bas', function (Blueprint $table) {
             $table->id();
-            $table-> foreignId('keg_id');
+            $table->foreignId('keg_id');
             $table->foreignId('sk_id');
             $table->foreignId('kelompok_id');
             $table->string('pertemuan');

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\pbl;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\PblMininote;
 use App\Models\Media;
+use App\Models\PblMininote;
+use Illuminate\Http\Request;
 
 class MininoteController extends Controller
 {
@@ -38,8 +38,9 @@ class MininoteController extends Controller
      */
     public function show(string $id)
     {
-       // dd($id);
+        // dd($id);
         $mininotes = PblMininote::find($id);
+
         return view('pbl.keg.show', compact('mininotes'));
     }
 
@@ -64,7 +65,7 @@ class MininoteController extends Controller
      */
     public function destroy(string $id)
     {
-       // dd($id);
+        // dd($id);
         $mininotes = PblMininote::find($id);
         $media = Media::where('paket_id', $mininotes->keg_id)->where('order', $mininotes->nomor_sk)->where('tipe', 'pbl')->get();
         foreach ($media as $m) {
@@ -78,6 +79,7 @@ class MininoteController extends Controller
         $mininotes->mindmap = null;
         $mininotes->dafpus = null;
         $mininotes->save();
+
         return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Mininotes berhasil dihapus');
     }
 
@@ -87,6 +89,7 @@ class MininoteController extends Controller
     public function sk_edit(string $id)
     {
         $mininotes = PblMininote::find($id);
+
         return view('pbl.keg.skenario', compact('mininotes'));
     }
 
@@ -95,7 +98,7 @@ class MininoteController extends Controller
      */
     public function sk_update(Request $request, string $id)
     {
-        //dd($request->all());
+        // dd($request->all());
         $validated = $request->validate([
             'judul_sk' => 'required|string|max:255',
             'skenario' => 'required|string',
@@ -106,6 +109,7 @@ class MininoteController extends Controller
         $mininotes->skenario = $validated['skenario'];
         $mininotes->dafpus = $validated['dafpus'];
         $mininotes->save();
+
         return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Skenario berhasil diupdate');
     }
 
@@ -115,6 +119,7 @@ class MininoteController extends Controller
     public function mini_edit(string $id)
     {
         $mininotes = PblMininote::find($id);
+
         return view('pbl.keg.mini', compact('mininotes'));
     }
 
@@ -123,7 +128,7 @@ class MininoteController extends Controller
      */
     public function mini_update(Request $request, string $id)
     {
-        //dd($request->all());
+        // dd($request->all());
         $validated = $request->validate([
             'step_1' => 'required|string',
             'step_2' => 'required|string',
@@ -138,25 +143,28 @@ class MininoteController extends Controller
         $mininotes->mindmap = $validated['mindmap'];
         $mininotes->mininotes = $validated['mininotes'];
         $mininotes->save();
+
         return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Mininotes berhasil diupdate');
     }
 
-     public function skshow(string $id)
+    public function skshow(string $id)
     {
-       // dd($id);
+        // dd($id);
         $mininotes = PblMininote::find($id);
+
         return view('pbl.keg.skshow', compact('mininotes'));
     }
 
     public function miniact(string $id)
     {
         $mininotes = PblMininote::find($id);
-        if($mininotes->status == 0){
+        if ($mininotes->status == 0) {
             $mininotes->status = 1;
-        }else{
+        } else {
             $mininotes->status = 0;
         }
         $mininotes->save();
+
         return redirect()->route('pbl.harian.show', $mininotes->keg_id)->with('success', 'Status berhasil diubah');
     }
 }

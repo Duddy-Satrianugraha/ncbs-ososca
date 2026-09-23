@@ -1,42 +1,37 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\nilai\AlldetailNilaiController;
+use App\Http\Controllers\nilai\AllnilaiController;
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\OfeedbackController;
+use App\Http\Controllers\OpengujiController;
+use App\Http\Controllers\OpesertaController;
+use App\Http\Controllers\OptionController;
+use App\Http\Controllers\OsocaController;
+use App\Http\Controllers\OsocaImportController;
+use App\Http\Controllers\OtemplateController;
+use App\Http\Controllers\OujianController;
+use App\Http\Controllers\pbl\BaController;
 use App\Http\Controllers\pbl\KegController;
 use App\Http\Controllers\pbl\MininoteController;
 use App\Http\Controllers\pbl\PblController;
-use App\Http\Controllers\pbl\PblNilaiController;
-use App\Http\Controllers\pbl\BaController;
-use App\Http\Controllers\PblPesertaController;
 use App\Http\Controllers\pbl\PblImportController;
-use App\Http\Controllers\OsocaImportController;
-use App\Http\Controllers\OsocaController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ProfileContoller;
-use App\Http\Controllers\PowerController;
-use App\Http\Controllers\NilaiController;
-use App\Http\Controllers\OptionController;
-use App\Http\Controllers\OpesertaController;
-use App\Http\Controllers\OpengujiController;
+use App\Http\Controllers\pbl\PblNilaiController;
+use App\Http\Controllers\PblPesertaController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\MediaController;
-use App\Http\Controllers\nilai\AllnilaiController;
-use App\Http\Controllers\nilai\AlldetailNilaiController;
-
-use App\Http\Controllers\OtemplateController;
-use App\Http\Controllers\OujianController;
-use App\Http\Controllers\OfeedbackController;
-
-
-use App\Http\Middleware\Peserta;
-use App\Http\Middleware\Panitia;
-use App\Http\Middleware\Osoca;
-use App\Http\Middleware\Pbls;
+use App\Http\Controllers\PowerController;
+use App\Http\Controllers\ProfileContoller;
+use App\Http\Controllers\RoleController;
 use App\Http\Middleware\Kpspd;
-
-
+use App\Http\Middleware\Osoca;
+use App\Http\Middleware\Panitia;
+use App\Http\Middleware\Pbls;
+use App\Http\Middleware\Peserta;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/feedback', function () {
     return view('oumpan.login');
@@ -46,7 +41,6 @@ Route::get('/', function () {
 });
 
 Route::post('/feedback', [OfeedbackController::class, 'chek_feed'])->name('feedback.chek');
-
 
 Route::get('/login/penguji', [DashbordController::class, 'login'])->name('penguji.login');
 Route::get('/register/penguji', [DashbordController::class, 'register'])->name('penguji.register');
@@ -60,14 +54,14 @@ Route::get('/login/pbl', [DashbordController::class, 'pbllogin'])->name('pbl.log
 Route::post('/scan/pbl', [DashbordController::class, 'pblscan'])->name('pbl.scan');
 Route::get('/p/{slug}', [DashbordController::class, 'pblkelcari'])->name('pbl.link');
 
-Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth', ])->name('dashbord');
-Route::get('/admin/power/destroy',[PowerController::class, 'destroy'])->name('admin.powerdown');
-Route::post('/profile/photo', [ProfileContoller::class, "updatePhoto"])->middleware('auth')->name('profile.photo.update');
-Route::resource('/profile', ProfileContoller::class)->middleware(['auth', ]);
+Route::get('/dashbord', [DashbordController::class, 'index'])->middleware(['auth'])->name('dashbord');
+Route::get('/admin/power/destroy', [PowerController::class, 'destroy'])->name('admin.powerdown');
+Route::post('/profile/photo', [ProfileContoller::class, 'updatePhoto'])->middleware('auth')->name('profile.photo.update');
+Route::resource('/profile', ProfileContoller::class)->middleware(['auth']);
 Route::get('/f/{token}', [MediaController::class, 'showPrivate'])
     ->name('mfile');
 
-Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->group( function (){
+Route::prefix('admin')->middleware(['auth', Panitia::class])->name('admin.')->group(function () {
     Route::resource('/users', AdminController::class);
     Route::resource('/roles', RoleController::class);
     Route::get('/power/{id}', [PowerController::class, 'index'])->name('powerup');
@@ -86,13 +80,13 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::resource('/ujian', OujianController::class);
     Route::post('/sesi/store', [OujianController::class, 'sesi_store'])->name('sesi.store');
     Route::resource('/peserta', OpesertaController::class)->except(['create']);
-    Route::get('/peserta/{uid}/beritaacara',[OpesertaController::class, 'beritaacara'])->name('peserta.beritaacara');
-    Route::get('/peserta/{uid}/beritaacara/{sid}',[OpesertaController::class, 'beritaacara_show'])->name('peserta.beritaacara.show');
+    Route::get('/peserta/{uid}/beritaacara', [OpesertaController::class, 'beritaacara'])->name('peserta.beritaacara');
+    Route::get('/peserta/{uid}/beritaacara/{sid}', [OpesertaController::class, 'beritaacara_show'])->name('peserta.beritaacara.show');
     Route::get('ba/pdf/{id}', [PdfController::class, 'pdfOba'])->name('ba.pdf');
-    Route::get('/peserta/{uid}/avatar',[OpesertaController::class, 'avatar_update'])->name('peserta.avatar.update');
-    Route::get('/peserta/{uid}/baru',[OpesertaController::class, 'create'])->name('peserta.create');
-    Route::get('/peserta/{uid}/upload',[OpesertaController::class, 'upload'])->name('peserta.upload');
-    Route::post('/peserta/upload',[OpesertaController::class, 'store_upload'])->name('peserta.store_upload');
+    Route::get('/peserta/{uid}/avatar', [OpesertaController::class, 'avatar_update'])->name('peserta.avatar.update');
+    Route::get('/peserta/{uid}/baru', [OpesertaController::class, 'create'])->name('peserta.create');
+    Route::get('/peserta/{uid}/upload', [OpesertaController::class, 'upload'])->name('peserta.upload');
+    Route::post('/peserta/upload', [OpesertaController::class, 'store_upload'])->name('peserta.store_upload');
     Route::get('/kartu/peserta/{uid}', [PdfController::class, 'listpeserta'])->name('pdf.peserta');
     Route::get('/kartu/station/{uid}', [PdfController::class, 'station'])->name('pdf.station');
     Route::get('/kartu/kelompok/{kid}', [PdfController::class, 'kelompok'])->name('pdf.kelompok');
@@ -102,26 +96,24 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');
     Route::get('/export/feedback/{uid}', [OfeedbackController::class, 'kirim_feedback'])->name('kirim.feedback');
     Route::get('/template/import', [OsocaImportController::class, 'importTemplate'])
-    ->name('osoca.import.form');
+        ->name('osoca.import.form');
     Route::post('/template/import', [OsocaImportController::class, 'import'])
-    ->name('osoca.import');
-
-
+        ->name('osoca.import');
 
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
     Route::post('/media/upload', [MediaController::class, 'store'])->name('media.upload');
     Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
 });
 
-Route::prefix('tutor')->middleware(['auth', Panitia::class ])->name('tutor.')->group( function (){
+Route::prefix('tutor')->middleware(['auth', Panitia::class])->name('tutor.')->group(function () {
     Route::resource('/penguji', OpengujiController::class);
     Route::post('/print/penguji', [OpengujiController::class, 'print'])->name('penguji.print');
     Route::post('/massdelete/penguji', [OpengujiController::class, 'massDelete'])->name('penguji.massdelete');
     Route::get('/qr/{openguji}', [OpengujiController::class, 'qrshow'])->name('penguji.qr');
-    
+
 });
 
-Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( function (){
+Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group(function () {
     Route::get('/', [PesertaController::class, 'check'])->name('index');
     Route::get('/soal', [PesertaController::class, 'soal'])->name('soal');
     Route::get('/in', [PesertaController::class, 'in'])->name('in');
@@ -131,7 +123,7 @@ Route::prefix('peserta')->middleware(Peserta::class)->name('peserta.')->group( f
     Route::post('/scan_soal', [PesertaController::class, 'scan'])->name('sscan');
 });
 
-Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group( function (){
+Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group(function () {
     Route::get('/beritaacara', [OsocaController::class, 'beritaacara'])->name('ba');
     Route::post('/ba/chek', [OsocaController::class, 'ba_check'])->name('bachek');
     Route::get('/logout', [OsocaController::class, 'logout'])->name('logout');
@@ -146,7 +138,7 @@ Route::prefix('osoca')->middleware([Osoca::class])->name('osoca.')->group( funct
 
 });
 
-Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group( function (){
+Route::prefix('pbl')->middleware(['auth', Panitia::class])->name('pbl.')->group(function () {
     Route::get('harian/', [KegController::class, 'index'])->name('harian.index');
     Route::get('harian/create', [KegController::class, 'create'])->name('harian.create');
     Route::post('harian/store', [KegController::class, 'store'])->name('harian.store');
@@ -164,10 +156,10 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::delete('mininotes/{id}', [MininoteController::class, 'destroy'])->name('mininotes.destroy');
     Route::get('skenario/{id}', [MininoteController::class, 'skshow'])->name('skenario.show');
     Route::get('peserta/{kid}', [PblPesertaController::class, 'index'])->name('peserta.index');
-    Route::get('peserta/{kid}/upload',[PblPesertaController::class, 'upload'])->name('peserta.upload');
-    Route::post('peserta/upload',[PblPesertaController::class, 'store_upload'])->name('peserta.store_upload');
-    Route::get('peserta/{kid}/add',[PblPesertaController::class, 'create'])->name('peserta.add');
-    Route::post('peserta/store',[PblPesertaController::class, 'store'])->name('peserta.store');
+    Route::get('peserta/{kid}/upload', [PblPesertaController::class, 'upload'])->name('peserta.upload');
+    Route::post('peserta/upload', [PblPesertaController::class, 'store_upload'])->name('peserta.store_upload');
+    Route::get('peserta/{kid}/add', [PblPesertaController::class, 'create'])->name('peserta.add');
+    Route::post('peserta/store', [PblPesertaController::class, 'store'])->name('peserta.store');
     Route::get('edit/peserta/{pblPeserta}', [PblPesertaController::class, 'edit'])->name('peserta.edit');
     Route::put('update/peserta/{pblPeserta}', [PblPesertaController::class, 'update'])->name('peserta.update');
     Route::delete('peserta/{pblPeserta}', [PblPesertaController::class, 'destroy'])->name('peserta.destroy');
@@ -182,13 +174,13 @@ Route::prefix('pbl')->middleware(['auth', Panitia::class ])->name('pbl.')->group
     Route::get('ba/pdf/{id}', [PdfController::class, 'pdfba'])->name('ba.pdf');
 
     Route::get('keg/{keg}/import', [PblImportController::class, 'import'])
-    ->name('keg.import');
+        ->name('keg.import');
     Route::post('keg/{keg}/import-mininotes', [PblImportController::class, 'importMininotes'])
-    ->name('keg.importMininotes');
+        ->name('keg.importMininotes');
 
 });
 
-Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')->group( function (){
+Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')->group(function () {
     Route::get('tutor', [PblController::class, 'tutor'])->name('tutor');
     Route::post('chek/tutor', [PblController::class, 'chek_tutor'])->name('chek.tutor');
     Route::get('mininotes', [PblController::class, 'mininotes'])->name('mininotes');
@@ -197,7 +189,7 @@ Route::prefix('kegiatan_pbl')->middleware([Pbls::class])->name('kegiatan_pbl.')-
     Route::get('confirm/{id}', [PblController::class, 'confirm'])->name('confirm');
 });
 
-Route::prefix('nilai')->middleware(['auth', Kpspd::class ])->name('nilai.')->group( function (){
+Route::prefix('nilai')->middleware(['auth', Kpspd::class])->name('nilai.')->group(function () {
     Route::get('/', [AllnilaiController::class, 'index'])->name('index');
     Route::get('/show/{id}', [AllnilaiController::class, 'show'])->name('show');
     Route::delete('/destroy/{id}', [AllnilaiController::class, 'destroy'])->name('destroy');
@@ -210,20 +202,16 @@ Route::prefix('nilai')->middleware(['auth', Kpspd::class ])->name('nilai.')->gro
     Route::post('/pbl/{allnilai}', [AllnilaiController::class, 'uploadPbl'])->name('pbl.upload');
 
     // Route::post('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'updateUploadCbtSesiNew'])->name('cbt.cbtSesiNew');
-     Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');
-     Route::get('/harian/{id}/edit', [AlldetailNilaiController::class, 'edit'])->name('harian.edit');
-
+    Route::get('/harian/{kid}', [AlldetailNilaiController::class, 'index'])->name('harian.index');
+    Route::get('/harian/{id}/edit', [AlldetailNilaiController::class, 'edit'])->name('harian.edit');
 
     // Route::put('/harian/{id}', [AlldetailNilaiController::class, 'update'])->name('harian.update');
-     Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
+    Route::delete('/harian/{id}', [AlldetailNilaiController::class, 'destroy'])->name('harian.destroy');
 
     // Route::get('/cbt', [AllnilaiController::class, 'create_cbt'])->name('cbt.create');
     // Route::post('/cbt', [AllnilaiController::class, 'storeUploadCbt'])->name('cbt.store');
     // Route::get('/cbt/sesi/{allnilai}', [AllnilaiController::class, 'addcbtsesi'])->name('cbt.cbtSesi');
 
-
     // Route::get('/praktikum', [AllnilaiController::class, 'create_praktikum'])->name('praktikum.create');
     // Route::post('/praktikum', [AllnilaiController::class, 'store_praktikum'])->name('praktikum.store');
 });
-
-

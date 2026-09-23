@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class Mahasiswa
 {
@@ -16,7 +16,7 @@ class Mahasiswa
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Gate::allows('mhs')) {
+        if (! Gate::allows('mhs')) {
             return response('Unauthorized ', 403);
         }
 

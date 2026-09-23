@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class Power
 {
@@ -20,10 +20,11 @@ class Power
             $userId = session('power');
 
             // Pastikan user belum dalam sesi impersonasi agar tidak login berkali-kali
-            if (!Auth::check() || Auth::id() !== $userId) {
+            if (! Auth::check() || Auth::id() !== $userId) {
                 Auth::loginUsingId($userId);
             }
         }
+
         return $next($request);
     }
 }

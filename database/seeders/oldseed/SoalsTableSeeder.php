@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class SoalsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class SoalsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('soals')->delete();
-        
-        \DB::table('soals')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('soals')->insert([
+            0 => [
                 'id' => 1,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -30,9 +27,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'QIBeTRdJku1',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -42,9 +38,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'OFW217FtOA1',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -54,9 +49,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'sIpWjryg5S1',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -66,9 +60,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'SxxYoXThLj1',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -78,9 +71,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => '4poJVhxqb01',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -90,9 +82,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'hBIsyXOPp71',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -102,9 +93,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'XctbdxpFCY1',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -114,9 +104,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => '5sRrSNubfJ2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -126,9 +115,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => '3mD2GVedlO2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -138,9 +126,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'aXAJCD42gM2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -150,9 +137,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'agbKYFnyeO2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -162,9 +148,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'XePxt3G7DS2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -174,9 +159,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => '4q4ZS6o0Ev2',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -186,9 +170,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'gGxnMR9DJ42',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -198,9 +181,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'RHrdyxQ18g3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -210,9 +192,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'io8iV027pC3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 17,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -222,9 +203,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'TypWS0dUGL3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 18,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -234,9 +214,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'PPPR6Fgp0r3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 19,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -246,9 +225,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'LVKVz6BHPg3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 20,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -258,9 +236,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'd6AD6nahsy3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 21,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -270,9 +247,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'HZ8MLqacxH3',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 22,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -282,9 +258,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'j9hWNVCWUr4',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 23,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -294,9 +269,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'FnMGNehhf64',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 24,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -306,9 +280,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'wYRKbX1s934',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 25,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -318,9 +291,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'j7KY3tNL9f4',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 26,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -330,9 +302,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'xlLkQAwkhI4',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 27,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -342,9 +313,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'e8raWUgjvM4',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 28,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -354,9 +324,8 @@ class SoalsTableSeeder extends Seeder
                 'slug' => 'Ia5n8hrfxO4',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

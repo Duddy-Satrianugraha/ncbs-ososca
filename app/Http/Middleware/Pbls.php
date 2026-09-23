@@ -15,7 +15,7 @@ class Pbls
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session('kegiatan_pbl')) {
+        if (! session('kegiatan_pbl')) {
             return redirect(route('pbl.login'));
         }
 

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nilai');
             $table->timestamps();
 
-             $table->unique(['oujian_id', 'station_id', 'qrpeserta'], 'onilai_unique');
+            $table->unique(['oujian_id', 'station_id', 'qrpeserta'], 'onilai_unique');
         });
     }
 

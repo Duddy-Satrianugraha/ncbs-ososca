@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class SesisTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +13,8 @@ class SesisTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('sesis')->delete();
-        
-        
-        
+
     }
 }

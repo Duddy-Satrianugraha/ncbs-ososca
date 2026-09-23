@@ -2,146 +2,154 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ostation;
-use App\Models\Oujian;
 use App\Models\Opeserta;
 use App\Models\Osesi;
+use App\Models\Ostation;
 use App\Models\Otemplate;
+use App\Models\Oujian;
 use Illuminate\Http\Request;
 
 class PesertaController extends Controller
 {
-
     public function check(Request $request)
-{
-    $ujian   = Oujian::find(session('oujian'));
-    $station = Ostation::select('id', 'name', 'open', 'current')->find(session('Station'));
+    {
+        $ujian = Oujian::find(session('oujian'));
+        $station = Ostation::select('id', 'name', 'open', 'current')->find(session('Station'));
 
-    $template = null;
+        $template = null;
 
-    if ($station && (int) $station->open === 1) {
-        $sesi = Osesi::where('oujian_id', session('oujian'))
-            ->where('urutan', $station->current)
-            ->first();
-
-        if ($sesi) {
-            $template = Otemplate::find($sesi->otemplate_id);
-            session(['osesi' => $sesi->id]); // opsional kalau masih dipakai
-        } else {
-            $sesi = null;
-        }
-    } else {
-        // station belum open → kosongkan osesi (opsional)
-        session()->forget('osesi');
-        $sesi = null;
-    }
-
-    // Request via AJAX → balas partial saja
-    if ($request->ajax()) {
-        $html = view('peserta._detail_soal', [
-            'template' => $template,
-        ])->render();
-
-        return response()->json(['html' => $html]);
-    }
-
-    // Request biasa → render halaman penuh
-    return view('peserta.template', [
-        'ujian'    => $ujian,
-        'sesi'     => $sesi,
-        'template' => $template,
-    ]);
-}
-    public function in(Request $request)
-        {
-            // cari station yang sedang dibuka
-            $station = Ostation::where('id', session('Station'))
-                ->where('open', 1)
-                ->first();
-
-            // Kalau request datang dari AJAX polling
-            if ($request->ajax()) {
-                if ($station) {
-                    // station open → beri sinyal ke JS untuk redirect (normal request)
-                    return response()->json(['open' => true], 200);
-                }
-                // station belum open → diam (no content)
-                return response()->noContent(204);
-            }
-
-            // Normal request (bukan AJAX): proses seperti biasa
-            if (!$station) {
-                return back()->with('warning', 'Station belum dibuka.');
-            }
-
+        if ($station && (int) $station->open === 1) {
             $sesi = Osesi::where('oujian_id', session('oujian'))
                 ->where('urutan', $station->current)
                 ->first();
 
-            if (!$sesi) {
-                return back()->with('error', 'Sesi tidak ditemukan.');
+            if ($sesi) {
+                $template = Otemplate::find($sesi->otemplate_id);
+                session(['osesi' => $sesi->id]); // opsional kalau masih dipakai
+            } else {
+                $sesi = null;
             }
-
-            // set session lalu arahkan ke halaman soal
-            session(['osesi' => $sesi->id]);
-
-            return redirect()->route('peserta.soal')
-                ->with('success', 'Waktu untuk melihat soal adalah 10 menit');
+        } else {
+            // station belum open → kosongkan osesi (opsional)
+            session()->forget('osesi');
+            $sesi = null;
         }
-    public function out(Request $request)
-        {
-            // Cari station yang sudah ditutup (open = 0)
-            $station = Ostation::where('id', session('Station'))
-                ->where('open', 0)
-                ->first();
 
-            // Jika request dari JS (AJAX polling)
-            if ($request->ajax()) {
-                if ($station) {
-                    // Station ditutup → suruh JS redirect
-                    return response()->json(['closed' => true], 200);
-                }
-                // Masih open → diam
-                return response()->noContent(204);
-            }
+        // Request via AJAX → balas partial saja
+        if ($request->ajax()) {
+            $html = view('peserta._detail_soal', [
+                'template' => $template,
+            ])->render();
 
-            // Kalau akses normal (redirect langsung)
+            return response()->json(['html' => $html]);
+        }
+
+        // Request biasa → render halaman penuh
+        return view('peserta.template', [
+            'ujian' => $ujian,
+            'sesi' => $sesi,
+            'template' => $template,
+        ]);
+    }
+
+    public function in(Request $request)
+    {
+        // cari station yang sedang dibuka
+        $station = Ostation::where('id', session('Station'))
+            ->where('open', 1)
+            ->first();
+
+        // Kalau request datang dari AJAX polling
+        if ($request->ajax()) {
             if ($station) {
-                // Hapus session
-                session()->forget(['Sesi', 'osesi']);
-
-                // Redirect ke halaman index peserta
-                return redirect()
-                    ->route('peserta.index')
-                    ->with('info', 'Station telah ditutup, Anda dikembalikan ke halaman utama.');
+                // station open → beri sinyal ke JS untuk redirect (normal request)
+                return response()->json(['open' => true], 200);
             }
 
-            // Jika belum ditutup
-            return back()->with('warning', 'Station masih terbuka.');
+            // station belum open → diam (no content)
+            return response()->noContent(204);
         }
 
-    public function logout(){
-            session()->flush();
-            return redirect(route('peserta.login'));
+        // Normal request (bukan AJAX): proses seperti biasa
+        if (! $station) {
+            return back()->with('warning', 'Station belum dibuka.');
         }
 
-    public function tolist(){
+        $sesi = Osesi::where('oujian_id', session('oujian'))
+            ->where('urutan', $station->current)
+            ->first();
+
+        if (! $sesi) {
+            return back()->with('error', 'Sesi tidak ditemukan.');
+        }
+
+        // set session lalu arahkan ke halaman soal
+        session(['osesi' => $sesi->id]);
+
+        return redirect()->route('peserta.soal')
+            ->with('success', 'Waktu untuk melihat soal adalah 10 menit');
+    }
+
+    public function out(Request $request)
+    {
+        // Cari station yang sudah ditutup (open = 0)
+        $station = Ostation::where('id', session('Station'))
+            ->where('open', 0)
+            ->first();
+
+        // Jika request dari JS (AJAX polling)
+        if ($request->ajax()) {
+            if ($station) {
+                // Station ditutup → suruh JS redirect
+                return response()->json(['closed' => true], 200);
+            }
+
+            // Masih open → diam
+            return response()->noContent(204);
+        }
+
+        // Kalau akses normal (redirect langsung)
+        if ($station) {
+            // Hapus session
+            session()->forget(['Sesi', 'osesi']);
+
+            // Redirect ke halaman index peserta
+            return redirect()
+                ->route('peserta.index')
+                ->with('info', 'Station telah ditutup, Anda dikembalikan ke halaman utama.');
+        }
+
+        // Jika belum ditutup
+        return back()->with('warning', 'Station masih terbuka.');
+    }
+
+    public function logout()
+    {
+        session()->flush();
+
+        return redirect(route('peserta.login'));
+    }
+
+    public function tolist()
+    {
         session()->forget('Sesi');
+
         return redirect(route('peserta.index'));
     }
 
-    Public function scan(Request $request){
-        //dd($request->all());
+    public function scan(Request $request)
+    {
+        // dd($request->all());
         $request->validate([
-            'soal_slug' => ['required','string'],
+            'soal_slug' => ['required', 'string'],
         ]);
         $soal_slug = $request->soal_slug;
         $station = Ostation::find(session('Station'));
         $sesi = Osesi::where('oujian_id', session('oujian'))->where('urutan', $station->current)->first();
-       // dd($sesi);
+        // dd($sesi);
         $peserta = Opeserta::where('qrpeserta', $soal_slug)->where('status', 0)->first();
 
-        if($peserta){
+        if ($peserta) {
 
             session([
                 'osesi' => $sesi->id,
@@ -153,14 +161,14 @@ class PesertaController extends Controller
         }
     }
 
-    public function soal(){
+    public function soal()
+    {
         $ujian = Oujian::find(session('oujian'));
         $sesi = Osesi::find(session('osesi'));
         $template = Otemplate::find($sesi->otemplate_id);
 
-        //dd($sesi);
+        // dd($sesi);
 
         return view('peserta.template', compact('ujian', 'sesi', 'template'));
     }
-
 }

@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OstationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OstationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('ostations')->delete();
-        
-        \DB::table('ostations')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('ostations')->insert([
+            0 => [
                 'id' => 34,
                 'oujian_id' => 5,
                 'urutan' => 1,
@@ -33,9 +30,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-12-02 05:41:33',
                 'open' => 0,
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 35,
                 'oujian_id' => 5,
                 'urutan' => 2,
@@ -48,9 +44,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-12-02 06:11:31',
                 'open' => 0,
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 36,
                 'oujian_id' => 5,
                 'urutan' => 3,
@@ -63,9 +58,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:05:59',
                 'open' => 0,
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 37,
                 'oujian_id' => 5,
                 'urutan' => 4,
@@ -78,9 +72,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-12-02 05:52:08',
                 'open' => 0,
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 38,
                 'oujian_id' => 5,
                 'urutan' => 5,
@@ -93,9 +86,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:07:35',
                 'open' => 0,
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 39,
                 'oujian_id' => 5,
                 'urutan' => 6,
@@ -108,9 +100,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:24:37',
                 'open' => 0,
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 40,
                 'oujian_id' => 5,
                 'urutan' => 7,
@@ -123,9 +114,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:08:30',
                 'open' => 0,
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 41,
                 'oujian_id' => 5,
                 'urutan' => 8,
@@ -138,9 +128,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-12-02 05:53:35',
                 'open' => 0,
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 42,
                 'oujian_id' => 5,
                 'urutan' => 9,
@@ -153,9 +142,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:22:38',
                 'open' => 0,
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 43,
                 'oujian_id' => 5,
                 'urutan' => 10,
@@ -168,9 +156,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:23:29',
                 'open' => 0,
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 44,
                 'oujian_id' => 5,
                 'urutan' => 11,
@@ -183,9 +170,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 01:18:23',
                 'open' => 0,
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 45,
                 'oujian_id' => 5,
                 'urutan' => 12,
@@ -198,9 +184,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:23:53',
                 'open' => 0,
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 46,
                 'oujian_id' => 5,
                 'urutan' => 13,
@@ -213,9 +198,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:07:58',
                 'open' => 0,
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 47,
                 'oujian_id' => 5,
                 'urutan' => 14,
@@ -228,9 +212,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:23:56',
                 'open' => 0,
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 48,
                 'oujian_id' => 5,
                 'urutan' => 15,
@@ -243,9 +226,8 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:24:14',
                 'open' => 0,
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 49,
                 'oujian_id' => 5,
                 'urutan' => 16,
@@ -258,39 +240,36 @@ class OstationsTableSeeder extends Seeder
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-11-04 04:07:51',
                 'open' => 0,
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 72,
                 'oujian_id' => 15,
                 'urutan' => 1,
                 'name' => 'station 1',
                 'qrstation' => '5799243894151',
-                'penguji_id' => NULL,
-                'nama_penguji' => NULL,
+                'penguji_id' => null,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-11-06 03:50:40',
                 'updated_at' => '2025-11-06 03:50:40',
                 'open' => 0,
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 73,
                 'oujian_id' => 15,
                 'urutan' => 2,
                 'name' => 'station 2',
                 'qrstation' => '0027530501152',
-                'penguji_id' => NULL,
-                'nama_penguji' => NULL,
+                'penguji_id' => null,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-11-06 03:50:40',
                 'updated_at' => '2025-11-06 03:50:40',
                 'open' => 0,
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

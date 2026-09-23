@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Oujian;
+use App\Models\Osesi;
 use App\Models\Ostation;
 use App\Models\Otemplate;
-use App\Models\Osesi;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Oujian;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OujianController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $search = $request->query('search');
 
@@ -39,12 +39,13 @@ class OujianController extends Controller
         return view('admin.oujian.list', compact('ujian', 'search'));
 
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //dd( Auth::user()->id);
+        // dd( Auth::user()->id);
         return view('admin.oujian.new');
     }
 
@@ -53,35 +54,37 @@ class OujianController extends Controller
      */
     public function store(Request $request)
     {
-        $validated =  $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian' => 'required|date',
             'blok' => 'required|string|max:255',
             'jml_sesi' => 'required|integer',
         ]);
-        try{
+        try {
             DB::beginTransaction();
-        $oujian = Oujian:: create([
-            'name' => $validated['name'],
-            'blok' => $validated['blok'],
-            'ta' => $validated['tahun_akademik'],
-            'tgl_ujian' => $validated['tgl_ujian'],
-            'jml_sesi' => $validated['jml_sesi'],
-            'user_id' => Auth::user()->id,
-            'remedial' => $request->rmd ?? false,
-        ]);
-          for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
-            $osesi = Osesi::create([
-                'oujian_id' => $oujian->id,
-                'urutan' => $x,
-                'otemplate_id' => null,
+            $oujian = Oujian::create([
+                'name' => $validated['name'],
+                'blok' => $validated['blok'],
+                'ta' => $validated['tahun_akademik'],
+                'tgl_ujian' => $validated['tgl_ujian'],
+                'jml_sesi' => $validated['jml_sesi'],
+                'user_id' => Auth::user()->id,
+                'remedial' => $request->rmd ?? false,
             ]);
-        }
-        DB::commit();
-        return redirect(route('admin.ujian.index'))->with('msg', 'success-Data berhasil disimpan');
+            for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
+                $osesi = Osesi::create([
+                    'oujian_id' => $oujian->id,
+                    'urutan' => $x,
+                    'otemplate_id' => null,
+                ]);
+            }
+            DB::commit();
+
+            return redirect(route('admin.ujian.index'))->with('msg', 'success-Data berhasil disimpan');
         } catch (Exception $e) {
             DB::rollBack();
+
             return redirect(route('admin.ujian.index'))->with('msg', 'danger-Data gagal disimpan '.$e->getMessage());
         }
     }
@@ -98,12 +101,13 @@ class OujianController extends Controller
         $userIds = $team?->users()->pluck('users.id') ?? collect();
 
         $otemplate = Otemplate::query()
-        ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
+            ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
                 return $q->whereIn('user_id', $userIds);
             })->get();
 
         $osesi = Osesi::where('oujian_id', $id)->get();
         $oujian = Oujian::find($id);
+
         return view('admin.oujian.slist', compact('osesi', 'otemplate', 'oujian'));
     }
 
@@ -112,17 +116,17 @@ class OujianController extends Controller
      */
     public function edit($id)
     {
-       $ujian = Oujian::find($id);
+        $ujian = Oujian::find($id);
+
         return view('admin.oujian.edit', compact('ujian'));
     }
-
 
     /**
      * Update the specified resource in storage.
      */
     public function updatex(Request $request, $id)
     {
-        $validated =  $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian' => 'required|date',
@@ -138,16 +142,17 @@ class OujianController extends Controller
             'jml_sesi' => $validated['jml_sesi'],
             'user_id' => Auth::user()->id,
         ]);
+
         return redirect()->back()->with('msg', 'success-Data berhasil disimpan');
     }
 
     public function update(Request $request, $id) // pakai route model binding
     {
         $validated = $request->validate([
-            'name'           => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
-            'tgl_ujian'      => 'required|date',
-            'jml_sesi'       => 'required|integer',
+            'tgl_ujian' => 'required|date',
+            'jml_sesi' => 'required|integer',
         ]);
         $oujian = Oujian::find($id);
         try {
@@ -155,12 +160,12 @@ class OujianController extends Controller
 
             // 1) Update field utama Oujian
             $oujian->update([
-                'name'        => $validated['name'],
-                'ta'          => $validated['tahun_akademik'],
-                'tgl_ujian'   => $validated['tgl_ujian'],
-                'jml_sesi'    => $validated['jml_sesi'],
-                'user_id'     => Auth::user()->id,
-                'remedial'    => $request->rmd ?? false,
+                'name' => $validated['name'],
+                'ta' => $validated['tahun_akademik'],
+                'tgl_ujian' => $validated['tgl_ujian'],
+                'jml_sesi' => $validated['jml_sesi'],
+                'user_id' => Auth::user()->id,
+                'remedial' => $request->rmd ?? false,
             ]);
 
             /**
@@ -171,7 +176,7 @@ class OujianController extends Controller
             $targetSesi = (int) $validated['jml_sesi'];
 
             $currentSesiCount = Osesi::where('oujian_id', $oujian->id)->count();
-            $currentSesiMax   = (int) (Osesi::where('oujian_id', $oujian->id)->max('urutan') ?? 0);
+            $currentSesiMax = (int) (Osesi::where('oujian_id', $oujian->id)->max('urutan') ?? 0);
 
             if ($currentSesiCount > $targetSesi) {
                 Osesi::where('oujian_id', $oujian->id)
@@ -182,23 +187,24 @@ class OujianController extends Controller
                 for ($i = 1; $i <= $toAdd; $i++) {
                     $urutanBaru = $currentSesiMax + $i;
                     Osesi::create([
-                        'oujian_id'     => $oujian->id,
-                        'urutan'        => $urutanBaru,
-                        'otemplate_id'  => null,
+                        'oujian_id' => $oujian->id,
+                        'urutan' => $urutanBaru,
+                        'otemplate_id' => null,
                     ]);
                 }
             }
 
             DB::commit();
+
             return redirect(route('admin.ujian.index'))
                 ->with('msg', 'success-Data berhasil diperbarui');
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect(route('admin.ujian.index'))
-                ->with('msg', 'danger-Data gagal diperbarui: ' . $e->getMessage());
+                ->with('msg', 'danger-Data gagal diperbarui: '.$e->getMessage());
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -210,31 +216,33 @@ class OujianController extends Controller
         Osesi::where('oujian_id', $oujian->id)->delete();
         Ostation::where('oujian_id', $oujian->id)->delete();
         $oujian->delete();
+
         return redirect()->back()->with('msg', 'success-Data berhasil dihapus');
     }
 
-    public function sesi_store(Request $request){
+    public function sesi_store(Request $request)
+    {
         $request->validate([
             'ujian_id' => 'required|integer',
             'sesi' => 'required|array',
         ]);
-        try{
+        try {
             DB::beginTransaction();
 
-        $oujian = Oujian::find($request->ujian_id);
-        foreach($request->sesi as $key => $value){
-            $osesi = Osesi::find($key)->update([
-                'otemplate_id' => $value,
-            ]);
-        }
-        DB::commit();
-        return redirect()->back()->with('msg', 'success-Sesi berhasil disimpan');
+            $oujian = Oujian::find($request->ujian_id);
+            foreach ($request->sesi as $key => $value) {
+                $osesi = Osesi::find($key)->update([
+                    'otemplate_id' => $value,
+                ]);
+            }
+            DB::commit();
+
+            return redirect()->back()->with('msg', 'success-Sesi berhasil disimpan');
 
         } catch (Exception $e) {
             DB::rollBack();
+
             return redirect()->back()->with('msg', 'danger-Sesi gagal disimpan '.$e->getMessage());
         }
     }
-
-
 }

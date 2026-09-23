@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class LocationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class LocationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('locations')->delete();
-        
-        \DB::table('locations')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('locations')->insert([
+            0 => [
                 'id' => 1,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -28,9 +25,8 @@ class LocationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -38,9 +34,8 @@ class LocationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -48,9 +43,8 @@ class LocationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -58,9 +52,8 @@ class LocationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

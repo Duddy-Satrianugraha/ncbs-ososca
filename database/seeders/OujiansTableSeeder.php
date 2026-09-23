@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OujiansTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OujiansTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('oujians')->delete();
-        
-        \DB::table('oujians')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('oujians')->insert([
+            0 => [
                 'id' => 5,
                 'name' => 'OSOCA SEMESTER 5',
                 'ta' => '2025',
@@ -31,9 +28,8 @@ class OujiansTableSeeder extends Seeder
                 'remedial' => 0,
                 'created_at' => '2025-10-30 07:48:32',
                 'updated_at' => '2025-10-30 07:48:32',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 15,
                 'name' => 'Ujian Osce semester 3',
                 'ta' => '2025/2026',
@@ -44,9 +40,8 @@ class OujiansTableSeeder extends Seeder
                 'remedial' => 1,
                 'created_at' => '2025-11-06 03:50:40',
                 'updated_at' => '2025-12-17 05:06:20',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

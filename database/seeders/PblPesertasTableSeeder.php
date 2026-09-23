@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class PblPesertasTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class PblPesertasTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('pbl_pesertas')->delete();
-        
-        \DB::table('pbl_pesertas')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('pbl_pesertas')->insert([
+            0 => [
                 'id' => 1,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -29,13 +26,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '90c8f795403751000fc6fd1295c9e1ca',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -44,13 +40,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2e862acc69b2d46040cea51d92ab9d2a',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -59,13 +54,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3538bf405617aca0dba718136a8c1cb6',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -74,13 +68,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ac3cde706ab91a9112242e26c8f52839',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -89,13 +82,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a1b623ba40df8fc3fd8dd69cf1a292b4',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -104,13 +96,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '826dd3b868daa8919adce62b25d33f4d',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -119,13 +110,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'cc26bf389dd482b44b80744d0d9e516d',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -134,13 +124,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '9d477bae1f686a96f7f45ca44db8c98c',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'keg_id' => 1,
                 'kelompok_id' => 1,
@@ -149,13 +138,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'cbcfc125a48df8f8ed5ca5972e9d5f05',
                 'kelompok' => 1,
                 'nama_kelompok' => '1A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -164,13 +152,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a8cc2d79fa9728e1251b1f4ae9bd99d6',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -179,13 +166,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ac8cd6766bb807f53eb739e7aee0d24c',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -194,13 +180,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a509ee7953de1c688d23667a0adbc64d',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -209,13 +194,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '65c9e3e8b2e9eabb3bc4545925487803',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -224,13 +208,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5d5809ff15f429260352794f035ed0e2',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -239,13 +222,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd15996ea32430c45b0e2928b6ad0ad52',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -254,13 +236,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ad847df69b0696585722d09f438b9f77',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 17,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -269,13 +250,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '7435c9d70de215e0eea6b5f72c9c1df5',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 18,
                 'keg_id' => 1,
                 'kelompok_id' => 2,
@@ -284,13 +264,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'fcf31df0449a1c581d5a158148743bb2',
                 'kelompok' => 2,
                 'nama_kelompok' => '2A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 19,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -299,13 +278,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5a4ab4ac49956f9076b7b95fdd1fc3ea',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 20,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -314,13 +292,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'bb37f621378057ae0b183b64617799d8',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 21,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -329,13 +306,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '33e8a6297bca41335a09d7bac5a4fbb5',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 22,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -344,13 +320,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '4d660528b592ae885792570121e45f2b',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 23,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -359,13 +334,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '7c4a488e5d01a1ce1f64c8e5dff4dd2e',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 24,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -374,13 +348,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '67d5c98d23bb79dfb2a6ec0521a94f12',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 25,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -389,13 +362,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2dacabbd35157be147ecb14442b32f3c',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 26,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -404,13 +376,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8d95d2078b548315ebac5afce8efca60',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 27,
                 'keg_id' => 1,
                 'kelompok_id' => 3,
@@ -419,13 +390,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'cccfed1af44e8c2c77b201d3625e6c2b',
                 'kelompok' => 3,
                 'nama_kelompok' => '3A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 28,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -434,13 +404,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '708425be4f85a267ab16063a5f9870cc',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 29,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -449,13 +418,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'eb4bc54f7a2421ce027bf9ded10fc0d9',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            29 => 
-            array (
+            ],
+            29 => [
                 'id' => 30,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -464,13 +432,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a1b7de9eb5b2edecc05fe032152279aa',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            30 => 
-            array (
+            ],
+            30 => [
                 'id' => 31,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -479,13 +446,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '4355e047b256dfe53fecc7620b1ec020',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            31 => 
-            array (
+            ],
+            31 => [
                 'id' => 32,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -494,13 +460,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c555480c1951ed27eb24c92205429a29',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            32 => 
-            array (
+            ],
+            32 => [
                 'id' => 33,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -509,13 +474,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '43797f9ece904a34be37b053418d119b',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            33 => 
-            array (
+            ],
+            33 => [
                 'id' => 34,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -524,13 +488,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f852b924f6a7abf5e476c3df78616066',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            34 => 
-            array (
+            ],
+            34 => [
                 'id' => 35,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -539,13 +502,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '363c33d511de6ecfd559f4349ec6ed72',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            35 => 
-            array (
+            ],
+            35 => [
                 'id' => 36,
                 'keg_id' => 1,
                 'kelompok_id' => 4,
@@ -554,13 +516,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'b5aae8c3debe0f0399b2c10f25f06033',
                 'kelompok' => 4,
                 'nama_kelompok' => '4A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            36 => 
-            array (
+            ],
+            36 => [
                 'id' => 37,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -569,13 +530,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c4f43c66487a0eb6bbb3e4ea6152f08f',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            37 => 
-            array (
+            ],
+            37 => [
                 'id' => 38,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -584,13 +544,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1eef4148eace4e8b7e6eaef1a4501285',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            38 => 
-            array (
+            ],
+            38 => [
                 'id' => 39,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -599,13 +558,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5007317d9e0bea09b60452fface9126d',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            39 => 
-            array (
+            ],
+            39 => [
                 'id' => 40,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -614,13 +572,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8d2d628a8d513ceb1c0623d8bd859b31',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            40 => 
-            array (
+            ],
+            40 => [
                 'id' => 41,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -629,13 +586,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '287eabd390a898c45005ff51e1257824',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            41 => 
-            array (
+            ],
+            41 => [
                 'id' => 42,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -644,13 +600,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3cff1bd656936eaa565d2de8649cd59b',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            42 => 
-            array (
+            ],
+            42 => [
                 'id' => 43,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -659,13 +614,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '0286797930fcd5d978c12d7eb6900b37',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            43 => 
-            array (
+            ],
+            43 => [
                 'id' => 44,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -674,13 +628,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '792f34720963d89d285579dd804918a5',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            44 => 
-            array (
+            ],
+            44 => [
                 'id' => 45,
                 'keg_id' => 1,
                 'kelompok_id' => 5,
@@ -689,13 +642,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '18b728fd6f496a0654e0a1f22515cd4f',
                 'kelompok' => 5,
                 'nama_kelompok' => '5A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            45 => 
-            array (
+            ],
+            45 => [
                 'id' => 46,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -704,13 +656,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '0601dd91655fdeec02d445a538b6e650',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            46 => 
-            array (
+            ],
+            46 => [
                 'id' => 47,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -719,13 +670,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '709145522da2f50dc5507c0ee08a288b',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            47 => 
-            array (
+            ],
+            47 => [
                 'id' => 48,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -734,13 +684,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1810ba3540d93f0ee2c144ec570d6148',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            48 => 
-            array (
+            ],
+            48 => [
                 'id' => 49,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -749,13 +698,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '98f7512efdcaee9547a536be3036e2ee',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            49 => 
-            array (
+            ],
+            49 => [
                 'id' => 50,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -764,13 +712,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '9eec2376d9db0e669b48d8f08b57d675',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            50 => 
-            array (
+            ],
+            50 => [
                 'id' => 51,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -779,13 +726,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '53e20f678a35a7608e622e139db6f231',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            51 => 
-            array (
+            ],
+            51 => [
                 'id' => 52,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -794,13 +740,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3477a183ae7fe8dc690b51701ba6e1c6',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            52 => 
-            array (
+            ],
+            52 => [
                 'id' => 53,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -809,13 +754,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '600a2d32b2ac554e6db04999db3bcba2',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            53 => 
-            array (
+            ],
+            53 => [
                 'id' => 54,
                 'keg_id' => 1,
                 'kelompok_id' => 6,
@@ -824,13 +768,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '754f295d3903bff2d06fab74553d8114',
                 'kelompok' => 6,
                 'nama_kelompok' => '6A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            54 => 
-            array (
+            ],
+            54 => [
                 'id' => 55,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -839,13 +782,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd23b49ebdd3f36e7ee2bd3ed85c05b1b',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            55 => 
-            array (
+            ],
+            55 => [
                 'id' => 56,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -854,13 +796,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c86a90eb4782a1e417dd1373b9314741',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            56 => 
-            array (
+            ],
+            56 => [
                 'id' => 57,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -869,13 +810,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '99176dfb44160ac0fa3cca554eb2dd43',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            57 => 
-            array (
+            ],
+            57 => [
                 'id' => 58,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -884,13 +824,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6a966bdb93bfbf9476796426217fed18',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            58 => 
-            array (
+            ],
+            58 => [
                 'id' => 59,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -899,13 +838,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a0f44be0641a00474f041cad6ff0ea9d',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            59 => 
-            array (
+            ],
+            59 => [
                 'id' => 60,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -914,13 +852,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'e4a9fd2f2226d0d0038b9e66e5172ee5',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            60 => 
-            array (
+            ],
+            60 => [
                 'id' => 61,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -929,13 +866,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f648c0878f272c8098f1e4e42c23b91d',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            61 => 
-            array (
+            ],
+            61 => [
                 'id' => 62,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -944,13 +880,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ae50f4771475b5c7f2bd6e7f81230166',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            62 => 
-            array (
+            ],
+            62 => [
                 'id' => 63,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -959,13 +894,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a259211c0282c00b5d2a0a73412d85dd',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            63 => 
-            array (
+            ],
+            63 => [
                 'id' => 64,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -974,13 +908,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '66f918b85ca4d73e29b3ab08ad9aff07',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            64 => 
-            array (
+            ],
+            64 => [
                 'id' => 65,
                 'keg_id' => 1,
                 'kelompok_id' => 7,
@@ -989,13 +922,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f9da9a1582752a709eb19ea04c85a165',
                 'kelompok' => 7,
                 'nama_kelompok' => '7A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            65 => 
-            array (
+            ],
+            65 => [
                 'id' => 66,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1004,13 +936,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '52d9ba7454a7751e485ddd7738ce06d0',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            66 => 
-            array (
+            ],
+            66 => [
                 'id' => 67,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1019,13 +950,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6ee9fbf5e287d71d73d8d8d2963b7c04',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            67 => 
-            array (
+            ],
+            67 => [
                 'id' => 68,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1034,13 +964,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5d8e52cd05854a959cf45814ce21899c',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            68 => 
-            array (
+            ],
+            68 => [
                 'id' => 69,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1049,13 +978,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2aa0876a6ef49b99e8feff0a9227a949',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            69 => 
-            array (
+            ],
+            69 => [
                 'id' => 70,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1064,13 +992,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'b1045a1738690b83e15b4776914eb350',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            70 => 
-            array (
+            ],
+            70 => [
                 'id' => 71,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1079,13 +1006,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6bd4bcf6b63074f94c72a50f07845ded',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            71 => 
-            array (
+            ],
+            71 => [
                 'id' => 72,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1094,13 +1020,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a099e0ea86df3a34a57158453c4e6351',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            72 => 
-            array (
+            ],
+            72 => [
                 'id' => 73,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1109,13 +1034,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2f463706b6867f6fdb1611a5efbe53aa',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            73 => 
-            array (
+            ],
+            73 => [
                 'id' => 74,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1124,13 +1048,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '403ea474c37be090e22f84e48bea546c',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            74 => 
-            array (
+            ],
+            74 => [
                 'id' => 75,
                 'keg_id' => 1,
                 'kelompok_id' => 8,
@@ -1139,13 +1062,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd33d6c9dca2fb81224bf6811eebdf073',
                 'kelompok' => 8,
                 'nama_kelompok' => '8A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            75 => 
-            array (
+            ],
+            75 => [
                 'id' => 76,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1154,13 +1076,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6eb0e8853ee2ceddd54dcf80aa732e14',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            76 => 
-            array (
+            ],
+            76 => [
                 'id' => 77,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1169,13 +1090,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'dd483e3a5998ea8bea8c36fc8f3de2b4',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            77 => 
-            array (
+            ],
+            77 => [
                 'id' => 78,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1184,13 +1104,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f8fdbd9f959707ffc619cfa4d5ffafb0',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            78 => 
-            array (
+            ],
+            78 => [
                 'id' => 79,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1199,13 +1118,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2b17a9f683e392004f8307e30f03108d',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            79 => 
-            array (
+            ],
+            79 => [
                 'id' => 80,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1214,13 +1132,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f30d421e3a36bfc1845770e5d6472bcb',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            80 => 
-            array (
+            ],
+            80 => [
                 'id' => 81,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1229,13 +1146,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6955522c05e5d6c00277e54c0adbbcec',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            81 => 
-            array (
+            ],
+            81 => [
                 'id' => 82,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1244,13 +1160,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '32087b9613eb70e92f42ccd1413c9733',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            82 => 
-            array (
+            ],
+            82 => [
                 'id' => 83,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1259,13 +1174,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f976e11e4b0b8234cd35b1fe853195d8',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            83 => 
-            array (
+            ],
+            83 => [
                 'id' => 84,
                 'keg_id' => 1,
                 'kelompok_id' => 9,
@@ -1274,13 +1188,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c234091e849bac239bbce8bf1d88d124',
                 'kelompok' => 9,
                 'nama_kelompok' => '9A',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            84 => 
-            array (
+            ],
+            84 => [
                 'id' => 85,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1289,13 +1202,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c3da5317000419df90e66ca74e35a5e7',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            85 => 
-            array (
+            ],
+            85 => [
                 'id' => 86,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1304,13 +1216,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8706fb696ac9e286990aa41706b969cd',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            86 => 
-            array (
+            ],
+            86 => [
                 'id' => 87,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1319,13 +1230,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'fab8980edc6675c863fe3a3f71c3f10c',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            87 => 
-            array (
+            ],
+            87 => [
                 'id' => 88,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1334,13 +1244,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ba65a8fd431c7e98014a216ff086901f',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            88 => 
-            array (
+            ],
+            88 => [
                 'id' => 89,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1349,13 +1258,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '261cc3def10f1b347f96f2001e517b20',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            89 => 
-            array (
+            ],
+            89 => [
                 'id' => 90,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1364,13 +1272,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ddc5e8698e4975735ad9de7e4199b1ed',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            90 => 
-            array (
+            ],
+            90 => [
                 'id' => 91,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1379,13 +1286,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'b59be881870e44ce7dac5bf838444332',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            91 => 
-            array (
+            ],
+            91 => [
                 'id' => 92,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1394,13 +1300,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '56685f9fe418362825c41049c910816a',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            92 => 
-            array (
+            ],
+            92 => [
                 'id' => 93,
                 'keg_id' => 1,
                 'kelompok_id' => 10,
@@ -1409,13 +1314,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'e5a20e87a97cf58bce77743e47aefadd',
                 'kelompok' => 10,
                 'nama_kelompok' => '1B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            93 => 
-            array (
+            ],
+            93 => [
                 'id' => 94,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1424,13 +1328,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '43e9d28c4424e670767e8ad59980d4b2',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            94 => 
-            array (
+            ],
+            94 => [
                 'id' => 95,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1439,13 +1342,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '926013bf1f716071cc774901f6e76103',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            95 => 
-            array (
+            ],
+            95 => [
                 'id' => 96,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1454,13 +1356,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd1d2199bd07d54ebbc0d700c3677ff30',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            96 => 
-            array (
+            ],
+            96 => [
                 'id' => 97,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1469,13 +1370,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2a1315488dca1eca3d171f81fd2989e8',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            97 => 
-            array (
+            ],
+            97 => [
                 'id' => 98,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1484,13 +1384,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '850dbb19219a25c197e2108505767d51',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            98 => 
-            array (
+            ],
+            98 => [
                 'id' => 99,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1499,13 +1398,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '406d5e8b00522d18cab90c1cd2071a35',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            99 => 
-            array (
+            ],
+            99 => [
                 'id' => 100,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1514,13 +1412,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '02ba74e4bed5dfa7c0cb8a000d3fc85c',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            100 => 
-            array (
+            ],
+            100 => [
                 'id' => 101,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1529,13 +1426,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c9a03c13f1826c28d77e5636802671b7',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            101 => 
-            array (
+            ],
+            101 => [
                 'id' => 102,
                 'keg_id' => 1,
                 'kelompok_id' => 11,
@@ -1544,13 +1440,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '75cfccdcb3e4ff79fb34d596b02151ce',
                 'kelompok' => 11,
                 'nama_kelompok' => '2B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            102 => 
-            array (
+            ],
+            102 => [
                 'id' => 103,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1559,13 +1454,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '9b7e25c63e1390da3c614d6c6d31ba6c',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            103 => 
-            array (
+            ],
+            103 => [
                 'id' => 104,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1574,13 +1468,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '97bce94e948fd61855271a3fe05baac9',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            104 => 
-            array (
+            ],
+            104 => [
                 'id' => 105,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1589,13 +1482,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1f5dcc3869fbf1ad76f4198052936a57',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            105 => 
-            array (
+            ],
+            105 => [
                 'id' => 106,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1604,13 +1496,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3e5d46a6c9b8fb97d9759902cffd330b',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            106 => 
-            array (
+            ],
+            106 => [
                 'id' => 107,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1619,13 +1510,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5fecd1ac5b1cceec4e65e17f9ecad29b',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            107 => 
-            array (
+            ],
+            107 => [
                 'id' => 108,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1634,13 +1524,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'e48784ee8de0a34c562c6184ab4adfd6',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            108 => 
-            array (
+            ],
+            108 => [
                 'id' => 109,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1649,13 +1538,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '58a12c451dc2c83e397ba09b906f2463',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            109 => 
-            array (
+            ],
+            109 => [
                 'id' => 110,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1664,13 +1552,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '67413155e4fbbada262157ee0a02d2b9',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            110 => 
-            array (
+            ],
+            110 => [
                 'id' => 111,
                 'keg_id' => 1,
                 'kelompok_id' => 12,
@@ -1679,13 +1566,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f7f1e527ce29bdb2014632a1917bebab',
                 'kelompok' => 12,
                 'nama_kelompok' => '3B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            111 => 
-            array (
+            ],
+            111 => [
                 'id' => 112,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1694,13 +1580,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c117354c729027f5321c8d235bf45267',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            112 => 
-            array (
+            ],
+            112 => [
                 'id' => 113,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1709,13 +1594,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1144a53a9425a05f8f61764797d4d3fc',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            113 => 
-            array (
+            ],
+            113 => [
                 'id' => 114,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1724,13 +1608,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '25efbbcd78385d056926a7bbfe5c8bc4',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            114 => 
-            array (
+            ],
+            114 => [
                 'id' => 115,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1739,13 +1622,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c6a67c08a94861384556bbbba61e9135',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            115 => 
-            array (
+            ],
+            115 => [
                 'id' => 116,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1754,13 +1636,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'cdaed1aed32bf502fb8bb89ff63db31b',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            116 => 
-            array (
+            ],
+            116 => [
                 'id' => 117,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1769,13 +1650,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '5a6f2c99d9e0794dd4b7657b0fe9b72e',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            117 => 
-            array (
+            ],
+            117 => [
                 'id' => 118,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1784,13 +1664,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8111a7a533bd4efa88b0897f453bfd09',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            118 => 
-            array (
+            ],
+            118 => [
                 'id' => 119,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1799,13 +1678,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6407e246239801035e5df9d425f3593f',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            119 => 
-            array (
+            ],
+            119 => [
                 'id' => 120,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1814,13 +1692,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f678626b67b6890c2ce92d57c6367ebe',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            120 => 
-            array (
+            ],
+            120 => [
                 'id' => 121,
                 'keg_id' => 1,
                 'kelompok_id' => 13,
@@ -1829,13 +1706,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'fd7472e0f57e75c772d6a784a711ccdb',
                 'kelompok' => 13,
                 'nama_kelompok' => '4B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            121 => 
-            array (
+            ],
+            121 => [
                 'id' => 122,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1844,13 +1720,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'dd9f13d37a0ef0919c912af77aaed277',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            122 => 
-            array (
+            ],
+            122 => [
                 'id' => 123,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1859,13 +1734,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '48bf39e91343e66d75f1379788d59143',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            123 => 
-            array (
+            ],
+            123 => [
                 'id' => 124,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1874,13 +1748,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'db326987ad71c3865d9974844f96321e',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            124 => 
-            array (
+            ],
+            124 => [
                 'id' => 125,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1889,13 +1762,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '80331c1ffcd972f84c7df50c6e61127a',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            125 => 
-            array (
+            ],
+            125 => [
                 'id' => 126,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1904,13 +1776,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '934be6867774c145d6ed5237d3c6b50b',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            126 => 
-            array (
+            ],
+            126 => [
                 'id' => 127,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1919,13 +1790,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '23befdcd62155036974fa4784e97805a',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            127 => 
-            array (
+            ],
+            127 => [
                 'id' => 128,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1934,13 +1804,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'bd688e04e894f31d71708d5bf1b9ba49',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            128 => 
-            array (
+            ],
+            128 => [
                 'id' => 129,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1949,13 +1818,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8b6738fd097896f077d822e53ceb1503',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            129 => 
-            array (
+            ],
+            129 => [
                 'id' => 130,
                 'keg_id' => 1,
                 'kelompok_id' => 14,
@@ -1964,13 +1832,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8caa9d77e1e417d06da76d3100a1182b',
                 'kelompok' => 14,
                 'nama_kelompok' => '5B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            130 => 
-            array (
+            ],
+            130 => [
                 'id' => 131,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -1979,13 +1846,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '4d1710001f141f7925784e6c7ff6a5d8',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            131 => 
-            array (
+            ],
+            131 => [
                 'id' => 132,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -1994,13 +1860,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '66068d1e8ec1aad8bddf137e8a8e510e',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            132 => 
-            array (
+            ],
+            132 => [
                 'id' => 133,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2009,13 +1874,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1f079351b9939181e1ad579b9b8f1474',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            133 => 
-            array (
+            ],
+            133 => [
                 'id' => 134,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2024,13 +1888,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'b09db8bdccf58e673016011d0d6f940a',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            134 => 
-            array (
+            ],
+            134 => [
                 'id' => 135,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2039,13 +1902,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c334ed85cd2048bbeed70eb663cd6564',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            135 => 
-            array (
+            ],
+            135 => [
                 'id' => 136,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2054,13 +1916,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'af2b166d3f897b6f2da0839692fc019b',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            136 => 
-            array (
+            ],
+            136 => [
                 'id' => 137,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2069,13 +1930,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '15f730db91a729a24cbb638dc59f9b99',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            137 => 
-            array (
+            ],
+            137 => [
                 'id' => 138,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2084,13 +1944,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3615a1032b8ffd403f4be84892662f26',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            138 => 
-            array (
+            ],
+            138 => [
                 'id' => 139,
                 'keg_id' => 1,
                 'kelompok_id' => 15,
@@ -2099,13 +1958,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd36a6b6918f781da24adf4a162bb5a2a',
                 'kelompok' => 15,
                 'nama_kelompok' => '6B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            139 => 
-            array (
+            ],
+            139 => [
                 'id' => 140,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2114,13 +1972,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '3b7249d5e2555aeed4cab04d282ba2f1',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            140 => 
-            array (
+            ],
+            140 => [
                 'id' => 141,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2129,13 +1986,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'bbc7b563671f0102595b3eab825fdbdc',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            141 => 
-            array (
+            ],
+            141 => [
                 'id' => 142,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2144,13 +2000,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6750dff5b95c00ee47fb5ab17d16d601',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            142 => 
-            array (
+            ],
+            142 => [
                 'id' => 143,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2159,13 +2014,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a0403fbd94a4f53492d918482ec594d7',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            143 => 
-            array (
+            ],
+            143 => [
                 'id' => 144,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2174,13 +2028,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '44cdbd564a6a93e2db55c855783aa608',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            144 => 
-            array (
+            ],
+            144 => [
                 'id' => 145,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2189,13 +2042,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '6072413b59de986f3f185fdabeb2b023',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            145 => 
-            array (
+            ],
+            145 => [
                 'id' => 146,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2204,13 +2056,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '0fd271f23b85f14ea9b4037585494bac',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            146 => 
-            array (
+            ],
+            146 => [
                 'id' => 147,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2219,13 +2070,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2189be38e5437e4aa58d53c4ca2b7d47',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            147 => 
-            array (
+            ],
+            147 => [
                 'id' => 148,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2234,13 +2084,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f621a2d00094de86e277f4ccfc3d36fb',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            148 => 
-            array (
+            ],
+            148 => [
                 'id' => 149,
                 'keg_id' => 1,
                 'kelompok_id' => 16,
@@ -2249,13 +2098,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd737f0e2cdf69bcf2902bebee68c0443',
                 'kelompok' => 16,
                 'nama_kelompok' => '7B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            149 => 
-            array (
+            ],
+            149 => [
                 'id' => 150,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2264,13 +2112,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'd8aeb068172a86c34d62b575bb4ac754',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            150 => 
-            array (
+            ],
+            150 => [
                 'id' => 151,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2279,13 +2126,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '00cebcbce9ba670839ae3f5f4b9f31d6',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            151 => 
-            array (
+            ],
+            151 => [
                 'id' => 152,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2294,13 +2140,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a3ed89390e9625af4cd33e7049cd4681',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            152 => 
-            array (
+            ],
+            152 => [
                 'id' => 153,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2309,13 +2154,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '442fcee66ea0438b668dce68f637cacd',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            153 => 
-            array (
+            ],
+            153 => [
                 'id' => 154,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2324,13 +2168,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1db4b41d1c247c0fae6932bdb8891437',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            154 => 
-            array (
+            ],
+            154 => [
                 'id' => 155,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2339,13 +2182,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'e6320398a42fa973b26e0d88e178662d',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            155 => 
-            array (
+            ],
+            155 => [
                 'id' => 156,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2354,13 +2196,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ca8aceb46069d32ad1577e99b2f8134d',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            156 => 
-            array (
+            ],
+            156 => [
                 'id' => 157,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2369,13 +2210,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '786b7811c0615739935564178db85533',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            157 => 
-            array (
+            ],
+            157 => [
                 'id' => 158,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2384,13 +2224,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '2156e50d4bcd071f83a8877d3eba4dc5',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            158 => 
-            array (
+            ],
+            158 => [
                 'id' => 159,
                 'keg_id' => 1,
                 'kelompok_id' => 17,
@@ -2399,13 +2238,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '74e378630da275ef66014a4ed02e0756',
                 'kelompok' => 17,
                 'nama_kelompok' => '8B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            159 => 
-            array (
+            ],
+            159 => [
                 'id' => 160,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2414,13 +2252,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '62c142c63fa1bfca82d5c4192d43d89e',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            160 => 
-            array (
+            ],
+            160 => [
                 'id' => 161,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2429,13 +2266,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f4506ea6333b962b4e1df4cbe81af783',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            161 => 
-            array (
+            ],
+            161 => [
                 'id' => 162,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2444,13 +2280,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '855a50688732058dfe3cd204af50d5ce',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            162 => 
-            array (
+            ],
+            162 => [
                 'id' => 163,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2459,13 +2294,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f6fa7e19994b51c55ce16f189b27d6cc',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            163 => 
-            array (
+            ],
+            163 => [
                 'id' => 164,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2474,13 +2308,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '8efafcca3c1bf7290e33a12050499377',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            164 => 
-            array (
+            ],
+            164 => [
                 'id' => 165,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2489,13 +2322,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => 'a724eabf3892371e79e7852c390a8f8f',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            165 => 
-            array (
+            ],
+            165 => [
                 'id' => 166,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2504,13 +2336,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '521cfc1d49412943cc4e857e299a59e1',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            166 => 
-            array (
+            ],
+            166 => [
                 'id' => 167,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2519,13 +2350,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '1bf84b45f8ff9b902dd5dac2c4785ef9',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-            167 => 
-            array (
+            ],
+            167 => [
                 'id' => 168,
                 'keg_id' => 1,
                 'kelompok_id' => 18,
@@ -2534,13 +2364,12 @@ class PblPesertasTableSeeder extends Seeder
                 'qrpeserta' => '0a2928bcbab2e5f1064879d3fb5f9483',
                 'kelompok' => 18,
                 'nama_kelompok' => '9B',
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
                 'created_at' => '2026-01-17 06:57:57',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

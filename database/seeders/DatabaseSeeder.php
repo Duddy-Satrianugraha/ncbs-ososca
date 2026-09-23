@@ -20,18 +20,17 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-
-         //$this->call(OpesertasTableSeeder::class)
-         $this->call(UsersTableSeeder::class);
-         $this->call(RolesTableSeeder::class);
-         $this->call(RoleUserTableSeeder::class);
-         $this->call(TeamsTableSeeder::class);
-         $this->call(TeamUserTableSeeder::class);
-         $this->call(OptionsTableSeeder::class);
+        // $this->call(OpesertasTableSeeder::class)
+        $this->call(UsersTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(RoleUserTableSeeder::class);
+        $this->call(TeamsTableSeeder::class);
+        $this->call(TeamUserTableSeeder::class);
+        $this->call(OptionsTableSeeder::class);
         // $this->call(OnilaisTableSeeder::class);
-         $this->call(OtemplatesTableSeeder::class);
-         $this->call(OrubriksTableSeeder::class);
-       //  $this->call(OujiansTableSeeder::class);
+        $this->call(OtemplatesTableSeeder::class);
+        $this->call(OrubriksTableSeeder::class);
+        //  $this->call(OujiansTableSeeder::class);
         // $this->call(OstationsTableSeeder::class);
         // $this->call(OsesisTableSeeder::class);
 
@@ -40,15 +39,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DataDirisTableSeeder::class);
 
-
         $this->call(LocationsTableSeeder::class);
 
         $this->call(NilaisTableSeeder::class);
 
-
         $this->call(PendaftaransTableSeeder::class);
         $this->call(PesertasTableSeeder::class);
-
 
         $this->call(RotationsTableSeeder::class);
         $this->call(RubriksTableSeeder::class);
@@ -56,7 +52,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(SoalsTableSeeder::class);
         $this->call(StationsTableSeeder::class);
-
 
         $this->call(TemplatesTableSeeder::class);
         $this->call(TrmesTableSeeder::class);

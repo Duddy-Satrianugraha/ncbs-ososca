@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OstationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,78 +13,71 @@ class OstationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('ostations')->delete();
-        
-        \DB::table('ostations')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('ostations')->insert([
+            0 => [
                 'id' => 21,
                 'oujian_id' => 3,
                 'urutan' => 1,
                 'name' => 'station 1',
                 'qrstation' => '288305518431',
-                'nama_penguji' => NULL,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-08-27 01:14:55',
                 'updated_at' => '2025-08-27 01:14:55',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 22,
                 'oujian_id' => 3,
                 'urutan' => 2,
                 'name' => 'station 2',
                 'qrstation' => '425599910732',
-                'nama_penguji' => NULL,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-08-27 01:14:55',
                 'updated_at' => '2025-08-27 01:14:55',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 23,
                 'oujian_id' => 3,
                 'urutan' => 3,
                 'name' => 'station 3',
                 'qrstation' => '695872793433',
-                'nama_penguji' => NULL,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-08-27 01:14:55',
                 'updated_at' => '2025-08-27 01:14:55',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 24,
                 'oujian_id' => 3,
                 'urutan' => 4,
                 'name' => 'station 4',
                 'qrstation' => '990757894834',
-                'nama_penguji' => NULL,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-08-27 01:18:47',
                 'updated_at' => '2025-08-27 01:18:47',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 25,
                 'oujian_id' => 3,
                 'urutan' => 5,
                 'name' => 'station 5',
                 'qrstation' => '560777223535',
-                'nama_penguji' => NULL,
+                'nama_penguji' => null,
                 'current' => 1,
                 'next' => 2,
                 'created_at' => '2025-08-27 01:18:47',
                 'updated_at' => '2025-08-27 01:18:47',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

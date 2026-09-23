@@ -12,7 +12,8 @@ class OptionController extends Controller
      */
     public function index()
     {
-       $option = Option::paginate(10);
+        $option = Option::paginate(10);
+
         return view('admin.opt.list', compact('option'));
     }
 
@@ -22,6 +23,7 @@ class OptionController extends Controller
     public function create()
     {
         $option = Option::Where('type', '=', 'ahli')->paginate(10);
+
         return view('admin.opt.list_abil', compact('option'));
     }
 
@@ -37,6 +39,7 @@ class OptionController extends Controller
         ]);
 
         Option::create($request->except('_token'));
+
         return redirect()->back()->with('status', 'Data berhasil disimpan');
     }
 
@@ -69,8 +72,9 @@ class OptionController extends Controller
      */
     public function destroy(Option $option)
     {
-        //dd($option);
+        // dd($option);
         $option->delete();
+
         return redirect()->back()->with('status', 'Data berhasil dihapus');
     }
 }

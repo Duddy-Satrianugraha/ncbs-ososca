@@ -14,7 +14,7 @@ class OpengujiController extends Controller
      */
     public function index(Request $request)
     {
-        $search   = $request->query('search');
+        $search = $request->query('search');
         $selected = $request->query('selected', []); // ID tercentang
 
         $penguji = Openguji::query()
@@ -22,27 +22,26 @@ class OpengujiController extends Controller
                 $s = trim($search);
                 $q->where(function ($qq) use ($s) {
                     $qq->where('nama', 'like', "%{$s}%")
-                    ->orWhere('nik', 'like', "%{$s}%");
+                        ->orWhere('nik', 'like', "%{$s}%");
 
                     if (ctype_digit($s)) {
                         $qq->orWhere('nik', $s);
                     }
                 });
             })
-            ->when(!empty($selected), function ($q) use ($selected) {
+            ->when(! empty($selected), function ($q) use ($selected) {
                 // PENTING: paksa data tercentang tetap muncul
                 $q->orWhereIn('id', $selected);
             })
             ->orderBy('id')
             ->paginate(40)
             ->appends([
-                'search'   => $search,
+                'search' => $search,
                 'selected' => $selected,
             ]);
 
         return view('admin.openguji.list', compact('penguji', 'selected'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -55,11 +54,11 @@ class OpengujiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'nik'  => 'required|string|max:255|unique:opengujis,nik',
+            'nik' => 'required|string|max:255|unique:opengujis,nik',
         ]);
 
         do {
@@ -67,8 +66,8 @@ class OpengujiController extends Controller
         } while (Openguji::where('qr_penguji', $qr)->exists());
 
         Openguji::create([
-            'nama'       => $request->nama,
-            'nik'        => $request->nik,
+            'nama' => $request->nama,
+            'nik' => $request->nik,
             'qr_penguji' => $qr,
         ]);
 
@@ -76,6 +75,7 @@ class OpengujiController extends Controller
             ->route('tutor.penguji.index')
             ->with('msg', 'success-Data berhasil disimpan');
     }
+
     /**
      * Display the specified resource.
      */
@@ -90,6 +90,7 @@ class OpengujiController extends Controller
     public function edit($id)
     {
         $penguji = Openguji::findOrFail($id);
+
         return view('admin.openguji.edit', compact('penguji'));
     }
 
@@ -97,59 +98,61 @@ class OpengujiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-        {
-            $penguji = Openguji::findOrFail($id);
+    {
+        $penguji = Openguji::findOrFail($id);
 
-            $request->validate([
-                'nama' => 'required|string|max:255',
-                'nik'  => [
-                    'required',
-                    'string',
-                    'max:255',
-                    Rule::unique('opengujis', 'nik')->ignore($penguji->id),
-                ],
-            ], [
-                'nik.unique' => 'NIK penguji sudah terdaftar.',
-            ]);
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'nik' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('opengujis', 'nik')->ignore($penguji->id),
+            ],
+        ], [
+            'nik.unique' => 'NIK penguji sudah terdaftar.',
+        ]);
 
-            $penguji->update([
-                'nama' => $request->nama,
-                'nik'  => $request->nik,
-            ]);
+        $penguji->update([
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+        ]);
 
-            return redirect()
-                ->back()
-                ->with('msg', 'success-Data berhasil disimpan');
-        }
+        return redirect()
+            ->back()
+            ->with('msg', 'success-Data berhasil disimpan');
+    }
 
     public function print(Request $request)
-        {
-            //dd($request);
-            $ids = $request->penguji_id; // array id penguji terpilih
-            if (!$ids) {
-                return back()->with('error', 'Silakan pilih minimal satu penguji.');
-            }
-
-            $pengujis = Openguji::whereIn('id', $ids)->get();
-           // dd($pengujis);
-           $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.penguji', compact('pengujis'))
-            ->setPaper('A4', 'portrait');
-            return $pdf->stream('kartu_penguji.pdf');
+    {
+        // dd($request);
+        $ids = $request->penguji_id; // array id penguji terpilih
+        if (! $ids) {
+            return back()->with('error', 'Silakan pilih minimal satu penguji.');
         }
+
+        $pengujis = Openguji::whereIn('id', $ids)->get();
+        // dd($pengujis);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.penguji', compact('pengujis'))
+            ->setPaper('A4', 'portrait');
+
+        return $pdf->stream('kartu_penguji.pdf');
+    }
 
     public function massDelete(Request $request)
-        {
-            $ids = $request->penguji_id;
-            if (!$ids) {
-                return back()->with('error', 'Silakan pilih minimal satu penguji.');
-            }
-
-            Openguji::whereIn('id', $ids)->delete();
-
-            return back()->with('success', 'Penguji terpilih berhasil dihapus.');
+    {
+        $ids = $request->penguji_id;
+        if (! $ids) {
+            return back()->with('error', 'Silakan pilih minimal satu penguji.');
         }
 
-    public function qrshow(Openguji $openguji){
+        Openguji::whereIn('id', $ids)->delete();
+
+        return back()->with('success', 'Penguji terpilih berhasil dihapus.');
+    }
+
+    public function qrshow(Openguji $openguji)
+    {
         return view('admin.openguji.qr', compact('openguji'));
     }
 }

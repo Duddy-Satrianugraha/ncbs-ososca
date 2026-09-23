@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
 class PowerController extends Controller
@@ -15,19 +11,20 @@ class PowerController extends Controller
     {
         if (Auth::check()) {
             // Simpan ID admin sebelum impersonate
-            if (!session()->has('original_user')) {
+            if (! session()->has('original_user')) {
                 session(['original_user' => Auth::id()]);
             }
 
             // Simpan ID user yang akan di-impersonate
             session(['power' => $id]);
-            if (!Auth::check() || Auth::id() !== $id) {
+            if (! Auth::check() || Auth::id() !== $id) {
                 Auth::loginUsingId($id);
             }
 
-        return redirect('/dashbord');
-            }
-            return redirect('/login')->with('error', 'Unauthorized');
+            return redirect('/dashbord');
+        }
+
+        return redirect('/login')->with('error', 'Unauthorized');
     }
 
     public function destroy()
@@ -43,5 +40,5 @@ class PowerController extends Controller
         }
 
         return redirect('/dashboard')->with('error', 'No impersonation session found.');
-   }
+    }
 }

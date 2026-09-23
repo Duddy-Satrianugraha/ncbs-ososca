@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class RotationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class RotationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('rotations')->delete();
-        
-        \DB::table('rotations')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('rotations')->insert([
+            0 => [
                 'id' => 1,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -30,9 +27,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -42,9 +38,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -54,9 +49,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'ujian_id' => 1,
                 'sesi_id' => 1,
@@ -66,9 +60,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:46:33',
                 'updated_at' => '2025-04-09 15:46:33',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -78,9 +71,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -90,9 +82,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -102,9 +93,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'ujian_id' => 1,
                 'sesi_id' => 2,
@@ -114,9 +104,8 @@ class RotationsTableSeeder extends Seeder
                 'jml_station' => '7',
                 'created_at' => '2025-04-09 15:47:32',
                 'updated_at' => '2025-04-09 15:47:32',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

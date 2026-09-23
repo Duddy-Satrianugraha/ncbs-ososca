@@ -3,10 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -49,10 +49,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? asset('storage/' . $value) : null,
+            get: fn ($value) => $value ? asset('storage/'.$value) : null,
         );
     }
 
@@ -61,16 +62,18 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    public function hasAnyRole($role){
-        return null !== $this->roles()->where('u_id', $role)->first();
+    public function hasAnyRole($role)
+    {
+        return $this->roles()->where('u_id', $role)->first() !== null;
     }
 
     /**chek beberapa role
      * @param array $roles
      * @return bool
      */
-    public function hasAnyRoles($roles){
-        return null !== $this->roles()->whereIn('u_id', $roles)->first();
+    public function hasAnyRoles($roles)
+    {
+        return $this->roles()->whereIn('u_id', $roles)->first() !== null;
     }
 
     public function pendaftarans()
@@ -88,7 +91,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class);
     }
 
-     public function hasAnyTeam($team){
-        return null !== $this->teams()->where('user_id', $team)->first();
-        }
+    public function hasAnyTeam($team)
+    {
+        return $this->teams()->where('user_id', $team)->first() !== null;
+    }
 }

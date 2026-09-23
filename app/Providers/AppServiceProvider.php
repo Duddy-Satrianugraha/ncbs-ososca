@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,40 +27,38 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasAnyRole('99');
         });
 
-        Gate::define('it', function ($user){
-            return $user->hasAnyRoles(['98','99']);
+        Gate::define('it', function ($user) {
+            return $user->hasAnyRoles(['98', '99']);
         });
 
-        Gate::define('Panitia', function ($user){
-            return $user->hasAnyRoles(['98','99', '1', '2', '3','4']);
+        Gate::define('Panitia', function ($user) {
+            return $user->hasAnyRoles(['98', '99', '1', '2', '3', '4']);
         });
 
-        Gate::define('koc', function ($user){
+        Gate::define('koc', function ($user) {
             return $user->hasAnyRoles(['99', '1']);
         });
 
-        Gate::define('admin', function ($user){
+        Gate::define('admin', function ($user) {
             return $user->hasAnyRoles(['99', '2']);
         });
 
-        Gate::define('materi', function ($user){
+        Gate::define('materi', function ($user) {
             return $user->hasAnyRoles(['99', '3']);
         });
 
-        Gate::define('meu', function ($user){
+        Gate::define('meu', function ($user) {
             return $user->hasAnyRoles(['99', '4']);
         });
 
-        Gate::define('penguji', function ($user){
+        Gate::define('penguji', function ($user) {
             return $user->hasAnyRoles(['99', '5']);
         });
-        Gate::define('ps', function ($user){
+        Gate::define('ps', function ($user) {
             return $user->hasAnyRoles(['99', '6']);
         });
-        Gate::define('pps', function ($user){
+        Gate::define('pps', function ($user) {
             return $user->hasAnyRoles(['99', '7']);
         });
     }
-
-
 }

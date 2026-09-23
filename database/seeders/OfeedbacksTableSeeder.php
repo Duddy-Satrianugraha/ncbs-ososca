@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OfeedbacksTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OfeedbacksTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('ofeedbacks')->delete();
-        
-        \DB::table('ofeedbacks')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('ofeedbacks')->insert([
+            0 => [
                 'id' => 1,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -40,9 +37,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:43:14',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -62,9 +58,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:46:15',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -80,9 +75,8 @@ Masukan: pertahankan konsistensi penjelasan patomekanisme, belajar lagi mengenai
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:07',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -101,9 +95,8 @@ Masukan: belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:08',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -120,9 +113,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:16',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -141,9 +133,8 @@ banyak belajar lagi dan baca lagi ya.. semangat terus',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:17',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -163,9 +154,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:21',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -185,9 +175,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:25',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -203,9 +192,8 @@ Masukan: Baca soal lebih lengkap dan detail ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:27',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -226,9 +214,8 @@ pelajari dan perbaiki yang masih kurang',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:31',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -249,9 +236,8 @@ baca baik-baik tugasnya.',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:47',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -269,9 +255,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:47:51',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -287,9 +272,8 @@ Masukan: Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:48:05',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -311,9 +295,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:48:16',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -333,9 +316,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 01:48:40',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -353,9 +335,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:00:35',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 17,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -371,9 +352,8 @@ Masukan: Baca lagi mengenai dasar diagnosis Pemeriksaan penunjang,',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:02:44',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 18,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -390,9 +370,8 @@ Masukan: belajar lagi dan perhatikan kasusnya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:02:47',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 19,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -416,9 +395,8 @@ Belajar lagi ya!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:02:48',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 20,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -442,9 +420,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:02:48',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 21,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -462,9 +439,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:02:49',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 22,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -481,9 +457,8 @@ kalau ada demam ya brrti ada infeksi dong...nah, kaitkan semua hasil yang tercan
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:04',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 23,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -504,9 +479,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:05',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 24,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -527,9 +501,8 @@ belajar lagi ya,,',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:09',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 25,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -547,9 +520,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:11',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 26,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -572,9 +544,8 @@ pelajari dan perbaiki yang masih kurang',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:11',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 27,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -594,9 +565,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:14',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 28,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -614,9 +584,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:32',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 29,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -632,9 +601,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            29 => 
-            array (
+            ],
+            29 => [
                 'id' => 30,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -651,9 +619,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:03:49',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            30 => 
-            array (
+            ],
+            30 => [
                 'id' => 31,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -670,9 +637,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:14:22',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            31 => 
-            array (
+            ],
+            31 => [
                 'id' => 32,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -691,9 +657,8 @@ hebattt',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:15:34',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            32 => 
-            array (
+            ],
+            32 => [
                 'id' => 33,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -719,9 +684,8 @@ Belajar lagi!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:17:13',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            33 => 
-            array (
+            ],
+            33 => [
                 'id' => 34,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -740,9 +704,8 @@ belajar lagi, lebih teliti lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:23',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            34 => 
-            array (
+            ],
+            34 => [
                 'id' => 35,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -758,9 +721,8 @@ Masukan: baca lagi mengenai dasar diagnosis dan diagnosis kerja detail kasus ter
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:24',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            35 => 
-            array (
+            ],
+            35 => [
                 'id' => 36,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -779,9 +741,8 @@ belajar lagi, jangan asal menjelaskan ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:25',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            36 => 
-            array (
+            ],
+            36 => [
                 'id' => 37,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -797,9 +758,8 @@ Masukan:langsung saja ke diagnosis kerjanya dan interpretasi hasil PP nya jangan
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:26',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            37 => 
-            array (
+            ],
+            37 => [
                 'id' => 38,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -818,9 +778,8 @@ belajar lagi yaaa..',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:26',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            38 => 
-            array (
+            ],
+            38 => [
                 'id' => 39,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -838,9 +797,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:29',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            39 => 
-            array (
+            ],
+            39 => [
                 'id' => 40,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -860,9 +818,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:32',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            40 => 
-            array (
+            ],
+            40 => [
                 'id' => 41,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -880,9 +837,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:37',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            41 => 
-            array (
+            ],
+            41 => [
                 'id' => 42,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -906,9 +862,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:46',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            42 => 
-            array (
+            ],
+            42 => [
                 'id' => 43,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -929,9 +884,8 @@ tidak memahami &tdk menjelaskan patomekanisme diagnosis spesifik',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:18:51',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            43 => 
-            array (
+            ],
+            43 => [
                 'id' => 44,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -952,9 +906,8 @@ Jika melakukan presentasi, menghadap ke audiens, bukan menghadap whiteboard',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:19:11',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            44 => 
-            array (
+            ],
+            44 => [
                 'id' => 45,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -975,9 +928,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:19:12',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            45 => 
-            array (
+            ],
+            45 => [
                 'id' => 46,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -997,9 +949,8 @@ tetap belajar',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:31:22',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            46 => 
-            array (
+            ],
+            46 => [
                 'id' => 47,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -1017,9 +968,8 @@ fokus lagi melihat kasus',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:33:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            47 => 
-            array (
+            ],
+            47 => [
                 'id' => 48,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -1035,9 +985,8 @@ Masukan: baca rinci dan detail mengenai patomekanisme dan tatalaksana farmakoter
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:00',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            48 => 
-            array (
+            ],
+            48 => [
                 'id' => 49,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -1053,9 +1002,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:01',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            49 => 
-            array (
+            ],
+            49 => [
                 'id' => 50,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -1074,9 +1022,8 @@ belajar lagi, lebih teliti baca kasusnya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:03',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            50 => 
-            array (
+            ],
+            50 => [
                 'id' => 51,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -1095,9 +1042,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:04',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            51 => 
-            array (
+            ],
+            51 => [
                 'id' => 52,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -1116,9 +1062,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:04',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            52 => 
-            array (
+            ],
+            52 => [
                 'id' => 53,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -1136,9 +1081,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:05',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            53 => 
-            array (
+            ],
+            53 => [
                 'id' => 54,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -1160,9 +1104,8 @@ manajemen Waktu, utamakan sampaikan poin penting agar bisa tuntasdan spesifik da
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:08',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            54 => 
-            array (
+            ],
+            54 => [
                 'id' => 55,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -1178,9 +1121,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:14',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            55 => 
-            array (
+            ],
+            55 => [
                 'id' => 56,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -1207,9 +1149,8 @@ Belajar lagi!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:31',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            56 => 
-            array (
+            ],
+            56 => [
                 'id' => 57,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -1229,9 +1170,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:35',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            57 => 
-            array (
+            ],
+            57 => [
                 'id' => 58,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -1248,9 +1188,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:42',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            58 => 
-            array (
+            ],
+            58 => [
                 'id' => 59,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -1271,9 +1210,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:46',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            59 => 
-            array (
+            ],
+            59 => [
                 'id' => 60,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -1292,9 +1230,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:34:58',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            60 => 
-            array (
+            ],
+            60 => [
                 'id' => 61,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -1312,9 +1249,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:45:23',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            61 => 
-            array (
+            ],
+            61 => [
                 'id' => 62,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -1334,9 +1270,8 @@ tetap belajar',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:47:43',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            62 => 
-            array (
+            ],
+            62 => [
                 'id' => 63,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -1354,9 +1289,8 @@ belajar lagi ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:47:48',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            63 => 
-            array (
+            ],
+            63 => [
                 'id' => 64,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -1372,9 +1306,8 @@ Masukan: Baca lagi mengenai tatalaksana kasus tersebut !',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:38',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            64 => 
-            array (
+            ],
+            64 => [
                 'id' => 65,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -1393,9 +1326,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:39',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            65 => 
-            array (
+            ],
+            65 => [
                 'id' => 66,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -1416,9 +1348,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:44',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            66 => 
-            array (
+            ],
+            66 => [
                 'id' => 67,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -1439,9 +1370,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:44',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            67 => 
-            array (
+            ],
+            67 => [
                 'id' => 68,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -1460,9 +1390,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:47',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            68 => 
-            array (
+            ],
+            68 => [
                 'id' => 69,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -1480,9 +1409,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:49',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            69 => 
-            array (
+            ],
+            69 => [
                 'id' => 70,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -1499,9 +1427,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:49:58',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            70 => 
-            array (
+            ],
+            70 => [
                 'id' => 71,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -1520,9 +1447,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:50:02',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            71 => 
-            array (
+            ],
+            71 => [
                 'id' => 72,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -1538,9 +1464,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:50:17',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            72 => 
-            array (
+            ],
+            72 => [
                 'id' => 73,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -1560,9 +1485,8 @@ pelajari dan perbaiki yang masih kurang',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:50:20',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            73 => 
-            array (
+            ],
+            73 => [
                 'id' => 74,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -1590,9 +1514,8 @@ Belajar lagi!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:50:23',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            74 => 
-            array (
+            ],
+            74 => [
                 'id' => 75,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -1613,9 +1536,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 02:51:15',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            75 => 
-            array (
+            ],
+            75 => [
                 'id' => 76,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -1635,9 +1557,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:01:32',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            76 => 
-            array (
+            ],
+            76 => [
                 'id' => 77,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -1657,9 +1578,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:15',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            77 => 
-            array (
+            ],
+            77 => [
                 'id' => 78,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -1675,9 +1595,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:20',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            78 => 
-            array (
+            ],
+            78 => [
                 'id' => 79,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -1696,9 +1615,8 @@ belajar lagi, lebih teliti saat membaca soal',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:22',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            79 => 
-            array (
+            ],
+            79 => [
                 'id' => 80,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -1717,9 +1635,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:23',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            80 => 
-            array (
+            ],
+            80 => [
                 'id' => 81,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -1735,9 +1652,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:25',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            81 => 
-            array (
+            ],
+            81 => [
                 'id' => 82,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -1755,9 +1671,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:25',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            82 => 
-            array (
+            ],
+            82 => [
                 'id' => 83,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -1780,9 +1695,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:26',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            83 => 
-            array (
+            ],
+            83 => [
                 'id' => 84,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -1798,9 +1712,8 @@ Masukan: Belajar lebih lengkap mengenai diagnosis kerja dan patomekanisme',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:29',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            84 => 
-            array (
+            ],
+            84 => [
                 'id' => 85,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -1819,9 +1732,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:30',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            85 => 
-            array (
+            ],
+            85 => [
                 'id' => 86,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -1839,9 +1751,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:34',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            86 => 
-            array (
+            ],
+            86 => [
                 'id' => 87,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -1861,9 +1772,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:34',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            87 => 
-            array (
+            ],
+            87 => [
                 'id' => 88,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -1886,9 +1796,8 @@ manajemen Waktu, utamakan sampaikan poin penting dalam temuan anamnesis, pf, pp 
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:05:51',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            88 => 
-            array (
+            ],
+            88 => [
                 'id' => 89,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -1914,9 +1823,8 @@ Belajar lagi!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:06:03',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            89 => 
-            array (
+            ],
+            89 => [
                 'id' => 90,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -1934,9 +1842,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:06:18',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            90 => 
-            array (
+            ],
+            90 => [
                 'id' => 91,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -1955,9 +1862,8 @@ good job radit',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:17:03',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            91 => 
-            array (
+            ],
+            91 => [
                 'id' => 92,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -1977,9 +1883,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:17:33',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            92 => 
-            array (
+            ],
+            92 => [
                 'id' => 93,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -1995,9 +1900,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:19:35',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            93 => 
-            array (
+            ],
+            93 => [
                 'id' => 94,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -2013,9 +1917,8 @@ Masukan: Baca lagi mengenai dasar diagnosis dan diagnosis kerja kasus dan patome
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:20:58',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            94 => 
-            array (
+            ],
+            94 => [
                 'id' => 95,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -2034,9 +1937,8 @@ banyak belajar lagi ya..banyak baca dan semangat selalu yaaa..',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:20:59',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            95 => 
-            array (
+            ],
+            95 => [
                 'id' => 96,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -2052,9 +1954,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:20:59',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            96 => 
-            array (
+            ],
+            96 => [
                 'id' => 97,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -2075,9 +1976,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:00',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            97 => 
-            array (
+            ],
+            97 => [
                 'id' => 98,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -2097,9 +1997,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:00',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            98 => 
-            array (
+            ],
+            98 => [
                 'id' => 99,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -2118,9 +2017,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:01',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            99 => 
-            array (
+            ],
+            99 => [
                 'id' => 100,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -2139,9 +2037,8 @@ belajar lagi, lebih teliti lagi baca kasusnya. cara menjelaskan bagus tapi dxnya
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:02',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            100 => 
-            array (
+            ],
+            100 => [
                 'id' => 101,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -2160,9 +2057,8 @@ baca kasus dengan baik dan hati-hati',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:07',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            101 => 
-            array (
+            ],
+            101 => [
                 'id' => 102,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -2179,9 +2075,8 @@ belajar lagi ya..',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:07',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            102 => 
-            array (
+            ],
+            102 => [
                 'id' => 103,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -2205,9 +2100,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:16',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            103 => 
-            array (
+            ],
+            103 => [
                 'id' => 104,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -2234,9 +2128,8 @@ Belajar lagi!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:25',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            104 => 
-            array (
+            ],
+            104 => [
                 'id' => 105,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -2260,9 +2153,8 @@ lebih teliti saat membaca skenario',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:21:26',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            105 => 
-            array (
+            ],
+            105 => [
                 'id' => 106,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -2278,9 +2170,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:32:22',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            106 => 
-            array (
+            ],
+            106 => [
                 'id' => 107,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -2296,9 +2187,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:32:27',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            107 => 
-            array (
+            ],
+            107 => [
                 'id' => 108,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -2318,9 +2208,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:32:39',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            108 => 
-            array (
+            ],
+            108 => [
                 'id' => 109,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -2336,9 +2225,8 @@ Masukan: Baca lagi mengenai diagnosis kerja kasus yang lengkap',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            109 => 
-            array (
+            ],
+            109 => [
                 'id' => 110,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -2356,9 +2244,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            110 => 
-            array (
+            ],
+            110 => [
                 'id' => 111,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -2383,9 +2270,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            111 => 
-            array (
+            ],
+            111 => [
                 'id' => 112,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -2404,9 +2290,8 @@ belajar lagi, lebih teliti lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:37',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            112 => 
-            array (
+            ],
+            112 => [
                 'id' => 113,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -2429,9 +2314,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:37',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            113 => 
-            array (
+            ],
+            113 => [
                 'id' => 114,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -2450,9 +2334,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:37',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            114 => 
-            array (
+            ],
+            114 => [
                 'id' => 115,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -2479,9 +2362,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:41',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            115 => 
-            array (
+            ],
+            115 => [
                 'id' => 116,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -2500,9 +2382,8 @@ Belajar yang rajin',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:54',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            116 => 
-            array (
+            ],
+            116 => [
                 'id' => 117,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -2523,9 +2404,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:36:59',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            117 => 
-            array (
+            ],
+            117 => [
                 'id' => 118,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -2543,9 +2423,8 @@ belajar lagi yaaa',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:37:06',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            118 => 
-            array (
+            ],
+            118 => [
                 'id' => 119,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -2564,9 +2443,8 @@ good job rafi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:37:08',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            119 => 
-            array (
+            ],
+            119 => [
                 'id' => 120,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -2591,9 +2469,8 @@ pelajari penggunaan terminology kedokteran et causa',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:37:27',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            120 => 
-            array (
+            ],
+            120 => [
                 'id' => 121,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -2610,9 +2487,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:47:03',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            121 => 
-            array (
+            ],
+            121 => [
                 'id' => 122,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -2628,9 +2504,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:49:47',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            122 => 
-            array (
+            ],
+            122 => [
                 'id' => 123,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -2651,9 +2526,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:12',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            123 => 
-            array (
+            ],
+            123 => [
                 'id' => 124,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -2669,9 +2543,8 @@ Masukan: Baca lagi mengenai diagnosis kerja kasus tersebut !',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:12',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            124 => 
-            array (
+            ],
+            124 => [
                 'id' => 125,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -2689,9 +2562,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:13',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            125 => 
-            array (
+            ],
+            125 => [
                 'id' => 126,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -2711,9 +2583,8 @@ Belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:14',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            126 => 
-            array (
+            ],
+            126 => [
                 'id' => 127,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -2732,9 +2603,8 @@ belajar lagi mengenai patomekanisme pada kasus ini',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:15',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            127 => 
-            array (
+            ],
+            127 => [
                 'id' => 128,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -2753,9 +2623,8 @@ belajar lagi yaaa..',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:16',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            128 => 
-            array (
+            ],
+            128 => [
                 'id' => 129,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -2776,9 +2645,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:17',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            129 => 
-            array (
+            ],
+            129 => [
                 'id' => 130,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -2796,9 +2664,8 @@ jelaskan harus terstruktur',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:29',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            130 => 
-            array (
+            ],
+            130 => [
                 'id' => 131,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -2817,9 +2684,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:32',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            131 => 
-            array (
+            ],
+            131 => [
                 'id' => 132,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -2846,9 +2712,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:39',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            132 => 
-            array (
+            ],
+            132 => [
                 'id' => 133,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -2866,9 +2731,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:42',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            133 => 
-            array (
+            ],
+            133 => [
                 'id' => 134,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -2892,9 +2756,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:52:52',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            134 => 
-            array (
+            ],
+            134 => [
                 'id' => 135,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -2920,9 +2783,8 @@ manajemen Waktu, utamakan sampaikan poin penting dalam temuan anamnesis, pf, pp 
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 03:53:00',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            135 => 
-            array (
+            ],
+            135 => [
                 'id' => 136,
                 'oujian_id' => 5,
                 'station_id' => 41,
@@ -2942,9 +2804,8 @@ tetap belajar',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:04:48',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            136 => 
-            array (
+            ],
+            136 => [
                 'id' => 137,
                 'oujian_id' => 5,
                 'station_id' => 36,
@@ -2961,9 +2822,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:05:59',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            137 => 
-            array (
+            ],
+            137 => [
                 'id' => 138,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -2985,9 +2845,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:06:36',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            138 => 
-            array (
+            ],
+            138 => [
                 'id' => 139,
                 'oujian_id' => 5,
                 'station_id' => 38,
@@ -3008,9 +2867,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:07:35',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            139 => 
-            array (
+            ],
+            139 => [
                 'id' => 140,
                 'oujian_id' => 5,
                 'station_id' => 49,
@@ -3026,9 +2884,8 @@ Masukan: Baca lagi mengenai dasar dasar diagnosis, terutama patokemanisme yang l
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:07:51',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            140 => 
-            array (
+            ],
+            140 => [
                 'id' => 141,
                 'oujian_id' => 5,
                 'station_id' => 46,
@@ -3048,9 +2905,8 @@ belajar lagi',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:07:58',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            141 => 
-            array (
+            ],
+            141 => [
                 'id' => 142,
                 'oujian_id' => 5,
                 'station_id' => 37,
@@ -3069,9 +2925,8 @@ Belajar yang rajin ya',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:07:59',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            142 => 
-            array (
+            ],
+            142 => [
                 'id' => 143,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -3099,9 +2954,8 @@ belajar lagi yaa!!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:00',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            143 => 
-            array (
+            ],
+            143 => [
                 'id' => 144,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -3118,9 +2972,8 @@ sudah cukup baik',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:08',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            144 => 
-            array (
+            ],
+            144 => [
                 'id' => 145,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -3139,9 +2992,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:13',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            145 => 
-            array (
+            ],
+            145 => [
                 'id' => 146,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -3160,9 +3012,8 @@ belajar lagi jhon',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:16',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            146 => 
-            array (
+            ],
+            146 => [
                 'id' => 147,
                 'oujian_id' => 5,
                 'station_id' => 40,
@@ -3180,9 +3031,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:30',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            147 => 
-            array (
+            ],
+            147 => [
                 'id' => 148,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3198,9 +3048,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:30',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            148 => 
-            array (
+            ],
+            148 => [
                 'id' => 149,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -3223,9 +3072,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:41',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            149 => 
-            array (
+            ],
+            149 => [
                 'id' => 150,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -3245,9 +3093,8 @@ pelajari dan perbaiki yang masih kurang',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:08:42',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            150 => 
-            array (
+            ],
+            150 => [
                 'id' => 151,
                 'oujian_id' => 5,
                 'station_id' => 42,
@@ -3267,9 +3114,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:22:38',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            151 => 
-            array (
+            ],
+            151 => [
                 'id' => 152,
                 'oujian_id' => 5,
                 'station_id' => 43,
@@ -3287,9 +3133,8 @@ banyak belajar lagi ya.. baca dan semangat selalu',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:23:29',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            152 => 
-            array (
+            ],
+            152 => [
                 'id' => 153,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3305,9 +3150,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:23:33',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            153 => 
-            array (
+            ],
+            153 => [
                 'id' => 154,
                 'oujian_id' => 5,
                 'station_id' => 45,
@@ -3323,9 +3167,8 @@ Masukan:',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:23:53',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            154 => 
-            array (
+            ],
+            154 => [
                 'id' => 155,
                 'oujian_id' => 5,
                 'station_id' => 47,
@@ -3349,9 +3192,8 @@ Masukan:
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:23:56',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            155 => 
-            array (
+            ],
+            155 => [
                 'id' => 156,
                 'oujian_id' => 5,
                 'station_id' => 48,
@@ -3378,9 +3220,8 @@ belajar lagi yaa!',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:24:14',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            156 => 
-            array (
+            ],
+            156 => [
                 'id' => 157,
                 'oujian_id' => 5,
                 'station_id' => 39,
@@ -3401,9 +3242,8 @@ pelajari dan perbaiki yang masih kurang',
                 'is_sent' => 1,
                 'created_at' => '2025-11-04 04:24:37',
                 'updated_at' => '2025-11-04 05:20:09',
-            ),
-            157 => 
-            array (
+            ],
+            157 => [
                 'id' => 158,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3419,9 +3259,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-11-05 01:50:17',
                 'updated_at' => '2025-11-05 01:50:17',
-            ),
-            158 => 
-            array (
+            ],
+            158 => [
                 'id' => 159,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3437,9 +3276,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-11-05 01:52:07',
                 'updated_at' => '2025-11-05 01:52:07',
-            ),
-            159 => 
-            array (
+            ],
+            159 => [
                 'id' => 160,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3455,9 +3293,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 04:41:42',
                 'updated_at' => '2025-12-02 04:41:42',
-            ),
-            160 => 
-            array (
+            ],
+            160 => [
                 'id' => 161,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3473,9 +3310,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 04:51:15',
                 'updated_at' => '2025-12-02 04:51:15',
-            ),
-            161 => 
-            array (
+            ],
+            161 => [
                 'id' => 162,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3491,9 +3327,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 04:55:38',
                 'updated_at' => '2025-12-02 04:55:38',
-            ),
-            162 => 
-            array (
+            ],
+            162 => [
                 'id' => 163,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3509,9 +3344,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 05:18:00',
                 'updated_at' => '2025-12-02 05:18:00',
-            ),
-            163 => 
-            array (
+            ],
+            163 => [
                 'id' => 164,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3527,9 +3361,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 05:21:10',
                 'updated_at' => '2025-12-02 05:21:10',
-            ),
-            164 => 
-            array (
+            ],
+            164 => [
                 'id' => 165,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3545,9 +3378,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 05:37:57',
                 'updated_at' => '2025-12-02 05:37:57',
-            ),
-            165 => 
-            array (
+            ],
+            165 => [
                 'id' => 166,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3563,9 +3395,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 05:40:53',
                 'updated_at' => '2025-12-02 05:40:53',
-            ),
-            166 => 
-            array (
+            ],
+            166 => [
                 'id' => 167,
                 'oujian_id' => 5,
                 'station_id' => 34,
@@ -3581,9 +3412,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 05:41:33',
                 'updated_at' => '2025-12-02 05:41:33',
-            ),
-            167 => 
-            array (
+            ],
+            167 => [
                 'id' => 168,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -3599,9 +3429,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 06:02:20',
                 'updated_at' => '2025-12-02 06:02:20',
-            ),
-            168 => 
-            array (
+            ],
+            168 => [
                 'id' => 169,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -3617,9 +3446,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 06:10:32',
                 'updated_at' => '2025-12-02 06:10:32',
-            ),
-            169 => 
-            array (
+            ],
+            169 => [
                 'id' => 170,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -3635,9 +3463,8 @@ Masukan:',
                 'is_sent' => 0,
                 'created_at' => '2025-12-02 06:10:59',
                 'updated_at' => '2025-12-02 06:10:59',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

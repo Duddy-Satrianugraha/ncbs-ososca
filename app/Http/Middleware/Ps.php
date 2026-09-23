@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class Ps
 {
@@ -16,9 +16,10 @@ class Ps
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Gate::allows('ps')) {
+        if (! Gate::allows('ps')) {
             return response('Unauthorized', 403);
         }
+
         return $next($request);
     }
 }

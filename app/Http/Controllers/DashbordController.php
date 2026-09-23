@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Openguji;
 use App\Models\Opeserta;
 use App\Models\Osesi;
-use Illuminate\Http\Request;
-use App\Models\Oujian;
 use App\Models\Ostation;
-use App\Models\Openguji;
+use App\Models\Oujian;
 use App\Models\PblBa;
 use App\Models\PblKelompok;
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\Request;
 
 class DashbordController extends Controller
 {
@@ -21,13 +18,14 @@ class DashbordController extends Controller
      */
     public function index()
     {
-           $ujian = Oujian::all();
-           $sesi = Osesi::all();
-           $station = Ostation::all();
-           $peserta = Opeserta::all();
-           $penguji = Openguji::all();
-           //$penguji = Ostation::whereNotNull('nama_penguji')->get();
-        return view('start', compact('ujian', 'sesi', 'station', 'peserta','penguji'));
+        $ujian = Oujian::all();
+        $sesi = Osesi::all();
+        $station = Ostation::all();
+        $peserta = Opeserta::all();
+        $penguji = Openguji::all();
+
+        // $penguji = Ostation::whereNotNull('nama_penguji')->get();
+        return view('start', compact('ujian', 'sesi', 'station', 'peserta', 'penguji'));
     }
 
     /**
@@ -78,35 +76,36 @@ class DashbordController extends Controller
         //
     }
 
-    public function login_peserta(Request $request){
+    public function login_peserta(Request $request) {}
 
-    }
-
-    public function peserta(){
+    public function peserta()
+    {
         return view('peserta.login');
     }
 
-    public function pscan(Request $request){
+    public function pscan(Request $request)
+    {
 
-       $request->validate([
-            'soal_slug' => ['required','numeric'],
+        $request->validate([
+            'soal_slug' => ['required', 'numeric'],
             'captcha' => [
-            'required','numeric',
-            function ($attribute, $value, $fail) {
-                if (!verify_captcha($value)) {
-                    $fail('Jawaban CAPTCHA salah dok');
-                }
-            },
-        ],
+                'required', 'numeric',
+                function ($attribute, $value, $fail) {
+                    if (! verify_captcha($value)) {
+                        $fail('Jawaban CAPTCHA salah dok');
+                    }
+                },
+            ],
         ]);
         $soal_slug = $request->soal_slug;
         $soal = Ostation::where('qrstation', $soal_slug)->first();
-        if($soal){
+        if ($soal) {
             session([
                 'oujian' => $soal->oujian_id,
                 'Station' => $soal->id ?? null,
                 'current' => $soal->current ?? null,
             ]);
+
             return redirect(route('peserta.index'))->with('success', 'Station ditemukan silahkan scan kartu Peserta');
         } else {
             return redirect(route('peserta.login'))->with('msg', 'danger-Unable to find code');
@@ -114,137 +113,144 @@ class DashbordController extends Controller
 
     }
 
-    Public function login(){
+    public function login()
+    {
         return view('penguji.auth.login');
     }
 
-    Public function register(){
+    public function register()
+    {
         return view('penguji.auth.register');
     }
 
-
-    public function osoca(){
-        if(session()->has('Osoca')){
+    public function osoca()
+    {
+        if (session()->has('Osoca')) {
             return redirect(route('osoca.penguji.login'))->with('msg', 'success-Selamat datang kembali dok,Silahkan scan kartu penguji');
         }
         if (session()->has('Penguji')) {
             return redirect(route('osoca.mhs.login'))->with('msg', 'success-Selamat datang kembali dok, Selamat menguji peserta');
         }
-         if (session()->has('Peserta')) {
-                return redirect(route('osoca.ujian'))->with('msg', 'success-Selamat datang kembali dok, Selamat menguji peserta');
-            }
+        if (session()->has('Peserta')) {
+            return redirect(route('osoca.ujian'))->with('msg', 'success-Selamat datang kembali dok, Selamat menguji peserta');
+        }
 
         return view('osoca.login');
     }
 
-    public function oscan(Request $request){
-        //dd($request);
+    public function oscan(Request $request)
+    {
+        // dd($request);
         $request->validate([
-            'soal_slug' => ['required','numeric'],
+            'soal_slug' => ['required', 'numeric'],
             'captcha' => [
-            'required','numeric',
-            function ($attribute, $value, $fail) {
-                if (!verify_captcha($value)) {
-                    $fail('Jawaban CAPTCHA salah dok');
-                }
-            },
-        ],
+                'required', 'numeric',
+                function ($attribute, $value, $fail) {
+                    if (! verify_captcha($value)) {
+                        $fail('Jawaban CAPTCHA salah dok');
+                    }
+                },
+            ],
         ]);
         $soal_slug = $request->soal_slug;
         $soal = Ostation::where('qrstation', $soal_slug)->first();
-        if($soal){
+        if ($soal) {
             session([
                 'Osoca' => $soal->oujian_id,
                 'Station' => $soal->urutan ?? null,
                 'current' => $soal->current ?? null,
                 'next' => $soal->next ?? null,
             ]);
+
             return redirect(route('osoca.penguji.login'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu penguji');
         } else {
             return redirect(route('osoca.login'))->with('msg', 'danger-Unable to find code');
         }
     }
 
-
-
-    Public function pbllogin(){
-         if(session()->has('Tutor')){
+    public function pbllogin()
+    {
+        if (session()->has('Tutor')) {
             return redirect(route('kegiatan_pbl.mininotes'))->with('msg', 'success-Selamat datang kembali dok');
         }
+
         return view('pbl.harian.login');
     }
-    public function pblscan(Request $request){
-        //dd($request->all());
+
+    public function pblscan(Request $request)
+    {
+        // dd($request->all());
         $request->validate([
             'soal_slug' => ['required'],
             'captcha' => [
-            'required','numeric',
-            function ($attribute, $value, $fail) {
-                if (!verify_captcha($value)) {
-                    $fail('Jawaban CAPTCHA salah dok');
-                }
-            },
-        ],
+                'required', 'numeric',
+                function ($attribute, $value, $fail) {
+                    if (! verify_captcha($value)) {
+                        $fail('Jawaban CAPTCHA salah dok');
+                    }
+                },
+            ],
         ]);
-          $parts = explode('/', rtrim($request->soal_slug, '/'));
-            $token = end($parts);
+        $parts = explode('/', rtrim($request->soal_slug, '/'));
+        $token = end($parts);
 
         $kelompok = PblKelompok::where('qr_kelompok', $token)->first();
 
         $bas = PblBa::where('keg_id', $kelompok->kegpbl->id)->where('kelompok_id', $kelompok->id)->where('pertemuan', $kelompok->kegpbl->pertemuan)->where('sk_id', $kelompok->kegpbl->sk_aktif)->get();
 
-        if($kelompok){
-                    if($kelompok->kegpbl->sk_aktif == 0 || $kelompok->kegpbl->pertemuan == 0){
-                        return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
-                    } else if(! $bas->isEmpty()){
-                        return redirect(route('pbl.login'))->with('msg', 'danger-Kelompok telah dinilai, Hubungi Koordinator BLok');
-                    } else {
-                        session([
-                            'pblKelompok' => $kelompok->id,
-                            'kegiatan_pbl' => $kelompok->kegpbl->id,
-                            'skenario' => $kelompok->kegpbl->sk_aktif,
-                            'pertemuan' => $kelompok->kegpbl->pertemuan,
-                        ]);
-                        return redirect(route('kegiatan_pbl.tutor'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu tutor');
-                }
+        if ($kelompok) {
+            if ($kelompok->kegpbl->sk_aktif == 0 || $kelompok->kegpbl->pertemuan == 0) {
+                return redirect(route('pbl.login'))->with('msg', 'danger-Skenario belum diaktifkan');
+            } elseif (! $bas->isEmpty()) {
+                return redirect(route('pbl.login'))->with('msg', 'danger-Kelompok telah dinilai, Hubungi Koordinator BLok');
+            } else {
+                session([
+                    'pblKelompok' => $kelompok->id,
+                    'kegiatan_pbl' => $kelompok->kegpbl->id,
+                    'skenario' => $kelompok->kegpbl->sk_aktif,
+                    'pertemuan' => $kelompok->kegpbl->pertemuan,
+                ]);
+
+                return redirect(route('kegiatan_pbl.tutor'))->with('msg', 'success-Selamat datang dok,Silahkan scan kartu tutor');
             }
         }
+    }
+
     public function pblkelcari($slug)
-        {
-             if(session()->has('Tutor')){
+    {
+        if (session()->has('Tutor')) {
             return redirect(route('kegiatan_pbl.mininotes'))->with('msg', 'success-Selamat datang kembali dok');
         }
 
-            $kelompok = PblKelompok::with('kegpbl')
-                ->where('qr_kelompok', $slug)
-                ->first();
+        $kelompok = PblKelompok::with('kegpbl')
+            ->where('qr_kelompok', $slug)
+            ->first();
 
-            // jika QR tidak ditemukan
-            if (!$kelompok) {
-                abort(404);
-            }
-
-            // jika relasi kegiatan tidak ada
-            if (!$kelompok->kegpbl) {
-                abort(404);
-            }
-
-            // jika skenario belum aktif
-            if ($kelompok->kegpbl->sk_aktif == 0) {
-              abort(404);
-            }
-
-            // simpan session
-            session([
-                'pblKelompok'  => $kelompok->id,
-                'kegiatan_pbl' => $kelompok->kegpbl->id,
-                'skenario'     => $kelompok->kegpbl->sk_aktif,
-                'pertemuan'    => $kelompok->kegpbl->pertemuan,
-            ]);
-
-            return redirect()
-                ->route('kegiatan_pbl.tutor')
-                ->with('msg', 'success-Selamat datang dok, silakan scan kartu tutor');
+        // jika QR tidak ditemukan
+        if (! $kelompok) {
+            abort(404);
         }
 
+        // jika relasi kegiatan tidak ada
+        if (! $kelompok->kegpbl) {
+            abort(404);
+        }
+
+        // jika skenario belum aktif
+        if ($kelompok->kegpbl->sk_aktif == 0) {
+            abort(404);
+        }
+
+        // simpan session
+        session([
+            'pblKelompok' => $kelompok->id,
+            'kegiatan_pbl' => $kelompok->kegpbl->id,
+            'skenario' => $kelompok->kegpbl->sk_aktif,
+            'pertemuan' => $kelompok->kegpbl->pertemuan,
+        ]);
+
+        return redirect()
+            ->route('kegiatan_pbl.tutor')
+            ->with('msg', 'success-Selamat datang dok, silakan scan kartu tutor');
+    }
 }

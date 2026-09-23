@@ -15,9 +15,10 @@ class Peserta
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session('oujian')) {
+        if (! session('oujian')) {
             return redirect(route('peserta.login'));
         }
+
         return $next($request);
     }
 }

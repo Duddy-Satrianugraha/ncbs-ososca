@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Role;
 use App\Models\Team;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\DB;
-use Exception;
 
 class AdminController extends Controller
 {
@@ -24,7 +24,8 @@ class AdminController extends Controller
         $user = User::whereHas('roles', function ($query) {
             $query->whereNot('u_id', 99);
         })->paginate(5);
-        return  view('admin.user.list', ['users' => $user]);
+
+        return view('admin.user.list', ['users' => $user]);
     }
 
     /**
@@ -33,7 +34,8 @@ class AdminController extends Controller
     public function create()
     {
         $team = Team::all();
-        $roles = Role::whereNot( 'u_id', 99 )->get();
+        $roles = Role::whereNot('u_id', 99)->get();
+
         return view('admin.user.new', compact('roles', 'team'));
     }
 
@@ -75,6 +77,7 @@ class AdminController extends Controller
         ]);
         $user->roles()->attach($validated['roles']);
         $user->teams()->attach($validated['teams']);
+
         return redirect()->back()->with('msg', 'success-User created');
     }
 
@@ -89,10 +92,11 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User  $user)
+    public function edit(User $user)
     {
-         $team = Team::all();
-        $roles = Role::whereNot( 'u_id', 99 )->get();
+        $team = Team::all();
+        $roles = Role::whereNot('u_id', 99)->get();
+
         return view('admin.user.edit', compact('user', 'roles', 'team'));
     }
 
@@ -115,18 +119,20 @@ class AdminController extends Controller
             'roles' => ['required', 'array'],
             'teams' => ['required', 'string'],
         ]);
-    try{
+        try {
             DB::beginTransaction();
-        $user->roles()->sync($validated['roles']);
-        $user->teams()->sync($validated['teams']);
-        $user->update([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-        ]);
-        DB::commit();
-        return redirect()->back()->with('msg', 'success-User updated');
+            $user->roles()->sync($validated['roles']);
+            $user->teams()->sync($validated['teams']);
+            $user->update([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ]);
+            DB::commit();
+
+            return redirect()->back()->with('msg', 'success-User updated');
         } catch (Exception $e) {
             DB::rollBack();
+
             return redirect()->back()->with('msg', 'danger-User gagal diupdate '.$e->getMessage());
         }
     }
@@ -137,16 +143,18 @@ class AdminController extends Controller
     public function destroy(user $user)
     {
         if ($user->avatar) {
-            Storage::delete('public/' . $user->avatar);
+            Storage::delete('public/'.$user->avatar);
         }
         $user->delete();
+
         return redirect()->back()->with('msg', 'success-User deleted');
     }
 
     public function repas(User $user)
     {
-        $user->password = Hash::make("buka");
+        $user->password = Hash::make('buka');
         $user->save();
+
         return redirect()->back()->with('msg', 'success-Password reset '.$user->name);
     }
 }

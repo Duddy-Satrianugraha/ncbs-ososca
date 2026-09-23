@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class RotationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +13,8 @@ class RotationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('rotations')->delete();
-        
-        
-        
+
     }
 }

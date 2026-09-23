@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OpesertasTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OpesertasTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('opesertas')->delete();
-        
-        \DB::table('opesertas')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('opesertas')->insert([
+            0 => [
                 'id' => 1,
                 'oujian_id' => 4,
                 'name' => 'Syifa Siti Nurjanah',
@@ -28,13 +25,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'c2044ec88f198aeedba08bfd6bd47627',
                 'station' => 1,
                 'sesi' => 1,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            1 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            1 => [
                 'id' => 2,
                 'oujian_id' => 4,
                 'name' => 'Bintang Pamungkas',
@@ -42,13 +38,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '651369b1f2c0c3f352dc119ac325df5c',
                 'station' => 1,
                 'sesi' => 2,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            2 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            2 => [
                 'id' => 3,
                 'oujian_id' => 4,
                 'name' => 'Akbar Wicaksono',
@@ -58,11 +53,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6901af6eb336b71.PNG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'oujian_id' => 4,
                 'name' => 'Annisa Azahra Tazkia',
@@ -72,11 +66,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690091c6800d923.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'oujian_id' => 4,
                 'name' => 'Ariza Adhwa Azzikra',
@@ -84,13 +77,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f1045e2b02c5dba8597e6f2ab9b38154',
                 'station' => 1,
                 'sesi' => 5,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            5 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            5 => [
                 'id' => 6,
                 'oujian_id' => 4,
                 'name' => 'Muhammaad Pasha Ibrahim',
@@ -100,11 +92,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900983b3a71f42.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'oujian_id' => 4,
                 'name' => 'Syaima Najiha Kurniawati',
@@ -112,13 +103,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '2b1908565b790b38196c9e3f7dd925cc',
                 'station' => 1,
                 'sesi' => 7,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            7 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            7 => [
                 'id' => 8,
                 'oujian_id' => 4,
                 'name' => 'Syifa Tiara Putri Syalsabila',
@@ -126,13 +116,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '6f44da1fcfba4e3e666a0744545dfccc',
                 'station' => 1,
                 'sesi' => 8,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            8 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            8 => [
                 'id' => 9,
                 'oujian_id' => 4,
                 'name' => 'Rania Ananda Maulidya Salsabila',
@@ -142,11 +131,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900e6b8bfb3458.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'oujian_id' => 4,
                 'name' => 'Karissa Elvina Suhaedi',
@@ -154,13 +142,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '167091088e48ff175762e8eb22f51852',
                 'station' => 1,
                 'sesi' => 10,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            10 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            10 => [
                 'id' => 11,
                 'oujian_id' => 4,
                 'name' => 'Mauliano Hastien',
@@ -168,13 +155,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '69628c7f35c23b1e6f9fe9281a2ac92f',
                 'station' => 1,
                 'sesi' => 11,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            11 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            11 => [
                 'id' => 12,
                 'oujian_id' => 4,
                 'name' => 'Hammett Kahfi Fergie Rajiv Afghani',
@@ -182,13 +168,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '60bbf49de5d7b05fff9f70f184db23fe',
                 'station' => 2,
                 'sesi' => 1,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            12 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            12 => [
                 'id' => 13,
                 'oujian_id' => 4,
                 'name' => 'Adella Putri Mirela',
@@ -198,11 +183,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690211604e8ab88.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'oujian_id' => 4,
                 'name' => 'Aghi Ghifari Pratama',
@@ -210,13 +194,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'e1cdb216a0bfd191925992381fe803f2',
                 'station' => 2,
                 'sesi' => 3,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            14 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            14 => [
                 'id' => 15,
                 'oujian_id' => 4,
                 'name' => 'Choirunnisa Bella Alifiyanti',
@@ -226,11 +209,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6902cdd0794ca13.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'oujian_id' => 4,
                 'name' => 'Darrell Athhar Dermawan',
@@ -238,13 +220,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ad9d0aa3e6082d3c1f1f3f029b3b7d05',
                 'station' => 2,
                 'sesi' => 5,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            16 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            16 => [
                 'id' => 17,
                 'oujian_id' => 4,
                 'name' => 'Dwita Ameliya Rahman Sapoetri',
@@ -252,13 +233,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '4a785d12eef876493131abc7a1adf341',
                 'station' => 2,
                 'sesi' => 6,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            17 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            17 => [
                 'id' => 18,
                 'oujian_id' => 4,
                 'name' => 'Rizki Akbar Prayoga',
@@ -266,13 +246,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'fbd890717933de328f4c1cc628b40b55',
                 'station' => 2,
                 'sesi' => 7,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            18 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            18 => [
                 'id' => 19,
                 'oujian_id' => 4,
                 'name' => 'Rika Siony Maria Sitanggang',
@@ -282,11 +261,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69020db97d13d81.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 20,
                 'oujian_id' => 4,
                 'name' => 'Riska Gusteresa Lestari',
@@ -296,11 +274,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900c4e832a8954.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 21,
                 'oujian_id' => 4,
                 'name' => 'Laela Safitri',
@@ -310,11 +287,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6900952cd87db36.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 22,
                 'oujian_id' => 4,
                 'name' => 'Qonita Qotrunnada Mulyana',
@@ -322,13 +298,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'ec3f4bf1644ec0b50c55b9fb78ad56a3',
                 'station' => 2,
                 'sesi' => 11,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            22 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            22 => [
                 'id' => 23,
                 'oujian_id' => 4,
                 'name' => 'Muhammad Alma Syakri Faiz Sabirin',
@@ -336,13 +311,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '991f39f2737335294e6cc452d9965c19',
                 'station' => 3,
                 'sesi' => 1,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            23 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            23 => [
                 'id' => 24,
                 'oujian_id' => 4,
                 'name' => 'Lugina Maeranti Utami',
@@ -352,11 +326,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690095fa5ad6335.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 25,
                 'oujian_id' => 4,
                 'name' => 'M. Hibban Raiisa Abdurrosyiid Ardifansyah',
@@ -364,13 +337,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'cc08bc38abdb155ef03639a697b9aeac',
                 'station' => 3,
                 'sesi' => 3,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            25 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            25 => [
                 'id' => 26,
                 'oujian_id' => 4,
                 'name' => 'Graselda Sinka Prameswari',
@@ -380,11 +352,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69020686c01f784.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 27,
                 'oujian_id' => 4,
                 'name' => 'Nizar Rheivani Ramadhina Supriadi',
@@ -392,13 +363,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => 'f95ea94a4c4294b63706dfe5887b19fa',
                 'station' => 3,
                 'sesi' => 5,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            27 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            27 => [
                 'id' => 28,
                 'oujian_id' => 4,
                 'name' => 'Nur Ibnu Syinna',
@@ -408,11 +378,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900a0fb9c43746.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 29,
                 'oujian_id' => 4,
                 'name' => 'Sabilly Herlambang',
@@ -420,13 +389,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '8945ec9d6440ce8a0d9f1408d3eee1e0',
                 'station' => 3,
                 'sesi' => 7,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 0,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            29 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            29 => [
                 'id' => 30,
                 'oujian_id' => 4,
                 'name' => 'Riyana Wulan Miranti',
@@ -436,11 +404,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6901c6494a46c74.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            30 => 
-            array (
+            ],
+            30 => [
                 'id' => 31,
                 'oujian_id' => 4,
                 'name' => 'Muhammad Arsil Raykhan Firdaus',
@@ -450,11 +417,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900a02de0d9c45.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            31 => 
-            array (
+            ],
+            31 => [
                 'id' => 32,
                 'oujian_id' => 4,
                 'name' => 'Dinda Ayu Afriliyani',
@@ -464,11 +430,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69009a931852e43.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-10-30 07:11:18',
-            ),
-            32 => 
-            array (
+            ],
+            32 => [
                 'id' => 33,
                 'oujian_id' => 5,
                 'name' => 'Syifa Siti Nurjanah',
@@ -478,11 +443,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_69041adc3682592.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-15 03:20:03',
-            ),
-            33 => 
-            array (
+            ],
+            33 => [
                 'id' => 34,
                 'oujian_id' => 5,
                 'name' => 'Bintang Pamungkas',
@@ -492,11 +456,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_6904c19948042179.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-05 01:52:07',
-            ),
-            34 => 
-            array (
+            ],
+            34 => [
                 'id' => 35,
                 'oujian_id' => 5,
                 'name' => 'Akbar Wicaksono',
@@ -506,11 +469,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6901af6eb336b71.PNG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 04:51:15',
-            ),
-            35 => 
-            array (
+            ],
+            35 => [
                 'id' => 36,
                 'oujian_id' => 5,
                 'name' => 'Annisa Azahra Tazkia',
@@ -520,11 +482,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690091c6800d923.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 04:55:38',
-            ),
-            36 => 
-            array (
+            ],
+            36 => [
                 'id' => 37,
                 'oujian_id' => 5,
                 'name' => 'Ariza Adhwa Azzikra',
@@ -534,11 +495,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6906ccca7eba4183.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 05:18:00',
-            ),
-            37 => 
-            array (
+            ],
+            37 => [
                 'id' => 38,
                 'oujian_id' => 5,
                 'name' => 'Muhammaad Pasha Ibrahim',
@@ -548,11 +508,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900983b3a71f42.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 04:41:42',
-            ),
-            38 => 
-            array (
+            ],
+            38 => [
                 'id' => 39,
                 'oujian_id' => 5,
                 'name' => 'Syaima Najiha Kurniawati',
@@ -562,11 +521,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_69031463aa517107.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 05:21:10',
-            ),
-            39 => 
-            array (
+            ],
+            39 => [
                 'id' => 40,
                 'oujian_id' => 5,
                 'name' => 'Syifa Tiara Putri Syalsabila',
@@ -576,11 +534,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6903804bf41b8135.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 05:37:57',
-            ),
-            40 => 
-            array (
+            ],
+            40 => [
                 'id' => 41,
                 'oujian_id' => 5,
                 'name' => 'Rania Ananda Maulidya Salsabila',
@@ -590,11 +547,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900e6b8bfb3458.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:49:47',
-            ),
-            41 => 
-            array (
+            ],
+            41 => [
                 'id' => 42,
                 'oujian_id' => 5,
                 'name' => 'Karissa Elvina Suhaedi',
@@ -604,11 +560,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 13,
                 'avatar' => 'avatar_6904746887363165.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-15 03:29:07',
-            ),
-            42 => 
-            array (
+            ],
+            42 => [
                 'id' => 43,
                 'oujian_id' => 5,
                 'name' => 'Mauliano Hastien',
@@ -618,11 +573,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_6908a8f25d77e184.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 05:41:33',
-            ),
-            43 => 
-            array (
+            ],
+            43 => [
                 'id' => 44,
                 'oujian_id' => 5,
                 'name' => 'Hammett Kahfi Fergie Rajiv Afghani',
@@ -630,13 +584,12 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '60bbf49de5d7b05fff9f70f184db23fe',
                 'station' => 2,
                 'sesi' => 1,
-                'avatar' => NULL,
+                'avatar' => null,
                 'status' => 1,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 06:10:32',
-            ),
-            44 => 
-            array (
+            ],
+            44 => [
                 'id' => 45,
                 'oujian_id' => 5,
                 'name' => 'Adella Putri Mirela',
@@ -646,11 +599,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690211604e8ab88.jpeg',
                 'status' => 1,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-12-02 06:10:59',
-            ),
-            45 => 
-            array (
+            ],
+            45 => [
                 'id' => 46,
                 'oujian_id' => 5,
                 'name' => 'Aghi Ghifari Pratama',
@@ -660,11 +612,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_690473f2b2535164.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:36',
-            ),
-            46 => 
-            array (
+            ],
+            46 => [
                 'id' => 47,
                 'oujian_id' => 5,
                 'name' => 'Choirunnisa Bella Alifiyanti',
@@ -674,11 +625,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6902cdd0794ca13.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:25',
-            ),
-            47 => 
-            array (
+            ],
+            47 => [
                 'id' => 48,
                 'oujian_id' => 5,
                 'name' => 'Darrell Athhar Dermawan',
@@ -688,11 +638,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6904b461ce95860.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:42',
-            ),
-            48 => 
-            array (
+            ],
+            48 => [
                 'id' => 49,
                 'oujian_id' => 5,
                 'name' => 'Dwita Ameliya Rahman Sapoetri',
@@ -702,11 +651,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69034ca0c218c112.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:58',
-            ),
-            49 => 
-            array (
+            ],
+            49 => [
                 'id' => 50,
                 'oujian_id' => 5,
                 'name' => 'Rizki Akbar Prayoga',
@@ -716,11 +664,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6903ff807c9d3153.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:30',
-            ),
-            50 => 
-            array (
+            ],
+            50 => [
                 'id' => 51,
                 'oujian_id' => 5,
                 'name' => 'Rika Siony Maria Sitanggang',
@@ -730,11 +677,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69020db97d13d81.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:07',
-            ),
-            51 => 
-            array (
+            ],
+            51 => [
                 'id' => 52,
                 'oujian_id' => 5,
                 'name' => 'Riska Gusteresa Lestari',
@@ -744,11 +690,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900c4e832a8954.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:36',
-            ),
-            52 => 
-            array (
+            ],
+            52 => [
                 'id' => 53,
                 'oujian_id' => 5,
                 'name' => 'Laela Safitri',
@@ -758,11 +703,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6900952cd87db36.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:15',
-            ),
-            53 => 
-            array (
+            ],
+            53 => [
                 'id' => 54,
                 'oujian_id' => 5,
                 'name' => 'Qonita Qotrunnada Mulyana',
@@ -772,11 +716,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_6906ce316577d14.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:08',
-            ),
-            54 => 
-            array (
+            ],
+            54 => [
                 'id' => 55,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Alma Syakri Faiz Sabirin',
@@ -786,11 +729,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69048c6a01f4730.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:16',
-            ),
-            55 => 
-            array (
+            ],
+            55 => [
                 'id' => 56,
                 'oujian_id' => 5,
                 'name' => 'Lugina Maeranti Utami',
@@ -800,11 +742,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690095fa5ad6335.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:02:49',
-            ),
-            56 => 
-            array (
+            ],
+            56 => [
                 'id' => 57,
                 'oujian_id' => 5,
                 'name' => 'M. Hibban Raiisa Abdurrosyiid Ardifansyah',
@@ -814,11 +755,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6903835fd76ca143.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:14:22',
-            ),
-            57 => 
-            array (
+            ],
+            57 => [
                 'id' => 58,
                 'oujian_id' => 5,
                 'name' => 'Graselda Sinka Prameswari',
@@ -828,11 +768,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69020686c01f784.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:01',
-            ),
-            58 => 
-            array (
+            ],
+            58 => [
                 'id' => 59,
                 'oujian_id' => 5,
                 'name' => 'Nizar Rheivani Ramadhina Supriadi',
@@ -842,11 +781,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6904793734ba1168.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:45:23',
-            ),
-            59 => 
-            array (
+            ],
+            59 => [
                 'id' => 60,
                 'oujian_id' => 5,
                 'name' => 'Nur Ibnu Syinna',
@@ -856,11 +794,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900a0fb9c43746.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:20',
-            ),
-            60 => 
-            array (
+            ],
+            60 => [
                 'id' => 61,
                 'oujian_id' => 5,
                 'name' => 'Sabilly Herlambang',
@@ -870,11 +807,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_690603d72383a181.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:19:35',
-            ),
-            61 => 
-            array (
+            ],
+            61 => [
                 'id' => 62,
                 'oujian_id' => 5,
                 'name' => 'Riyana Wulan Miranti',
@@ -884,11 +820,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6901c6494a46c74.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:32:22',
-            ),
-            62 => 
-            array (
+            ],
+            62 => [
                 'id' => 63,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Arsil Raykhan Firdaus',
@@ -898,11 +833,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900a02de0d9c45.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:47:03',
-            ),
-            63 => 
-            array (
+            ],
+            63 => [
                 'id' => 64,
                 'oujian_id' => 5,
                 'name' => 'Dinda Ayu Afriliyani',
@@ -912,11 +846,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69009a931852e43.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:05:59',
-            ),
-            64 => 
-            array (
+            ],
+            64 => [
                 'id' => 65,
                 'oujian_id' => 5,
                 'name' => 'Andi Mirelle Besse Amirah',
@@ -926,11 +859,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690461cf89727145.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:48:05',
-            ),
-            65 => 
-            array (
+            ],
+            65 => [
                 'id' => 66,
                 'oujian_id' => 5,
                 'name' => 'Alex Febrian Seninha',
@@ -940,11 +872,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69048e16b7783171.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:49',
-            ),
-            66 => 
-            array (
+            ],
+            66 => [
                 'id' => 67,
                 'oujian_id' => 5,
                 'name' => 'Almanda Regina',
@@ -954,11 +885,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_690218000b97090.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:29',
-            ),
-            67 => 
-            array (
+            ],
+            67 => [
                 'id' => 68,
                 'oujian_id' => 5,
                 'name' => 'Fanisa Hasna Aulia',
@@ -968,11 +898,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6900c58d1908a55.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:04',
-            ),
-            68 => 
-            array (
+            ],
+            68 => [
                 'id' => 69,
                 'oujian_id' => 5,
                 'name' => 'Fasya Nugraha',
@@ -982,11 +911,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_69082f33391b722.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:49',
-            ),
-            69 => 
-            array (
+            ],
+            69 => [
                 'id' => 70,
                 'oujian_id' => 5,
                 'name' => 'Glory Elmasyiakh Kharisma Phang',
@@ -996,11 +924,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900aac3e6f8c52.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:06:18',
-            ),
-            70 => 
-            array (
+            ],
+            70 => [
                 'id' => 71,
                 'oujian_id' => 5,
                 'name' => 'Vicky Gea Erlangga',
@@ -1010,11 +937,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_690313eb1f2e780.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:01',
-            ),
-            71 => 
-            array (
+            ],
+            71 => [
                 'id' => 72,
                 'oujian_id' => 5,
                 'name' => 'Widi\'ah',
@@ -1024,11 +950,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69009600350f937.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:54',
-            ),
-            72 => 
-            array (
+            ],
+            72 => [
                 'id' => 73,
                 'oujian_id' => 5,
                 'name' => 'Zahra Sinta Dewi',
@@ -1038,11 +963,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6902e4a94c6b4102.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:42',
-            ),
-            73 => 
-            array (
+            ],
+            73 => [
                 'id' => 74,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Daffa Ashshiddiq',
@@ -1052,11 +976,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_690475b4068d5167.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:07:59',
-            ),
-            74 => 
-            array (
+            ],
+            74 => [
                 'id' => 75,
                 'oujian_id' => 5,
                 'name' => 'Fahrudin Qurbani',
@@ -1066,11 +989,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690474808e30f19.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:21',
-            ),
-            75 => 
-            array (
+            ],
+            75 => [
                 'id' => 76,
                 'oujian_id' => 5,
                 'name' => '\'amru Syauqi',
@@ -1080,11 +1002,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69031379103f5101.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:05',
-            ),
-            76 => 
-            array (
+            ],
+            76 => [
                 'id' => 77,
                 'oujian_id' => 5,
                 'name' => 'Angelica Yuliani Agian',
@@ -1094,11 +1015,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_69039a49dfb55149.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:19:12',
-            ),
-            77 => 
-            array (
+            ],
+            77 => [
                 'id' => 78,
                 'oujian_id' => 5,
                 'name' => 'Marina Pasma Helsinki',
@@ -1108,11 +1028,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6903394ebeacb106.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:46',
-            ),
-            78 => 
-            array (
+            ],
+            78 => [
                 'id' => 79,
                 'oujian_id' => 5,
                 'name' => 'Nabil Febriansyah',
@@ -1122,11 +1041,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_690472e8af9ef158.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:44',
-            ),
-            79 => 
-            array (
+            ],
+            79 => [
                 'id' => 80,
                 'oujian_id' => 5,
                 'name' => 'Salma Mumtaz',
@@ -1136,11 +1054,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69047a7ecd057161.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:34',
-            ),
-            80 => 
-            array (
+            ],
+            80 => [
                 'id' => 81,
                 'oujian_id' => 5,
                 'name' => 'Sherly Eva Avelia',
@@ -1150,11 +1067,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6901c7555a27176.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:00',
-            ),
-            81 => 
-            array (
+            ],
+            81 => [
                 'id' => 82,
                 'oujian_id' => 5,
                 'name' => 'Siti Sopiyani',
@@ -1164,11 +1080,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_690210239cfeb86.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:59',
-            ),
-            82 => 
-            array (
+            ],
+            82 => [
                 'id' => 83,
                 'oujian_id' => 5,
                 'name' => 'Zaki Abdul Fayedh',
@@ -1178,11 +1093,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_69053e37b37ab49.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:12',
-            ),
-            83 => 
-            array (
+            ],
+            83 => [
                 'id' => 84,
                 'oujian_id' => 5,
                 'name' => 'Wanda Sri Utami',
@@ -1192,11 +1106,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_690382cb9d671140.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:07:35',
-            ),
-            84 => 
-            array (
+            ],
+            84 => [
                 'id' => 85,
                 'oujian_id' => 5,
                 'name' => 'Dwi Ayu Wulandari',
@@ -1206,11 +1119,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69038285bf0b5139.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:31',
-            ),
-            85 => 
-            array (
+            ],
+            85 => [
                 'id' => 86,
                 'oujian_id' => 5,
                 'name' => 'Dendy Andrian Firdaus',
@@ -1220,11 +1132,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_6904b0fb083d063.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:11',
-            ),
-            86 => 
-            array (
+            ],
+            86 => [
                 'id' => 87,
                 'oujian_id' => 5,
                 'name' => 'Erlangga Dwi Febrian',
@@ -1234,11 +1145,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_69048a85bcc48123.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:51',
-            ),
-            87 => 
-            array (
+            ],
+            87 => [
                 'id' => 88,
                 'oujian_id' => 5,
                 'name' => 'Fatuh Hanin Nasywa',
@@ -1248,11 +1158,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6901cfe650a2334.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:08',
-            ),
-            88 => 
-            array (
+            ],
+            88 => [
                 'id' => 89,
                 'oujian_id' => 5,
                 'name' => 'Fika Triana Ramadhani',
@@ -1262,11 +1171,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6902000ea5dcc82.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:50:20',
-            ),
-            89 => 
-            array (
+            ],
+            89 => [
                 'id' => 90,
                 'oujian_id' => 5,
                 'name' => 'Tya Kencana Wulan',
@@ -1276,11 +1184,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690211695769287.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:51',
-            ),
-            90 => 
-            array (
+            ],
+            90 => [
                 'id' => 91,
                 'oujian_id' => 5,
                 'name' => 'Virna Prihadiyanti',
@@ -1290,11 +1197,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6902b57a8e84895.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:26',
-            ),
-            91 => 
-            array (
+            ],
+            91 => [
                 'id' => 92,
                 'oujian_id' => 5,
                 'name' => 'Zian Fadilah',
@@ -1304,11 +1210,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6900a34208b8347.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:37:27',
-            ),
-            92 => 
-            array (
+            ],
+            92 => [
                 'id' => 93,
                 'oujian_id' => 5,
                 'name' => 'Reihana Assyfa Rahma',
@@ -1318,11 +1223,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_69047a530664d75.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:53:00',
-            ),
-            93 => 
-            array (
+            ],
+            93 => [
                 'id' => 94,
                 'oujian_id' => 5,
                 'name' => 'Maysi Adzizah',
@@ -1332,11 +1236,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69009229250d626.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:42',
-            ),
-            94 => 
-            array (
+            ],
+            94 => [
                 'id' => 95,
                 'oujian_id' => 5,
                 'name' => 'Yuda Nugraha',
@@ -1346,11 +1249,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_6903f5a2bd3c3152.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:24:37',
-            ),
-            95 => 
-            array (
+            ],
+            95 => [
                 'id' => 96,
                 'oujian_id' => 5,
                 'name' => 'Ainun Azkiya Fitriati',
@@ -1360,11 +1262,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_6904b2a38ecdd177.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:25',
-            ),
-            96 => 
-            array (
+            ],
+            96 => [
                 'id' => 97,
                 'oujian_id' => 5,
                 'name' => 'Eva Meutia',
@@ -1374,11 +1275,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690473cbcb91e163.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:09',
-            ),
-            97 => 
-            array (
+            ],
+            97 => [
                 'id' => 98,
                 'oujian_id' => 5,
                 'name' => 'Fadhil Zuleika',
@@ -1388,11 +1288,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6904744959f96162.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:26',
-            ),
-            98 => 
-            array (
+            ],
+            98 => [
                 'id' => 99,
                 'oujian_id' => 5,
                 'name' => 'Firman Fahmi Diwani',
@@ -1402,11 +1301,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69037cc7dbc31117.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:04',
-            ),
-            99 => 
-            array (
+            ],
+            99 => [
                 'id' => 100,
                 'oujian_id' => 5,
                 'name' => 'Rakhananta Wafdan Pramudityo',
@@ -1416,11 +1314,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6904b4691b2a5175.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:50:02',
-            ),
-            100 => 
-            array (
+            ],
+            100 => [
                 'id' => 101,
                 'oujian_id' => 5,
                 'name' => 'Tri Nur Anisa',
@@ -1430,11 +1327,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690336917b70f111.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:34',
-            ),
-            101 => 
-            array (
+            ],
+            101 => [
                 'id' => 102,
                 'oujian_id' => 5,
                 'name' => 'Sabrina Aurelia Ramadani',
@@ -1444,11 +1340,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_69008e2f1970116.JPG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:07',
-            ),
-            102 => 
-            array (
+            ],
+            102 => [
                 'id' => 103,
                 'oujian_id' => 5,
                 'name' => 'Helga Amelia Andinti',
@@ -1458,11 +1353,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6903efd48a305151.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:37:06',
-            ),
-            103 => 
-            array (
+            ],
+            103 => [
                 'id' => 104,
                 'oujian_id' => 5,
                 'name' => 'Kafin Maulida Tinalibranta',
@@ -1472,11 +1366,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6901aeee9232b18.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:16',
-            ),
-            104 => 
-            array (
+            ],
+            104 => [
                 'id' => 105,
                 'oujian_id' => 5,
                 'name' => 'Najmi Ashfilia Azzahro',
@@ -1486,11 +1379,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69033072bf201110.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:30',
-            ),
-            105 => 
-            array (
+            ],
+            105 => [
                 'id' => 106,
                 'oujian_id' => 5,
                 'name' => 'Abelia Destiyadi',
@@ -1500,11 +1392,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_6901e6095c6e217.JPG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:43:14',
-            ),
-            106 => 
-            array (
+            ],
+            106 => [
                 'id' => 107,
                 'oujian_id' => 5,
                 'name' => 'Torik Dzulkifli Mahpudin',
@@ -1514,11 +1405,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69049d505f201172.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:14',
-            ),
-            107 => 
-            array (
+            ],
+            107 => [
                 'id' => 108,
                 'oujian_id' => 5,
                 'name' => 'Hana Aulyazahra Putri Anggini',
@@ -1528,11 +1418,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6902d05d67eb2100.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:32',
-            ),
-            108 => 
-            array (
+            ],
+            108 => [
                 'id' => 109,
                 'oujian_id' => 5,
                 'name' => 'Muh. Ihza Azhari Attamy',
@@ -1542,11 +1431,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69021721e87e689.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:31:22',
-            ),
-            109 => 
-            array (
+            ],
+            109 => [
                 'id' => 110,
                 'oujian_id' => 5,
                 'name' => 'Muhamad Daffaa An-najwan',
@@ -1556,11 +1444,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6904526be9678155.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:47:43',
-            ),
-            110 => 
-            array (
+            ],
+            110 => [
                 'id' => 111,
                 'oujian_id' => 5,
                 'name' => 'Pujawati Yulia Sari',
@@ -1570,11 +1457,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690097967e24841.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:15',
-            ),
-            111 => 
-            array (
+            ],
+            111 => [
                 'id' => 112,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Rafli Rahman',
@@ -1584,11 +1470,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_690383779e951142.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:17:33',
-            ),
-            112 => 
-            array (
+            ],
+            112 => [
                 'id' => 113,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Zidan Putra Al-fachri',
@@ -1598,11 +1483,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69037fa0ac152126.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:32:39',
-            ),
-            113 => 
-            array (
+            ],
+            113 => [
                 'id' => 114,
                 'oujian_id' => 5,
                 'name' => 'Raihaan Indra Kusumah',
@@ -1612,11 +1496,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6905adced5ae872.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:14',
-            ),
-            114 => 
-            array (
+            ],
+            114 => [
                 'id' => 115,
                 'oujian_id' => 5,
                 'name' => 'Oom Lasidah',
@@ -1626,11 +1509,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69031203e41a6105.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:04:48',
-            ),
-            115 => 
-            array (
+            ],
+            115 => [
                 'id' => 116,
                 'oujian_id' => 5,
                 'name' => 'Alfina',
@@ -1640,11 +1522,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69037f144a011131.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:48:40',
-            ),
-            116 => 
-            array (
+            ],
+            116 => [
                 'id' => 117,
                 'oujian_id' => 5,
                 'name' => 'Alik Dwi Rencani',
@@ -1654,11 +1535,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69037f2fcb4e5133.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:11',
-            ),
-            117 => 
-            array (
+            ],
+            117 => [
                 'id' => 118,
                 'oujian_id' => 5,
                 'name' => 'Alisya Frisca Fadhilah',
@@ -1668,11 +1548,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_690482decbb3b73.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:19:11',
-            ),
-            118 => 
-            array (
+            ],
+            118 => [
                 'id' => 119,
                 'oujian_id' => 5,
                 'name' => 'Fitri Noviyanti',
@@ -1682,11 +1561,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6904a87a7de9c174.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:58',
-            ),
-            119 => 
-            array (
+            ],
+            119 => [
                 'id' => 120,
                 'oujian_id' => 5,
                 'name' => 'Gina Nabila',
@@ -1696,11 +1574,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_69034d9aabbbf114.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:44',
-            ),
-            120 => 
-            array (
+            ],
+            120 => [
                 'id' => 121,
                 'oujian_id' => 5,
                 'name' => 'Hening Ageng Maes',
@@ -1710,11 +1587,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69034da42b130113.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:01:32',
-            ),
-            121 => 
-            array (
+            ],
+            121 => [
                 'id' => 122,
                 'oujian_id' => 5,
                 'name' => 'Jihan Suci Musyaffa',
@@ -1724,11 +1600,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_690360cf70c01116.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:00',
-            ),
-            122 => 
-            array (
+            ],
+            122 => [
                 'id' => 123,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Rakha Habibie',
@@ -1738,11 +1613,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_690186970571f67.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:36',
-            ),
-            123 => 
-            array (
+            ],
+            123 => [
                 'id' => 124,
                 'oujian_id' => 5,
                 'name' => 'Mutiara Nurhapipah',
@@ -1752,11 +1626,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_69037ede28be998.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:17',
-            ),
-            124 => 
-            array (
+            ],
+            124 => [
                 'id' => 125,
                 'oujian_id' => 5,
                 'name' => 'Nisa Minuri',
@@ -1766,11 +1639,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69062ff5bb7d4182.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:06:36',
-            ),
-            125 => 
-            array (
+            ],
+            125 => [
                 'id' => 126,
                 'oujian_id' => 5,
                 'name' => 'Rasti Ambar Nurfadilah',
@@ -1780,11 +1652,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_69009401e70a732.JPEG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:22:38',
-            ),
-            126 => 
-            array (
+            ],
+            126 => [
                 'id' => 127,
                 'oujian_id' => 5,
                 'name' => 'Nazib Mohamad Yassir',
@@ -1794,11 +1665,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690391091a5e7146.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:17',
-            ),
-            127 => 
-            array (
+            ],
+            127 => [
                 'id' => 128,
                 'oujian_id' => 5,
                 'name' => 'Alzena Salma Harmani',
@@ -1808,11 +1678,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_6902040b9c19783.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:03:32',
-            ),
-            128 => 
-            array (
+            ],
+            128 => [
                 'id' => 129,
                 'oujian_id' => 5,
                 'name' => 'Angel Prisila',
@@ -1822,11 +1691,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6901b292641fd59.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:37',
-            ),
-            129 => 
-            array (
+            ],
+            129 => [
                 'id' => 130,
                 'oujian_id' => 5,
                 'name' => 'Grania Febriani Ginanjar',
@@ -1836,11 +1704,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69037f95caf2a132.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:05',
-            ),
-            130 => 
-            array (
+            ],
+            130 => [
                 'id' => 131,
                 'oujian_id' => 5,
                 'name' => 'Hafizh Achmad Fauzan',
@@ -1850,11 +1717,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_69040b807073d154.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:39',
-            ),
-            131 => 
-            array (
+            ],
+            131 => [
                 'id' => 132,
                 'oujian_id' => 5,
                 'name' => 'Isnandita Zakia Halimar Fajri',
@@ -1864,11 +1730,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69039033b5736147.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:23',
-            ),
-            132 => 
-            array (
+            ],
+            132 => [
                 'id' => 133,
                 'oujian_id' => 5,
                 'name' => 'Nabil Muhammad Faiq Abiyyu',
@@ -1878,11 +1743,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6901a59150e6170.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:20:59',
-            ),
-            133 => 
-            array (
+            ],
+            133 => [
                 'id' => 134,
                 'oujian_id' => 5,
                 'name' => 'Nasywa Rizkia Nurrachmy',
@@ -1892,11 +1756,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_690207c349f9285.JPG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:37',
-            ),
-            134 => 
-            array (
+            ],
+            134 => [
                 'id' => 135,
                 'oujian_id' => 5,
                 'name' => 'Nizar Athaillah Rophaaisyi',
@@ -1906,11 +1769,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6902c6746b5db97.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:32',
-            ),
-            135 => 
-            array (
+            ],
+            135 => [
                 'id' => 136,
                 'oujian_id' => 5,
                 'name' => 'Nur Annisa Barkah',
@@ -1920,11 +1782,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6904b619a9e9f178.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:13',
-            ),
-            136 => 
-            array (
+            ],
+            136 => [
                 'id' => 137,
                 'oujian_id' => 5,
                 'name' => 'Risa Naziziyah',
@@ -1934,11 +1795,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_6903dc478e0c9150.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:23:29',
-            ),
-            137 => 
-            array (
+            ],
+            137 => [
                 'id' => 138,
                 'oujian_id' => 5,
                 'name' => 'Adelia Friska Widianingrum',
@@ -1948,11 +1808,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690317e3dddfd108.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:12:03',
-            ),
-            138 => 
-            array (
+            ],
+            138 => [
                 'id' => 139,
                 'oujian_id' => 5,
                 'name' => 'Fihra Shoffa Ismawanti',
@@ -1962,11 +1821,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_6900966792c3a38.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:12:26',
-            ),
-            139 => 
-            array (
+            ],
+            139 => [
                 'id' => 140,
                 'oujian_id' => 5,
                 'name' => 'Fikri Fauzi Ramdhani',
@@ -1976,11 +1834,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_690381bc9688f137.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:12:49',
-            ),
-            140 => 
-            array (
+            ],
+            140 => [
                 'id' => 141,
                 'oujian_id' => 5,
                 'name' => 'Hana Salsabilah Ramadani',
@@ -1990,11 +1847,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690090667457e21.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:13:08',
-            ),
-            141 => 
-            array (
+            ],
+            141 => [
                 'id' => 142,
                 'oujian_id' => 5,
                 'name' => 'Haura Hissania Padilah',
@@ -2004,11 +1860,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_69031adcb9375109.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:13:29',
-            ),
-            142 => 
-            array (
+            ],
+            142 => [
                 'id' => 143,
                 'oujian_id' => 5,
                 'name' => 'Nayla Nazwa Andira',
@@ -2018,11 +1873,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69037f599f221128.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:13:55',
-            ),
-            143 => 
-            array (
+            ],
+            143 => [
                 'id' => 144,
                 'oujian_id' => 5,
                 'name' => 'Nazwa Nadia Tristina',
@@ -2032,11 +1886,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_69021d34502b491.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:14:10',
-            ),
-            144 => 
-            array (
+            ],
+            144 => [
                 'id' => 145,
                 'oujian_id' => 5,
                 'name' => 'Nur Rizkya Anggraini',
@@ -2046,11 +1899,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_690377abcd811118.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:14:27',
-            ),
-            145 => 
-            array (
+            ],
+            145 => [
                 'id' => 146,
                 'oujian_id' => 5,
                 'name' => 'Prabu Anom Pramudinto',
@@ -2060,11 +1912,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6900eab2e23a257.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:14:44',
-            ),
-            146 => 
-            array (
+            ],
+            146 => [
                 'id' => 147,
                 'oujian_id' => 5,
                 'name' => 'Riverza Marviansyah',
@@ -2074,11 +1925,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_690167194e34b61.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:14:59',
-            ),
-            147 => 
-            array (
+            ],
+            147 => [
                 'id' => 148,
                 'oujian_id' => 5,
                 'name' => 'Avghan Denzan Nanzira',
@@ -2088,11 +1938,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690785df5597f148.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:46:15',
-            ),
-            148 => 
-            array (
+            ],
+            148 => [
                 'id' => 149,
                 'oujian_id' => 5,
                 'name' => 'Faiq Ihsanudin Habibie',
@@ -2102,11 +1951,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_6907179d91627176.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:00:35',
-            ),
-            149 => 
-            array (
+            ],
+            149 => [
                 'id' => 150,
                 'oujian_id' => 5,
                 'name' => 'Christy Lintang Destiara',
@@ -2116,11 +1964,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_69016ac19f22162.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:15:34',
-            ),
-            150 => 
-            array (
+            ],
+            150 => [
                 'id' => 151,
                 'oujian_id' => 5,
                 'name' => 'Dimas Syehwanul Arifin',
@@ -2130,11 +1977,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690184150b6bd40.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:33:36',
-            ),
-            151 => 
-            array (
+            ],
+            151 => [
                 'id' => 152,
                 'oujian_id' => 5,
                 'name' => 'Kanahaya Akrama Ramadhani Zuldekra',
@@ -2144,11 +1990,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_690092a51591327.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:47:48',
-            ),
-            152 => 
-            array (
+            ],
+            152 => [
                 'id' => 153,
                 'oujian_id' => 5,
                 'name' => 'Krisna Maulana',
@@ -2158,11 +2003,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690474e59552c159.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:25',
-            ),
-            153 => 
-            array (
+            ],
+            153 => [
                 'id' => 154,
                 'oujian_id' => 5,
                 'name' => 'Raditia Molana Majid',
@@ -2172,11 +2016,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6904b1427319d125.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:17:03',
-            ),
-            154 => 
-            array (
+            ],
+            154 => [
                 'id' => 155,
                 'oujian_id' => 5,
                 'name' => 'Rafi Putra Prasetyo',
@@ -2186,11 +2029,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69030bf8a65a9103.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:37:08',
-            ),
-            155 => 
-            array (
+            ],
+            155 => [
                 'id' => 156,
                 'oujian_id' => 5,
                 'name' => 'Zaki Ihsan Nugroho',
@@ -2200,11 +2042,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_69049d0dd560e173.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:29',
-            ),
-            156 => 
-            array (
+            ],
+            156 => [
                 'id' => 157,
                 'oujian_id' => 5,
                 'name' => 'Wafi Fajri Muharram',
@@ -2214,11 +2055,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69037f338ccc9134.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:16',
-            ),
-            157 => 
-            array (
+            ],
+            157 => [
                 'id' => 158,
                 'oujian_id' => 5,
                 'name' => 'Sabrina Aulia Pramesti',
@@ -2228,11 +2068,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_69018cce9054d69.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:23:53',
-            ),
-            158 => 
-            array (
+            ],
+            158 => [
                 'id' => 159,
                 'oujian_id' => 5,
                 'name' => 'Shafira Rizkita Nabila',
@@ -2242,11 +2081,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_690474e5d5946166.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:08',
-            ),
-            159 => 
-            array (
+            ],
+            159 => [
                 'id' => 160,
                 'oujian_id' => 5,
                 'name' => 'Dwi Vita Aulia',
@@ -2256,11 +2094,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69079727379f8144.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:02:47',
-            ),
-            160 => 
-            array (
+            ],
+            160 => [
                 'id' => 161,
                 'oujian_id' => 5,
                 'name' => 'Eris Widia Kersa',
@@ -2270,11 +2107,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6903803d2210d136.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:23',
-            ),
-            161 => 
-            array (
+            ],
+            161 => [
                 'id' => 162,
                 'oujian_id' => 5,
                 'name' => 'M. Alfi Hasan Humaedi',
@@ -2284,11 +2120,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690414b5b2f2094.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:03',
-            ),
-            162 => 
-            array (
+            ],
+            162 => [
                 'id' => 163,
                 'oujian_id' => 5,
                 'name' => 'Maharani Ayu Kusuma Dewi',
@@ -2298,11 +2133,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_690459267410f156.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:47',
-            ),
-            163 => 
-            array (
+            ],
+            163 => [
                 'id' => 164,
                 'oujian_id' => 5,
                 'name' => 'Shafa Alya Salsabila',
@@ -2312,11 +2146,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_6900d45a3581156.JPG',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:22',
-            ),
-            164 => 
-            array (
+            ],
+            164 => [
                 'id' => 165,
                 'oujian_id' => 5,
                 'name' => 'Sigmund Sheehane Divandra',
@@ -2326,11 +2159,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6904860c6bdd9170.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:02',
-            ),
-            165 => 
-            array (
+            ],
+            165 => [
                 'id' => 166,
                 'oujian_id' => 5,
                 'name' => 'Syalaisha Attaya Frahnaz Tafael',
@@ -2340,11 +2172,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6901780d7208664.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:37',
-            ),
-            166 => 
-            array (
+            ],
+            166 => [
                 'id' => 167,
                 'oujian_id' => 5,
                 'name' => 'Tia Angelista',
@@ -2354,11 +2185,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6902c5781961796.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:13',
-            ),
-            167 => 
-            array (
+            ],
+            167 => [
                 'id' => 168,
                 'oujian_id' => 5,
                 'name' => 'Sahira Nurgustini Salsabila',
@@ -2368,11 +2198,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6900950a64a8d31.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:07:58',
-            ),
-            168 => 
-            array (
+            ],
+            168 => [
                 'id' => 169,
                 'oujian_id' => 5,
                 'name' => 'Gastricia Syahla Supriyadi',
@@ -2382,11 +2211,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69037dff29414124.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:48:16',
-            ),
-            169 => 
-            array (
+            ],
+            169 => [
                 'id' => 170,
                 'oujian_id' => 5,
                 'name' => 'Ardi Fajryandi',
@@ -2396,11 +2224,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_690093796891929.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:02:48',
-            ),
-            170 => 
-            array (
+            ],
+            170 => [
                 'id' => 171,
                 'oujian_id' => 5,
                 'name' => 'Brilian Atalia Ardiningrum',
@@ -2410,11 +2237,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_6902c83625acd99.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:46',
-            ),
-            171 => 
-            array (
+            ],
+            171 => [
                 'id' => 172,
                 'oujian_id' => 5,
                 'name' => 'Evan Adiyatma',
@@ -2424,11 +2250,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_69038626dcca668.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:35',
-            ),
-            172 => 
-            array (
+            ],
+            172 => [
                 'id' => 173,
                 'oujian_id' => 5,
                 'name' => 'Fahira Sifa Az Zahra',
@@ -2438,11 +2263,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_69047932bffa2160.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:51:15',
-            ),
-            173 => 
-            array (
+            ],
+            173 => [
                 'id' => 174,
                 'oujian_id' => 5,
                 'name' => 'Maulana Galih Shandika',
@@ -2452,11 +2276,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690469de123ab157.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:26',
-            ),
-            174 => 
-            array (
+            ],
+            174 => [
                 'id' => 175,
                 'oujian_id' => 5,
                 'name' => 'Maya Fahira Handayani',
@@ -2466,11 +2289,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_6900a663e428e51.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:16',
-            ),
-            175 => 
-            array (
+            ],
+            175 => [
                 'id' => 176,
                 'oujian_id' => 5,
                 'name' => 'Suci Anjelina',
@@ -2480,11 +2302,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_690380f9d9153129.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:37',
-            ),
-            176 => 
-            array (
+            ],
+            176 => [
                 'id' => 177,
                 'oujian_id' => 5,
                 'name' => 'Syafana Delviana Pritama Syahrani',
@@ -2494,11 +2315,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_69017810d501565.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:52',
-            ),
-            177 => 
-            array (
+            ],
+            177 => [
                 'id' => 178,
                 'oujian_id' => 5,
                 'name' => 'Tri Rahayu Prihatiningsih',
@@ -2508,11 +2328,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_69017aba203e666.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:08:41',
-            ),
-            178 => 
-            array (
+            ],
+            178 => [
                 'id' => 179,
                 'oujian_id' => 5,
                 'name' => 'Sefi Eka Putri',
@@ -2522,11 +2341,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_69037f93d336c127.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:23:56',
-            ),
-            179 => 
-            array (
+            ],
+            179 => [
                 'id' => 180,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Dhimas Sahputra',
@@ -2536,11 +2354,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69048397ce58d50.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:47',
-            ),
-            180 => 
-            array (
+            ],
+            180 => [
                 'id' => 181,
                 'oujian_id' => 5,
                 'name' => 'Ahmad Alif Faturrohman',
@@ -2550,11 +2367,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69037d6d76a2e122.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:02:48',
-            ),
-            181 => 
-            array (
+            ],
+            181 => [
                 'id' => 182,
                 'oujian_id' => 5,
                 'name' => 'Aila Zahra Putri Saefuloh',
@@ -2564,11 +2380,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_69025b425151b93.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:17:13',
-            ),
-            182 => 
-            array (
+            ],
+            182 => [
                 'id' => 183,
                 'oujian_id' => 5,
                 'name' => 'Meuthia Intan Nur Annisa',
@@ -2578,11 +2393,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_690097a3ec31239.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:31',
-            ),
-            183 => 
-            array (
+            ],
+            183 => [
                 'id' => 184,
                 'oujian_id' => 5,
                 'name' => 'Muhamad Alfarel Chandra Pratama',
@@ -2592,11 +2406,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_690094c65fbdb33.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:50:23',
-            ),
-            184 => 
-            array (
+            ],
+            184 => [
                 'id' => 185,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Alfi Syahrin',
@@ -2606,11 +2419,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_690381b1c4eac138.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:06:03',
-            ),
-            185 => 
-            array (
+            ],
+            185 => [
                 'id' => 186,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Arya Sejati',
@@ -2620,11 +2432,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_690091828fa3324.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:21:25',
-            ),
-            186 => 
-            array (
+            ],
+            186 => [
                 'id' => 187,
                 'oujian_id' => 5,
                 'name' => 'Vallentino',
@@ -2634,11 +2445,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_69037e36c2c4d121.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:41',
-            ),
-            187 => 
-            array (
+            ],
+            187 => [
                 'id' => 188,
                 'oujian_id' => 5,
                 'name' => 'Yufian Hamdu',
@@ -2648,11 +2458,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_690380a2b96dd130.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:39',
-            ),
-            188 => 
-            array (
+            ],
+            188 => [
                 'id' => 189,
                 'oujian_id' => 5,
                 'name' => 'Raihanah Jinan Ulya Ramadhani',
@@ -2662,11 +2471,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6903837fc4604141.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:07:59',
-            ),
-            189 => 
-            array (
+            ],
+            189 => [
                 'id' => 190,
                 'oujian_id' => 5,
                 'name' => 'Riyardi Jaya Bimantoro',
@@ -2676,11 +2484,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 11,
                 'avatar' => 'avatar_6901fbe2c7cbb15.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:24:14',
-            ),
-            190 => 
-            array (
+            ],
+            190 => [
                 'id' => 191,
                 'oujian_id' => 5,
                 'name' => 'Al Jihan Nur Assyfa',
@@ -2690,11 +2497,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 1,
                 'avatar' => 'avatar_69038bc5b22a3115.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 01:47:07',
-            ),
-            191 => 
-            array (
+            ],
+            191 => [
                 'id' => 192,
                 'oujian_id' => 5,
                 'name' => 'Alawi Muhammad Al-anshori',
@@ -2704,11 +2510,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 2,
                 'avatar' => 'avatar_69008fe8875ea20.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:02:44',
-            ),
-            192 => 
-            array (
+            ],
+            192 => [
                 'id' => 193,
                 'oujian_id' => 5,
                 'name' => 'Fakhri Fawwaz Syabani',
@@ -2718,11 +2523,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 3,
                 'avatar' => 'avatar_69009a8806e3e25.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:18:24',
-            ),
-            193 => 
-            array (
+            ],
+            193 => [
                 'id' => 194,
                 'oujian_id' => 5,
                 'name' => 'Faraditha Putri Salsabila',
@@ -2732,11 +2536,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 4,
                 'avatar' => 'avatar_6901df65bed9679.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:34:00',
-            ),
-            194 => 
-            array (
+            ],
+            194 => [
                 'id' => 195,
                 'oujian_id' => 5,
                 'name' => 'Muhamad Diaz Nurraiz',
@@ -2746,11 +2549,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 5,
                 'avatar' => 'avatar_6904745a47ccd53.jpg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 02:49:38',
-            ),
-            195 => 
-            array (
+            ],
+            195 => [
                 'id' => 196,
                 'oujian_id' => 5,
                 'name' => 'Muhamad Raihan Alif Fikri',
@@ -2760,11 +2562,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 6,
                 'avatar' => 'avatar_69045265736df119.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:05:29',
-            ),
-            196 => 
-            array (
+            ],
+            196 => [
                 'id' => 197,
                 'oujian_id' => 5,
                 'name' => 'Muhammad Fikri Rizal Aryanto',
@@ -2774,11 +2575,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 7,
                 'avatar' => 'avatar_69030bd122c6b104.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:20:58',
-            ),
-            197 => 
-            array (
+            ],
+            197 => [
                 'id' => 198,
                 'oujian_id' => 5,
                 'name' => 'Zahra Julia',
@@ -2788,11 +2588,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 8,
                 'avatar' => 'avatar_6901def6919f377.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:36:36',
-            ),
-            198 => 
-            array (
+            ],
+            198 => [
                 'id' => 199,
                 'oujian_id' => 5,
                 'name' => 'Ramadiy Rafi\'uddin',
@@ -2802,11 +2601,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 9,
                 'avatar' => 'avatar_6906dfc34cf1d169.png',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 03:52:12',
-            ),
-            199 => 
-            array (
+            ],
+            199 => [
                 'id' => 200,
                 'oujian_id' => 5,
                 'name' => 'Rozaanah Aliya Prawoto',
@@ -2816,11 +2614,10 @@ class OpesertasTableSeeder extends Seeder
                 'sesi' => 10,
                 'avatar' => 'avatar_6901e059d8f3e78.jpeg',
                 'status' => 0,
-                'created_at' => NULL,
+                'created_at' => null,
                 'updated_at' => '2025-11-04 04:07:51',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

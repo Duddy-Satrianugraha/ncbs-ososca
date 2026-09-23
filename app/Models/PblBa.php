@@ -8,18 +8,18 @@ class PblBa extends Model
 {
     protected $guarded = [];
 
-    public function kelompok(){
+    public function kelompok()
+    {
         return $this->belongsTo(PblKelompok::class, 'kelompok_id');
     }
+
     public function sks()
     {
         return $this->belongsTo(PblMininote::class, 'sk_id');
     }
 
-    public function tutor(){
+    public function tutor()
+    {
         return $this->belongsTo(Openguji::class, 'tutor_id');
     }
-
-
-
 }

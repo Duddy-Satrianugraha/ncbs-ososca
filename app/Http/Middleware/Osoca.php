@@ -15,7 +15,7 @@ class Osoca
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session('Osoca')) {
+        if (! session('Osoca')) {
             return redirect(route('osoca.login'));
         }
 

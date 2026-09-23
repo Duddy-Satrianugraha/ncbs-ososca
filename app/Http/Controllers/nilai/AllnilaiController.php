@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\nilai;
 
 use App\Http\Controllers\Controller;
-use App\Models\Allnilai;
 use App\Models\AlldetailNilai;
+use App\Models\Allnilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-
 class AllnilaiController extends Controller
 {
     public function index(Request $request)
     {
-      $search = $request->query('search');
+        $search = $request->query('search');
 
         // Ambil 1 team pertama milik user (atau null)
         $team = Auth::user()?->teams()->first();
@@ -32,10 +31,11 @@ class AllnilaiController extends Controller
             })->orderBy('id', 'desc')
             ->paginate(10);
 
-      return view('allnilai.list', compact('keg', 'search'));
+        return view('allnilai.list', compact('keg', 'search'));
     }
 
-    public function addsesi(Allnilai $allnilai){
+    public function addsesi(Allnilai $allnilai)
+    {
         if ($allnilai->jenis_nilai === 'Praktikum') {
             return view('allnilai.addipraktikum', compact('allnilai'));
         } elseif ($allnilai->jenis_nilai === 'OSOCA') {
@@ -57,15 +57,17 @@ class AllnilaiController extends Controller
         //
     }
 
-     public function create_penilaian(){
+    public function create_penilaian()
+    {
         return view('allnilai.create_harian');
     }
 
-     public function store_penilaian(Request $request){
+    public function store_penilaian(Request $request)
+    {
         $request->validate([
-            'nama'           => ['required', 'string', 'max:255'],
-            'jenis_nilai'    => ['required', 'string', 'max:255'],
-            'blok'           => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
+            'jenis_nilai' => ['required', 'string', 'max:255'],
+            'blok' => ['required', 'string', 'max:255'],
             'tahun_akademik' => ['required', 'string', 'max:255'],
 
         ]);
@@ -74,26 +76,27 @@ class AllnilaiController extends Controller
 
         try {
             $allnilai = Allnilai::create([
-                'nama'           => $request->nama,
-                'jenis_nilai'    => $request->jenis_nilai,
-                'blok'           => $request->blok,
+                'nama' => $request->nama,
+                'jenis_nilai' => $request->jenis_nilai,
+                'blok' => $request->blok,
                 'tahun_akademik' => $request->tahun_akademik,
-                'input_by'       => Auth::id(),
+                'input_by' => Auth::id(),
                 'lastupdated_by' => Auth::id(),
             ]);
             DB::commit();
-            Return redirect(route('nilai.index'))->with([
-                    'msg' => 'success-Nilai berhasil di buat.'
-                ]);
+
+            return redirect(route('nilai.index'))->with([
+                'msg' => 'success-Nilai berhasil di buat.',
+            ]);
         } catch (\Exception $e) {
             return back()->withErrors(['error' => $e->getMessage()]);
-            }
+        }
     }
 
-   public function uploadPraktikum(Request $request, Allnilai $allnilai)
+    public function uploadPraktikum(Request $request, Allnilai $allnilai)
     {
         $request->validate([
-            'file'           => ['required', 'file', 'mimes:xlsx,xls,csv', 'max:51200'],
+            'file' => ['required', 'file', 'mimes:xlsx,xls,csv', 'max:51200'],
         ]);
 
         DB::beginTransaction();
@@ -115,7 +118,7 @@ class AllnilaiController extends Controller
                 DB::rollBack();
 
                 return back()->with([
-                    'msg' => 'danger-Format Excel tidak sesuai. Pastikan kolom B = Nama dan kolom C = NPM.'
+                    'msg' => 'danger-Format Excel tidak sesuai. Pastikan kolom B = Nama dan kolom C = NPM.',
                 ])->withInput();
             }
 
@@ -128,7 +131,7 @@ class AllnilaiController extends Controller
                 }
 
                 $namaMhs = trim($row['B'] ?? '');
-                $npm     = trim($row['C'] ?? '');
+                $npm = trim($row['C'] ?? '');
 
                 // Lewati baris kosong
                 if ($namaMhs === '' && $npm === '') {
@@ -142,17 +145,17 @@ class AllnilaiController extends Controller
 
                 $insertData[] = [
                     'allnilai_id' => $allnilai->id,
-                    'nama_mhs'    => $namaMhs,
-                    'npm'         => $npm,
-                    'pretest'     => $this->nullIfEmpty($row['D'] ?? null),
-                    'posttest'    => $this->nullIfEmpty($row['E'] ?? null),
-                    'laporan'     => $this->nullIfEmpty($row['F'] ?? null),
-                    'ujian_prax'  => $this->nullIfEmpty($row['G'] ?? null),
+                    'nama_mhs' => $namaMhs,
+                    'npm' => $npm,
+                    'pretest' => $this->nullIfEmpty($row['D'] ?? null),
+                    'posttest' => $this->nullIfEmpty($row['E'] ?? null),
+                    'laporan' => $this->nullIfEmpty($row['F'] ?? null),
+                    'ujian_prax' => $this->nullIfEmpty($row['G'] ?? null),
                     'nilai_akhir' => $this->nullIfEmpty($row['H'] ?? null),
-                    'input_by'       => Auth::user()->id,
+                    'input_by' => Auth::user()->id,
                     'lastupdated_by' => Auth::user()->id,
-                    'created_at'  => now(),
-                    'updated_at'  => now(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
             }
 
@@ -160,7 +163,7 @@ class AllnilaiController extends Controller
                 DB::rollBack();
 
                 return back()->with([
-                    'msg' => 'warning-Tidak ada data mahasiswa yang bisa diimport.'
+                    'msg' => 'warning-Tidak ada data mahasiswa yang bisa diimport.',
                 ])->withInput();
             }
 
@@ -169,18 +172,17 @@ class AllnilaiController extends Controller
             DB::commit();
 
             return redirect()->back()->with([
-                'msg' => 'success-Data nilai praktikum berhasil diupload.'
+                'msg' => 'success-Data nilai praktikum berhasil diupload.',
             ]);
 
         } catch (\Throwable $e) {
             DB::rollBack();
 
             return back()->with([
-                'msg' => 'danger-Gagal upload nilai: ' . $e->getMessage()
+                'msg' => 'danger-Gagal upload nilai: '.$e->getMessage(),
             ])->withInput();
         }
     }
-
 
     public function uploadCbt(Request $request, Allnilai $allnilai)
     {
@@ -234,14 +236,14 @@ class AllnilaiController extends Controller
 
             if (
                 $headerRowIndex === null ||
-                !isset($columns['npm']) ||
-                !isset($columns['nama_mhs']) ||
-                !isset($columns['nilai_akhir'])
+                ! isset($columns['npm']) ||
+                ! isset($columns['nama_mhs']) ||
+                ! isset($columns['nilai_akhir'])
             ) {
                 DB::rollBack();
 
                 return back()->with([
-                    'msg' => 'danger-Format Excel CBT tidak sesuai. Header wajib: Kode Login, Nama Lengkap, Total Skor.'
+                    'msg' => 'danger-Format Excel CBT tidak sesuai. Header wajib: Kode Login, Nama Lengkap, Total Skor.',
                 ])->withInput();
             }
 
@@ -260,22 +262,23 @@ class AllnilaiController extends Controller
 
                 if ($npm === '' || $namaMhs === '') {
                     $skipped++;
+
                     continue;
                 }
 
                 $detail = AlldetailNilai::updateOrCreate(
                     [
                         'allnilai_id' => $allnilai->id,
-                        'npm'         => $npm,
+                        'npm' => $npm,
                     ],
                     [
-                        'nama_mhs'    => $namaMhs,
-                        'pretest'     => null,
-                        'posttest'    => null,
-                        'laporan'     => null,
-                        'ujian_prax'  => null,
+                        'nama_mhs' => $namaMhs,
+                        'pretest' => null,
+                        'posttest' => null,
+                        'laporan' => null,
+                        'ujian_prax' => null,
                         'nilai_akhir' => $nilaiAkhir,
-                        'input_by'       => Auth::user()->id,
+                        'input_by' => Auth::user()->id,
                         'lastupdated_by' => Auth::user()->id,
                     ]
                 );
@@ -290,14 +293,14 @@ class AllnilaiController extends Controller
             DB::commit();
 
             return redirect()->back()->with([
-                'msg' => "success-Upload nilai sesi baru berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}."
+                'msg' => "success-Upload nilai sesi baru berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}.",
             ]);
 
         } catch (\Throwable $e) {
             DB::rollBack();
 
             return back()->with([
-                'msg' => 'danger-Gagal upload nilai sesi baru: ' . $e->getMessage()
+                'msg' => 'danger-Gagal upload nilai sesi baru: '.$e->getMessage(),
             ])->withInput();
         }
     }
@@ -361,7 +364,7 @@ class AllnilaiController extends Controller
                 DB::rollBack();
 
                 return back()->with([
-                    'msg' => 'danger-Format Excel OSOCA tidak sesuai. Header wajib: Nama, NPM, Skor 1, Skor 2, Nilai.'
+                    'msg' => 'danger-Format Excel OSOCA tidak sesuai. Header wajib: Nama, NPM, Skor 1, Skor 2, Nilai.',
                 ])->withInput();
             }
 
@@ -379,6 +382,7 @@ class AllnilaiController extends Controller
 
                 if ($npm === '') {
                     $skipped++;
+
                     continue;
                 }
 
@@ -388,25 +392,25 @@ class AllnilaiController extends Controller
 
                 if ($detail) {
                     $detail->update([
-                        'nama_mhs'       => $namaMhs,
-                        'pretest'        => $this->nullIfEmpty($row[$columns['pretest']] ?? null),
-                        'posttest'       => $this->nullIfEmpty($row[$columns['posttest']] ?? null),
-                        'nilai_akhir'    => $this->nullIfEmpty($row[$columns['nilai_akhir']] ?? null),
+                        'nama_mhs' => $namaMhs,
+                        'pretest' => $this->nullIfEmpty($row[$columns['pretest']] ?? null),
+                        'posttest' => $this->nullIfEmpty($row[$columns['posttest']] ?? null),
+                        'nilai_akhir' => $this->nullIfEmpty($row[$columns['nilai_akhir']] ?? null),
                         'lastupdated_by' => Auth::id(),
                     ]);
 
                     $updated++;
                 } else {
                     AlldetailNilai::create([
-                        'allnilai_id'    => $allnilai->id,
-                        'nama_mhs'       => $namaMhs,
-                        'npm'            => $npm,
-                        'pretest'        => $this->nullIfEmpty($row[$columns['pretest']] ?? null),
-                        'posttest'       => $this->nullIfEmpty($row[$columns['posttest']] ?? null),
-                        'laporan'        => null,
-                        'ujian_prax'     => null,
-                        'nilai_akhir'    => $this->nullIfEmpty($row[$columns['nilai_akhir']] ?? null),
-                        'input_by'       => Auth::id(),
+                        'allnilai_id' => $allnilai->id,
+                        'nama_mhs' => $namaMhs,
+                        'npm' => $npm,
+                        'pretest' => $this->nullIfEmpty($row[$columns['pretest']] ?? null),
+                        'posttest' => $this->nullIfEmpty($row[$columns['posttest']] ?? null),
+                        'laporan' => null,
+                        'ujian_prax' => null,
+                        'nilai_akhir' => $this->nullIfEmpty($row[$columns['nilai_akhir']] ?? null),
+                        'input_by' => Auth::id(),
                         'lastupdated_by' => Auth::id(),
                     ]);
 
@@ -417,14 +421,14 @@ class AllnilaiController extends Controller
             DB::commit();
 
             return back()->with([
-                'msg' => "success-Upload nilai OSOCA berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}."
+                'msg' => "success-Upload nilai OSOCA berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}.",
             ]);
 
         } catch (\Throwable $e) {
             DB::rollBack();
 
             return back()->with([
-                'msg' => 'danger-Gagal upload nilai OSOCA: ' . $e->getMessage()
+                'msg' => 'danger-Gagal upload nilai OSOCA: '.$e->getMessage(),
             ])->withInput();
         }
     }
@@ -478,7 +482,7 @@ class AllnilaiController extends Controller
                 DB::rollBack();
 
                 return back()->with([
-                    'msg' => 'danger-Format Excel PBL tidak sesuai. Header wajib: Nama, NPM, Rerata Nilai.'
+                    'msg' => 'danger-Format Excel PBL tidak sesuai. Header wajib: Nama, NPM, Rerata Nilai.',
                 ])->withInput();
             }
 
@@ -496,6 +500,7 @@ class AllnilaiController extends Controller
 
                 if ($npm === '') {
                     $skipped++;
+
                     continue;
                 }
 
@@ -507,23 +512,23 @@ class AllnilaiController extends Controller
 
                 if ($detail) {
                     $detail->update([
-                        'nama_mhs'       => $namaMhs,
-                        'nilai_akhir'    => $nilaiAkhir,
+                        'nama_mhs' => $namaMhs,
+                        'nilai_akhir' => $nilaiAkhir,
                         'lastupdated_by' => Auth::id(),
                     ]);
 
                     $updated++;
                 } else {
                     AlldetailNilai::create([
-                        'allnilai_id'    => $allnilai->id,
-                        'nama_mhs'       => $namaMhs,
-                        'npm'            => $npm,
-                        'pretest'        => null,
-                        'posttest'       => null,
-                        'laporan'        => null,
-                        'ujian_prax'     => null,
-                        'nilai_akhir'    => $nilaiAkhir,
-                        'input_by'       => Auth::id(),
+                        'allnilai_id' => $allnilai->id,
+                        'nama_mhs' => $namaMhs,
+                        'npm' => $npm,
+                        'pretest' => null,
+                        'posttest' => null,
+                        'laporan' => null,
+                        'ujian_prax' => null,
+                        'nilai_akhir' => $nilaiAkhir,
+                        'input_by' => Auth::id(),
                         'lastupdated_by' => Auth::id(),
                     ]);
 
@@ -534,18 +539,17 @@ class AllnilaiController extends Controller
             DB::commit();
 
             return back()->with([
-                'msg' => "success-Upload nilai PBL berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}."
+                'msg' => "success-Upload nilai PBL berhasil. Update: {$updated}, data baru: {$created}, dilewati: {$skipped}.",
             ]);
 
         } catch (\Throwable $e) {
             DB::rollBack();
 
             return back()->with([
-                'msg' => 'danger-Gagal upload nilai PBL: ' . $e->getMessage()
+                'msg' => 'danger-Gagal upload nilai PBL: '.$e->getMessage(),
             ])->withInput();
         }
     }
-
 
     private function nullIfEmpty($value)
     {
@@ -564,8 +568,4 @@ class AllnilaiController extends Controller
 
         return str_replace(',', '.', trim((string) $value));
     }
-
-
-
-
 }

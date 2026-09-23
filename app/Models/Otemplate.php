@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Otemplate extends Model
 {
-     protected $guarded = [];
+    protected $guarded = [];
 
-     public function rubrix()
-     {
-         return $this->hasMany(Orubrik::class, 'otemplate_id', 'id');
-     }    
-     
+    public function rubrix()
+    {
+        return $this->hasMany(Orubrik::class, 'otemplate_id', 'id');
+    }
 }

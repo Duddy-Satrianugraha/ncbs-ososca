@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataDiri;
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Option;
-use App\Models\DataDiri;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver as GdDriver;
+use Intervention\Image\ImageManager;
 
 class ProfileContoller extends Controller
 {
@@ -19,7 +19,8 @@ class ProfileContoller extends Controller
     public function index()
     {
         $sex = Option::where('type', 'sex')->get();
-       return view('profil.main', compact('sex'));
+
+        return view('profil.main', compact('sex'));
 
     }
 
@@ -33,25 +34,24 @@ class ProfileContoller extends Controller
 
         // Hapus foto lama jika ada
         if ($user->avatar) {
-            Storage::delete('public/' . $user->avatar);
+            Storage::delete('public/'.$user->avatar);
         }
 
         // Ambil file yang diupload
         $file = $request->file('avatar');
 
         // Resize gambar dengan lebar 150px, rasio tetap
-        $manager = new ImageManager(new GdDriver());
+        $manager = new ImageManager(new GdDriver);
         $image = $manager->read($file);
         $image->scaleDown(width: 200);
 
-        $filename = uniqid('avatar_') . '.' . $file->getClientOriginalExtension();
-        $path = 'avatar/' . $filename;
+        $filename = uniqid('avatar_').'.'.$file->getClientOriginalExtension();
+        $path = 'avatar/'.$filename;
 
         // Simpan gambar hasil resize ke storage/public/avatar
-        Storage::disk('public')->put( $path, (string) $image->toJpeg());
+        Storage::disk('public')->put($path, (string) $image->toJpeg());
 
         $user->update(['avatar' => $path]);
- 
 
         return back()->with('msg', 'success-Foto updated');
     }
@@ -91,10 +91,7 @@ class ProfileContoller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -107,10 +104,7 @@ class ProfileContoller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-
-    }
+    public function update(Request $request, string $id) {}
 
     /**
      * Remove the specified resource from storage.

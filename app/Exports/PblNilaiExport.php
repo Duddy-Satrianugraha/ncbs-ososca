@@ -6,17 +6,23 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class PblNilaiExport implements FromView, WithEvents
 {
     protected $pbl;
+
     protected $kegId;
+
     protected $skenarios;
+
     protected $pertemuans;
+
     protected $pesertas;
+
     protected $matrix;
+
     protected $rerata;
 
     public function __construct($pbl, $kegId, $skenarios, $pertemuans, $pesertas, $matrix, $rerata)
@@ -65,14 +71,14 @@ class PblNilaiExport implements FromView, WithEvents
                 $sheet->getStyle("A1:{$lastColumn}3")->getFill()->getStartColor()->setARGB('D9EAF7');
 
                 // merge title baris 1
-                $sheet->mergeCells("A1:D1");
+                $sheet->mergeCells('A1:D1');
                 $sheet->mergeCells("E1:{$lastColumn}1");
 
                 // merge rowspan header baris 2-3
-                $sheet->mergeCells("A2:A3");
-                $sheet->mergeCells("B2:B3");
-                $sheet->mergeCells("C2:C3");
-                $sheet->mergeCells("D2:D3");
+                $sheet->mergeCells('A2:A3');
+                $sheet->mergeCells('B2:B3');
+                $sheet->mergeCells('C2:C3');
+                $sheet->mergeCells('D2:D3');
                 $sheet->mergeCells("{$lastColumn}2:{$lastColumn}3");
 
                 // merge header skenario
@@ -105,7 +111,7 @@ class PblNilaiExport implements FromView, WithEvents
                 for ($row = 4; $row <= $lastRow; $row++) {
                     for ($col = 5; $col <= $jumlahKolom - 1; $col++) { // kolom nilai saja, tanpa rerata
                         $columnLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col);
-                        $cell = $columnLetter . $row;
+                        $cell = $columnLetter.$row;
                         $value = $sheet->getCell($cell)->getValue();
 
                         if ($value === 'TH') {

@@ -16,6 +16,7 @@ class Oujian extends Model
         'user_id',
         'remedial',
     ];
+
     public function stations()
     {
         return $this->hasMany(Ostation::class, 'oujian_id');
@@ -26,7 +27,8 @@ class Oujian extends Model
         return $this->hasMany(Osesi::class, 'oujian_id');
     }
 
-    public function peserta(){
+    public function peserta()
+    {
         return $this->hasMany(Opeserta::class);
     }
 }

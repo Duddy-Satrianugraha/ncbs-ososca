@@ -8,11 +8,13 @@ class Peserta extends Model
 {
     protected $guarded = [];
 
-    public function rotations(){
+    public function rotations()
+    {
         return $this->belongsTo(Rotation::class);
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

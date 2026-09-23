@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Middleware\Power;
 use App\Http\Middleware\TrustProxies;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\Power;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,8 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-       $middleware->append(Power::class);
-       $middleware->append(TrustProxies::class);
+        $middleware->append(Power::class);
+        $middleware->append(TrustProxies::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class Panitia
 {
@@ -16,9 +16,10 @@ class Panitia
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Gate::allows('Panitia')) {
+        if (! Gate::allows('Panitia')) {
             return redirect()->route('dashbord')->with('msg', 'danger-Unauthorized access');
         }
-         return $next($request);
+
+        return $next($request);
     }
 }

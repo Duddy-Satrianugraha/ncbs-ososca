@@ -32,7 +32,7 @@ return new class extends Migration
 
             // tutor = id dari opengujis
             $table->foreignId('tutor_id')
-            ->nullable()
+                ->nullable()
                 ->constrained('opengujis')
                 ->nullOnDelete();
 

@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class PblKegsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -15,12 +14,10 @@ class PblKegsTableSeeder extends Seeder
     public function run()
     {
 
-
         \DB::table('pbl_kegs')->delete();
 
-        \DB::table('pbl_kegs')->insert(array (
-            0 =>
-            array (
+        \DB::table('pbl_kegs')->insert([
+            0 => [
                 'id' => 1,
                 'name' => 'Blok 1.2',
                 'blok_name' => 'Human Body and Locomotor System',
@@ -28,13 +25,12 @@ class PblKegsTableSeeder extends Seeder
                 'tahun_akademik' => '2025/2026',
                 'jml_kelompok' => '18',
                 'user_id' => 14,
-                'sk_aktif' => NULL,
-                'pertemuan' => NULL,
+                'sk_aktif' => null,
+                'pertemuan' => null,
                 'created_at' => '2026-01-17 05:02:16',
                 'updated_at' => '2026-01-17 06:57:57',
-            ),
-        ));
-
+            ],
+        ]);
 
     }
 }

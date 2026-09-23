@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class TrmesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +13,8 @@ class TrmesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('trmes')->delete();
-        
-        
-        
+
     }
 }

@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\pbl;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Media;
 use App\Models\PblKeg;
+use App\Models\PblKelompok;
 use App\Models\PblMininote;
 use App\Models\PblNilai;
 use App\Models\PblPeserta;
-use App\Models\PblKelompok;
-use App\Models\Media;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Exception;
 
 class KegController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-         public function index(Request $request)
+    public function index(Request $request)
     {
         $search = $request->query('search');
 
@@ -44,7 +43,6 @@ class KegController extends Controller
 
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -63,31 +61,33 @@ class KegController extends Controller
             'tahun_akademik' => 'required|string|max:255',
             'jml_sk' => 'required|numeric',
         ]);
-        try{
+        try {
             DB::beginTransaction();
-        $blok = explode('|', $request->name);
+            $blok = explode('|', $request->name);
 
-        $keg = new PblKeg();
-        $keg->name = $blok[0];
-        $keg->blok_name = $blok[1];
-        $keg->tahun_akademik = $request->tahun_akademik;
-        $keg->jml_sk = $request->jml_sk;
-        $keg->user_id = Auth::user()->id;
-        $keg->save();
+            $keg = new PblKeg;
+            $keg->name = $blok[0];
+            $keg->blok_name = $blok[1];
+            $keg->tahun_akademik = $request->tahun_akademik;
+            $keg->jml_sk = $request->jml_sk;
+            $keg->user_id = Auth::user()->id;
+            $keg->save();
 
-        for($i=1;$i<=$request->jml_sk;$i++){
-            $mininote = new PblMininote();
-            $mininote->keg_id = $keg->id;
-            $mininote->user_id = Auth::user()->id;
-            $mininote->nomor_sk = $i;
-            $mininote->save();
-        }
-        DB::commit();
-        return redirect()->route('pbl.harian.index')->with('msg', 'success-Data berhasil disimpan');
-    } catch (Exception $e) {
-            DB::rollBack();
-            return redirect()->back()->with('msg', 'danger-Data gagal disimpan '.$e->getMessage());
+            for ($i = 1; $i <= $request->jml_sk; $i++) {
+                $mininote = new PblMininote;
+                $mininote->keg_id = $keg->id;
+                $mininote->user_id = Auth::user()->id;
+                $mininote->nomor_sk = $i;
+                $mininote->save();
             }
+            DB::commit();
+
+            return redirect()->route('pbl.harian.index')->with('msg', 'success-Data berhasil disimpan');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('msg', 'danger-Data gagal disimpan '.$e->getMessage());
+        }
 
     }
 
@@ -97,6 +97,7 @@ class KegController extends Controller
     public function show(string $id)
     {
         $keg = PblKeg::find($id);
+
         return view('pbl.keg.minilist', compact('keg'));
     }
 
@@ -106,6 +107,7 @@ class KegController extends Controller
     public function edit(string $id)
     {
         $keg = PblKeg::find($id);
+
         return view('pbl.keg.edut', compact('keg'));
     }
 
@@ -114,7 +116,7 @@ class KegController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       // dd($request->all());
+        // dd($request->all());
         $blok = explode('|', $request->name);
 
         $keg = PblKeg::find($id);
@@ -122,6 +124,7 @@ class KegController extends Controller
         $keg->blok_name = $blok[1];
         $keg->tahun_akademik = $request->tahun_akademik;
         $keg->save();
+
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil diupdate');
     }
 
@@ -156,27 +159,29 @@ class KegController extends Controller
             $media->delete();
         }
         $keg->delete();
+
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Pbl berhasil dihapus');
 
     }
 
-    Public function aktif($id){
+    public function aktif($id)
+    {
 
         $keg = PblKeg::find($id);
         $sk = PblMininote::where('keg_id', $keg->id)->where('status', 1)->get();
+
         return view('pbl.keg.aktif', compact('keg', 'sk'));
     }
 
-    public function aktivate(Request $request){
-        //dd($request->all());
+    public function aktivate(Request $request)
+    {
+        // dd($request->all());
         $keg = PblKeg::find($request->id);
         $keg->sk_aktif = $request->sk_aktif;
         $keg->pertemuan = $request->pertemuan;
         $keg->save();
+
         return redirect()->route('pbl.harian.index')->with('msg', 'success-Skenario berhasil diaktifkan');
 
     }
-
-
-
 }

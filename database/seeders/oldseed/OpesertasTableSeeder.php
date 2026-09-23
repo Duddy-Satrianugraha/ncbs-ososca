@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OpesertasTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OpesertasTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('opesertas')->delete();
-        
-        \DB::table('opesertas')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('opesertas')->insert([
+            0 => [
                 'id' => 1,
                 'oujian_id' => 3,
                 'name' => 'Tyara Carolina Zahra',
@@ -28,12 +25,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '705269674237',
                 'station' => 1,
                 'sesi' => 1,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            1 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            1 => [
                 'id' => 2,
                 'oujian_id' => 3,
                 'name' => 'zahra adelia',
@@ -41,12 +37,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '295083618228',
                 'station' => 1,
                 'sesi' => 2,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            2 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            2 => [
                 'id' => 3,
                 'oujian_id' => 3,
                 'name' => 'Elvina Amelia Putri',
@@ -54,12 +49,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '571920964541',
                 'station' => 1,
                 'sesi' => 3,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            3 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            3 => [
                 'id' => 4,
                 'oujian_id' => 3,
                 'name' => 'Noer Fathimah Azzahra ',
@@ -67,12 +61,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '754955767172',
                 'station' => 1,
                 'sesi' => 4,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            4 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            4 => [
                 'id' => 5,
                 'oujian_id' => 3,
                 'name' => 'Nazla Amalia Bilqis ',
@@ -80,12 +73,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '344366504739',
                 'station' => 1,
                 'sesi' => 5,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            5 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            5 => [
                 'id' => 6,
                 'oujian_id' => 3,
                 'name' => 'Khalisyah Khairy Rachmawati',
@@ -93,12 +85,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '595641367525',
                 'station' => 1,
                 'sesi' => 6,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            6 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            6 => [
                 'id' => 7,
                 'oujian_id' => 3,
                 'name' => 'Murni devi anggraini',
@@ -106,12 +97,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '153407779733',
                 'station' => 2,
                 'sesi' => 1,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            7 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            7 => [
                 'id' => 8,
                 'oujian_id' => 3,
                 'name' => 'Rahmah indah Syafaatin ',
@@ -119,12 +109,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '609426856233',
                 'station' => 2,
                 'sesi' => 2,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            8 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            8 => [
                 'id' => 9,
                 'oujian_id' => 3,
                 'name' => 'Intan nuraini',
@@ -132,12 +121,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '469056831214',
                 'station' => 2,
                 'sesi' => 3,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            9 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            9 => [
                 'id' => 10,
                 'oujian_id' => 3,
                 'name' => 'DEWANGGA ANWARUDIN',
@@ -145,12 +133,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '045055337000',
                 'station' => 2,
                 'sesi' => 4,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            10 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            10 => [
                 'id' => 11,
                 'oujian_id' => 3,
                 'name' => 'salwa syahrianti fajri ',
@@ -158,12 +145,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '326548829404',
                 'station' => 2,
                 'sesi' => 5,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            11 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            11 => [
                 'id' => 12,
                 'oujian_id' => 3,
                 'name' => 'Faridatu Shopia',
@@ -171,12 +157,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '358334846040',
                 'station' => 2,
                 'sesi' => 6,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            12 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            12 => [
                 'id' => 13,
                 'oujian_id' => 3,
                 'name' => 'Rachella Dianâ€™s Zheaneth',
@@ -184,12 +169,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '316108201589',
                 'station' => 3,
                 'sesi' => 1,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            13 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            13 => [
                 'id' => 14,
                 'oujian_id' => 3,
                 'name' => 'Dinar putri elvianti',
@@ -197,12 +181,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '498379153321',
                 'station' => 3,
                 'sesi' => 2,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            14 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            14 => [
                 'id' => 15,
                 'oujian_id' => 3,
                 'name' => 'Naila Lathifah',
@@ -210,12 +193,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '973747924576',
                 'station' => 3,
                 'sesi' => 3,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            15 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            15 => [
                 'id' => 16,
                 'oujian_id' => 3,
                 'name' => 'Fatma Adila Putri',
@@ -223,12 +205,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '255026866848',
                 'station' => 3,
                 'sesi' => 4,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            16 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            16 => [
                 'id' => 17,
                 'oujian_id' => 3,
                 'name' => 'Andini Yuanita Putri',
@@ -236,12 +217,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '423190604048',
                 'station' => 3,
                 'sesi' => 5,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            17 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            17 => [
                 'id' => 18,
                 'oujian_id' => 3,
                 'name' => 'Amelya Putri Nurfajria',
@@ -249,12 +229,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '867914446965',
                 'station' => 3,
                 'sesi' => 6,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            18 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            18 => [
                 'id' => 19,
                 'oujian_id' => 3,
                 'name' => 'Zalfa Zahira Fildzah ',
@@ -262,12 +241,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '834761632206',
                 'station' => 4,
                 'sesi' => 1,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            19 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            19 => [
                 'id' => 20,
                 'oujian_id' => 3,
                 'name' => 'Ila Rahadatul Saputri ',
@@ -275,12 +253,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '836559127636',
                 'station' => 4,
                 'sesi' => 2,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            20 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            20 => [
                 'id' => 21,
                 'oujian_id' => 3,
                 'name' => 'Nazwa Qurotun Nabilah ',
@@ -288,12 +265,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '815979219233',
                 'station' => 4,
                 'sesi' => 3,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            21 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            21 => [
                 'id' => 22,
                 'oujian_id' => 3,
                 'name' => 'Bilkis Agisni',
@@ -301,12 +277,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '733947564856',
                 'station' => 4,
                 'sesi' => 4,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            22 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            22 => [
                 'id' => 23,
                 'oujian_id' => 3,
                 'name' => 'Nasywa Nadia',
@@ -314,12 +289,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '853647394457',
                 'station' => 4,
                 'sesi' => 5,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            23 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            23 => [
                 'id' => 24,
                 'oujian_id' => 3,
                 'name' => 'Rafli kusuma Ramdhani',
@@ -327,12 +301,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '498503490137',
                 'station' => 4,
                 'sesi' => 6,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            24 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            24 => [
                 'id' => 25,
                 'oujian_id' => 3,
                 'name' => 'kaisa nur khoiriyah ',
@@ -340,12 +313,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '869030285948',
                 'station' => 5,
                 'sesi' => 1,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            25 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            25 => [
                 'id' => 26,
                 'oujian_id' => 3,
                 'name' => 'Anindha Revanzah ',
@@ -353,12 +325,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '638899073556',
                 'station' => 5,
                 'sesi' => 2,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            26 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            26 => [
                 'id' => 27,
                 'oujian_id' => 3,
                 'name' => 'Herlaili Candra Dewi',
@@ -366,12 +337,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '731074453760',
                 'station' => 5,
                 'sesi' => 3,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            27 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            27 => [
                 'id' => 28,
                 'oujian_id' => 3,
                 'name' => 'Aldini dwi putri',
@@ -379,12 +349,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '423576988877',
                 'station' => 5,
                 'sesi' => 4,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            28 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            28 => [
                 'id' => 29,
                 'oujian_id' => 3,
                 'name' => 'Faaiz maulana rachman nugraha ',
@@ -392,12 +361,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '725309183796',
                 'station' => 5,
                 'sesi' => 5,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            29 => 
-            array (
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            29 => [
                 'id' => 30,
                 'oujian_id' => 3,
                 'name' => 'Nadya Shafira Adinda Putri',
@@ -405,12 +373,11 @@ class OpesertasTableSeeder extends Seeder
                 'qrpeserta' => '025534113706',
                 'station' => 5,
                 'sesi' => 6,
-                'status'=> false,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-        ));
-        
-        
+                'status' => false,
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+        ]);
+
     }
 }

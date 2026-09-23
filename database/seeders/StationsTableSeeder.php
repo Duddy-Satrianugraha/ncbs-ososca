@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class StationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +13,8 @@ class StationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('stations')->delete();
-        
-        
-        
+
     }
 }

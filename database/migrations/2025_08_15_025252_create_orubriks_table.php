@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('aktif3')->default(0);
             $table->integer('bobot')->default(1);
             $table->timestamps();
-           
+
         });
     }
 

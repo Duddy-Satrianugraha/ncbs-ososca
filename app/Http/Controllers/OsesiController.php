@@ -10,10 +10,7 @@ class OsesiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
-    {
-        
-    }
+    public function index($id) {}
 
     /**
      * Show the form for creating a new resource.

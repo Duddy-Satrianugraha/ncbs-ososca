@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OnilaisTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OnilaisTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('onilais')->delete();
-        
-        \DB::table('onilais')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('onilais')->insert([
+            0 => [
                 'id' => 1,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -34,9 +31,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '83.33',
                 'created_at' => '2025-09-08 02:29:30',
                 'updated_at' => '2025-09-08 02:29:30',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -50,9 +46,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '50',
                 'created_at' => '2025-09-08 02:29:58',
                 'updated_at' => '2025-09-08 02:29:58',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -66,9 +61,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '50',
                 'created_at' => '2025-09-08 02:30:50',
                 'updated_at' => '2025-09-08 02:30:50',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -82,9 +76,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '66.67',
                 'created_at' => '2025-09-08 02:31:23',
                 'updated_at' => '2025-09-08 02:31:23',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -98,9 +91,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '66.67',
                 'created_at' => '2025-09-08 02:31:58',
                 'updated_at' => '2025-09-08 02:31:58',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'oujian_id' => 3,
                 'station_id' => 21,
@@ -114,9 +106,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '33.33',
                 'created_at' => '2025-09-08 02:32:31',
                 'updated_at' => '2025-09-08 02:32:31',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

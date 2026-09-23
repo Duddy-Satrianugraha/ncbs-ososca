@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('blok');
             $table->string('ta');
-             $table->string('jml_station')->nullable();
-             $table->string('jml_sesi');
-             $table->string('tgl_ujian');
-             $table->foreignId('user_id');
-             $table->boolean('remedial')->default(false);
+            $table->string('jml_station')->nullable();
+            $table->string('jml_sesi');
+            $table->string('tgl_ujian');
+            $table->foreignId('user_id');
+            $table->boolean('remedial')->default(false);
             $table->timestamps();
         });
     }

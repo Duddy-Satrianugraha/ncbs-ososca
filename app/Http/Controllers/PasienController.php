@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Role;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class PasienController extends Controller
 {
@@ -19,7 +19,7 @@ class PasienController extends Controller
         $user = User::whereHas('roles', function ($query) {
             $query->where('u_id', 6);
         })->paginate(5);
-        
+
         return view('admin.pasien.list', ['users' => $user]);
     }
 
@@ -28,7 +28,8 @@ class PasienController extends Controller
      */
     public function create()
     {
-        $roles = Role::where( 'u_id', 6 )->get();
+        $roles = Role::where('u_id', 6)->get();
+
         return view('admin.pasien.new', compact('roles'));
     }
 
@@ -65,15 +66,18 @@ class PasienController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
         $user->roles()->attach($validated['roles']);
+
         return redirect()->back()->with('msg', 'success-User created');
     }
 
     public function edit($id)
     {
         $pasien = User::find($id);
-        $roles = Role::where( 'u_id', 6 )->get();
+        $roles = Role::where('u_id', 6)->get();
+
         return view('admin.pasien.edit', compact('pasien', 'roles'));
     }
+
     /**
      * Update the specified resource in storage.
      */
@@ -92,27 +96,32 @@ class PasienController extends Controller
 
             'roles' => ['required', 'array'],
         ]);
-    try{
+        try {
             DB::beginTransaction();
             $user = User::find($id);
-        $user->roles()->sync($validated['roles']);
-        $user->update([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-        ]);
-        DB::commit();
-        return redirect()->back()->with('msg', 'success-User updated');
+            $user->roles()->sync($validated['roles']);
+            $user->update([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ]);
+            DB::commit();
+
+            return redirect()->back()->with('msg', 'success-User updated');
         } catch (Exception $e) {
             DB::rollBack();
+
             return redirect()->back()->with('msg', 'danger-User gagal diupdate '.$e->getMessage());
         }
     }
+
     public function destroy($id)
-    {   $user = User::find($id);
+    {
+        $user = User::find($id);
         if ($user->avatar) {
-            Storage::delete('public/' . $user->avatar);
+            Storage::delete('public/'.$user->avatar);
         }
         $user->delete();
+
         return redirect()->back()->with('msg', 'success-User deleted');
     }
 }

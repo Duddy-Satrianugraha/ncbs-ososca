@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class OnilaisTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class OnilaisTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('onilais')->delete();
-        
-        \DB::table('onilais')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('onilais')->insert([
+            0 => [
                 'id' => 12,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -34,9 +31,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '83.33',
                 'created_at' => '2025-12-02 06:10:32',
                 'updated_at' => '2025-12-02 06:10:32',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 13,
                 'oujian_id' => 5,
                 'station_id' => 35,
@@ -50,9 +46,8 @@ class OnilaisTableSeeder extends Seeder
                 'nilai' => '100',
                 'created_at' => '2025-12-02 06:10:59',
                 'updated_at' => '2025-12-02 06:10:59',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

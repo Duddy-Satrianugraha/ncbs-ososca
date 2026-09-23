@@ -33,13 +33,14 @@ class PblImportController extends Controller
         }
 
         // Temp extract selalu di disk local (bukan private), biar Storage::disk('local') konsisten
-        $tmpExtract = 'tmp/import_pbl_' . uniqid();
+        $tmpExtract = 'tmp/import_pbl_'.uniqid();
         Storage::disk('local')->makeDirectory($tmpExtract);
 
         // Extract zip (.pbl disamarkan)
-        $zip = new ZipArchive();
+        $zip = new ZipArchive;
         if ($zip->open($file->getRealPath()) !== true) {
             Storage::disk('local')->deleteDirectory($tmpExtract);
+
             return back()->withErrors('File .pbl tidak valid / tidak bisa dibuka sebagai zip.');
         }
 
@@ -47,15 +48,17 @@ class PblImportController extends Controller
         $zip->close();
 
         // Read data.json
-        $jsonLocal = $tmpExtract . '/data.json';
-        if (!Storage::disk('local')->exists($jsonLocal)) {
+        $jsonLocal = $tmpExtract.'/data.json';
+        if (! Storage::disk('local')->exists($jsonLocal)) {
             Storage::disk('local')->deleteDirectory($tmpExtract);
+
             return back()->withErrors('File tidak valid: data.json tidak ditemukan.');
         }
 
         $payload = json_decode(Storage::disk('local')->get($jsonLocal), true);
-        if (!is_array($payload)) {
+        if (! is_array($payload)) {
             Storage::disk('local')->deleteDirectory($tmpExtract);
+
             return back()->withErrors('data.json tidak valid (gagal parse).');
         }
 
@@ -78,15 +81,19 @@ class PblImportController extends Controller
 
             // 2) Upsert mininotes + rewrite token dalam HTML
             $inserted = 0;
-            $updated  = 0;
-            $skipped  = 0;
+            $updated = 0;
+            $skipped = 0;
 
             foreach ($details as $d) {
-                $nomorSk = (string)($d['nomor_sk'] ?? '');
-                if ($nomorSk === '') { $skipped++; continue; }
+                $nomorSk = (string) ($d['nomor_sk'] ?? '');
+                if ($nomorSk === '') {
+                    $skipped++;
+
+                    continue;
+                }
 
                 // Rewrite token pada field yang mengandung HTML
-                foreach (['skenario','step_1','step_2','sasbel','mindmap','mininotes'] as $field) {
+                foreach (['skenario', 'step_1', 'step_2', 'sasbel', 'mindmap', 'mininotes'] as $field) {
                     if (isset($d[$field]) && is_string($d[$field])) {
                         $d[$field] = $this->rewriteMediaTokens($d[$field], $tokenMap);
                     }
@@ -94,24 +101,24 @@ class PblImportController extends Controller
 
                 // user_id hanya diset saat create (biar update tidak mengubah pemilik)
                 $note = PblMininote::firstOrNew([
-                    'keg_id'   => $keg->id,
+                    'keg_id' => $keg->id,
                     'nomor_sk' => $nomorSk,
                 ]);
 
-                $isNew = !$note->exists;
+                $isNew = ! $note->exists;
                 if ($isNew) {
                     $note->user_id = auth()->id();
                 }
 
                 $note->fill([
-                    'judul_sk'  => $d['judul_sk'] ?? null,
-                    'skenario'  => $d['skenario'] ?? null,
-                    'step_1'    => $d['step_1'] ?? null,
-                    'step_2'    => $d['step_2'] ?? null,
-                    'sasbel'    => $d['sasbel'] ?? null,
-                    'mindmap'   => $d['mindmap'] ?? null,
+                    'judul_sk' => $d['judul_sk'] ?? null,
+                    'skenario' => $d['skenario'] ?? null,
+                    'step_1' => $d['step_1'] ?? null,
+                    'step_2' => $d['step_2'] ?? null,
+                    'sasbel' => $d['sasbel'] ?? null,
+                    'mindmap' => $d['mindmap'] ?? null,
                     'mininotes' => $d['mininotes'] ?? null,
-                    'dafpus'    => $d['dafpus'] ?? null,
+                    'dafpus' => $d['dafpus'] ?? null,
                     // 'status' => $d['status'] ?? $note->status, // opsional
                 ]);
 
@@ -124,8 +131,8 @@ class PblImportController extends Controller
             Storage::disk('local')->deleteDirectory($tmpExtract);
 
             // Ringkasan biar gampang ngecek
-            return redirect(route('pbl.harian.show', $keg->id))->with('msg', "success-".sprintf(
-                "Import OK. mininotes: inserted=%d updated=%d skipped=%d | media: created=%d skipped_not_found=%d skipped_no_map=%d",
+            return redirect(route('pbl.harian.show', $keg->id))->with('msg', 'success-'.sprintf(
+                'Import OK. mininotes: inserted=%d updated=%d skipped=%d | media: created=%d skipped_not_found=%d skipped_no_map=%d',
                 $inserted,
                 $updated,
                 $skipped,
@@ -136,7 +143,8 @@ class PblImportController extends Controller
         } catch (\Throwable $e) {
             DB::rollBack();
             Storage::disk('local')->deleteDirectory($tmpExtract);
-            return back()->withErrors('Import gagal: ' . $e->getMessage());
+
+            return back()->withErrors('Import gagal: '.$e->getMessage());
         }
     }
 
@@ -195,23 +203,31 @@ class PblImportController extends Controller
         ];
 
         // Jika mapping kosong, kita tidak bisa pindahkan file (tapi import mininotes tetap jalan)
-        if (empty($filesMediaToken) || !is_array($filesMediaToken)) {
+        if (empty($filesMediaToken) || ! is_array($filesMediaToken)) {
             // tetap return stats, jangan throw
             return [$map, $stats];
         }
 
         foreach ($mediaManifest as $m) {
             $oldToken = $m['token'] ?? null; // token lama dari paket
-            if (!$oldToken) { $stats['skipped_no_token']++; continue; }
+            if (! $oldToken) {
+                $stats['skipped_no_token']++;
+
+                continue;
+            }
 
             $relPath = $filesMediaToken[$oldToken] ?? null; // path file di zip
-            if (!$relPath) { $stats['skipped_no_relpath']++; continue; }
+            if (! $relPath) {
+                $stats['skipped_no_relpath']++;
 
-            $localFile = $tmpExtract . '/' . ltrim($relPath, '/');
+                continue;
+            }
+
+            $localFile = $tmpExtract.'/'.ltrim($relPath, '/');
 
             // Jika file tidak ketemu, kemungkinan zip punya root folder.
             // Kita coba fallback: cari file berdasarkan basename di seluruh tmpExtract.
-            if (!Storage::disk('local')->exists($localFile)) {
+            if (! Storage::disk('local')->exists($localFile)) {
                 $basename = basename($relPath);
                 $found = $this->findExtractedFileByBasename($tmpExtract, $basename);
 
@@ -219,6 +235,7 @@ class PblImportController extends Controller
                     $localFile = $found;
                 } else {
                     $stats['skipped_not_found']++;
+
                     continue;
                 }
             }
@@ -233,7 +250,7 @@ class PblImportController extends Controller
             Storage::disk($disk)->makeDirectory('media');
 
             // Simpan file ke disk private
-            $folderName = Str::slug($keg->name) . '_' . $keg->id;
+            $folderName = Str::slug($keg->name).'_'.$keg->id;
 
             $newPath = "media/{$folderName}/{$newToken}.{$ext}";
             Storage::disk($disk)->put($newPath, $contents);
@@ -243,15 +260,15 @@ class PblImportController extends Controller
 
             // Insert DB media
             Media::create([
-                'paket_id'      => $keg->id,
-                'tipe'          => 'pbl',
-                'order'         => is_numeric($orderNomorSk) ? (int)$orderNomorSk : 0,
-                'token'         => $newToken,
-                'disk'          => $disk,
-                'path'          => $newPath,
+                'paket_id' => $keg->id,
+                'tipe' => 'pbl',
+                'order' => is_numeric($orderNomorSk) ? (int) $orderNomorSk : 0,
+                'token' => $newToken,
+                'disk' => $disk,
+                'path' => $newPath,
                 'original_name' => $m['original_name'] ?? basename($abs),
-                'mime'          => $m['mime'] ?? (Storage::disk($disk)->mimeType($newPath) ?: 'application/octet-stream'),
-                'size'          => Storage::disk($disk)->size($newPath),
+                'mime' => $m['mime'] ?? (Storage::disk($disk)->mimeType($newPath) ?: 'application/octet-stream'),
+                'size' => Storage::disk($disk)->size($newPath),
             ]);
 
             $map[$oldToken] = $newToken;
@@ -274,6 +291,7 @@ class PblImportController extends Controller
                 return $p; // path relatif disk local
             }
         }
+
         return null;
     }
 
@@ -284,14 +302,16 @@ class PblImportController extends Controller
      */
     protected function rewriteMediaTokens(string $html, array $tokenMap): string
     {
-        if (empty($tokenMap)) return $html;
+        if (empty($tokenMap)) {
+            return $html;
+        }
 
         foreach ($tokenMap as $old => $new) {
             $html = str_replace("/media/{$old}", "/f/{$new}", $html);
 
             $html = preg_replace(
-                '#https?://[^"\s]+/media/' . preg_quote($old, '#') . '#',
-                '/f/' . $new,
+                '#https?://[^"\s]+/media/'.preg_quote($old, '#').'#',
+                '/f/'.$new,
                 $html
             );
         }
@@ -299,11 +319,11 @@ class PblImportController extends Controller
         return $html;
     }
 
-
     public function import(int $keg)
     {
-        //dd($keg);
-         $harian = PblKeg::find($keg);
+        // dd($keg);
+        $harian = PblKeg::find($keg);
+
         return view('pbl.keg.import', compact('harian'));
     }
 }

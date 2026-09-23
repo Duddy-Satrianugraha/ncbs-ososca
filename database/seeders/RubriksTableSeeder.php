@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class RubriksTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +13,8 @@ class RubriksTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('rubriks')->delete();
-        
-        
-        
+
     }
 }

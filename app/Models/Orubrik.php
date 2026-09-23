@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orubrik extends Model
 {
-     protected $guarded = [];
+    protected $guarded = [];
 }

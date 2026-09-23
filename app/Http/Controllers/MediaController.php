@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
-use App\Models\PblKeg;
 use App\Models\Otemplate;
+use App\Models\PblKeg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
 
 class MediaController extends Controller
 {
@@ -19,7 +18,7 @@ class MediaController extends Controller
     public function index()
     {
         $q = Media::query()
-            ->when(Auth::check(), fn($qq) => $qq->where('user_id', Auth::id()))
+            ->when(Auth::check(), fn ($qq) => $qq->where('user_id', Auth::id()))
             ->latest()
             ->paginate(24);
 
@@ -31,7 +30,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-       //
+        //
     }
 
     /**
@@ -39,22 +38,22 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:4096'],
             'paket_id' => 'required|integer',
             'order' => 'required|integer',
             'tipe' => 'required|string',
 
         ]);
-         if ($request->tipe == 'pbl') {
+        if ($request->tipe == 'pbl') {
             $paketSoal = PblKeg::findOrFail($request->paket_id);
             $title = $paketSoal->name;
         } else {
             $paketSoal = Otemplate::findOrFail($request->paket_id);
             $title = $paketSoal->nama_template;
         }
-         // sanitasi nama folder
-        $folderName = Str::slug($title) . '-' . $paketSoal->id;
+        // sanitasi nama folder
+        $folderName = Str::slug($title).'-'.$paketSoal->id;
 
         $path = $request->file('image')
             ->store("media/{$folderName}", 'private');
@@ -63,24 +62,22 @@ class MediaController extends Controller
         $file = $request->file('image');
 
         $media = Media::create([
-            'paket_id'       => $paketSoal->id,
-            'order'          => $request->order,
-            'tipe'           => $request->tipe,
-            'token'          => $token,
-            'disk'           => 'private',
-            'path'           => $path,
-            'original_name'  => $file->getClientOriginalName(),
-            'mime'           => $file->getMimeType(),
-            'size'           => $file->getSize(),
+            'paket_id' => $paketSoal->id,
+            'order' => $request->order,
+            'tipe' => $request->tipe,
+            'token' => $token,
+            'disk' => 'private',
+            'path' => $path,
+            'original_name' => $file->getClientOriginalName(),
+            'mime' => $file->getMimeType(),
+            'size' => $file->getSize(),
         ]);
-
 
         // penting: balikkan URL agar bisa di-insert ke text/editor
 
-
         return response()->json([
-            'id'  => $media->id,
-          'url' => '/f/'.$media->token,
+            'id' => $media->id,
+            'url' => '/f/'.$media->token,
         ]);
 
     }
@@ -114,7 +111,7 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-          if (Storage::disk($media->disk)->exists($media->path)) {
+        if (Storage::disk($media->disk)->exists($media->path)) {
             Storage::disk($media->disk)->delete($media->path);
         }
 
@@ -124,27 +121,27 @@ class MediaController extends Controller
     }
 
     public function showPrivate(string $token)
-{
-    // 1) validasi token (40 hex, mis: sha1)
-   if (!ctype_alnum($token) || strlen($token) !== 40) {
-    abort(404);
-}
+    {
+        // 1) validasi token (40 hex, mis: sha1)
+        if (! ctype_alnum($token) || strlen($token) !== 40) {
+            abort(404);
+        }
 
-    // 2) cari media by token
-    $media = Media::where('token', $token)->first();
-    if (!$media) {
-        abort(403);
-    }
+        // 2) cari media by token
+        $media = Media::where('token', $token)->first();
+        if (! $media) {
+            abort(403);
+        }
 
-    // 3) pastikan ini memang file private
-    if ($media->disk !== 'private') {
-        abort(403);
-    }
+        // 3) pastikan ini memang file private
+        if ($media->disk !== 'private') {
+            abort(403);
+        }
 
-    // 5) cek file ada (path diambil dari DB, bukan dari URL)
-    if (!Storage::disk('private')->exists($media->path)) {
-        abort(403);
-    }
+        // 5) cek file ada (path diambil dari DB, bukan dari URL)
+        if (! Storage::disk('private')->exists($media->path)) {
+            abort(403);
+        }
 
         abort_unless(Storage::disk($media->disk)->exists($media->path), 404);
 
@@ -153,9 +150,9 @@ class MediaController extends Controller
         return response()->stream(function () use ($stream) {
             fpassthru($stream);
         }, 200, [
-            'Content-Type'        => $media->mime,
+            'Content-Type' => $media->mime,
             'Content-Disposition' => 'inline; filename="'.$media->original_name.'"',
-            'Cache-Control'       => 'private, max-age=86400',
+            'Cache-Control' => 'private, max-age=86400',
         ]);
-}
+    }
 }
