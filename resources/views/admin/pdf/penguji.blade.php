@@ -64,7 +64,7 @@
                 @foreach($row as $penguji)
                     <td>
                         <img src="{{ public_path('img/logo_fkugj.jpg')}}" style="width: 300px";>
-                        <h2 class="title">Kartu Penguji OSOCA</h2>
+                        <h2 class="title">Kartu Tutor / Penguji </h2>
                         <div class="card">
                             <div class="left">
                                 <h2><strong> Nama : {{ $penguji->nama }} </strong></h2>

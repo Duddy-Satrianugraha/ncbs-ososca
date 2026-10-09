@@ -8,7 +8,7 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-    <li ><a href="{{ route('admin.penguji.index')}}">Daftar Penguji</a></li>
+    <li ><a href="{{ route('tutor.penguji.index')}}">Daftar Penguji</a></li>
         <li class="active">Edit Penguji</li>
 </ul>
 <!-- END BREADCRUMB -->
@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('admin.penguji.update', $penguji->id) }}" method="POST" >
+        <form class="form-horizontal" action="{{ route('tutor.penguji.update', $penguji->id) }}" method="POST" >
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>Penguji</strong>Edit</h3>
@@ -36,6 +36,7 @@
             </div>
             <div class="panel-body form-group-separated">
                     @csrf
+                    @method('PUT')
                 <div class="form-group">
                     <label class="col-md-3 col-xs-12 control-label">Nama</label>
                     <div class="col-md-6 col-xs-12">
@@ -57,7 +58,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="{{ route('admin.penguji.index')}}" class="btn btn-default">Return</a>
+                <a href="{{ route('tutor.penguji.index')}}" class="btn btn-default">Return</a>
                 <button type="submit"  class="btn btn-primary pull-right">Submit</button>
             </div>
         </div>

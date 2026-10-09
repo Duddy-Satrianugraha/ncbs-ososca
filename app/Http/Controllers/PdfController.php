@@ -9,6 +9,13 @@ use App\Models\Opeserta;
 use App\Models\Ostation;
 use App\Models\User;
 use App\Models\Oujian;
+use App\Models\PblKeg;
+use App\Models\PblKelompok;
+use App\Models\PblMininote;
+use App\Models\PblBa;
+use App\Models\PblNilai;
+use App\Models\Openguji;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +42,78 @@ class PdfController extends Controller
         return $pdf->stream('kartu_station_'.$ujian->name.'.pdf');
         //return view('admin.pdf.station', compact('stations'));
     }
+
+    public function kelompok($kid)
+    {
+        $keg = PblKeg::find($kid);
+        $kelompok = PblKelompok::where('keg_id', $kid)->get()->sortBy('nama_kelompok');
+        $stations = collect();
+
+        foreach ($kelompok as $data) {
+            $station = new \stdClass; // Atau bisa pakai array jika lebih nyaman
+            $station->pbl = $keg->name ?? null;
+            $station->kels = $data->nama_kelompok ?? null;
+            $station->slug = $data->qr_kelompok;
+            $stations->push($station);
+        }
+        //dd($stations);
+       $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.pbl_kelompok', compact('stations'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
+        //return view('admin.pdf.station', compact('stations'));
+    }
+
+    public function linlkelxx($kid)
+    {
+        $keg = PblKeg::find($kid);
+        $kelompok = PblKelompok::where('keg_id', $kid)->get()->sortBy('nama_kelompok');
+        $stations = collect();
+
+        foreach ($kelompok as $data) {
+            $station = new \stdClass; // Atau bisa pakai array jika lebih nyaman
+            $station->pbl = $keg->name ?? null;
+            $station->kels = $data->nama_kelompok ?? null;
+            $station->slug = $data->qr_kelompok;
+            $stations->push($station);
+        }
+        //dd($stations);
+       $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.pbl_linkkel', compact('stations'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
+        //return view('admin.pdf.station', compact('stations'));
+    }
+    public function linlkel($kid)
+        {
+            set_time_limit(180);
+
+            $keg = PblKeg::findOrFail($kid);
+
+            $kelompok = PblKelompok::where('keg_id', $kid)
+                ->orderBy('nama_kelompok')
+                ->get();
+
+            $stations = $kelompok->map(function ($data) use ($keg) {
+                return (object) [
+                    'pbl' => $keg->name,
+                    'kels' => $data->nama_kelompok,
+                    'slug' => $data->qr_kelompok,
+                    'qr_base64' => base64_encode(
+                        \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
+                            ->size(150)
+                            ->margin(1)
+                            ->generate(route('pbl.link', $data->qr_kelompok))
+                    ),
+                ];
+            });
+
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView(
+                'admin.pdf.pbl_linkkel',
+                compact('stations')
+            )->setPaper('A4', 'portrait');
+
+            return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
+        }
+
 
     public function stationX(Sesi $sesi)
     {
@@ -133,7 +212,7 @@ class PdfController extends Controller
             $peserta = new \stdClass; // Atau bisa pakai array jika lebih nyaman
             $peserta->ujian = $ujian->name ?? null;
             $peserta->sesi = $data->sesi ?? null;
-            $peserta->station = $data->station ?? null;
+            $peserta->station = $data->station_name ?? null;
             $peserta->name = $data->name;
             $peserta->npm = $data->npm;
             $peserta->qrpeserta = $data->qrpeserta;
@@ -145,5 +224,33 @@ class PdfController extends Controller
         return $pdf->stream('kartu_peserta_'.$ujian->name.'.pdf');
         //return view('admin.pdf.station', compact('stations'));
     }
+
+    public function skenario(string $id)
+    {
+        $skenario = PblMininote::find($id);
+        $keg = PblKeg::find($skenario->keg_id);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.skenario', compact('skenario', 'keg'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('skenario_'.$skenario->nomor_sk.'_Blok'.$keg->name.'.pdf');
+    }
+
+    public function pdfba(string $id){
+        $ba = PblBa::find($id);
+        $keg = PblKeg::find($ba->keg_id);
+        $tutor = Openguji::find($ba->tutor_id);
+        $nilai = PblNilai::where('keg_id', $ba->keg_id)->where('kelompok_id', $ba->kelompok_id)->where('skenario_id', $ba->sk_id)->where('pertemuan', $ba->pertemuan)->get();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.ba', compact('ba', 'keg', 'nilai','tutor'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('ba_'.$keg->name.'_sk'.$ba->sks->nomor_sk.'_'.$ba->pertemuan.'.pdf');
+    }
+
+    public function pdfOba(string $id){
+        $ba = Ostation::find($id);
+        $keg = Oujian::find($ba->oujian_id);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.pdf.oba', compact('ba', 'keg'))
+        ->setPaper('A4', 'portrait');
+        return $pdf->stream('ba_'.$keg->name.'_station'.$ba->name.'.pdf');
+    }
+
 
 }

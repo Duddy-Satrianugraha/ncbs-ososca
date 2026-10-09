@@ -42,7 +42,7 @@
 @endsection
 
 @section('links')
-<a href="{{ url('/feedback')}}">Feedback</a> |
+<a href="{{ route('pbl.login')}}">PBL</a> |
 <a href="{{ route('osoca.login')}}">OSOCA</a> |
 @endsection
 

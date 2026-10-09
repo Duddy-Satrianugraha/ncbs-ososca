@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-10 col-md-offset-1 card shadow-card"> 
+    <div class="col-md-10 col-md-offset-1 card shadow-card">
         @include('includes.osin_alert')
       <div class="row">
         <!-- Kiri: Info Station -->
@@ -21,7 +21,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                             
+
                               @foreach ($data['mhs'] as $datamhs)
                               <tr>
                                 <td>{{ $datamhs->sesi }}</td>
@@ -38,8 +38,8 @@
                                 </td>
                               </tr>
                               @endforeach
-                             
-                             
+
+
 
                             </tbody>
                         </table>
@@ -52,7 +52,7 @@
         <!-- Panel Tab -->
             <div class="col-sm-6">
               <div class="info-title">UJIAN OSOCA {{$data['ujian']->name}}</div>
-            
+
                 <p><span class="info-label2">Station: {{$data['station']->name}} </span> </p>
                 <p><span class="info-label2">Sesi: {{ session('current')}}</span> </p>
                 <p><span class="info-label2">Penguji:  {{$data['station']->nama_penguji}}</span> </p>
@@ -60,14 +60,14 @@
                  <!-- hidden station_slug -->
                  <form action="{{ route('osoca.mhs.chek')}}" method="post" class="form-horizontal" id="form-scan">
                 @csrf
-               <input type="hidden" name="sesi-qr" id="sesi-qr"  value=""> 
+               <input type="hidden" name="sesi-qr" id="sesi-qr"  value="">
                 <div class="card" style="width: 100%; max-width: 500px; height: 300px; margin: 0 auto; margin-bottom: 20px; padding: 4px;">
                     <video id="preview" style="width: 100%; height: 100%; object-fit: cover;"></video>
                 </div>
 
                 </form>
                   <br>
-            <a href="{{ route('osoca.logout')}}" class="btn btn-bahaya">KELUAR</a>
+            <a href="{{ route('osoca.ba')}}" class="btn btn-bahaya">KELUAR</a>
 
             </div>
 

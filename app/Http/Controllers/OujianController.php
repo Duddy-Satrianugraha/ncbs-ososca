@@ -33,6 +33,7 @@ class OujianController extends Controller
             ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
                 return $q->whereIn('user_id', $userIds);
             })
+            ->orderBy('id', 'desc')
             ->paginate(10);
 
         return view('admin.oujian.list', compact('ujian', 'search'));
@@ -56,30 +57,21 @@ class OujianController extends Controller
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian' => 'required|date',
-            'jml_station' => 'required|integer',
+            'blok' => 'required|string|max:255',
             'jml_sesi' => 'required|integer',
         ]);
         try{
             DB::beginTransaction();
         $oujian = Oujian:: create([
             'name' => $validated['name'],
+            'blok' => $validated['blok'],
             'ta' => $validated['tahun_akademik'],
             'tgl_ujian' => $validated['tgl_ujian'],
-            'jml_station' => $validated['jml_station'],
             'jml_sesi' => $validated['jml_sesi'],
             'user_id' => Auth::user()->id,
             'remedial' => $request->rmd ?? false,
         ]);
-         for ($x = 1; $x <= $validated['jml_station']; $x++) {
-                $oustation = Ostation::create([
-                    'oujian_id' => $oujian->id,
-                    'urutan' => $x,
-                    'name' => 'station '.$x,
-                    'qrstation' => numran(10).$oujian->id.$x,
-                    'nama_penguji' => null,
-                ]);
-                }
-        for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
+          for ($x = 1; $x <= $validated['jml_sesi']; $x++) {
             $osesi = Osesi::create([
                 'oujian_id' => $oujian->id,
                 'urutan' => $x,
@@ -155,7 +147,6 @@ class OujianController extends Controller
             'name'           => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'tgl_ujian'      => 'required|date',
-            'jml_station'    => 'required|integer',
             'jml_sesi'       => 'required|integer',
         ]);
         $oujian = Oujian::find($id);
@@ -167,42 +158,10 @@ class OujianController extends Controller
                 'name'        => $validated['name'],
                 'ta'          => $validated['tahun_akademik'],
                 'tgl_ujian'   => $validated['tgl_ujian'],
-                'jml_station' => $validated['jml_station'],
                 'jml_sesi'    => $validated['jml_sesi'],
                 'user_id'     => Auth::user()->id,
                 'remedial'    => $request->rmd ?? false,
             ]);
-
-            /**
-             * 2) Sinkron jumlah Ostation (station)
-             *    - Kurangi: hapus urutan paling akhir (urutan > target)
-             *    - Tambah : buat baru mulai dari urutan paling akhir
-             */
-            $targetStations = (int) $validated['jml_station'];
-
-            // hitung kondisi sekarang
-            $currentStationCount = Ostation::where('oujian_id', $oujian->id)->count();
-            $currentStationMax   = (int) (Ostation::where('oujian_id', $oujian->id)->max('urutan') ?? 0);
-
-            if ($currentStationCount > $targetStations) {
-                // hapus ekor: semua dengan urutan > target
-                Ostation::where('oujian_id', $oujian->id)
-                    ->where('urutan', '>', $targetStations)
-                    ->delete();
-            } elseif ($currentStationCount < $targetStations) {
-                // tambah dari urutan paling akhir
-                $toAdd = $targetStations - $currentStationCount;
-                for ($i = 1; $i <= $toAdd; $i++) {
-                    $urutanBaru = $currentStationMax + $i;
-                    Ostation::create([
-                        'oujian_id'  => $oujian->id,
-                        'urutan'     => $urutanBaru,
-                        'name'       => 'station ' . $urutanBaru,
-                        'qrstation'  => numran(10) . $oujian->id . $urutanBaru,
-                        'penguji_id' => null,
-                    ]);
-                }
-            }
 
             /**
              * 3) Sinkron jumlah Osesi (sesi)

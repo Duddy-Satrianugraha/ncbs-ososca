@@ -20,7 +20,7 @@ class NilaiController extends Controller
         $list = Oujian::query()
             ->when($search, function ($q, $s) {
                 return $q->where('name', 'like', "%{$s}%");
-            })
+            })->orderBy('id', 'desc')
             ->paginate(10);
 
         return view('admin.onilai.list', compact('list'));

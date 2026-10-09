@@ -8,14 +8,14 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-    <li ><a href="{{ route('admin.penguji.index')}}">Daftar Penguji</a></li>
-        <li class="active">Penguji Baru</li>
+    <li ><a href="{{ route('tutor.penguji.index')}}">Daftar Tutor/Penguji</a></li>
+        <li class="active">Tutor/Penguji Baru</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Penguji Baru</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Tutor /Penguji Baru</h2>
 </div>
 @endsection
 @section('content')
@@ -24,10 +24,10 @@
 <div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal" action="{{ route('admin.penguji.create') }}" method="POST" >
+        <form class="form-horizontal" action="{{ route('tutor.penguji.store') }}" method="POST" >
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><strong>Penguji</strong>Edit</h3>
+                <h3 class="panel-title"><strong>Tutor/Penguji</strong>Baru</h3>
                 <ul class="panel-controls">
                     <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                 </ul>
@@ -36,6 +36,14 @@
             </div>
             <div class="panel-body form-group-separated">
                     @csrf
+
+                <div class="form-group">
+                    <label class="col-md-3 col-xs-12 control-label">Untuk Tutor/ Penguji yang belum memiliki NIK</label>
+                    <div class="col-md-6 col-xs-12">
+                       Gunakan format: 99, (2 digit tahun lahir) (urutan 4 digit) contoh 99830001
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="col-md-3 col-xs-12 control-label">Nama</label>
                     <div class="col-md-6 col-xs-12">
@@ -57,7 +65,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="{{ route('admin.penguji.index')}}" class="btn btn-default">Return</a>
+                <a href="{{ route('tutor.penguji.index')}}" class="btn btn-default">Return</a>
                 <button type="submit"  class="btn btn-primary pull-right">Submit</button>
             </div>
         </div>

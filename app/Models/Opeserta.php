@@ -26,4 +26,13 @@ class Opeserta extends Model
     public function feedback(){
         return $this->hasOne(Ofeedback::class, 'peserta_id');
     }
+
+   
+
+    public function getStationNameAttribute()
+    {
+        return \App\Models\Ostation::where('oujian_id', $this->oujian_id)
+            ->where('urutan', $this->station)
+            ->value('name');
+    }
 }

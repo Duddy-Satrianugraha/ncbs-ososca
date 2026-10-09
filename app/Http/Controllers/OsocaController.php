@@ -95,6 +95,22 @@ class OsocaController extends Controller
         return view('osoca.sesi', compact('data'));
     }
 
+    public function beritaacara(){
+          $data = $this->data_osoca();
+        return view('osoca.ba', compact('data'));
+    }
+
+    public function ba_check(Request $request)
+    {   $request->validate([
+        'berita' => 'required',
+            ]);
+        $stat = Ostation::find($request->input('station_id'));
+        $stat->berita_acara = $request->input('berita');
+        $stat->save();
+        session()->flush();
+        return redirect(route('osoca.login'));
+    }
+
     public function mhs_check(Request $request)
     {   $request->validate([
         'sesi-qr' => 'required',

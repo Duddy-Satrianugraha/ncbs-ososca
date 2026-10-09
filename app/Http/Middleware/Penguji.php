@@ -17,7 +17,7 @@ class Penguji
     public function handle(Request $request, Closure $next): Response
     {
         if (!Gate::allows('penguji')) {
-            return response('Unauthorized', 403);
+             return redirect()->route('dashbord')->with('msg', 'danger-Unauthorized access');
         }
         return $next($request);
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Openguji;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class OpengujiController extends Controller
 {
@@ -12,28 +14,35 @@ class OpengujiController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->query('search');
+        $search   = $request->query('search');
+        $selected = $request->query('selected', []); // ID tercentang
 
-            $penguji = Openguji::query()
-        ->when($search, function ($q) use ($search) {
-            $s = trim($search);
+        $penguji = Openguji::query()
+            ->when($search, function ($q) use ($search) {
+                $s = trim($search);
+                $q->where(function ($qq) use ($s) {
+                    $qq->where('nama', 'like', "%{$s}%")
+                    ->orWhere('nik', 'like', "%{$s}%");
 
-            // Contoh: jika input numerik, ikutkan opsi exact match ke NPM
-            $q->where(function ($qq) use ($s) {
-                $qq->where('nama', 'like', "%{$s}%")
-                   ->orWhere('nik', 'like', "%{$s}%");
+                    if (ctype_digit($s)) {
+                        $qq->orWhere('nik', $s);
+                    }
+                });
+            })
+            ->when(!empty($selected), function ($q) use ($selected) {
+                // PENTING: paksa data tercentang tetap muncul
+                $q->orWhereIn('id', $selected);
+            })
+            ->orderBy('id')
+            ->paginate(40)
+            ->appends([
+                'search'   => $search,
+                'selected' => $selected,
+            ]);
 
-                if (ctype_digit($s)) {
-                    $qq->orWhere('nik', $s); // optional exact match
-                }
-            });
-        })
-        ->orderBy('id')
-        ->paginate(40)
-        ->appends(['search' => $search]);
-
-        return view('admin.openguji.list', compact('penguji'));
+        return view('admin.openguji.list', compact('penguji', 'selected'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,21 +55,27 @@ class OpengujiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'nik' => 'required|string|max:255',
+            'nik'  => 'required|string|max:255|unique:opengujis,nik',
         ]);
-        $qr = numran(15);
-        $penguji = Openguji::create([
-            'nama' => $request->nama,
-            'nik' => $request->nik,
+
+        do {
+            $qr = numran(15); // atau Str::random(15)
+        } while (Openguji::where('qr_penguji', $qr)->exists());
+
+        Openguji::create([
+            'nama'       => $request->nama,
+            'nik'        => $request->nik,
             'qr_penguji' => $qr,
         ]);
-        return redirect(route('admin.penguji.index'))->with('msg', 'success-Data berhasil disimpan');
-    }
 
+        return redirect()
+            ->route('tutor.penguji.index')
+            ->with('msg', 'success-Data berhasil disimpan');
+    }
     /**
      * Display the specified resource.
      */
@@ -82,18 +97,30 @@ class OpengujiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'nik' => 'required|string|max:255',
-        ]);
-        $penguji = Openguji::findOrFail($id);
-        $penguji->update([
-            'nama' => $request->nama,
-            'nik' => $request->nik,
-        ]);
-        return redirect()->back()->with('msg', 'success-Data berhasil disimpan');
-    }
+        {
+            $penguji = Openguji::findOrFail($id);
+
+            $request->validate([
+                'nama' => 'required|string|max:255',
+                'nik'  => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('opengujis', 'nik')->ignore($penguji->id),
+                ],
+            ], [
+                'nik.unique' => 'NIK penguji sudah terdaftar.',
+            ]);
+
+            $penguji->update([
+                'nama' => $request->nama,
+                'nik'  => $request->nik,
+            ]);
+
+            return redirect()
+                ->back()
+                ->with('msg', 'success-Data berhasil disimpan');
+        }
 
     public function print(Request $request)
         {
@@ -121,4 +148,8 @@ class OpengujiController extends Controller
 
             return back()->with('success', 'Penguji terpilih berhasil dihapus.');
         }
+
+    public function qrshow(Openguji $openguji){
+        return view('admin.openguji.qr', compact('openguji'));
+    }
 }
