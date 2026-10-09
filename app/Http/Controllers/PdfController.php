@@ -63,7 +63,7 @@ class PdfController extends Controller
         //return view('admin.pdf.station', compact('stations'));
     }
 
-    public function linlkel($kid)
+    public function linlkelxx($kid)
     {
         $keg = PblKeg::find($kid);
         $kelompok = PblKelompok::where('keg_id', $kid)->get()->sortBy('nama_kelompok');
@@ -82,6 +82,37 @@ class PdfController extends Controller
         return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
         //return view('admin.pdf.station', compact('stations'));
     }
+    public function linlkel($kid)
+        {
+            set_time_limit(180);
+
+            $keg = PblKeg::findOrFail($kid);
+
+            $kelompok = PblKelompok::where('keg_id', $kid)
+                ->orderBy('nama_kelompok')
+                ->get();
+
+            $stations = $kelompok->map(function ($data) use ($keg) {
+                return (object) [
+                    'pbl' => $keg->name,
+                    'kels' => $data->nama_kelompok,
+                    'slug' => $data->qr_kelompok,
+                    'qr_base64' => base64_encode(
+                        \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
+                            ->size(150)
+                            ->margin(1)
+                            ->generate(route('pbl.link', $data->qr_kelompok))
+                    ),
+                ];
+            });
+
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView(
+                'admin.pdf.pbl_linkkel',
+                compact('stations')
+            )->setPaper('A4', 'portrait');
+
+            return $pdf->stream('kartu_kelompok_'.$keg->name.'.pdf');
+        }
 
 
     public function stationX(Sesi $sesi)

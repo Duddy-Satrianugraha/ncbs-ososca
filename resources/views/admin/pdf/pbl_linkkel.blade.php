@@ -71,7 +71,12 @@
                             </div>
                             <div class="right">
                                 <div class="qrcode">
-                                    <img src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->size(150)->generate( route('pbl.link',$station->slug) )) }}" alt="QR Code">
+                                    <img
+                                        src="data:image/svg+xml;base64,{{ $station->qr_base64 }}"
+                                        width="150"
+                                        height="150"
+                                        alt="QR Code"
+                                    >
                                 </div>
                             </div>
                         </div>
