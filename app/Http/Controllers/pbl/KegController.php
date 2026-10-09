@@ -62,6 +62,7 @@ class KegController extends Controller
             'name' => 'required|string|max:255',
             'tahun_akademik' => 'required|string|max:255',
             'jml_sk' => 'required|numeric',
+            'type' => 'required|string|max:255',
         ]);
         try{
             DB::beginTransaction();
@@ -73,6 +74,7 @@ class KegController extends Controller
         $keg->tahun_akademik = $request->tahun_akademik;
         $keg->jml_sk = $request->jml_sk;
         $keg->user_id = Auth::user()->id;
+        $keg->type = $request->type;
         $keg->save();
 
         for($i=1;$i<=$request->jml_sk;$i++){

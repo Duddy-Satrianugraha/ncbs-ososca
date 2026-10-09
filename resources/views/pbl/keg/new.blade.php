@@ -89,7 +89,16 @@
                             <small class="text">Jumlah skenario yang akan dibuat</small>
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label class="col-md-2 col-xs-12 control-label">Jenis Skenario</label>
+                        <div class="col-md-8 col-xs-12">
+                            <select class="form-control" name="type">
+                                <option value="PBL">PBL</option>
+                                <option value="CR">CR</option>
+                                </select>
+                            <small class="text">Jenis Skenario yang akan dibuat</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
 

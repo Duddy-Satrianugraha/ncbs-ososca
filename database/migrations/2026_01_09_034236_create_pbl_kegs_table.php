@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('sk_aktif')->nullable();
             $table->string('pertemuan')->nullable();
+            $table->string('type')->default('PBL');
             $table->timestamps();
         });
     }

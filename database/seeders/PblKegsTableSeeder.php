@@ -30,6 +30,7 @@ class PblKegsTableSeeder extends Seeder
                 'user_id' => 14,
                 'sk_aktif' => NULL,
                 'pertemuan' => NULL,
+                'type' => 'PBL',
                 'created_at' => '2026-01-17 05:02:16',
                 'updated_at' => '2026-01-17 06:57:57',
             ),
