@@ -9,7 +9,7 @@
     /* ====== Print setup ====== */
     @page { size: A4; margin: 18mm 16mm; }
     body { font-family: Arial, Helvetica, sans-serif; color:#000; }
-    .page { max-width: 760px; margin: 0 auto; }
+    .page { max-width: 1200px; margin: 0 auto; }
 
     /* ====== Header ====== */
     .topbar{
@@ -83,7 +83,7 @@
       position:absolute;
       left:50%; top:50%;
       transform: translate(-50%,-50%) rotate(-90deg);
-      white-space: nowrap;
+      white-space: wrap;
       font-weight:700;
       font-size:11px;
     }
@@ -93,29 +93,30 @@
 
     /* ====== Scoring tables ====== */
     .score-wrap{
-      display:flex; gap: 26px;
-      margin-top: 18px;
-      align-items:flex-start;
+      width:100%;
+      margin-top:18px;
     }
     .score{
-      width: 50%;
+      width:100%;
+      table-layout:fixed;
       border:2px solid #444;
       font-size:11px;
     }
     .score th, .score td{
       border:1px solid #444;
-      padding:4px 6px;
+      padding:6px;
+      vertical-align:top;
+      overflow-wrap:anywhere;
+      line-height:1.4;
     }
     .score thead th{
       background:#c9c9c9;
       font-weight:800;
-    }
-    .score .subhead th{
-      background:#d9d9d9;
-      font-weight:800;
       text-align:center;
     }
-    .score .left{ width: 40%; text-align:left; }
+    .score .score-no{ width:4%; }
+    .score .score-criteria{ width:20%; }
+    .score .score-level{ width:19%; }
     .score .center{ text-align:center; }
 
     .scorex{
@@ -500,7 +501,7 @@
   <div class="page">
     <div class="title-wrap">
       <div class="title-line"></div>
-      <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM DISKUSI PBL {{ $data['kegiatan_pbl']->name }}</div>
+      <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM DISKUSI CR {{ $data['kegiatan_pbl']->name }}</div>
     </div>
 
     <div class="meta">
@@ -517,6 +518,7 @@
     </div>
 <form action="{{ route('kegiatan_pbl.nilai.input') }}" method="post">
   @csrf
+  <input type="hidden" name="type" value="{{ $data['kegiatan_pbl']->type }}">
     <div class="table-scroll">
         <table class="rubrik">
             <thead>
@@ -527,19 +529,19 @@
                 <th class="th-group" colspan="5">diagnosis</th>
                 <th class="th-group" colspan="2">penatalaksanaan</th>
                 <th class="w-total" rowspan="2">
-                    Total<br/><span style="font-weight:700;">(Maks:<br/>2)</span>
+                    Total<br/><span style="font-weight:700;">(Maks:<br/>28)</span>
                 </th>
                 </tr>
                 <tr>
                 <th class="w-mini rotate"><span>Hadir</span></th>
-                <th class="w-mini rotate"><span>Menyusun Diagnosis Banding dalam Diagram Venn</span></th>
-                <th class="w-mini rotate"><span>Menggali Data Gejala/Tanda/Pemeriksa an Fisik</span></th>
-                <th class="w-mini rotate"><span>Menentukan Diagnosis Kerja Berdasarkan Data</span></th>
-                <th class="w-mini rotate"><span>Mengusulkan Pemeriksaan Penunjang </span></th>
-                <th class="w-mini rotate"><span>Menetapkan Diagnosis Definitif</span></th>
+                <th class="w-mini rotate">Menyusun Diagnosis Banding dalam Diagram Venn</th>
+                <th class="w-mini rotate">Menggali Data Gejala/Tanda/Pemeriksaan Fisik</th>
+                <th class="w-mini rotate">Menentukan Diagnosis Kerja Berdasarkan Data</th>
+                <th class="w-mini rotate">Mengusulkan Pemeriksaan Penunjang </th>
+                <th class="w-mini rotate">Menetapkan Diagnosis Definitif</th>
 
-                <th class="w-mini rotate"><span>Menentukan Penatalaksanaan Kausatif</span></th>
-                <th class="w-mini rotate"><span>Menjelaskan Perjalanan Penyakit & Prognosis</span></th>
+                <th class="w-mini rotate">Menentukan Penatalaksanaan Kausatif</th>
+                <th class="w-mini rotate">Menjelaskan Perjalanan Penyakit & Prognosis</th>
                 </tr>
             </thead>
 
@@ -637,49 +639,41 @@
             </table>
 
         <div class="score-wrap">
-      <!-- Kiri -->
-      <table class="score">
-        <thead>
-          <tr><th></th><th colspan="3" class="center">Skor</th></tr>
-          <tr class="subhead">
-            <th></th><th class="center">0-5</th><th class="center">6-7</th><th class="center">8-10</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="left"><i>Sharing</i></td><td class="center">Minimal</td><td class="center">Kadang-kadang</td><td class="center">Selalu</td></tr>
-          <tr><td class="left">Argumentasi</td><td class="center">Kurang</td><td class="center">Cukup</td><td class="center">Baik</td></tr>
-          <tr><td class="left">Keaktifan</td><td class="center">Kurang</td><td class="center">Cukup</td><td class="center">Baik</td></tr>
-          <tr><td class="left">Komunikasi</td><td class="center">Kurang</td><td class="center">Cukup</td><td class="center">Baik</td></tr>
-          <tr><td class="left">Kolaborasi</td><td class="center">Kurang</td><td class="center">Cukup</td><td class="center">Baik</td></tr>
-        </tbody>
-      </table>
+          <table class="score">
+            <colgroup>
+              <col class="score-no">
+              <col class="score-criteria">
+              <col class="score-level">
+              <col class="score-level">
+              <col class="score-level">
+              <col class="score-level">
+            </colgroup>
+            <thead>
+              <tr><th></th><th colspan="5" class="center">Rubrik Penilaian  Critical Reasoning</th></tr>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Kriteria Penilaian </th>
+                <th scope="col">Skor 1</th>
+                <th scope="col">Skor 2</th>
+                <th scope="col">Skor 3</th>
+                <th scope="col">Skor 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($rubrikKolom as $rubrik)
+                <tr>
+                  <td class="center">{{ $loop->iteration }}</td>
+                  <td>{{ $rubrik['judul'] }}</td>
+                  @for($skor = 1; $skor <= 4; $skor++)
+                    <td>{{ $rubrik['kriteria'][$skor] }}</td>
+                  @endfor
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
 
-      <!-- Kanan -->
-      <table class="score">
-        <thead>
-          <tr><th></th><th colspan="3" class="center">Skor</th></tr>
-          <tr class="subhead">
-            <th></th><th class="center">-5</th><th class="center">-3</th><th class="center">0</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="left">Dominasi</td><td class="center">Ya</td><td class="center">Kadang-kadang</td><td class="center">Tidak</td></tr>
-          <tr><td class="left">Disiplin/Kehadiran</td><td class="center">Telat &gt; 15 menit</td><td class="center">Telat &lt; 15 menit</td><td class="center">Tepat waktu</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="defs">
-      <div class="head">Definisi Istilah :</div>
-      <table>
-        <tr><td class="term"><i>Sharing</i></td><td class="colon">:</td><td><i>sharing</i> opini/informasi yang berhubungan dengan topik diskusi kepada anggota kelompok</td></tr>
-        <tr><td class="term">Argumentasi</td><td class="colon">:</td><td>memberikan pengetahuan dan argumentasi logis berdasarkan literatur</td></tr>
-        <tr><td class="term">Keaktifan</td><td class="colon">:</td><td>keaktifan dalam diskusi tanpa intervensi tutor</td></tr>
-        <tr><td class="term">Dominasi</td><td class="colon">:</td><td>mendominasi forum dalam diskusi kelompok</td></tr>
-        <tr><td class="term">Komunikasi</td><td class="colon">:</td><td>mendengarkan, menjelaskan dan bertanya dengan menggunakan bahasa yang baik secara sistematis</td></tr>
-        <tr><td class="term">Kolaborasi</td><td class="colon">:</td><td>kemampuan untuk bekerja sama dengan yang lain dan mengatasi konflik dalam kelompok</td></tr>
-      </table>
-    </div>
+    
      <hr>
      <h5>Hal yang perlu dilaporkan selama tutorial berlangsung</h5>
      <textarea name="BA" id="BA" style="width:100%; height:200px;" placeholder="Mohon tulis disini"></textarea>

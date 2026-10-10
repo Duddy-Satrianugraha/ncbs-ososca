@@ -56,15 +56,22 @@ class PblController extends Controller
     public function mininotes(){
         $data = $this->data_pbl();
         $tutor = Openguji::find(session('Tutor'));
-       // dd($data);
+      //  dd($data['kegiatan_pbl']->type);    
         $peserta = PblPeserta::where('kelompok_id', session('pblKelompok'))->get();
-
+        if($data['kegiatan_pbl']->type == 'CR'){
+        return view('pbl.harian.mininotescr', compact('data', 'tutor', 'peserta'));
+        }
         return view('pbl.harian.mininotes', compact('data', 'tutor', 'peserta'));
     }
 
     public function nilaiinput(Request $request){
-        //dd($request->all());
+            $nilaiDominasiDisiplin = [0, -3, -5];
+            if ($request->input('type') === 'CR') {
+                $nilaiDominasiDisiplin = [1, 2, 3, 4];
+            }
+
             $validated = $request->validate([
+                'type' => ['nullable', Rule::in(['PBL', 'CR'])],
                 'nilai' => ['required', 'array'],
 
                 'nilai.*.blok'       => ['required', 'integer', 'exists:pbl_kegs,id'],
@@ -81,12 +88,14 @@ class PblController extends Controller
                 'nilai.*.kolaborasi'   => ['nullable', 'integer', 'between:0,10'],
                 'nilai.*.komunikasi'   => ['nullable', 'integer', 'between:0,10'],
 
-                'nilai.*.dominasi'   => ['nullable', Rule::in([0, -3, -5])],
-                'nilai.*.disiplin'   => ['nullable', Rule::in([0, -3, -5])],
+                'nilai.*.dominasi'   => ['nullable', 'integer', Rule::in($nilaiDominasiDisiplin)],
+                'nilai.*.disiplin'   => ['nullable', 'integer', Rule::in($nilaiDominasiDisiplin)],
                 'nilai.*.sopan'      => ['nullable', Rule::in([0, -3, -5])],
 
                 'BA' => ['required', 'string'],
             ]);
+
+            // dd($request->all());
             $adaPesertaHadir = false;
 
             foreach ($request->nilai as $pesertaId => $n) {
@@ -118,11 +127,12 @@ class PblController extends Controller
                     ];
 
                     foreach ($nilaiKhusus as $field) {
-                        if (!isset($n[$field]) || !in_array((int) $n[$field], [0, -3, -5], true)) {
+                        $nilaiDiizinkan = $field === 'sopan' ? [0, -3, -5] : $nilaiDominasiDisiplin;
+                        if (!isset($n[$field]) || !in_array((int) $n[$field], $nilaiDiizinkan, true)) {
                             return back()
                                 ->withInput()
                                 ->withErrors([
-                                    'nilai' => 'Nilai Dominasi, Disiplin, dan Sopan santun hanya boleh 0, -3, atau -5.',
+                                    'nilai' => 'Nilai ' . ucfirst($field) . ' hanya boleh ' . implode(', ', $nilaiDiizinkan) . '.',
                                 ]);
                         }
                     }
@@ -232,6 +242,9 @@ class PblController extends Controller
         $keg = PblKeg::find($ba->keg_id);
         $tutor = Openguji::find($ba->tutor_id);
         $nilai = PblNilai::where('keg_id', $ba->keg_id)->where('kelompok_id', $ba->kelompok_id)->where('skenario_id', $ba->sk_id)->where('pertemuan', $ba->pertemuan)->get();
+        if($keg->type == 'CR'){
+        return view('pbl.ba.finishcr', compact('ba', 'keg', 'nilai', 'tutor'));
+        }
         return view('pbl.ba.finish', compact('ba', 'keg', 'nilai', 'tutor'));
     }
 
