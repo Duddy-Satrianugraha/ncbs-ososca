@@ -64,7 +64,7 @@
                 @foreach($row as $station)
                     <td>
                         <img src="{{ public_path('img/logo_fkugj.jpg')}}" style="width: 300px";>
-                        <h2 class="title">Kartu Kelompok PBL {{ $station->pbl }} </h2>
+                        <h2 class="title">Kartu Kelompok {{ $station->type }} {{ $station->pbl }} </h2>
                         <div class="card">
                             <div class="left">
                                 <h2><strong> Kelompok : {{ $station->kels }} </strong></h2>

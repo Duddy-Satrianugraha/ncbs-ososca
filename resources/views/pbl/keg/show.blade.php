@@ -9,14 +9,14 @@
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
     <li ><a href="{{ route('pbl.harian.index')}}">Daftar PBL Harian</a></li>
-    <li ><a href="{{ route('pbl.harian.show', $mininotes->keg_id)}}">PBL {{ $mininotes->keg->name }}</a></li>
+    <li ><a href="{{ route('pbl.harian.show', $mininotes->keg_id)}}">{{ $mininotes->keg->type }} {{ $mininotes->keg->name }}</a></li>
         <li class="active">Skenario {{ $mininotes->nomor_sk }}</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Mininotes   Skenario {{ $mininotes->nomor_sk}} PbL {{ $mininotes->keg->name }}</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Mininotes   Skenario {{ $mininotes->nomor_sk}} {{ $mininotes->keg->type }} {{ $mininotes->keg->name }}</h2>
 </div>
 @endsection
 @section('content')

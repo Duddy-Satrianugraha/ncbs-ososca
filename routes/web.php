@@ -93,7 +93,7 @@ Route::prefix('admin')->middleware(['auth', Panitia::class ])->name('admin.')->g
     Route::get('/kartu/peserta/{uid}', [PdfController::class, 'listpeserta'])->name('pdf.peserta');
     Route::get('/kartu/station/{uid}', [PdfController::class, 'station'])->name('pdf.station');
     Route::get('/kartu/kelompok/{kid}', [PdfController::class, 'kelompok'])->name('pdf.kelompok');
-    Route::get('/kartu/linkkel/{kid}', [PdfController::class, 'linlkel'])->name('pdf.linkkel');
+    Route::get('/kartu/linkkel/{kid}', [PdfController::class, 'linlkel'])->name('pdf.linkkel'); // ce>
     Route::get('/kartu/skenario/{id}', [PdfController::class, 'skenario'])->name('pdf.skenario');
     Route::resource('/nilai', NilaiController::class);
     Route::get('/export/nilai/{uid}', [NilaiController::class, 'export'])->name('export.nilai');

@@ -78,7 +78,7 @@
                                                         @can('materi')
                                                         <a class="badge badge-danger"> {{ $data->jml_kelompok ?? 0}} kelompok</a>
                                                         @if($data->jml_kelompok > 0)
-                                                        <a href="{{ route("admin.pdf.linkkel", $data->id)}}" class="badge badge-info" target="_blank"> cetak QR Kelompok PBL</a>
+                                                        <a href="{{ route("admin.pdf.linkkel", $data->id)}}" class="badge badge-info" target="_blank"> cetak QR Kelompok {{ $data->type}} </a>
                                                         @endif
                                                         @endcan
                                                     </td>

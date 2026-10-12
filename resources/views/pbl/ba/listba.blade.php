@@ -8,13 +8,13 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-        <li class="active">Berita Acara PBL</li>
+        <li class="active">Berita Acara {{ $keg->type }}</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span>  Berita Acara  PBL Harian {{ $keg->name }}</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span>  Berita Acara  {{ $keg->type }} Harian {{ $keg->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -27,7 +27,7 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List Berita Acara PBL</h3>
+                                    <h3 class="panel-title">List Berita Acara {{ $keg->type }}</h3>
 
 
                                     <ul class="panel-controls">
@@ -47,12 +47,14 @@
                                                         <th colspan="2" class="text-center">Skenario {{ $sk }}</th>
                                                     @endfor
                                                 </tr>
+                                                @if($keg->type == 'pbl')
                                                 <tr>
                                                     @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
                                                         <th class="text-center">Pertemuan 1</th>
                                                         <th class="text-center">Pertemuan 2</th>
                                                     @endfor
                                                 </tr>
+                                                @endif
                                             </thead>
                                             <tbody>
                                                 @forelse ($grouped as $item)
@@ -61,7 +63,8 @@
                                                         <td> kel {{ $item['nama_kelompok'] }}</td>
 
                                                         @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
-                                                            @for ($p = 1; $p <= 2; $p++)
+                                                        @php if($keg->type == 'PBL'){ $px = 1; } else { $px = 2; } @endphp
+                                                            @for ($p = 1; $p <= $px; $p++)
                                                                 <td class="text-center">
                                                                     @if(isset($item['data'][$sk][$p]))
                                                                        @php

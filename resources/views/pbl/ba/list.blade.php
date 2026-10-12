@@ -66,14 +66,14 @@
                                                 @foreach ($keg as $data)
                                                 <tr id="trow_{{$i}}">
                                                     <td class="text-center">{{$i}}</td>
-                                                    <td>{{$data->name}} ({{$data->tahun_akademik}})</td>
+                                                    <td>{{ $data->type }} {{$data->name}} ({{$data->tahun_akademik}})</td>
                                                     <td>
 
                                                     </td>
 
 
                                                     <td>{{$data->created_at}}</td>
-                                                   
+
                                                     <td>
 
 

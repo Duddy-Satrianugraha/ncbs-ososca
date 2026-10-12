@@ -15,7 +15,7 @@
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"> PBL</span> {{ $keg->name }} </h2>
+    <h2><span class="fa fa-arrow-circle-o-left"> {{ $keg->type }}</span> {{ $keg->name }} </h2>
 </div>
 @endsection
 @section('content')
@@ -56,9 +56,16 @@
                         <label class="col-md-2 col-xs-12 control-label">Pertemuan </label>
                         <div class="col-md-8 col-xs-12">
                             <select class="form-control" name="pertemuan">
+                                 @if($keg->type == 'PBL')
                                 <option value =0 >Non Aktif</option>
                                 <option value="1" @if($keg->pertemuan == 1) selected @endif>Pertemuan 1</option>
+
                                 <option value="2" @if($keg->pertemuan == 2) selected @endif>Pertemuan 2</option>
+                                @else
+                                <option value="1" @if($keg->pertemuan == 1) selected @endif>Pertemuan 1</option>
+                                @endif
+
+
                             </select>
                             <small class="text">pilih pertemuan yang akan diaktifkan</small>
                         </div>

@@ -9,13 +9,13 @@
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
     <li ><a href="{{ route('pbl.harian.index')}}">Daftar PBL Harian</a></li>
-        <li class="active"> PBL {{ $keg->name }} </li>
+        <li class="active"> {{ $keg->type }} {{ $keg->name }} </li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar @can('meu')Mininotes @endcan @can('materi') Skenario @endcan PBL {{ $keg->name }}</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar @can('meu')Mininotes @endcan @can('materi') Skenario @endcan {{ $keg->type }} {{ $keg->name }}</h2>
 </div>
 @endsection
 @section('content')
@@ -28,7 +28,7 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">List @can('meu')Mininotes @endcan @can('materi') Skenario @endcan PBL</h3>
+                                    <h3 class="panel-title">List @can('meu')Mininotes @endcan @can('materi') Skenario @endcan {{ $keg->type }}</h3>
                                     <ul class="panel-controls">
 
 

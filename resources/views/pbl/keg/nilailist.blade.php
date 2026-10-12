@@ -21,13 +21,17 @@
 @endsection
 @section('page-title')
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Nilai Harian PBL Blok {{ $pbl->name }}</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> Daftar Nilai Harian {{$pbl->type }} Blok {{ $pbl->name }}</h2>
 </div>
 @endsection
 @section('content')
 
   @php
+    if($pbl->type == 'CR'){
+      $pertemuans = [1]; // FIXED: setiap skenario pasti 2 pertemuan
+    } else {
     $pertemuans = [1, 2]; // FIXED: setiap skenario pasti 2 pertemuan
+    }
     $colSpanNilai = ($skenarios->count() * 2) + 1; // 2 pertemuan per skenario + kolom rerata
   @endphp
 <!-- START WIDGETS -->
@@ -53,7 +57,7 @@
           <tr>
             <th colspan="4"></th>
             <th colspan="{{ ($skenarios->count() * count($pertemuans)) + 1 }}" class="text-center">
-              Nilai Harian PBL
+              Nilai Harian {{$pbl->type }}
             </th>
           </tr>
 
@@ -69,9 +73,9 @@
                 Skenario {{ $loop->iteration }}
               </th>
             @endforeach
-            
+
             <th rowspan="2" class="text-center" style="width:110px;">@can('koc') Rerata Nilai @endcan</th>
-            
+
           </tr>
 
           {{-- Header pertemuan --}}
@@ -115,9 +119,9 @@
                   </td>
                 @endforeach
               @endforeach
-              
+
               <td class="text-center">
-               
+
                 @if(isset($rerata[$p->id]) && $rerata[$p->id] !== null)
                   @can("koc") {{ number_format($rerata[$p->id], 2, ',', '.') }} @endcan
                 @else
@@ -125,7 +129,7 @@
                 @endif
 
               </td>
-             
+
             </tr>
           @empty
             <tr>

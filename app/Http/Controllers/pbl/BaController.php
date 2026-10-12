@@ -28,7 +28,7 @@ class BaController extends Controller
             })
             ->when($userIds->isNotEmpty(), function ($q) use ($userIds) {
                 return $q->whereIn('user_id', $userIds);
-            })
+            })->orderBy('id', 'desc')
             ->paginate(5);
 
         return view('pbl.ba.list', compact('keg', 'search'));

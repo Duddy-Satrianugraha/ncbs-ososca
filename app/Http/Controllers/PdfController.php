@@ -95,6 +95,7 @@ class PdfController extends Controller
             $stations = $kelompok->map(function ($data) use ($keg) {
                 return (object) [
                     'pbl' => $keg->name,
+                    'type' => $keg->type,
                     'kels' => $data->nama_kelompok,
                     'slug' => $data->qr_kelompok,
                     'qr_base64' => base64_encode(
