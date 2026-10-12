@@ -14,8 +14,8 @@
    <!-- START BREADCRUMB -->
    <ul class="breadcrumb">
     <li ><a href="{{ route('dashbord')}}">Dashboard</a></li>
-    <li ><a href="{{ route('pbl.list.nilai')}}">Daftar PBL Harian</a></li>
-        <li class="active">Nilai PBL {{ $pbl->name }}</li>
+    <li ><a href="{{ route('pbl.list.nilai')}}">Daftar {{$pbl->type }} Harian</a></li>
+        <li class="active">Nilai {{$pbl->type }} {{ $pbl->name }}</li>
 </ul>
 <!-- END BREADCRUMB -->
 @endsection

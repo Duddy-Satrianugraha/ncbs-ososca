@@ -1,3 +1,6 @@
+@php
+    $isCr = strtoupper((string) $keg->type) === 'CR';
+@endphp
 <!doctype html>
 <html lang="id">
 <head>
@@ -65,14 +68,18 @@
     .th-group{ padding:6px 4px; font-size:11px; }
 
     /* Vertical header (DomPDF biasanya OK) */
-    .rotate{ height:110px; position: relative; }
-    .rotate > span{
-      position:absolute;
-      left:50%; top:50%;
-      transform: translate(-50%,-50%) rotate(-90deg);
-      white-space: nowrap;
-      font-weight:700;
-      font-size:11px;
+    .rotate{ height:110px; width: 45px; position: relative; }
+    .rotate > span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100px;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        white-space: normal;
+        overflow-wrap: break-word;
+        text-align: center;
+        font-weight: 700;
+        font-size: 11px;
     }
 
     .rubrik tbody td{ height:20px; }
@@ -133,14 +140,14 @@
       <img src="{{ public_path('img/kopfkbaru.png') }}" alt="Kop FK UGJ">
     </div>
 
-    <div class="title">BERITA ACARA KEGIATAN TUTORIAL/PBL</div>
+    <div class="title">BERITA ACARA KEGIATAN  @if($isCr) CLINICAL REASONING @else DISKUSI TUTORIAL/PBL @endif</div>
 
     <div class="para">
       Pada hari ini {{ tgl_indox($ba->updated_at,false,'ho') }}
       tanggal {{ tgl_indox($ba->updated_at,false,'txo') }}
       bulan {{ tgl_indox($ba->updated_at,false,'bo') }}
       tahun {{ tgl_indox($ba->updated_at,false,'to') }}
-      telah dilaksanakan Tutorial/PBL semester
+      telah dilaksanakan  @if($isCr) Clinical Reasoning @else Tutorial/PBL @endif semester
       Tahun Akademik {{ $keg->tahun_akademik }}
     </div>
 
@@ -176,7 +183,7 @@
     </table>
 
     <div class="para" style="margin-top:12px;">
-      Perihal yang perlu dilaporkan selama tutorial berlangsung :
+      Perihal yang perlu dilaporkan selama @if($isCr) clinical reasoning @else tutorial @endif berlangsung :
     </div>
 
     <div class="ba-box">
@@ -209,7 +216,7 @@
       <img src="{{ public_path('img/kopfkbaru.png') }}" alt="Kop FK UGJ">
     </div>
 
-    <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM DISKUSI PBL</div>
+    <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM @if($isCr) CLINICAL REASONING @else DISKUSI PBL @endif </div>
 
     <table class="meta-table" style="margin-bottom:10px;">
       <tr>
@@ -229,7 +236,7 @@
         </td>
       </tr>
     </table>
-
+    @if($keg->type == 'PBL')
     <table class="rubrik">
          <colgroup>
             <col style="width:40px">        <!-- No -->
@@ -281,7 +288,37 @@
         @endforeach
       </tbody>
     </table>
+    @else
+    <table class="rubrik">
+          <thead>
+            <tr>
+              <th class="w-no" rowspan="2">No.</th>
+              <th class="w-nama" rowspan="2">Nama Mahasiswa</th>
+                <th class="th-group" colspan="5">diagnosis</th>
+                <th class="th-group" colspan="2">penatalaksanaan</th>
+              <th class="w-total" rowspan="2">Total<br><span style="font-weight:500;">(Maks:<br>28)</span></th>
+            </tr>
+            <tr>
+              <th class="w-mini rotate"><span style="font-size: 9px"> Menyusun Diagnosis Banding dalam Diagram Venn </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Menggali Data Gejala / Tanda / Pemeriksaan Fisik </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Menentukan Diagnosis Kerja Berdasarkan Data </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Mengusulkan Pemeriksaan Penunjang  </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Menetapkan Diagnosis Definitif </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Menentukan Penatalaksanaan Kausatif </span></th>
+                <th class="w-mini rotate"><span style="font-size: 9px"> Menjelaskan Perjalanan Penyakit & Prognosis </span></th>
 
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 12 baris sesuai PDF -->
+            @foreach ( $nilai as $data)
+            <tr><td class="no">{{ $loop->iteration }}</td><td class="nama">{{ $data->peserta->name }}</td> <td>{{$data->sharing}}</td><td>{{$data->argumentasi}}</td><td>{{$data->keaktifan}}</td><td>{{$data->dominasi}}</td><td>{{$data->kolaborasi}}</td><td>{{ $data->disiplin }}</td><td>{{ $data->komunikasi }}</td><td>{{ $data->total }}</td></tr>
+
+            @endforeach
+
+        </table>
+    @endif
+     @if($keg->type == 'PBL')
     <table width="100%" cellspacing="0" cellpadding="0" style="margin-top:14px;">
   <tr>
     <td width="50%" valign="top" style="padding-right:6px;">
@@ -329,7 +366,7 @@
         <tr><td class="term">Sopan santun</td><td class="colon">:</td><td>menunjukan perilaku saling menghormati satu sama lain</td></tr>
       </table>
     </div>
-
+@endif
     <div class="rubrik-footer">
       <div class="box">
         Cirebon, {{ tgl_indox($ba->updated_at) }}<br><br>

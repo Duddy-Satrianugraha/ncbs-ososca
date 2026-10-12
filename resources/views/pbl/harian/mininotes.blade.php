@@ -9,7 +9,7 @@
     /* ====== Print setup ====== */
     @page { size: A4; margin: 18mm 16mm; }
     body { font-family: Arial, Helvetica, sans-serif; color:#000; }
-    .page { max-width: 760px; margin: 0 auto; }
+    .page { max-width: 1200px; margin: 0 auto; }
 
     /* ====== Header ====== */
     .topbar{
@@ -260,6 +260,39 @@
     .rubrik{
     min-width: 1000px; /* paksa tabel lebih lebar dari layar */
     }
+    .rubrik-modal{
+      box-sizing: border-box;
+      width: min(1100px, calc(100vw - 24px));
+      max-width: calc(100vw - 24px);
+      max-height: 85vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border: 0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .rubrik-modal::backdrop{ background: rgba(0, 0, 0, .5); }
+    .rubrik-modal h2{ margin-top: 0; font-size: 18px; }
+    .rubrik-modal th, .rubrik-modal td{ border: 1px solid #444; padding: 6px; }
+    .rubrik-modal th{ background: #eee; }
+    .rubrik-modal .table-scroll{ max-width: 100%; overscroll-behavior-x: contain; }
+    .rubrik-modal .score{ width: 100%; min-width: 850px; table-layout: fixed; font-size: 11px; }
+    .rubrik-modal .score tr > th:first-child{ width: 115px; position: sticky; left: 0; z-index: 1; background: #eee; }
+    .rubrik-modal .score-perilaku{ min-width: 480px; }
+    .rubrik-modal .scroll-hint{ font-size: 12px; color: #555; }
+    .rubrik .nilai-field{ box-sizing: border-box; width: 100%; min-width: 0; }
+    @media (max-width: 1024px){
+      .rubrik-modal{ padding: 12px; }
+      .rubrik-modal h2{ font-size: 16px; }
+    }
+    .rubrik-modal .score-choice{ display: block; width: 100%; min-height: 48px; padding: 6px; overflow-wrap: anywhere; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+    .rubrik-modal td.score-option{ padding: 0; }
+    .rubrik-modal td.score-option.selected{ background: #2563eb; color: #fff; }
+    .rubrik-modal .score-choice:focus-visible{ outline: 3px solid #60a5fa; outline-offset: -3px; }
+    #rubrik-modal-error{ color: #c62828; }
+    .rubrik-modal .modal-actions{ margin-top: 16px; text-align: right; }
+    .score-input.nilai-field{ cursor: pointer; }
+    @media print{ .rubrik-modal{ display: none; } }
   </style>
 
 </head>
@@ -483,6 +516,7 @@
                     {{-- Sharing --}}
                     <td>
                     <input type="number" class="score-input nilai-field"
+                            data-rubrik="sharing"
                             name="nilai[{{ $datas->id }}][sharing]"
                             min="0" max="10">
                     </td>
@@ -490,6 +524,7 @@
                     {{-- Argumentasi --}}
                     <td>
                     <input type="number" class="score-input nilai-field"
+                            data-rubrik="argumentasi"
                             name="nilai[{{ $datas->id }}][argumentasi]"
                             min="0" max="10">
                     </td>
@@ -497,6 +532,7 @@
                     {{-- Keaktifan --}}
                     <td>
                     <input type="number" class="score-input nilai-field"
+                            data-rubrik="keaktifan"
                             name="nilai[{{ $datas->id }}][keaktifan]"
                             min="0" max="10">
                     </td>
@@ -504,6 +540,7 @@
                     {{-- Dominasi --}}
                     <td>
                     <input type="number" class="score-input nilai-field nilai-restrict"
+                            data-rubrik="dominasi"
                             name="nilai[{{ $datas->id }}][dominasi]"
                             min="-5" max="0">
                     </td>
@@ -511,6 +548,7 @@
                     {{-- Kolaborasi --}}
                     <td>
                     <input type="number" class="score-input nilai-field"
+                            data-rubrik="kolaborasi"
                             name="nilai[{{ $datas->id }}][kolaborasi]"
                             min="0" max="10">
                     </td>
@@ -518,6 +556,7 @@
                     {{-- Disiplin --}}
                     <td>
                     <input type="number" class="score-input nilai-field nilai-restrict"
+                            data-rubrik="disiplin"
                             name="nilai[{{ $datas->id }}][disiplin]"
                             min="-5" max="0">
                     </td>
@@ -525,6 +564,7 @@
                     {{-- Komunikasi --}}
                     <td>
                     <input type="number" class="score-input nilai-field"
+                            data-rubrik="komunikasi"
                             name="nilai[{{ $datas->id }}][komunikasi]"
                             min="0" max="10">
                     </td>
@@ -532,6 +572,7 @@
                     {{-- Sopan santun --}}
                     <td>
                     <input type="number" class="score-input nilai-field nilai-restrict"
+                            data-rubrik="sopan"
                             name="nilai[{{ $datas->id }}][sopan]"
                             min="-5" max="0">
                     </td>
@@ -678,9 +719,151 @@
     </div>
   </div>
 
+<dialog id="rubrik-modal" class="rubrik-modal" aria-labelledby="rubrik-modal-title">
+  <h2 id="rubrik-modal-title">Rubrik Penilaian Diskusi PBL</h2>
+  <p id="rubrik-modal-student"></p>
+  <p>Pilih satu angka skor untuk setiap kriteria, lalu klik Simpan Skor.</p>
+  <p class="scroll-hint">Geser tabel ke kiri atau kanan untuk melihat semua skor.</p>
+  <div class="table-scroll">
+    <table class="score">
+      <thead><tr><th scope="col">Kriteria Penilaian</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th></tr></thead>
+      <tbody id="rubrik-modal-body"></tbody>
+    </table>
+  </div>
+  <div class="table-scroll" style="margin-top: 16px;">
+    <table class="score score-perilaku">
+      <thead><tr><th scope="col">Kriteria Perilaku</th><th scope="col">-5</th><th scope="col">-3</th><th scope="col">0</th></tr></thead>
+      <tbody id="rubrik-modal-perilaku"></tbody>
+    </table>
+  </div>
+  <p id="rubrik-modal-error" role="alert" hidden>Pilih skor untuk semua kriteria sebelum menyimpan.</p>
+  <div class="modal-actions">
+    <button type="button" id="rubrik-modal-close" class="btn btn-danger">Batal</button>
+    <button type="button" id="rubrik-modal-save" class="btn btn-info">Simpan Skor</button>
+  </div>
+</dialog>
+
 <script>
 (function () {
   const allowedRestrictedValues = [0, -3, -5];
+  function positiveRubrik(judul, descriptions) {
+    return {
+      judul,
+      kriteria: Object.fromEntries(Array.from({ length: 11 }, (_, score) => [
+        String(score), descriptions[score <= 5 ? 0 : score <= 7 ? 1 : 2]
+      ]))
+    };
+  }
+  const rubrikKolom = {
+    sharing: positiveRubrik('Sharing', ['Minimal', 'Kadang-kadang', 'Selalu']),
+    argumentasi: positiveRubrik('Argumentasi', ['Kurang', 'Cukup', 'Baik']),
+    keaktifan: positiveRubrik('Keaktifan', ['Kurang', 'Cukup', 'Baik']),
+    kolaborasi: positiveRubrik('Kolaborasi', ['Kurang', 'Cukup', 'Baik']),
+    komunikasi: positiveRubrik('Komunikasi', ['Kurang', 'Cukup', 'Baik']),
+    dominasi: { judul: 'Dominasi', restricted: true, kriteria: { '-5': 'Ya', '-3': 'Kadang-kadang', '0': 'Tidak' } },
+    disiplin: { judul: 'Disiplin/Kehadiran', restricted: true, kriteria: { '-5': 'Telat > 15 menit', '-3': 'Telat < 15 menit', '0': 'Tepat waktu' } },
+    sopan: { judul: 'Sopan santun', restricted: true, kriteria: { '-5': 'Tidak ada', '-3': 'Kadang-kadang', '0': 'Selalu baik' } }
+  };
+  const modal = document.getElementById('rubrik-modal');
+  let activeRow = null;
+  let returnFocus = null;
+  let draftScores = {};
+
+  document.querySelectorAll('.score-input.nilai-field').forEach(input => {
+    input.readOnly = true;
+    input.setAttribute('aria-haspopup', 'dialog');
+    input.setAttribute('aria-controls', 'rubrik-modal');
+  });
+  document.querySelectorAll('.hadir-check').forEach(input => {
+    input.setAttribute('aria-haspopup', 'dialog');
+    input.setAttribute('aria-controls', 'rubrik-modal');
+  });
+
+  function openRubrik(row, trigger) {
+    if (!row.querySelector('.hadir-check').checked || modal.open) return;
+    activeRow = row;
+    returnFocus = trigger;
+    draftScores = {};
+    document.getElementById('rubrik-modal-title').textContent = 'Rubrik Penilaian Diskusi PBL';
+    document.getElementById('rubrik-modal-student').textContent = row.querySelector('.nama').textContent.trim();
+    document.getElementById('rubrik-modal-error').hidden = true;
+    const tbody = document.getElementById('rubrik-modal-body');
+    tbody.replaceChildren();
+    const perilakuBody = document.getElementById('rubrik-modal-perilaku');
+    perilakuBody.replaceChildren();
+    Object.entries(rubrikKolom).forEach(([key, rubrik]) => {
+      const input = row.querySelector('[data-rubrik="' + key + '"]');
+      draftScores[key] = input.value;
+      const criteriaRow = document.createElement('tr');
+      const title = document.createElement('th');
+      title.scope = 'row';
+      title.textContent = rubrik.judul;
+      criteriaRow.appendChild(title);
+      const scores = rubrik.restricted ? ['-5', '-3', '0'] : Object.keys(rubrik.kriteria);
+      scores.forEach(score => {
+        const description = rubrik.kriteria[score];
+        const cell = document.createElement('td');
+        cell.className = 'score-option';
+        cell.classList.toggle('selected', score === input.value);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'score-choice';
+        button.textContent = score + ' — ' + description;
+        button.setAttribute('aria-label', rubrik.judul + ', skor ' + score + ': ' + description);
+        button.setAttribute('aria-pressed', String(score === input.value));
+        button.addEventListener('click', function () {
+          draftScores[key] = score;
+          criteriaRow.querySelectorAll('.score-option').forEach(option => {
+            const selected = option === cell;
+            option.classList.toggle('selected', selected);
+            option.querySelector('button').setAttribute('aria-pressed', String(selected));
+          });
+          document.getElementById('rubrik-modal-error').hidden = true;
+        });
+        cell.appendChild(button);
+        criteriaRow.appendChild(cell);
+      });
+      (rubrik.restricted ? perilakuBody : tbody).appendChild(criteriaRow);
+    });
+    modal.showModal();
+  }
+
+  document.addEventListener('click', function (event) {
+    if (event.target.matches('.score-input.nilai-field') && !event.target.disabled) {
+      openRubrik(event.target.closest('tr'), event.target);
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.target.matches('.score-input.nilai-field') && !event.target.disabled &&
+        (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      openRubrik(event.target.closest('tr'), event.target);
+    }
+  });
+
+  document.getElementById('rubrik-modal-save').addEventListener('click', function () {
+    if (!activeRow || !activeRow.querySelector('.hadir-check').checked) return;
+    if (Object.keys(rubrikKolom).some(key => !Object.hasOwn(rubrikKolom[key].kriteria, draftScores[key]))) {
+      document.getElementById('rubrik-modal-error').hidden = false;
+      return;
+    }
+    activeRow.querySelectorAll('.nilai-field').forEach(input => {
+      input.value = draftScores[input.dataset.rubrik];
+    });
+    updateRow(activeRow);
+    modal.close();
+  });
+
+  document.getElementById('rubrik-modal-close').addEventListener('click', () => modal.close());
+  modal.addEventListener('close', function () {
+    if (returnFocus) returnFocus.focus();
+    activeRow = null;
+    returnFocus = null;
+    draftScores = {};
+  });
+
+
 
   function toInt(val) {
     const n = parseInt(val, 10);
@@ -815,7 +998,7 @@ function validatePositiveInput(input) {
   }
 
   const v = toInt(input.value);
-  const ok = v !== null && v >= 1 && v <= 10;
+  const ok = v !== null && v >= 0 && v <= 10;
 
   markInvalid(input, !ok);
   return ok;
@@ -882,7 +1065,10 @@ function validatePositiveInput(input) {
     // toggle hadir
     if (e.target.classList.contains('hadir-check')) {
       const row = e.target.closest('tr');
-      if (row) updateRow(row);
+      if (row) {
+        updateRow(row);
+        if (e.target.checked) openRubrik(row, e.target);
+      }
       return;
     }
 
@@ -911,7 +1097,7 @@ function validatePositiveInput(input) {
     })
   // init semua baris saat load
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('tbody tr').forEach(row => updateRow(row));
+    document.querySelectorAll('.rubrik tbody tr[data-peserta-id]').forEach(row => updateRow(row));
     updateSubmitButton();
     updateLogoutButton();
   });

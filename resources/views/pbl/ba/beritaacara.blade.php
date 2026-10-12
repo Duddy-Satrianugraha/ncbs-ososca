@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Form PBL - FK UGJ</title>
+  <title>Berita Acara {{ $keg->type }} - FKUGJ </title>
 
   <style>
     @page { size: A4; margin: 18mm 16mm; }
     body { font-family: Arial, Helvetica, sans-serif; color:#000; margin:0; }
-    .page { max-width: 760px; margin: 0 auto; }
+    .page { max-width: 1000px; margin: 0 auto; }
     .sheet { page-break-after: always; }
     .sheet:last-child { page-break-after: auto; }
 
@@ -172,14 +172,16 @@
         <img src="{{ asset('img/kopfkbaru.png') }}" alt="Kop FK UGJ">
         </div>
 
-
+        @if($keg->type == 'CR')
+        <div class="title">BERITA ACARA KEGIATAN CRITICA REASONING/CR</div>
+        @else
       <div class="title">BERITA ACARA KEGIATAN TUTORIAL/PBL</div>
-
+        @endif
       <div class="para">
         Pada hari ini {{ tgl_indox($ba->created_at,false,'ho') }}
         tanggal {{ tgl_indox($ba->created_at,false,'txo') }}
         bulan {{ tgl_indox($ba->created_at,false,'bo') }}
-        tahun {{ tgl_indox($ba->created_at,false,'to') }} telah dilaksanakan Tutorial/PBL semester
+        tahun {{ tgl_indox($ba->created_at,false,'to') }} telah dilaksanakan @if($keg->type == 'CR') Clinical Reasoning @else Tutorial/PBL @endif semester
         Tahun Akademik {{ $keg->tahun_akademik }}
       </div>
 
@@ -209,7 +211,7 @@
       </div>
 
       <div class="para" style="margin-top:12px;">
-        Perihal yang perlu dilaporkan selama tutorial berlangsung :
+        Perihal yang perlu dilaporkan selama @if($keg->type == 'CR') clinical reasoning @else tutorial @endif berlangsung :
       </div>
 
       <div class="dots-area">
@@ -240,7 +242,7 @@
         <img src="{{ asset('img/kopfkbaru.png') }}" alt="Kop FK UGJ">
         </div>
 
-      <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM DISKUSI PBL</div>
+      <div class="title">RUBRIK PENILAIAN MAHASISWA DALAM @if($keg->type == 'CR') CLINICAL REASONING @else DISKUSI PBL @endif</div>
 
       <div class="meta">
         <div class="col">
@@ -256,6 +258,7 @@
       </div>
 
       <div class="table-scroll">
+         @if($keg->type == 'PBL')
         <table class="rubrik">
           <thead>
             <tr>
@@ -284,8 +287,39 @@
             @endforeach
 
         </table>
-      </div>
+        @else
+         <table class="rubrik">
+          <thead>
+            <tr>
+              <th class="w-no" rowspan="2">No.</th>
+              <th class="w-nama" rowspan="2">Nama Mahasiswa</th>
+                <th class="th-group" colspan="5">diagnosis</th>
+                <th class="th-group" colspan="2">penatalaksanaan</th>
+              <th class="w-total" rowspan="2">Total<br><span style="font-weight:700;">(Maks:<br>28)</span></th>
+            </tr>
+            <tr>
+              <th class="w-mini rotate">Menyusun Diagnosis Banding dalam Diagram Venn</th>
+                <th class="w-mini rotate">Menggali Data Gejala / Tanda / Pemeriksaan Fisik</th>
+                <th class="w-mini rotate">Menentukan Diagnosis Kerja Berdasarkan Data</th>
+                <th class="w-mini rotate">Mengusulkan Pemeriksaan Penunjang </th>
+                <th class="w-mini rotate">Menetapkan Diagnosis Definitif</th>
 
+                <th class="w-mini rotate">Menentukan Penatalaksanaan Kausatif</th>
+                <th class="w-mini rotate">Menjelaskan Perjalanan Penyakit & Prognosis</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 12 baris sesuai PDF -->
+            @foreach ( $nilai as $data)
+            <tr><td class="no">{{ $loop->iteration }}</td><td class="nama">{{ $data->peserta->name }}</td> <td>{{$data->sharing}}</td><td>{{$data->argumentasi}}</td><td>{{$data->keaktifan}}</td><td>{{$data->dominasi}}</td><td>{{$data->kolaborasi}}</td><td>{{ $data->disiplin }}</td><td>{{ $data->komunikasi }}</td><td>{{ $data->total }}</td></tr>
+
+            @endforeach
+
+        </table>
+        @endif
+      </div>
+      @if($keg->type == 'PBL')
       <div class="score-wrap">
         <table class="score">
           <thead>
@@ -326,7 +360,7 @@
           <tr><td class="term">Sopan santun</td><td class="colon">:</td><td>menunjukan perilaku saling menghormati satu sama lain</td></tr>
         </table>
       </div>
-
+@endif
       <div class="rubrik-footer">
         <div style="min-width:260px;">
           Cirebon, {{ tgl_indox($ba->created_at) }}

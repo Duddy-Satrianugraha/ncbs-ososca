@@ -80,7 +80,9 @@ class PblNilaiExport implements FromView, WithEvents
                 foreach ($this->skenarios as $s) {
                     $start = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($colIndex);
                     $end = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($colIndex + count($this->pertemuans) - 1);
-                    $sheet->mergeCells("{$start}2:{$end}2");
+                    if (count($this->pertemuans) > 1) {
+                        $sheet->mergeCells("{$start}2:{$end}2");
+                    }
                     $colIndex += count($this->pertemuans);
                 }
 

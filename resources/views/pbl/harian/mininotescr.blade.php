@@ -262,7 +262,7 @@
     min-width: 1000px; /* paksa tabel lebih lebar dari layar */
     }
     .rubrik-modal{
-      width: min(560px, calc(100% - 40px));
+      width: min(1200px, calc(100% - 40px));
       max-height: 80vh;
       overflow: auto;
       border: 0;
@@ -273,7 +273,12 @@
     .rubrik-modal h2{ margin-top: 0; font-size: 18px; }
     .rubrik-modal th, .rubrik-modal td{ border: 1px solid #444; padding: 10px; }
     .rubrik-modal th{ background: #eee; }
-    .rubrik-modal label{ display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .rubrik-modal .score{ min-width: 900px; }
+    .rubrik-modal .score-choice{ display: block; width: 100%; min-height: 100px; padding: 10px; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+    .rubrik-modal td.score-option{ padding: 0; }
+    .rubrik-modal td.score-option.selected{ background: #2563eb; color: #fff; }
+    .rubrik-modal .score-choice:focus-visible{ outline: 3px solid #60a5fa; outline-offset: -3px; }
+    #rubrik-modal-error{ color: #c62828; }
     .rubrik-modal .modal-actions{ margin-top: 16px; text-align: right; }
     .score-input.nilai-field{ cursor: pointer; }
     @media print{ .rubrik-modal{ display: none; } }
@@ -761,18 +766,28 @@
 
 <dialog id="rubrik-modal" class="rubrik-modal" aria-labelledby="rubrik-modal-title">
   <h2 id="rubrik-modal-title">Rubrik Penilaian</h2>
-  <table>
-    <thead><tr><th scope="col">Skor</th><th scope="col">Kriteria</th></tr></thead>
-    <tbody id="rubrik-modal-body"></tbody>
-  </table>
-  <div class="modal-actions"><button type="button" id="rubrik-modal-close" class="btn btn-info">Tutup</button></div>
+  <p id="rubrik-modal-student"></p>
+  <p>Pilih satu skor untuk setiap kriteria, lalu klik Simpan Skor.</p>
+  <div class="table-scroll">
+    <table class="score">
+      <thead><tr><th scope="col">Kriteria Penilaian</th><th scope="col">Skor 1</th><th scope="col">Skor 2</th><th scope="col">Skor 3</th><th scope="col">Skor 4</th></tr></thead>
+      <tbody id="rubrik-modal-body"></tbody>
+    </table>
+  </div>
+  <p id="rubrik-modal-error" role="alert" hidden>Pilih skor untuk semua kriteria sebelum menyimpan.</p>
+  <div class="modal-actions">
+    <button type="button" id="rubrik-modal-close" class="btn btn-danger">Batal</button>
+    <button type="button" id="rubrik-modal-save" class="btn btn-info">Simpan Skor</button>
+  </div>
 </dialog>
 
 <script>
 (function () {
   const rubrikKolom = @json($rubrikKolom);
   const modal = document.getElementById('rubrik-modal');
-  let activeScoreInput = null;
+  let activeRow = null;
+  let returnFocus = null;
+  let draftScores = {};
 
   document.querySelectorAll('.score-input.nilai-field').forEach(input => {
     input.min = '1';
@@ -782,60 +797,89 @@
     input.setAttribute('aria-haspopup', 'dialog');
     input.setAttribute('aria-controls', 'rubrik-modal');
   });
+  document.querySelectorAll('.hadir-check').forEach(input => {
+    input.setAttribute('aria-haspopup', 'dialog');
+    input.setAttribute('aria-controls', 'rubrik-modal');
+  });
 
-  function openRubrik(input) {
-    if (input.disabled || modal.open) return;
-    const rubrik = rubrikKolom[input.dataset.rubrik];
-    if (!rubrik) return;
-    activeScoreInput = input;
-    document.getElementById('rubrik-modal-title').textContent = rubrik.judul;
+  function openRubrik(row, trigger) {
+    if (!row.querySelector('.hadir-check').checked || modal.open) return;
+    activeRow = row;
+    returnFocus = trigger;
+    draftScores = {};
+    document.getElementById('rubrik-modal-title').textContent = 'Rubrik Penilaian Critical Reasoning';
+    document.getElementById('rubrik-modal-student').textContent = row.querySelector('.nama').textContent.trim();
+    document.getElementById('rubrik-modal-error').hidden = true;
     const tbody = document.getElementById('rubrik-modal-body');
     tbody.replaceChildren();
-    Object.entries(rubrik.kriteria).forEach(([score, kriteria]) => {
-      const row = document.createElement('tr');
-      const scoreCell = document.createElement('td');
-      const label = document.createElement('label');
-      const radio = document.createElement('input');
-      radio.type = 'radio';
-      radio.name = 'rubrik-score';
-      radio.value = score;
-      radio.checked = score === input.value;
-      label.append(radio, document.createTextNode(score));
-      scoreCell.appendChild(label);
-      const criteriaCell = document.createElement('td');
-      criteriaCell.textContent = kriteria;
-      row.append(scoreCell, criteriaCell);
-      tbody.appendChild(row);
+    Object.entries(rubrikKolom).forEach(([key, rubrik]) => {
+      const input = row.querySelector('[data-rubrik="' + key + '"]');
+      draftScores[key] = input.value;
+      const criteriaRow = document.createElement('tr');
+      const title = document.createElement('th');
+      title.scope = 'row';
+      title.textContent = rubrik.judul;
+      criteriaRow.appendChild(title);
+      Object.entries(rubrik.kriteria).forEach(([score, description]) => {
+        const cell = document.createElement('td');
+        cell.className = 'score-option';
+        cell.classList.toggle('selected', score === input.value);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'score-choice';
+        button.textContent = description;
+        button.setAttribute('aria-label', rubrik.judul + ', skor ' + score + ': ' + description);
+        button.setAttribute('aria-pressed', String(score === input.value));
+        button.addEventListener('click', function () {
+          draftScores[key] = score;
+          criteriaRow.querySelectorAll('.score-option').forEach(option => {
+            const selected = option === cell;
+            option.classList.toggle('selected', selected);
+            option.querySelector('button').setAttribute('aria-pressed', String(selected));
+          });
+          document.getElementById('rubrik-modal-error').hidden = true;
+        });
+        cell.appendChild(button);
+        criteriaRow.appendChild(cell);
+      });
+      tbody.appendChild(criteriaRow);
     });
     modal.showModal();
   }
 
   document.addEventListener('click', function (event) {
-    if (event.target.matches('.score-input.nilai-field')) openRubrik(event.target);
+    if (event.target.matches('.score-input.nilai-field') && !event.target.disabled) {
+      openRubrik(event.target.closest('tr'), event.target);
+    }
   });
 
   document.addEventListener('keydown', function (event) {
-    if (event.target.matches('.score-input.nilai-field') &&
+    if (event.target.matches('.score-input.nilai-field') && !event.target.disabled &&
         (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
-      openRubrik(event.target);
+      openRubrik(event.target.closest('tr'), event.target);
     }
   });
 
-  modal.addEventListener('change', function (event) {
-    if (!event.target.matches('input[name="rubrik-score"]') || !activeScoreInput) return;
-    if (!activeScoreInput.disabled) {
-      activeScoreInput.value = event.target.value;
-      activeScoreInput.dispatchEvent(new Event('input', { bubbles: true }));
-      activeScoreInput.dispatchEvent(new Event('change', { bubbles: true }));
+  document.getElementById('rubrik-modal-save').addEventListener('click', function () {
+    if (!activeRow || !activeRow.querySelector('.hadir-check').checked) return;
+    if (Object.keys(rubrikKolom).some(key => !['1', '2', '3', '4'].includes(draftScores[key]))) {
+      document.getElementById('rubrik-modal-error').hidden = false;
+      return;
     }
+    activeRow.querySelectorAll('.nilai-field').forEach(input => {
+      input.value = draftScores[input.dataset.rubrik];
+    });
+    updateRow(activeRow);
     modal.close();
   });
 
   document.getElementById('rubrik-modal-close').addEventListener('click', () => modal.close());
   modal.addEventListener('close', function () {
-    if (activeScoreInput) activeScoreInput.focus();
-    activeScoreInput = null;
+    if (returnFocus) returnFocus.focus();
+    activeRow = null;
+    returnFocus = null;
+    draftScores = {};
   });
 
   function toInt(val) {
@@ -1038,7 +1082,10 @@ function validatePositiveInput(input) {
     // toggle hadir
     if (e.target.classList.contains('hadir-check')) {
       const row = e.target.closest('tr');
-      if (row) updateRow(row);
+      if (row) {
+        updateRow(row);
+        if (e.target.checked) openRubrik(row, e.target);
+      }
       return;
     }
 
@@ -1067,7 +1114,7 @@ function validatePositiveInput(input) {
     })
   // init semua baris saat load
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('tbody tr').forEach(row => updateRow(row));
+    document.querySelectorAll('.rubrik tbody tr[data-peserta-id]').forEach(row => updateRow(row));
     updateSubmitButton();
     updateLogoutButton();
   });

@@ -1,13 +1,9 @@
-@php
-    $pertemuans = [1, 2]; // FIXED: setiap skenario pasti 2 pertemuan
-    $colSpanNilai = ($skenarios->count() * 2) + 1; // 2 pertemuan per skenario + kolom rerata
-  @endphp
  <table>
         <thead>
           <tr>
             <th colspan="4"></th>
             <th colspan="{{ ($skenarios->count() * count($pertemuans)) + 1 }}" class="text-center">
-              Nilai Harian PBL {{ $pbl->name }}
+              Nilai Harian {{ strtoupper((string) $pbl->type) === 'CR' ? 'CR' : 'PBL' }} {{ $pbl->name }}
             </th>
           </tr>
 

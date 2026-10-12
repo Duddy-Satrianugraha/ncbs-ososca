@@ -126,6 +126,7 @@ class PblNilaiController extends Controller
      public function nilai_export(int $keg)
         {
             $kegId = $keg;
+            $pbl = PblKeg::findOrFail($kegId);
 
             // ambil skenario untuk kegiatan ini
             $skenarios = \App\Models\PblMininote::query()
@@ -133,18 +134,8 @@ class PblNilaiController extends Controller
                 ->orderBy('id')
                 ->get(['id', 'judul_sk']);
 
-            // ambil pertemuan yang tersedia (dinamis)
-            $pertemuans = \App\Models\PblNilai::query()
-                ->where('keg_id', $kegId)
-                ->distinct()
-                ->orderBy('pertemuan')
-                ->pluck('pertemuan')
-                ->values()
-                ->all();
-
-            if (count($pertemuans) === 0) {
-                $pertemuans = [1, 2]; // fallback
-            }
+            // CR hanya satu pertemuan; PBL tetap dua pertemuan per skenario.
+            $pertemuans = strtoupper((string) $pbl->type) === 'CR' ? [1] : [1, 2];
 
             // ambil peserta + kelompok (hanya berdasarkan keg)
             $pesertas = \App\Models\PblPeserta::query()
@@ -197,7 +188,6 @@ class PblNilaiController extends Controller
 
                 $rerata[$p->id] = $count > 0 ? round($sum / $count, 2) : null;
             }
-            $pbl = PblKeg::find($kegId);
             return Excel::download(new PblNilaiExport($pbl, $kegId, $skenarios, $pertemuans, $pesertas, $matrix, $rerata), 'nilai-'.$pbl->name.'.xlsx');
         }
 

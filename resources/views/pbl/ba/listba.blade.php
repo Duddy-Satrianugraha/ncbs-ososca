@@ -47,7 +47,7 @@
                                                         <th colspan="2" class="text-center">Skenario {{ $sk }}</th>
                                                     @endfor
                                                 </tr>
-                                                @if($keg->type == 'pbl')
+                                                @if($keg->type == 'PBL')
                                                 <tr>
                                                     @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
                                                         <th class="text-center">Pertemuan 1</th>
@@ -63,8 +63,8 @@
                                                         <td> kel {{ $item['nama_kelompok'] }}</td>
 
                                                         @for ($sk = 1; $sk <= $keg->jml_sk; $sk++)
-                                                        @php if($keg->type == 'PBL'){ $px = 1; } else { $px = 2; } @endphp
-                                                            @for ($p = 1; $p <= $px; $p++)
+                                                            @if($keg->type == 'PBL')
+                                                            @for ($p = 1; $p <= 2; $p++)
                                                                 <td class="text-center">
                                                                     @if(isset($item['data'][$sk][$p]))
                                                                        @php
@@ -99,6 +99,41 @@
                                                                     @endif
                                                                 </td>
                                                             @endfor
+                                                            @else
+                                                                <td class="text-center" colspan="2">
+                                                                    @if(isset($item['data'][$sk]['1']))
+                                                                       @php
+                                                                            $cell = $item['data'][$sk]['1'];
+                                                                            $baItem = $cell['ba'];
+                                                                            $tutor = $cell['tutor'];
+                                                                        @endphp
+                                                                        @can('materi')
+
+                                                                        <a href="{{ route('pbl.ba.show', $baItem->id) }}"
+                                                                        class="btn btn-xs btn-info">
+                                                                            <i class="fa fa-check"></i>
+                                                                        </a>
+                                                                        @endcan
+                                                                        @can('admin')
+                                                                        <small>{{ $tutor }}</small><br>
+                                                                        <a href="{{ route('pbl.ba.show', $baItem->id) }}"
+                                                                        class="btn btn-info btn-rounded btn-sm"
+                                                                        title="Lihat">
+                                                                            <span class="fa fa-search"></span>
+                                                                        </a>
+
+                                                                        <a href="{{ route('pbl.ba.pdf', $baItem->id) }}"
+                                                                        class="btn btn-danger btn-rounded btn-sm"
+                                                                        target="_blank"
+                                                                        title="Download PDF">
+                                                                            <span class="fa fa-download"></span>
+                                                                        </a>
+                                                                        @endcan
+                                                                    @else
+                                                                        <span class="text-muted">-</span>
+                                                                    @endif
+                                                                </td>
+                                                            @endif
                                                         @endfor
                                                     </tr>
                                                 @empty

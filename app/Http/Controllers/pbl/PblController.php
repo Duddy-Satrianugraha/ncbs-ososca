@@ -110,12 +110,13 @@ class PblController extends Controller
                         'komunikasi',
                     ];
 
+                    $nilaiMinimum = $request->input('type') === 'CR' ? 1 : 0;
                     foreach ($nilaiWajib as $field) {
-                        if (!isset($n[$field]) || (int) $n[$field] < 1 || (int) $n[$field] > 10) {
+                        if (!isset($n[$field]) || (int) $n[$field] < $nilaiMinimum || (int) $n[$field] > 10) {
                             return back()
                                 ->withInput()
                                 ->withErrors([
-                                    'nilai' => 'Peserta yang hadir wajib memiliki nilai Sharing, Argumentasi, Keaktifan, Kolaborasi, dan Komunikasi minimal 1 dan maksimal 10.',
+                                    'nilai' => 'Peserta yang hadir wajib memiliki nilai Sharing, Argumentasi, Keaktifan, Kolaborasi, dan Komunikasi minimal ' . $nilaiMinimum . ' dan maksimal 10.',
                                 ]);
                         }
                     }
